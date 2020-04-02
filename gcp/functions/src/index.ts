@@ -1,36 +1,62 @@
 import * as functions from "firebase-functions";
 import { firestore, initializeApp } from "firebase-admin";
-
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-
-interface TrackingInput {
-  myIdentity: string;
-  metIdentity: string;
-}
+import { COLLECTION_DEVICES, COLLECTION_VISITS } from "./consts";
+import { VisitInput } from "./inputs";
 
 initializeApp();
 
 export const visitIdentity = functions.https.onCall(
-  async (data: TrackingInput, context) => {
+  async (data: VisitInput, context) => {
     const batch = firestore().batch();
-    const devicesCollection = firestore().collection("devices");
-    const me = devicesCollection.doc(data.myIdentity);
-    const other = devicesCollection.doc(data.metIdentity);
 
-    me.update({
-      visitedIds: firestore.FieldValue.arrayUnion(data.metIdentity)
-    });
+    var documentData: firestore.DocumentData = {};
 
-    other.update({
-      visitedIds: firestore.FieldValue.arrayUnion(data.myIdentity)
-    });
+    documentData.timestamp = firestore.FieldValue.serverTimestamp();
 
-    await batch.commit();
+    if (data.signalStrength) {
+      documentData.signalStrength = data.signalStrength;
+    }
+
+    if (data.location) {
+      documentData.location = new firestore.GeoPoint(
+        data.location.latitude,
+        data.location.longitude
+      );
+    }
+
+    const devicesCollection = firestore().collection(COLLECTION_DEVICES);
+
+    const me = devicesCollection
+      .doc(data.firstIdentity)
+      .collection(COLLECTION_VISITS);
+    const other = devicesCollection
+      .doc(data.secondIdentity)
+      .collection(COLLECTION_VISITS);
+
+    me.doc(data.secondIdentity).set(documentData);
+    other.doc(data.firstIdentity).set(documentData);
+
+    try {
+      await batch.commit();
+      return {
+        message: "Saved!"
+      };
+    } catch (e) {
+      throw new functions.https.HttpsError("aborted", e.toString());
+    }
+  }
+);
+
+export const getVisitedDevices = functions.https.onCall(
+  async (data: { identity: string }, _) => {
+    const visits = await firestore()
+      .collection(COLLECTION_DEVICES)
+      .doc(data.identity)
+      .collection(COLLECTION_VISITS)
+      .get();
 
     return {
-      message: "Saved!"
+      visits: visits.docs.map(x => x.data())
     };
   }
 );
