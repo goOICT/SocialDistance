@@ -1,14 +1,15 @@
 package ai.kun.opentrace
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.lifecycle.Observer
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
-import com.google.firebase.auth.FirebaseAuth
 
 
 /*
@@ -23,10 +24,16 @@ class LaunchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_launch)
 
         val model: LaunchViewModel by viewModels()
-        when (model.isLoggedIn) {
-            true -> moveToHome()
-            false -> moveToSignIn()
+
+
+        val authStateObserver = Observer<Boolean> {isLoggedIn ->
+            when (isLoggedIn) {
+                true -> moveToHome()
+                false -> moveToSignIn()
+            }
         }
+
+        model.isLoggedIn.observe(this, authStateObserver)
     }
 
     private fun moveToHome() {
@@ -56,6 +63,14 @@ class LaunchActivity : AppCompatActivity() {
         Log.d("LaunchActivity", "onActivityResult  $requestCode $resultCode")
         if (requestCode == RC_SIGN_IN) {
             val response = IdpResponse.fromResultIntent(data)
+            if (resultCode == Activity.RESULT_OK) {
+                moveToHome()
+            } else {
+                response?.error?.let {
+                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                }
+
+            }
         }
     }
 
