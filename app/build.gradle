@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "ai.kun.opentrace"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -51,6 +51,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation "androidx.work:work-runtime-ktx:2.3.4"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
