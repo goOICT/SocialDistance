@@ -1,5 +1,8 @@
 package ai.kun.opentrace.ui.symptoms
 
+import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
+import ai.kun.opentrace.ui.api.OpenTraceApi
+import ai.kun.opentrace.ui.api.ResultLiveData
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -19,6 +22,8 @@ interface SymptomCheckedListener {
 
 class SymptomCheckerViewModel: ViewModel(), SymptomCheckedListener {
 
+    // TODO: DI?
+    private val api: OpenTraceApi = FirebaseOpenTraceApi()
     private val selectedSymptoms = MutableLiveData<Set<String>>(HashSet())
     val numberOfSymptoms = Transformations.map(selectedSymptoms) {
         it.size
@@ -32,6 +37,10 @@ class SymptomCheckerViewModel: ViewModel(), SymptomCheckedListener {
         } else {
             selectedSymptoms.postValue(currentSymptoms.minus(symptom.item))
         }
+    }
+
+    fun submit(): ResultLiveData<Int> {
+        return api.submitSymptoms(selectedSymptoms.value!!)
     }
 
 }

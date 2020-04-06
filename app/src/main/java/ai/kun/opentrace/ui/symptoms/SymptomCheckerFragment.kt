@@ -2,6 +2,7 @@ package ai.kun.opentrace.ui.symptoms
 
 import ai.kun.opentrace.R
 import ai.kun.opentrace.databinding.ItemSymptomBinding
+import ai.kun.opentrace.ui.api.Result
 import ai.kun.opentrace.ui.notifications.NotificationsViewModel
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.text.Layout
 import android.view.*
 import android.widget.CheckBox
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -97,9 +99,21 @@ class SymptomCheckerFragment: Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
         if (item.itemId == R.id.action_menu_done) {
+            viewModel.submit().observe(this, Observer {
+                val message = when (it.status) {
+                    Result.Status.ERROR -> it.error?.message
+                    Result.Status.CREATED -> null
+                    Result.Status.LOADING -> null
+                    Result.Status.SUCCESS -> "You score is ${it.data?.toString()}"
+                }
 
+                if (message != null) {
+                    Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
+                }
+            })
+            return true
         }
+        return super.onOptionsItemSelected(item)
     }
 }

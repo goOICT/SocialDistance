@@ -7,3 +7,8 @@ export interface VisitInput {
   };
   signalStrength?: number;
 }
+
+export interface SymptomsInput {
+  identity: string;
+  symptoms: string[];
+}
