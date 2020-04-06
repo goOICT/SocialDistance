@@ -2,10 +2,11 @@ package ai.kun.opentrace.worker
 
 import ai.kun.opentrace.util.BluetoothUtils
 import ai.kun.opentrace.util.ByteUtils
+import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.SCAN_PERIOD
 import ai.kun.opentrace.util.Constants.SERVICE_UUID
-import android.Manifest
-import android.app.Activity
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
@@ -15,18 +16,18 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.BLUETOOTH_SERVICE
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Handler
 import android.os.ParcelUuid
+import android.os.PowerManager
 import android.util.Log
-import androidx.core.app.ActivityCompat.requestPermissions
 
 
 class BLEClient() : BroadcastReceiver(), GattClientActionListener  {
     private val TAG = "BLEClient"
+    private val WAKELOCK_TAG = "ai:kun:opentrace:worker:BLEClient"
+    private val INTERVAL_KEY = "interval"
+    private val CLIENT_REQUEST_CODE = 11
 
-    private val REQUEST_ENABLE_BT = 1
-    private val REQUEST_FINE_LOCATION = 2
 
     private val mScanResults: MutableMap<String, BluetoothDevice> = HashMap<String, BluetoothDevice>()
 
@@ -43,10 +44,17 @@ class BLEClient() : BroadcastReceiver(), GattClientActionListener  {
     private var mScanCallback: ScanCallback? = null
     private var mGatt: BluetoothGatt? = null
 
-    private lateinit var mMainActivity: Activity
+    private lateinit var mContext: Context
 
 
     override fun onReceive(context: Context, intent: Intent) {
+        val interval = intent.getIntExtra(INTERVAL_KEY, Constants.BACKGROUND_TRACE_INTERVAL)
+        // Chain the next alarm...
+        enable(context, interval)
+        val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
+        val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKELOCK_TAG)
+        wl.acquire(interval.toLong())
+
         mBluetoothManager = context.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager
         mBluetoothAdapter = mBluetoothManager.adapter
 
@@ -56,44 +64,41 @@ class BLEClient() : BroadcastReceiver(), GattClientActionListener  {
             Address: ${mBluetoothAdapter.address}
             """.trimIndent()
         startScan()
+        wl.release()
     }
 
-    fun enable(activity: Activity) {
-        mMainActivity = activity
-        /* For now the server is on all the time, but later we should test to see if we can
-         * save battery life by turning it on only when we are scanning.
-        val am =
-            context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val i = Intent(context, BLEServer::class.java)
-        val pi = PendingIntent.getBroadcast(context, 0, i, 0)
-        am.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            System.currentTimeMillis(),
-            1000 * 60 * 10.toLong(),
-            pi
-        ) // Millisec * Second * Minute
-        */
-        onReceive(activity.applicationContext, Intent())
-    }
-
-    fun disable(context: Context) {
-
-        /* For now the server is on all the time
-        val intent = Intent(context, BLEServer::class.java)
-        val sender = PendingIntent.getBroadcast(context, 0, intent, 0)
+    fun enable(context: Context, interval: Int) {
+        mContext = context
         val alarmManager =
             context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        alarmManager.cancel(sender)
-         */
 
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            ((System.currentTimeMillis() / interval) * interval) + interval,
+            getPendingIntent(context, interval))
+    }
+
+    fun disable(context: Context, interval: Int) {
+        val alarmManager =
+            context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        alarmManager.cancel(getPendingIntent(context, interval))
+        stopScan()
+    }
+
+    private fun getPendingIntent(context: Context, interval: Int) : PendingIntent {
+        val intent = Intent(context, BLEClient::class.java)
+        intent.putExtra(INTERVAL_KEY, interval)
+        return PendingIntent.getBroadcast(context, CLIENT_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
 
     // Scanning
     private fun startScan() {
-        if (!hasPermissions() || mScanning) {
+        if (mScanning) {
             return
         }
+
         disconnectGattServer()
 
         mScanCallback = BtleScanCallback(mScanResults)
@@ -110,11 +115,12 @@ class BLEClient() : BroadcastReceiver(), GattClientActionListener  {
         val settings = ScanSettings.Builder()
             .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER)
             .build()
+
         mBluetoothLeScanner.startScan(listOf(scanFilter), settings, mScanCallback)
         mHandler = Handler()
         mHandler!!.postDelayed(Runnable { stopScan() }, SCAN_PERIOD)
         mScanning = true
-        log("Started scanning.")
+        log("+++++++Started scanning.")
     }
 
     private fun stopScan() {
@@ -125,7 +131,7 @@ class BLEClient() : BroadcastReceiver(), GattClientActionListener  {
         mScanCallback = null
         mScanning = false
         mHandler = null
-        log("Stopped scanning.")
+        log("-------Stopped scanning.")
     }
 
     private fun scanComplete() {
@@ -134,40 +140,11 @@ class BLEClient() : BroadcastReceiver(), GattClientActionListener  {
         }
         for (deviceAddress in mScanResults.keys) {
             val device: BluetoothDevice? = mScanResults.get(deviceAddress)
+            Log.d(TAG, "------Device scanned: name=${device?.name} type=${device?.type} address=${device?.address}-------")
             //TODO: Put the results somewhere
+            //TODO: Expand the results to have more information
+            //TODO: Add location
         }
-    }
-
-    private fun hasPermissions(): Boolean {
-        if (!mBluetoothAdapter.isEnabled) {
-            requestBluetoothEnable()
-            return false
-        } else if (!hasLocationPermissions()) {
-            requestLocationPermission()
-            return false
-        }
-        return true
-    }
-
-    private fun requestBluetoothEnable() {
-        val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-        mMainActivity.startActivityForResult(
-            enableBtIntent,
-            REQUEST_ENABLE_BT
-        )
-        log("Requested user enables Bluetooth. Try starting the scan again.")
-    }
-
-
-    private fun hasLocationPermissions(): Boolean {
-        return mMainActivity.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) === PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun requestLocationPermission() {
-        requestPermissions(mMainActivity,
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_FINE_LOCATION
-        )
-        log("Requested user enable Location. Try starting the scan again.")
     }
 
     private class BtleScanCallback internal constructor(private val mScanResults: MutableMap<String, BluetoothDevice>) :
@@ -204,7 +181,7 @@ class BLEClient() : BroadcastReceiver(), GattClientActionListener  {
     private fun connectDevice(device: BluetoothDevice) {
         log("Connecting to " + device.address)
         val gattClientCallback = GattClientCallback(this)
-        mGatt = device.connectGatt(mMainActivity, false, gattClientCallback)
+        mGatt = device.connectGatt(mContext, false, gattClientCallback)
     }
 
     // Messaging
