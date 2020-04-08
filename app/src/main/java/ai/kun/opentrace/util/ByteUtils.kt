@@ -19,29 +19,19 @@ object ByteUtils {
         return reversed
     }
 
-    private val hexArray = "0123456789ABCDEF".toCharArray()
+   private val hexArray = "0123456789ABCDEF".toCharArray()
 
-    private fun byteToHex(b: Byte): String {
-        val char1 = Character.forDigit((b and 0xF0.toByte()) as Int shr 4, 16)
-        val char2 = Character.forDigit((b and 0x0F).toInt(), 16)
-        return String.format("0x%1\$s%2\$s", char1, char2)
-    }
+    fun byteArrayInHexFormat(bytes: ByteArray?): String? {
+        if (bytes == null) return null
 
-    fun byteArrayInHexFormat(byteArray: ByteArray?): String? {
-        if (byteArray == null) {
-            return null
+        val hexChars = CharArray(bytes.size * 2)
+        for (j in bytes.indices) {
+            val v = (bytes[j] and 0xFF.toByte()).toInt()
+
+            hexChars[j * 2] = hexArray[v ushr 4]
+            hexChars[j * 2 + 1] = hexArray[v and 0x0F]
         }
-        val stringBuilder = StringBuilder()
-        stringBuilder.append("{ ")
-        for (i in byteArray.indices) {
-            if (i > 0) {
-                stringBuilder.append(", ")
-            }
-            val hexString = byteToHex(byteArray[i])
-            stringBuilder.append(hexString)
-        }
-        stringBuilder.append(" }")
-        return stringBuilder.toString()
+        return String(hexChars)
     }
 
     fun bytesFromString(string: String): ByteArray {

@@ -11,8 +11,9 @@ class AutoStart : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
-            mBleServer.enable(context, Constants.BACKGROUND_TRACE_INTERVAL)
-            mBleClient.enable(context, Constants.BACKGROUND_TRACE_INTERVAL)
+            BLETrace.init(context.applicationContext)
+            mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+            mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
         }
     }
 }

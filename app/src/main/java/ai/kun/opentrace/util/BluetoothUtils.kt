@@ -1,7 +1,7 @@
 package ai.kun.opentrace.util
 
-import ai.kun.opentrace.util.Constants.CHARACTERISTIC_ECHO_STRING
-import ai.kun.opentrace.util.Constants.CHARACTERISTIC_TIME_STRING
+import ai.kun.opentrace.util.Constants.CHARACTERISTIC_DEVICE_STRING
+import ai.kun.opentrace.util.Constants.CHARACTERISTIC_USER_STRING
 import ai.kun.opentrace.util.Constants.CLIENT_CONFIGURATION_DESCRIPTOR_SHORT_ID
 import ai.kun.opentrace.util.Constants.SERVICE_STRING
 import android.bluetooth.BluetoothGatt
@@ -13,34 +13,8 @@ import androidx.annotation.Nullable
 import java.util.*
 
 object BluetoothUtils {
-    // Characteristics
-    fun findCharacteristics(bluetoothGatt: BluetoothGatt): List<BluetoothGattCharacteristic> {
-        val matchingCharacteristics: MutableList<BluetoothGattCharacteristic> =
-            ArrayList()
-        val serviceList = bluetoothGatt.services
-        val service = findService(serviceList) ?: return matchingCharacteristics
-        val characteristicList =
-            service.characteristics
-        for (characteristic in characteristicList) {
-            if (isMatchingCharacteristic(characteristic)) {
-                matchingCharacteristics.add(characteristic)
-            }
-        }
-        return matchingCharacteristics
-    }
 
-    @Nullable
-    fun findEchoCharacteristic(bluetoothGatt: BluetoothGatt): BluetoothGattCharacteristic? {
-        return findCharacteristic(bluetoothGatt, CHARACTERISTIC_ECHO_STRING)
-    }
-
-    @Nullable
-    fun findTimeCharacteristic(bluetoothGatt: BluetoothGatt): BluetoothGattCharacteristic? {
-        return findCharacteristic(bluetoothGatt, CHARACTERISTIC_TIME_STRING)
-    }
-
-    @Nullable
-    private fun findCharacteristic(
+    fun findCharacteristic(
         bluetoothGatt: BluetoothGatt,
         uuidString: String
     ): BluetoothGattCharacteristic? {
@@ -56,12 +30,12 @@ object BluetoothUtils {
         return null
     }
 
-    fun isEchoCharacteristic(characteristic: BluetoothGattCharacteristic?): Boolean {
-        return characteristicMatches(characteristic, CHARACTERISTIC_ECHO_STRING)
+    fun isDeviceCharacteristic(characteristic: BluetoothGattCharacteristic?): Boolean {
+        return characteristicMatches(characteristic, CHARACTERISTIC_DEVICE_STRING)
     }
 
-    fun isTimeCharacteristic(characteristic: BluetoothGattCharacteristic?): Boolean {
-        return characteristicMatches(characteristic, CHARACTERISTIC_TIME_STRING)
+    fun isUserCharacteristic(characteristic: BluetoothGattCharacteristic?): Boolean {
+        return characteristicMatches(characteristic, CHARACTERISTIC_USER_STRING)
     }
 
     private fun characteristicMatches(
@@ -86,8 +60,8 @@ object BluetoothUtils {
     private fun matchesCharacteristicUuidString(characteristicIdString: String): Boolean {
         return uuidMatches(
             characteristicIdString,
-            CHARACTERISTIC_ECHO_STRING,
-            CHARACTERISTIC_TIME_STRING
+            CHARACTERISTIC_DEVICE_STRING,
+            CHARACTERISTIC_USER_STRING
         )
     }
 
@@ -102,7 +76,6 @@ object BluetoothUtils {
     }
 
     // Descriptor
-    @Nullable
     fun findClientConfigurationDescriptor(descriptorList: List<BluetoothGattDescriptor>): BluetoothGattDescriptor? {
         for (descriptor in descriptorList) {
             if (isClientConfigurationDescriptor(descriptor)) {
@@ -126,8 +99,7 @@ object BluetoothUtils {
         return uuidMatches(serviceIdString, SERVICE_STRING)
     }
 
-    @Nullable
-    private fun findService(serviceList: List<BluetoothGattService>): BluetoothGattService? {
+    fun findService(serviceList: List<BluetoothGattService>): BluetoothGattService? {
         for (service in serviceList) {
             val serviceIdString = service.uuid
                 .toString()

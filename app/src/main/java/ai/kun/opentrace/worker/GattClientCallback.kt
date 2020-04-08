@@ -3,9 +3,12 @@ package ai.kun.opentrace.worker
 import android.bluetooth.*
 import ai.kun.opentrace.util.BluetoothUtils
 import ai.kun.opentrace.util.ByteUtils
+import android.util.Log
 
 class GattClientCallback(private val mClientActionListener: GattClientActionListener) :
     BluetoothGattCallback() {
+    private val TAG = "GattClientCallback"
+
     override fun onConnectionStateChange(
         gatt: BluetoothGatt,
         status: Int,
@@ -20,7 +23,7 @@ class GattClientCallback(private val mClientActionListener: GattClientActionList
         } else if (status != BluetoothGatt.GATT_SUCCESS) {
             // handle anything not SUCCESS as failure
             mClientActionListener.logError("Connection not GATT sucess status $status")
-            mClientActionListener.disconnectGattServer()
+            //mClientActionListener.disconnectGattServer()
             return
         }
         if (newState == BluetoothProfile.STATE_CONNECTED) {
@@ -29,7 +32,6 @@ class GattClientCallback(private val mClientActionListener: GattClientActionList
             gatt.discoverServices()
         } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
             mClientActionListener.log("Disconnected from device")
-            mClientActionListener.disconnectGattServer()
         }
     }
 
@@ -39,30 +41,32 @@ class GattClientCallback(private val mClientActionListener: GattClientActionList
             mClientActionListener.log("Device service discovery unsuccessful, status $status")
             return
         }
-        val matchingCharacteristics: List<BluetoothGattCharacteristic> =
-            BluetoothUtils.findCharacteristics(gatt)
-        if (matchingCharacteristics.isEmpty()) {
-            mClientActionListener.logError("Unable to find characteristics.")
-            return
-        }
-        mClientActionListener.log("Initializing: setting write type and enabling notification")
-        for (characteristic in matchingCharacteristics) {
-            characteristic.writeType = BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT
-            enableCharacteristicNotification(gatt, characteristic)
-        }
-    }
+        val serviceList = gatt.services
+        val service = BluetoothUtils.findService(serviceList)
+        var deviceUUIDString: String? = null
+        var userUUIDString: String? = null
 
-    override fun onCharacteristicWrite(
-        gatt: BluetoothGatt,
-        characteristic: BluetoothGattCharacteristic,
-        status: Int
-    ) {
-        super.onCharacteristicWrite(gatt, characteristic, status)
-        if (status == BluetoothGatt.GATT_SUCCESS) {
-            mClientActionListener.log("Characteristic written successfully")
+        if (service == null) {
+            mClientActionListener.logError("OpenTrace Service not found")
+            return
         } else {
-            mClientActionListener.logError("Characteristic write unsuccessful, status: $status")
-            mClientActionListener.disconnectGattServer()
+            val characteristicList =
+                service.characteristics
+            for (characteristic in characteristicList) {
+                val uuidString = characteristic.uuid.toString()
+                if (uuidString.regionMatches(9, "0000", 0, 4, true)) {
+                    // It's the device UUID
+                    deviceUUIDString = uuidString
+                } else {
+                    // It's the user UUID
+                    userUUIDString = uuidString
+                }
+            }
+            if (deviceUUIDString != null && userUUIDString != null) {
+                mClientActionListener.log("!!!!!!!!!!!!!! Traced user: $userUUIDString device: $deviceUUIDString !!!!!!!!!!!!!!!!!!!!")
+            } else {
+                mClientActionListener.logError("Invalid trace: user: $userUUIDString device: $deviceUUIDString")
+            }
         }
     }
 
@@ -83,83 +87,6 @@ class GattClientCallback(private val mClientActionListener: GattClientActionList
         }
     }
 
-    override fun onCharacteristicChanged(
-        gatt: BluetoothGatt,
-        characteristic: BluetoothGattCharacteristic
-    ) {
-        super.onCharacteristicChanged(gatt, characteristic)
-        mClientActionListener.log("Characteristic changed, " + characteristic.uuid.toString())
-        readCharacteristic(characteristic)
-    }
-
-    override fun onDescriptorWrite(
-        gatt: BluetoothGatt,
-        descriptor: BluetoothGattDescriptor,
-        status: Int
-    ) {
-        if (status == BluetoothGatt.GATT_SUCCESS) {
-            mClientActionListener.log(
-                "Descriptor written successfully: " + descriptor.uuid.toString()
-            )
-            mClientActionListener.initializeTime()
-        } else {
-            mClientActionListener.logError(
-                "Descriptor write unsuccessful: " + descriptor.uuid.toString()
-            )
-        }
-    }
-
-    private fun enableCharacteristicNotification(
-        gatt: BluetoothGatt,
-        characteristic: BluetoothGattCharacteristic
-    ) {
-        val characteristicWriteSuccess =
-            gatt.setCharacteristicNotification(characteristic, true)
-        if (characteristicWriteSuccess) {
-            mClientActionListener.log(
-                "Characteristic notification set successfully for " + characteristic.uuid
-                    .toString()
-            )
-            if (BluetoothUtils.isEchoCharacteristic(characteristic)) {
-                mClientActionListener.initializeEcho()
-            } else if (BluetoothUtils.isTimeCharacteristic(characteristic)) {
-                enableCharacteristicConfigurationDescriptor(gatt, characteristic)
-            }
-        } else {
-            mClientActionListener.logError(
-                "Characteristic notification set failure for " + characteristic.uuid.toString()
-            )
-        }
-    }
-
-    // Sometimes the Characteristic does not have permissions, and instead its Descriptor holds them
-    // See https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml
-    private fun enableCharacteristicConfigurationDescriptor(
-        gatt: BluetoothGatt,
-        characteristic: BluetoothGattCharacteristic
-    ) {
-        val descriptorList =
-            characteristic.descriptors
-        val descriptor: BluetoothGattDescriptor? =
-            BluetoothUtils.findClientConfigurationDescriptor(descriptorList)
-        if (descriptor == null) {
-            mClientActionListener.logError("Unable to find Characteristic Configuration Descriptor")
-            return
-        }
-        descriptor.value = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
-        val descriptorWriteInitiated = gatt.writeDescriptor(descriptor)
-        if (descriptorWriteInitiated) {
-            mClientActionListener.log(
-                "Characteristic Configuration Descriptor write initiated: " + descriptor.uuid
-                    .toString()
-            )
-        } else {
-            mClientActionListener.logError(
-                "Characteristic Configuration Descriptor write failed to initiate: " + descriptor.uuid
-                    .toString()
-            )
-        }
-    }
 
     private fun readCharacteristic(characteristic: BluetoothGattCharacteristic) {
         val messageBytes = characteristic.value

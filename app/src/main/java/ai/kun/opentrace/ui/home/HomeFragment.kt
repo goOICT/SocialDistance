@@ -81,15 +81,11 @@ class HomeFragment : Fragment() {
     private fun startTrace() {
         if (mIsTraceEnabled && !mIsChecking && mBluetoothEnabled && mFineLocationGranted) {
             if (mIsForeground) {
-                context?.let {
-                    BLETrace().stopBackground(it)
-                    BLETrace().startForeground(it)
-                }
+                    BLETrace.stopBackground()
+                    BLETrace.startForeground()
             } else {
-                context?.let {
-                    BLETrace().stopForeground(it)
-                    BLETrace().startBackground(it)
-                }
+                    BLETrace.stopForeground()
+                    BLETrace.startBackground()
             }
         }
     }

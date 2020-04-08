@@ -19,6 +19,4 @@ interface GattServerActionListener {
         offset: Int,
         value: ByteArray
     )
-
-    fun notifyCharacteristicEcho(value: ByteArray)
 }
