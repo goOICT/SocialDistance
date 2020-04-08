@@ -1,7 +1,12 @@
 import * as functions from "firebase-functions";
+import * as moment from "moment";
 import { firestore, initializeApp } from "firebase-admin";
-import { COLLECTION_DEVICES, COLLECTION_VISITS } from "./consts";
-import { VisitInput } from "./inputs";
+import {
+  COLLECTION_DEVICES,
+  COLLECTION_VISITS,
+  COLLECTION_SYMPTOMS
+} from "./consts";
+import { VisitInput, SymptomsInput } from "./inputs";
 
 initializeApp();
 
@@ -9,7 +14,7 @@ export const visitIdentity = functions.https.onCall(
   async (data: VisitInput, context) => {
     const batch = firestore().batch();
 
-    var documentData: firestore.DocumentData = {};
+    const documentData: firestore.DocumentData = {};
 
     documentData.timestamp = firestore.FieldValue.serverTimestamp();
 
@@ -33,30 +38,41 @@ export const visitIdentity = functions.https.onCall(
       .doc(data.secondIdentity)
       .collection(COLLECTION_VISITS);
 
-    me.doc(data.secondIdentity).set(documentData);
-    other.doc(data.firstIdentity).set(documentData);
-
     try {
+      batch.set(me.doc(data.secondIdentity), documentData);
+      batch.set(other.doc(data.firstIdentity), documentData);
       await batch.commit();
       return {
         message: "Saved!"
       };
     } catch (e) {
-      throw new functions.https.HttpsError("aborted", e.toString());
+      throw new functions.https.HttpsError("aborted", e);
     }
   }
 );
 
-export const getVisitedDevices = functions.https.onCall(
-  async (data: { identity: string }, _) => {
-    const visits = await firestore()
+export const submitSymptoms = functions.https.onCall(
+  async (data: SymptomsInput, _) => {
+    const collection = firestore()
       .collection(COLLECTION_DEVICES)
       .doc(data.identity)
-      .collection(COLLECTION_VISITS)
-      .get();
+      .collection(COLLECTION_SYMPTOMS);
 
-    return {
-      visits: visits.docs.map(x => x.data())
-    };
+    const documentData: firestore.DocumentData = {};
+
+    const timestamp = firestore.Timestamp.now();
+    const formattedDate = moment(timestamp.toDate()).format("YYYY-MM-DD");
+
+    // super complicated algo for now
+    documentData.score = data.symptoms.length;
+
+    try {
+      await collection.doc(formattedDate).set(documentData);
+      return {
+        score: documentData.score
+      };
+    } catch (e) {
+      throw new functions.https.HttpsError("aborted", e);
+    }
   }
 );
