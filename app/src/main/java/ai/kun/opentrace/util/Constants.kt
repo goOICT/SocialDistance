@@ -3,6 +3,10 @@ package ai.kun.opentrace.util
 import java.util.*
 
 object Constants {
+    const val PREF_UNIQUE_ID = "ai.kun.opentrace.preferences"
+    const val RANGE_ENVIRONMENTAL = 3  // Environmental factor for calculating device range
+    const val MANUFACTURE_SUBSTRING = "9b3"
+    const val MANUFACTURE_ID = 1023
     var SERVICE_STRING = "0994cd95-6228-4a4c-aae2-4df9b3d03ca5"
     var SERVICE_UUID =
         UUID.fromString(SERVICE_STRING)

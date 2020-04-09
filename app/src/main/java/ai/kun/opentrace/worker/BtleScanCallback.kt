@@ -8,7 +8,7 @@ import android.util.Log
 
 object BtleScanCallback: ScanCallback() {
     private val TAG = "BtleScanCallback"
-    val mScanResults = HashMap<String, BluetoothDevice>()
+    val mScanResults = HashMap<String, ScanResult>()
     val handler = Handler()
 
     override fun onScanResult(
@@ -30,9 +30,8 @@ object BtleScanCallback: ScanCallback() {
 
     private fun addScanResult(result: ScanResult) {
         synchronized(this) {
-            val device = result.device
-            val deviceAddress = device.address
-            mScanResults[deviceAddress] = device
+            val deviceAddress = result.device.address
+            mScanResults[deviceAddress] = result
         }
     }
 }

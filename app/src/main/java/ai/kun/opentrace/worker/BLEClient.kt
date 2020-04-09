@@ -4,8 +4,10 @@ import ai.kun.opentrace.util.BluetoothUtils
 import ai.kun.opentrace.util.ByteUtils
 import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.DEVICE_SHORT_ID
+import ai.kun.opentrace.util.Constants.MANUFACTURE_SUBSTRING
 import ai.kun.opentrace.util.Constants.SCAN_PERIOD
 import ai.kun.opentrace.util.Constants.SERVICE_UUID
+import ai.kun.opentrace.util.Constants.USER_SHORT_ID
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.bluetooth.*
@@ -14,10 +16,12 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Context.BLUETOOTH_SERVICE
 import android.content.Intent
+import android.os.Build
 import android.os.Handler
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
+import java.nio.charset.StandardCharsets
 
 
 class BLEClient : BroadcastReceiver() {
@@ -80,16 +84,14 @@ class BLEClient : BroadcastReceiver() {
             return
         }
 
-        // Note: Filtering does not work the same (or at all) on most devices. It also is unable to
-        // search for a mask or anything less than a full UUID.
-        // Unless the full UUID of the server is known, manual filtering may be necessary.
-        // For example, when looking for a brand of device that contains a char sequence in the UUID
         val scanFilter = ScanFilter.Builder()
-            .setServiceUuid(ParcelUuid(SERVICE_UUID))
+            .setManufacturerData(
+                Constants.MANUFACTURE_ID,
+                MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8))
             .build()
 
         val settings = ScanSettings.Builder()
-            .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
+            .setScanMode(ScanSettings.SCAN_MODE_BALANCED)
             .build()
 
         BLETrace.bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
@@ -115,26 +117,22 @@ class BLEClient : BroadcastReceiver() {
             return
         }
         for (deviceAddress in BtleScanCallback.mScanResults.keys) {
-            val device: BluetoothDevice? = BtleScanCallback.mScanResults.get(deviceAddress)
-            device?.let { bluetoothDevice ->
-                Log.d(TAG, "Device scanned: name=${bluetoothDevice.name} type=${bluetoothDevice.type} address=${bluetoothDevice.address}")
-                var deviceUUIDString: String? = null
-                var userUUIDString: String? = null
-                bluetoothDevice.uuids?.let {
-                    for (uuid in it) {
-                        val uuidString = uuid.toString()
-                        if (uuidString.regionMatches(9, DEVICE_SHORT_ID, 0, 4, true)) {
-                            // It's the device UUID
-                            deviceUUIDString = uuidString
-                        } else {
-                            // It's the user UUID
-                            userUUIDString = uuidString
-                        }
-                    }
-                    if (deviceUUIDString != null) {
-                        Log.d(TAG, ">>>>>>>>>> Traced user=$userUUIDString device=$deviceUUIDString address=${bluetoothDevice.address} <<<<<<<<<<")
-                    }
+            val result: ScanResult? = BtleScanCallback.mScanResults.get(deviceAddress)
+            result?.let { scanResult ->
+                var uuid: ParcelUuid? = scanResult.scanRecord?.serviceUuids?.get(0)
+                var rssi: Int = scanResult.rssi
+                var txPower: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    scanResult.txPower
+                } else {
+                    -1
                 }
+                val distance = BLETrace.calculateDistance(rssi, txPower)
+                var timeStampNanos: Long = scanResult.timestampNanos
+                var sessionId = deviceAddress
+
+                Log.d(TAG, "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos sessionId=$sessionId +++++++++++++")
+
+                //TODO: Add this to firebase!!!
             }
         }
 

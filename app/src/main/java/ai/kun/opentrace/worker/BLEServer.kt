@@ -2,14 +2,13 @@ package ai.kun.opentrace.worker
 
 import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.BACKGROUND_TRACE_INTERVAL
-import ai.kun.opentrace.util.Constants.CHARACTERISTIC_ECHO_UUID
-import ai.kun.opentrace.util.Constants.CHARACTERISTIC_TIME_UUID
-import ai.kun.opentrace.util.Constants.CLIENT_CONFIGURATION_DESCRIPTOR_UUID
-import ai.kun.opentrace.util.Constants.SERVICE_UUID
+import ai.kun.opentrace.util.Constants.MANUFACTURE_ID
+import ai.kun.opentrace.util.Constants.MANUFACTURE_SUBSTRING
 import ai.kun.opentrace.worker.BLETrace.context
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.bluetooth.*
+import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.AdvertiseData
 import android.bluetooth.le.AdvertiseSettings
 import android.bluetooth.le.BluetoothLeAdvertiser
@@ -20,6 +19,7 @@ import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
 import java.nio.charset.StandardCharsets
+import java.util.*
 
 
 class BLEServer : BroadcastReceiver(), GattServerActionListener  {
@@ -40,7 +40,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
             GattServerCallback.serverActionListener = this
             setupServer()
-            startAdvertising()
+            startAdvertising(BLEServerCallbackDeviceName, BLETrace.deviceNameServiceUuid)
         }
         wl.release()
     }
@@ -57,6 +57,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
                 context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
             alarmManager.cancel(getPendingIntent(interval))
+            stopAdvertising(BLETrace.bluetoothLeAdvertiser)
         }
     }
 
@@ -69,54 +70,13 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
     // GattServer
     private fun setupServer() {
-/*        val userNameServiceUuid = UUID.fromString(CHARACTERISTIC_USER_UUID.toString().replaceRange(9,13, USER_SHORT_ID))
-        val deviceNameServiceUuid = UUID.fromString(CHARACTERISTIC_DEVICE_UUID.toString().replaceRange(9,13, DEVICE_SHORT_ID))
-        if (gattServer.getService(userNameServiceUuid) == null) {
-            val userService = BluetoothGattService(
-                userNameServiceUuid,
-                BluetoothGattService.SERVICE_TYPE_PRIMARY
-            )
-            gattServer.addService(userService)
-        }
-        if (gattServer.getService(deviceNameServiceUuid) == null) {
+        if (BLETrace.bluetoothGattServer.getService(BLETrace.deviceNameServiceUuid) == null) {
             val deviceService = BluetoothGattService(
-                deviceNameServiceUuid,
+                BLETrace.deviceNameServiceUuid,
                 BluetoothGattService.SERVICE_TYPE_PRIMARY
             )
-            gattServer.addService(deviceService)
-        }*/
-        if (BLETrace.bluetoothGattServer.getService(SERVICE_UUID) == null) {
-            val service = BluetoothGattService(
-                SERVICE_UUID,
-                BluetoothGattService.SERVICE_TYPE_PRIMARY
-            )
-
-            // Write characteristic
-            val writeCharacteristic = BluetoothGattCharacteristic(
-                CHARACTERISTIC_ECHO_UUID,
-                BluetoothGattCharacteristic.PROPERTY_WRITE,  // Somehow this is not necessary, the client can still enable notifications
-                //                        | BluetoothGattCharacteristic.PROPERTY_NOTIFY,
-                BluetoothGattCharacteristic.PERMISSION_WRITE
-            )
-
-            // Characteristic with Descriptor
-            val notifyCharacteristic = BluetoothGattCharacteristic(
-                CHARACTERISTIC_TIME_UUID,  // Somehow this is not necessary, the client can still enable notifications
-                //                BluetoothGattCharacteristic.PROPERTY_NOTIFY,
-                0,
-                0
-            )
-            val clientConfigurationDescriptor = BluetoothGattDescriptor(
-                CLIENT_CONFIGURATION_DESCRIPTOR_UUID,
-                BluetoothGattDescriptor.PERMISSION_READ or BluetoothGattDescriptor.PERMISSION_WRITE
-            )
-            clientConfigurationDescriptor.value = BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE
-            notifyCharacteristic.addDescriptor(clientConfigurationDescriptor)
-            service.addCharacteristic(writeCharacteristic)
-            service.addCharacteristic(notifyCharacteristic)
-            BLETrace.bluetoothGattServer.addService(service)
+            BLETrace.bluetoothGattServer.addService(deviceService)
         }
-
     }
 
     private fun stopServer(gattServer: BluetoothGattServer) {
@@ -125,45 +85,39 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     }
 
     // Advertising
-    private fun startAdvertising() {
-
-        //TODO: replace this with device id and user id
-        val uuid = "Kunai OpenTrace"
-        val substring = uuid.substring(uuid.length, uuid.length)
+    private fun startAdvertising(callback: AdvertiseCallback, uuid: UUID) {
 
         val settings = AdvertiseSettings.Builder()
-            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
+            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_BALANCED)
             .setConnectable(true)
             .setTimeout(Constants.BROADCAST_PERIOD.toInt())
-            .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_HIGH)
+            .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_MEDIUM)
             .build()
 
         val data = AdvertiseData.Builder()
             .setIncludeDeviceName(false)
             .setIncludeTxPowerLevel(true)
             .addManufacturerData(
-                1023,
-                substring.toByteArray(StandardCharsets.UTF_8)
+                MANUFACTURE_ID,
+                MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8)
             )
-            //.addServiceUuid(ParcelUuid(UUID.fromString(CHARACTERISTIC_DEVICE_UUID.toString().replaceRange(9,13, DEVICE_SHORT_ID))))
-            .addServiceUuid(ParcelUuid(SERVICE_UUID))
+            .addServiceUuid(ParcelUuid(uuid))
             .build()
-        BLETrace.bluetoothLeAdvertiser.stopAdvertising(BLEServerCallback)
-        BLETrace.bluetoothLeAdvertiser.startAdvertising(settings, data, BLEServerCallback)
-        //Handler().postDelayed(Runnable { stopAdvertising(bluetoothLeAdvertiser) }, Constants.BROADCAST_PERIOD)
+        BLETrace.bluetoothLeAdvertiser.stopAdvertising(callback)
+        BLETrace.bluetoothLeAdvertiser.startAdvertising(settings, data, callback)
         Log.d(TAG, ">>>>>>>>>>BLE Beacon Started")
     }
 
     private fun stopAdvertising(bluetoothLeAdvertiser: BluetoothLeAdvertiser) {
         synchronized(this) {
-            bluetoothLeAdvertiser.stopAdvertising(BLEServerCallback)
+            bluetoothLeAdvertiser.stopAdvertising((BLEServerCallbackDeviceName))
             log("<<<<<<<<<<BLE Beacon Forced Stopped")
         }
     }
 
     // Gatt Server Action Listener
     override fun log(message: String) {
-        Log.d(BLEServerCallback.TAG, message)
+        Log.d(BLEServerCallbackDeviceName.TAG, message)
     }
 
     override fun addDevice(device: BluetoothDevice) {
@@ -176,7 +130,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
     override fun addClientConfiguration(device: BluetoothDevice, value: ByteArray) {
         val deviceAddress = device.address
-        BLEServerCallback.mClientConfigurations[deviceAddress] = value
+        BLEServerCallbackDeviceName.mClientConfigurations[deviceAddress] = value
     }
 
     override fun sendResponse(
@@ -186,6 +140,6 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         offset: Int,
         value: ByteArray
     ) {
-        //mGattServer?.sendResponse(device, requestId, status, offset, value)
+        BLETrace.bluetoothGattServer.sendResponse(device, requestId, status, offset, value)
     }
 }

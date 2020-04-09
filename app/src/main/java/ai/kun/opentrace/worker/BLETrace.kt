@@ -1,12 +1,18 @@
 package ai.kun.opentrace.worker
 
 import ai.kun.opentrace.util.Constants
+import ai.kun.opentrace.util.Constants.PREF_UNIQUE_ID
+import ai.kun.opentrace.util.Constants.RANGE_ENVIRONMENTAL
 import android.app.AlarmManager
 import android.bluetooth.BluetoothGattServer
 import android.bluetooth.BluetoothManager
 import android.bluetooth.le.BluetoothLeAdvertiser
 import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
+import android.content.SharedPreferences
+import java.util.*
+import kotlin.math.pow
+
 
 object BLETrace {
     private val mBleServer : BLEServer = BLEServer()
@@ -19,6 +25,28 @@ object BLETrace {
     lateinit var bluetoothLeScanner: BluetoothLeScanner
     lateinit var bluetoothLeAdvertiser: BluetoothLeAdvertiser
     lateinit var alarmManager: AlarmManager
+
+
+    private var uniqueID: String? = null
+    fun id(context: Context): String? {
+        synchronized(this) {
+            if (uniqueID == null) {
+                val sharedPrefs = context.getSharedPreferences(
+                    PREF_UNIQUE_ID, Context.MODE_PRIVATE
+                )
+                uniqueID = sharedPrefs.getString(PREF_UNIQUE_ID, null)
+                if (uniqueID == null) {
+                    uniqueID = UUID.randomUUID().toString()
+                    val editor: SharedPreferences.Editor = sharedPrefs.edit()
+                    editor.putString(PREF_UNIQUE_ID, uniqueID)
+                    editor.commit()
+                }
+            }
+            return uniqueID
+        }
+    }
+
+    lateinit var deviceNameServiceUuid: UUID
 
     fun startBackground() {
         mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
@@ -51,9 +79,17 @@ object BLETrace {
                 bluetoothLeAdvertiser = bluetoothManager.adapter.bluetoothLeAdvertiser
 
                 alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+                deviceNameServiceUuid = UUID.fromString(id(applicationContext))
                 isInit = true
             }
         }
+    }
+
+    fun calculateDistance(rssi: Int, txPower: Int): Float? {
+        if (txPower == -1) return null
+        return 10f.pow(( 0 - txPower - rssi) / (10*RANGE_ENVIRONMENTAL)) * 10
+
     }
 
 }

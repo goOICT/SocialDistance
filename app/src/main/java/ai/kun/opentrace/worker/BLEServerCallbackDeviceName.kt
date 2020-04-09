@@ -6,7 +6,7 @@ import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.AdvertiseSettings
 import android.util.Log
 
-object BLEServerCallback: AdvertiseCallback() {
+object BLEServerCallbackDeviceName: AdvertiseCallback() {
     const val TAG = "BLEServerAdCallback"
 
 
