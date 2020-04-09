@@ -22,4 +22,9 @@
         android:name="ai.kun.opentrace.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_symptoms"
+        android:name="ai.kun.opentrace.ui.symptoms.SymptomCheckerFragment"
+        tools:layout="@layout/fragment_symptom_checker"
+        android:label="@string/title_symptoms" />
 </navigation>

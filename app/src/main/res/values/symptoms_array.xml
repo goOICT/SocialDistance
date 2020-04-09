@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="symptoms_array">
+        <item>Fever</item>
+        <item>Cough</item>
+        <item>Fatigue</item>
+        <item>Runny nose</item>
+        <item>Nasal congestion</item>
+        <item>Diarrhea</item>
+        <item>Body aches</item>
+        <item>Sore throat</item>
+        <item>Headache</item>
+        <item>Loss of appetite</item>
+        <item>Shortness of breath</item>
+        <item>Respiratory issues</item>
+    </string-array>
+</resources>
