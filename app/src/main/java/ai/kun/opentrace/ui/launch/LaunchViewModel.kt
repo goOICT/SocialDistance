@@ -1,10 +1,9 @@
-package ai.kun.opentrace
+package ai.kun.opentrace.ui.launch
 
-import android.util.Log
+import ai.kun.opentrace.worker.BLETrace
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 
 class LaunchViewModel: ViewModel(), FirebaseAuth.AuthStateListener {
@@ -22,5 +21,6 @@ class LaunchViewModel: ViewModel(), FirebaseAuth.AuthStateListener {
 
     override fun onAuthStateChanged(auth: FirebaseAuth) {
         authState.value = auth.currentUser != null
+        BLETrace.uniqueId = auth.currentUser?.uid
     }
 }

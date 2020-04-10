@@ -20,58 +20,96 @@ object BLETrace {
 
     private var isInit = false
     lateinit var context : Context
-    lateinit var bluetoothGattServer: BluetoothGattServer
-    lateinit var bluetoothManager: BluetoothManager
-    lateinit var bluetoothLeScanner: BluetoothLeScanner
-    lateinit var bluetoothLeAdvertiser: BluetoothLeAdvertiser
-    lateinit var alarmManager: AlarmManager
+    lateinit var bluetoothGattServer : BluetoothGattServer
+    lateinit var bluetoothManager : BluetoothManager
+    lateinit var bluetoothLeScanner : BluetoothLeScanner
+    lateinit var bluetoothLeAdvertiser : BluetoothLeAdvertiser
+    lateinit var alarmManager : AlarmManager
 
+    public var isBackground : Boolean = true
 
-    private var uniqueID: String? = null
-    fun id(context: Context): String? {
-        synchronized(this) {
-            if (uniqueID == null) {
+    public var uniqueId : String?
+        get() {
+            synchronized(this) {
                 val sharedPrefs = context.getSharedPreferences(
                     PREF_UNIQUE_ID, Context.MODE_PRIVATE
                 )
-                uniqueID = sharedPrefs.getString(PREF_UNIQUE_ID, null)
-                if (uniqueID == null) {
-                    uniqueID = UUID.randomUUID().toString()
-                    val editor: SharedPreferences.Editor = sharedPrefs.edit()
-                    editor.putString(PREF_UNIQUE_ID, uniqueID)
+                return sharedPrefs.getString(PREF_UNIQUE_ID, null)
+            }
+        }
+        set(value) {
+            synchronized(this) {
+                val sharedPrefs = context.getSharedPreferences(
+                    PREF_UNIQUE_ID, Context.MODE_PRIVATE
+                )
+                val editor: SharedPreferences.Editor = sharedPrefs.edit()
+                if (value != null) {
+                    editor.putString(PREF_UNIQUE_ID, value)
                     editor.commit()
+                    init(context)
+                    deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
+                } else {
+                    editor.remove(PREF_UNIQUE_ID)
+                    editor.commit()
+                    stop()
                 }
             }
-            return uniqueID
         }
-    }
 
     lateinit var deviceNameServiceUuid: UUID
 
     fun startBackground() {
-        mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
-        mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+        if (isBleEnabled()) {
+            synchronized(this) {
+                isBackground = true
+                mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+                mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+            }
+        }
     }
 
-    fun stopBackground() {
-        mBleServer.disable(Constants.BACKGROUND_TRACE_INTERVAL)
-        mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
+    fun stop() {
+        synchronized(this) {
+            if (isBackground) {
+                stopBackground()
+            } else {
+                stopForeground()
+            }
+        }
+    }
+
+    private fun stopBackground() {
+        if (isBleEnabled()) {
+            mBleServer.disable(Constants.BACKGROUND_TRACE_INTERVAL)
+            mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
+        }
     }
 
     fun startForeground() {
-        mBleServer.enable(Constants.FOREGROUND_TRACE_INTERVAL)
-        mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
+        if (isBleEnabled()) {
+            mBleServer.enable(Constants.FOREGROUND_TRACE_INTERVAL)
+            mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
+        }
     }
 
-    fun stopForeground() {
-        mBleServer.disable(Constants.FOREGROUND_TRACE_INTERVAL)
-        mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL)
+    private fun stopForeground() {
+        if (isBleEnabled()) {
+            mBleServer.disable(Constants.FOREGROUND_TRACE_INTERVAL)
+            mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL)
+        }
     }
+
+    fun isBleEnabled() : Boolean {
+        // TODO: this needs to be more complicated and test for permissions and if bluetooth is on, etc.
+        return uniqueId != null && isInit
+    }
+
 
     fun init(applicationContext: Context) {
         synchronized(this) {
-            if (!isInit) {
-                context = applicationContext
+            context = applicationContext
+
+            if (!isInit && uniqueId != null) {
                 bluetoothManager =
                     context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
                 bluetoothLeScanner = bluetoothManager.adapter.bluetoothLeScanner
@@ -79,8 +117,9 @@ object BLETrace {
                 bluetoothLeAdvertiser = bluetoothManager.adapter.bluetoothLeAdvertiser
 
                 alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-                deviceNameServiceUuid = UUID.fromString(id(applicationContext))
+                val aString = "JUST_A_TEST_STRING"
+                val result = UUID.nameUUIDFromBytes(aString.toByteArray()).toString()
+                deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
                 isInit = true
             }
         }
@@ -88,7 +127,7 @@ object BLETrace {
 
     fun calculateDistance(rssi: Int, txPower: Int): Float? {
         if (txPower == -1) return null
-        return 10f.pow(( 0 - txPower - rssi) / (10*RANGE_ENVIRONMENTAL)) * 10
+        return 10f.pow((0 - txPower - rssi) / (10 * RANGE_ENVIRONMENTAL)) * 10
 
     }
 
