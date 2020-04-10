@@ -21,6 +21,14 @@ class LaunchViewModel: ViewModel(), FirebaseAuth.AuthStateListener {
 
     override fun onAuthStateChanged(auth: FirebaseAuth) {
         authState.value = auth.currentUser != null
+
+        // For now we are using the firebase user's ID as the device id
+        // we could have used something actually tied to the physical device
+        // or something input by the user too, but doing this allows a user that
+        // logs in to move from one device to another.  Note that we could still
+        // loose track of the user if they never log in and then switch devices.
+        // If they login later we'll still be good though.  Firebase takes care
+        // of that.
         BLETrace.uniqueId = auth.currentUser?.uid
     }
 }

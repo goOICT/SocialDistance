@@ -10,6 +10,8 @@ class FirebaseOpenTraceApi : OpenTraceApi {
     companion object {
         const val FUNCTION_TRACK_VISIT = "visitIdentity"
         const val FUNCTION_SUBMIT_SYMPTOMS = "submitSymptoms"
+        const val FUNCTION_SET_DEVICE_UUID = "setDeviceUuid"
+        const val FUNCTION_SUBMIT_TRACE = "submitTrace"
     }
 
     private var functions = Firebase.functions
@@ -65,7 +67,60 @@ class FirebaseOpenTraceApi : OpenTraceApi {
                 }
 
             return liveData
+        }
+    }
 
+    override fun setDeviceUuid(deviceUuid: String) {
+        FirebaseAuth.getInstance().currentUser.let {
+            val data = hashMapOf(
+                "deviceUuid" to deviceUuid,
+                "identity" to identity
+            )
+
+            functions.getHttpsCallable(FUNCTION_SET_DEVICE_UUID)
+                .call(data)
+        }
+    }
+
+    override fun submitTrace(
+        deviceUuid: String,
+        distance: Float?,
+        rssi: Int,
+        txPower: Int,
+        timeStampNanos: Long,
+        sessionId: String
+    ): ResultLiveData<Int> {
+        val liveData = ResultLiveData<Int>()
+        liveData.postLoading()
+
+        FirebaseAuth.getInstance().currentUser.let {
+            val data = hashMapOf(
+                "deviceUuid" to deviceUuid,
+                "distance" to distance,
+                "rrsi" to rssi,
+                "txPower" to txPower,
+                "timeStampNanos" to timeStampNanos,
+                "sessionId" to sessionId,
+                "identity" to identity
+            )
+
+            functions.getHttpsCallable(FUNCTION_SUBMIT_TRACE)
+                .call(data)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val scoreResult = task.result?.data as Map<*, *>
+                        if (scoreResult["score"] != null) {
+                            liveData.postSuccess(scoreResult["score"] as Int)
+                        } else {
+                            liveData.postError(Exception("No score returned."))
+                        }
+
+                    } else {
+                        liveData.postError(task.exception ?: Exception())
+                    }
+                }
+
+            return liveData
         }
     }
 }

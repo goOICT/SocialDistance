@@ -1,5 +1,6 @@
 package ai.kun.opentrace.worker
 
+import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
 import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.PREF_UNIQUE_ID
 import ai.kun.opentrace.util.Constants.RANGE_ENVIRONMENTAL
@@ -47,13 +48,21 @@ object BLETrace {
                     editor.putString(PREF_UNIQUE_ID, value)
                     editor.commit()
                     init(context)
-                    deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
+                    deviceNameServiceUuid = UUID.nameUUIDFromBytes(value?.toByteArray())
+                    FirebaseOpenTraceApi().setDeviceUuid(deviceUuid.toString())
                 } else {
                     editor.remove(PREF_UNIQUE_ID)
                     editor.commit()
                     stop()
                 }
             }
+        }
+
+    public var deviceUuid : String? = null
+        get() = if (uniqueId == null) {
+            null
+        } else {
+            UUID.nameUUIDFromBytes(uniqueId?.toByteArray()).toString()
         }
 
     lateinit var deviceNameServiceUuid: UUID
@@ -117,8 +126,6 @@ object BLETrace {
                 bluetoothLeAdvertiser = bluetoothManager.adapter.bluetoothLeAdvertiser
 
                 alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-                val aString = "JUST_A_TEST_STRING"
-                val result = UUID.nameUUIDFromBytes(aString.toByteArray()).toString()
                 deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
                 isInit = true
             }

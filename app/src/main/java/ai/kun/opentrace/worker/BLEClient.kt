@@ -1,5 +1,6 @@
 package ai.kun.opentrace.worker
 
+import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
 import ai.kun.opentrace.util.BluetoothUtils
 import ai.kun.opentrace.util.ByteUtils
 import ai.kun.opentrace.util.Constants
@@ -131,8 +132,8 @@ class BLEClient : BroadcastReceiver() {
                 var sessionId = deviceAddress
 
                 Log.d(TAG, "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos sessionId=$sessionId +++++++++++++")
-
-                //TODO: Add this to firebase!!!
+                FirebaseOpenTraceApi().submitTrace(uuid.toString(), distance, rssi, txPower, timeStampNanos, sessionId)
+                // TODO: implement a last results live data so there's a current list of devices and put the live data for this in it.
             }
         }
 
