@@ -3,24 +3,17 @@ package ai.kun.opentrace.ui.symptoms
 import ai.kun.opentrace.R
 import ai.kun.opentrace.databinding.ItemSymptomBinding
 import ai.kun.opentrace.ui.api.Result
-import ai.kun.opentrace.ui.notifications.NotificationsViewModel
 import android.content.Context
 import android.os.Bundle
-import android.text.Layout
 import android.view.*
-import android.widget.CheckBox
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_symptom.view.*
 
 class SymptomsAdapter(private val symptoms: List<SelectableSymptom>, private val listener: SymptomCheckedListener) : RecyclerView.Adapter<SymptomsAdapter.ViewHolder>() {
 

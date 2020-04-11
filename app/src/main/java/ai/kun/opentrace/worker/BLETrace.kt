@@ -1,5 +1,9 @@
 package ai.kun.opentrace.worker
 
+import ai.kun.opentrace.dao.Device
+import ai.kun.opentrace.dao.DeviceDao
+import ai.kun.opentrace.dao.DeviceRepository
+import ai.kun.opentrace.dao.DeviceRoomDatabase
 import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
 import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.PREF_UNIQUE_ID
@@ -11,6 +15,7 @@ import android.bluetooth.le.BluetoothLeAdvertiser
 import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.SharedPreferences
+import kotlinx.coroutines.GlobalScope
 import java.util.*
 import kotlin.math.pow
 
@@ -26,6 +31,9 @@ object BLETrace {
     lateinit var bluetoothLeScanner : BluetoothLeScanner
     lateinit var bluetoothLeAdvertiser : BluetoothLeAdvertiser
     lateinit var alarmManager : AlarmManager
+
+    private lateinit var deviceDao: DeviceDao
+    lateinit var deviceRepository: DeviceRepository
 
     public var isBackground : Boolean = true
 
@@ -113,10 +121,11 @@ object BLETrace {
         return uniqueId != null && isInit
     }
 
-
     fun init(applicationContext: Context) {
         synchronized(this) {
             context = applicationContext
+            deviceDao = DeviceRoomDatabase.getDatabase(context, GlobalScope).deviceDao()
+            deviceRepository = DeviceRepository(deviceDao)
 
             if (!isInit && uniqueId != null) {
                 bluetoothManager =
