@@ -43,7 +43,6 @@ class SymptomsAdapter(private val symptoms: List<SelectableSymptom>, private val
 
 class SymptomCheckerFragment: Fragment() {
 
-    private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 

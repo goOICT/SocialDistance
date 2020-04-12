@@ -17,11 +17,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
 
     private val REQUEST_ENABLE_BT = 1
     private val REQUEST_FINE_LOCATION = 2
@@ -42,11 +45,17 @@ class HomeFragment : Fragment() {
     ): View? {
         val homeViewModel: HomeViewModel by viewModels()
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
+        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerView_devices)
+        context?.let { fragmentContext ->
+            val deviceListAdapter = DeviceListAdapter(fragmentContext)
+            recyclerView.adapter = deviceListAdapter
+            recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+            homeViewModel.devices.observe(viewLifecycleOwner, Observer { devices ->
+                // Update the cached copy of the words in the adapter.
+                devices?.let { deviceListAdapter.setDevices(it) }
+            })
+        }
 
         return root
     }

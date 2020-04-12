@@ -1,13 +1,19 @@
 package ai.kun.opentrace.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import ai.kun.opentrace.dao.Device
+import ai.kun.opentrace.dao.DeviceRepository
+import ai.kun.opentrace.dao.DeviceRoomDatabase
+import android.app.Application
+import androidx.lifecycle.*
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val deviceRepository: DeviceRepository
+    val devices: LiveData<List<Device>>
+
+    init {
+        val devicesDao = DeviceRoomDatabase.getDatabase(application, viewModelScope).deviceDao()
+        deviceRepository = DeviceRepository(devicesDao)
+        devices = deviceRepository.allDevices
     }
-    val text: LiveData<String> = _text
 }
