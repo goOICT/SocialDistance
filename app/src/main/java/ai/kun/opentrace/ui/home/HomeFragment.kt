@@ -17,6 +17,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -48,8 +49,12 @@ class HomeFragment : Fragment() {
         val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerView_devices)
         context?.let { fragmentContext ->
             val deviceListAdapter = DeviceListAdapter(fragmentContext)
-            recyclerView.adapter = deviceListAdapter
-            recyclerView.layoutManager = LinearLayoutManager(activity)
+
+            recyclerView.apply {
+                adapter = deviceListAdapter
+                layoutManager = LinearLayoutManager(activity)
+                addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
+            }
 
             homeViewModel.devices.observe(viewLifecycleOwner, Observer { devices ->
                 // Update the cached copy of the words in the adapter.

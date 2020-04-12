@@ -143,7 +143,7 @@ object BLETrace {
 
     fun calculateDistance(rssi: Int, txPower: Int): Float? {
         if (txPower == -1) return null
-        return 10f.pow((0 - txPower - rssi) / (10 * RANGE_ENVIRONMENTAL)) * 10
+        return 10f.pow(((0 - txPower - rssi).toFloat()).div(10 * RANGE_ENVIRONMENTAL)) * 100
 
     }
 

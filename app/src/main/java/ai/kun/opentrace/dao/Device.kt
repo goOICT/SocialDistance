@@ -22,6 +22,9 @@ data class Device(
     @ColumnInfo(name = "time_stamp_nanos")
     val timeStampNanos: Long,
 
+    @ColumnInfo(name = "time_stamp")
+    val timeStam: Long,
+
     @ColumnInfo(name = "session_id")
     val sessionId: String
 )
