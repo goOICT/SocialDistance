@@ -1,5 +1,9 @@
 package ai.kun.opentrace.worker
 
+import ai.kun.opentrace.dao.Device
+import ai.kun.opentrace.dao.DeviceRepository
+import ai.kun.opentrace.dao.DeviceRoomDatabase
+import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
 import ai.kun.opentrace.util.BluetoothUtils
 import ai.kun.opentrace.util.ByteUtils
 import ai.kun.opentrace.util.Constants
@@ -21,6 +25,8 @@ import android.os.Handler
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.nio.charset.StandardCharsets
 
 
@@ -113,9 +119,13 @@ class BLEClient : BroadcastReceiver() {
     }
 
     private fun scanComplete() {
+        // TODO: We should use a timestamp range to select the devices we want to show, but for now delete all of them
+        GlobalScope.launch { BLETrace.deviceRepository.deleteAll() }
+
         if (BtleScanCallback.mScanResults.isEmpty()) {
             return
         }
+
         for (deviceAddress in BtleScanCallback.mScanResults.keys) {
             val result: ScanResult? = BtleScanCallback.mScanResults.get(deviceAddress)
             result?.let { scanResult ->
@@ -128,11 +138,12 @@ class BLEClient : BroadcastReceiver() {
                 }
                 val distance = BLETrace.calculateDistance(rssi, txPower)
                 var timeStampNanos: Long = scanResult.timestampNanos
+                val timeStamp: Long = System.currentTimeMillis()
                 var sessionId = deviceAddress
 
-                Log.d(TAG, "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos sessionId=$sessionId +++++++++++++")
-
-                //TODO: Add this to firebase!!!
+                Log.d(TAG, "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++")
+                val device = Device(uuid.toString(), distance, rssi, txPower, timeStampNanos, timeStamp, sessionId)
+                GlobalScope.launch {BLETrace.deviceRepository.insert(device) }
             }
         }
 

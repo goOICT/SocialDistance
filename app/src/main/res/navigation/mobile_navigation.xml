@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/launchFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -27,4 +27,12 @@
         android:name="ai.kun.opentrace.ui.symptoms.SymptomCheckerFragment"
         tools:layout="@layout/fragment_symptom_checker"
         android:label="@string/title_symptoms" />
+    <fragment
+        android:id="@+id/launchFragment"
+        android:name="ai.kun.opentrace.ui.launch.LaunchFragment"
+        android:label="LaunchFragment" >
+        <action
+            android:id="@+id/action_launchFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

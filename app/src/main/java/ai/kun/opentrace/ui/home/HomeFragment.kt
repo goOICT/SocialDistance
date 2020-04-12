@@ -15,13 +15,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
 
     private val REQUEST_ENABLE_BT = 1
     private val REQUEST_FINE_LOCATION = 2
@@ -40,13 +44,24 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        val homeViewModel: HomeViewModel by viewModels()
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerView_devices)
+        context?.let { fragmentContext ->
+            val deviceListAdapter = DeviceListAdapter(fragmentContext)
+
+            recyclerView.apply {
+                adapter = deviceListAdapter
+                layoutManager = LinearLayoutManager(activity)
+                addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
+            }
+
+            homeViewModel.devices.observe(viewLifecycleOwner, Observer { devices ->
+                // Update the cached copy of the words in the adapter.
+                devices?.let { deviceListAdapter.setDevices(it) }
+            })
+        }
+
         return root
     }
 
@@ -81,10 +96,10 @@ class HomeFragment : Fragment() {
     private fun startTrace() {
         if (mIsTraceEnabled && !mIsChecking && mBluetoothEnabled && mFineLocationGranted) {
             if (mIsForeground) {
-                    BLETrace.stopBackground()
+                    BLETrace.stop()
                     BLETrace.startForeground()
             } else {
-                    BLETrace.stopForeground()
+                    BLETrace.stop()
                     BLETrace.startBackground()
             }
         }
