@@ -6,7 +6,7 @@ Prototype UI as of April 13, 2020
 
 We are a team of product developers. We want to help and are doing what we can. Currently looking for teams and executives to partner with to build this solution. Currently in contact with and actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare insitiutes as well was for Companies who employ essential and other types of workers. Eventually we will all need to get back to work.
 
-# Product Description 
+# Product Description and Vision
 ## Problem Statement
 People need to get back to work eventually, and also many are essential workers continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples risk is minimized, anbd we can flatten the curve. This app is a Worforce Protection Solution, using contact tracing, a symptoms checker risk model and interation tracking and notifications to protect workers and the public.
 
