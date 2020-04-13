@@ -3,7 +3,7 @@ Inspired by TraceTogether and COVID Symptom Tracker, and written in response to 
 
 
 ## Problem Statement
-People need to get back to work eventually, and also many are essential workers. We need them not to get sick so our supply chain stays running and peoples risk is minimized. This will also be useful for folks not in workforce environments, however this will make a good Worforce PRotection Solution as well as a Contact Tracing app for use buy the public, organizations, and likely governments.
+People need to get back to work eventually, and also many are essential workers continuing to work throughg the global pandemic we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples risk is minimized, anbd we can flatten the curve. This app is a Worforce Protection Solution, using contact tracing, a symptoms checker risk model and interation tracking and notifications to protect workers and the public.
 
 ## Hypothesis
 We can help minimize peoples risk by creating risk profiles and categorization based on activity and minimize risk through tracking interactions. We can create a model to lower peoples risk.
