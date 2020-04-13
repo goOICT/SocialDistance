@@ -36,6 +36,7 @@ object BLETrace {
     lateinit var deviceRepository: DeviceRepository
 
     public var isBackground : Boolean = true
+    public var isStarted: Boolean = false
 
     public var uniqueId : String?
         get() {
@@ -75,23 +76,40 @@ object BLETrace {
 
     lateinit var deviceNameServiceUuid: UUID
 
-    fun startBackground() {
-        if (isBleEnabled()) {
-            synchronized(this) {
-                isBackground = true
-                mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
-                mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
-            }
+    fun start(startingBackground: Boolean) {
+        synchronized(this) {
+            if (isStarted) stop()
+            if (startingBackground) startBackground() else startForeground()
         }
     }
 
     fun stop() {
         synchronized(this) {
-            if (isBackground) {
-                stopBackground()
-            } else {
-                stopForeground()
-            }
+            if (isBackground) stopBackground() else stopForeground()
+        }
+    }
+
+    /*
+     * The following methods deal with the problem that your intent that you use to stop
+     * an alarm manager has to be identical to the intent that you used to stop it.  So
+     * for that to be true you have to cancel the alarm with the correct argument for
+     * background vs foreground, and thus a bunch of code...
+     */
+    private fun startBackground() {
+        if (isBleEnabled()) {
+            isBackground = true
+            isStarted = true
+            mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+            mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+        }
+    }
+
+    private fun startForeground() {
+        if (isBleEnabled()) {
+            isBackground = false
+            isStarted = true
+            mBleServer.enable(Constants.FOREGROUND_TRACE_INTERVAL)
+            mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
         }
     }
 
@@ -99,13 +117,6 @@ object BLETrace {
         if (isBleEnabled()) {
             mBleServer.disable(Constants.BACKGROUND_TRACE_INTERVAL)
             mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
-        }
-    }
-
-    fun startForeground() {
-        if (isBleEnabled()) {
-            mBleServer.enable(Constants.FOREGROUND_TRACE_INTERVAL)
-            mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
         }
     }
 
