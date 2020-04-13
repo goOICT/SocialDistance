@@ -17,7 +17,7 @@ We can help minimize peoples risk by creating risk profiles and categorization b
 * Healthcare workers, dentists, Physical therapists.
 
 ## Who is our target organization to deliver this for?
-Amazon, Walmart, Kaiser, kroeger, Aldi, Safeway, One Medical, Restaurants Chains, Stanford Medical Center, Salesforce(s customers). Etc...
+Amazon, Walmart, Kaiser, kroeger, Aldi, Safeway, One Medical, Restaurants Chains, Stanford Medical Center, Salesforce(s customers), etc.. Hospitals, Countys, States, Countries.
 
 # FEATURES: RISK PROFILE: 
 This assessment is taken every time a user opens the app. Users get a ranking that corresponds to this assessment. We can show this is green to red color scale 1-5? or 1-10? of risk. Symptom checker scores factor into this risk profile as well.
