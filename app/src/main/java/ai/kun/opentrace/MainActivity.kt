@@ -39,4 +39,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        BLETrace.start(true)
+    }
 }

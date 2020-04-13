@@ -83,25 +83,12 @@ class HomeFragment : Fragment() {
             checkPermissions(it)
             checkBluetooth(it)
         }
-        mIsForeground = true
-        startTrace()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        mIsForeground = false
         startTrace()
     }
 
     private fun startTrace() {
         if (mIsTraceEnabled && !mIsChecking && mBluetoothEnabled && mFineLocationGranted) {
-            if (mIsForeground) {
-                    BLETrace.stop()
-                    BLETrace.startForeground()
-            } else {
-                    BLETrace.stop()
-                    BLETrace.startBackground()
-            }
+            BLETrace.start(false)
         }
     }
 
