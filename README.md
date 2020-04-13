@@ -9,8 +9,8 @@ People need to get back to work eventually, and also many are essential workers.
 We can help minimize peoples risk by creating risk profiles and categorization based on activity and minimize risk through tracking interactions. We can create a model to lower peoples risk.
 
 ### Users Personas: Essential personnel and eventually all personnel.
-* Grocery Sockers
-* Caltrans road and municipal workers.
+* Grocery Stockers checkers and workers
+* Caltrans road and municipal workers
 * Amazon warehouse workers
 * Security Guards
 * Hospital Staff
@@ -19,17 +19,17 @@ We can help minimize peoples risk by creating risk profiles and categorization b
 ## Who is our target organization to deliver this for?
 Amazon, wall mart, Kaiser, One Medical, Restaurants Chains, Stanford Medical Center, Salesforce (s customers).
 
-# APP FEATURE: RISK PROFILE: 
+# FEATURES: RISK PROFILE: 
 This assessment is taken every time a user opens the app. Users get a ranking that corresponds to this assessment. We can show this is green to red color scale 1-5? or 1-10? of risk. Symptom checker scores factor into this risk profile as well.
 
 
-# APP FEATURE: Symptom Checker
+# FEATURES: Symptom Checker
 Users go through and answer the symptom checker every time they open the app.
 - Can they skip it?
 App recommends user self distance/isolate or quarantine if they have any symptoms or issues.
 
 
-# APP FEATURE: Proximity Notifications and tracking
+# FEATURES: Contact Tracing -> Proximity Notifications and tracking
 * Users get a score based on risk assessment above and symptom checker.
 * App uses contact tracing to notify users when they are in proximity with someone with any level of risk above green or low or 0. Shows the risk level of the other user.
 * App logs location, time, date, of the proximity incident and lists them for the user(s).
@@ -54,19 +54,19 @@ Sync location tracking data. + contact tracing.
 
 Unique identifier assigned to you.
 
-Are you practicing self-distancing according to CDC guidelines? (Y, some, No)
+1. Are you practicing self-distancing according to CDC guidelines? (Y, some, No)
 
-If so what date did you start?
+2. If so what date did you start?
 
-Are you practicing hand-washing and other prevention as per CDC recommendations? (Yes, some, no)
+3. Are you practicing hand-washing and other prevention as per CDC recommendations? (Yes, some, no)
 
-Have you been tested for COVID-19? if yes what date.
+4. Have you been tested for COVID-19? if yes what date.
 
-Have you previously been tested positive for covid-19 and recovered.
+5. Have you previously been tested positive for covid-19 and recovered.
 
-Have you lived with someone who has been infected
+6. Have you lived with someone who has been infected
 
-Have you lived with someone who has been infected tested and recovered?
+7. Have you lived with someone who has been infected tested and recovered?
 
 
 
