@@ -4,6 +4,9 @@ Inspired by TraceTogether and COVID Symptom Tracker, and written in response to 
 ![Image of Open Trace](https://raw.githubusercontent.com/kunai-consulting/OpenTrace/master/Protoype_Asset_v0.png)
 Prototype UI as of April 13,2020
 
+We are a team of product developmers. We want to help. Currently looking for teams and executives to partner with to build this solution. Currently in contact with and actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerhsips to help build both a public use version for governments and healthcare insitiutes as well was for Companies who employ essential and other workers. 
+
+# Product Description 
 ## Problem Statement
 People need to get back to work eventually, and also many are essential workers continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples risk is minimized, anbd we can flatten the curve. This app is a Worforce Protection Solution, using contact tracing, a symptoms checker risk model and interation tracking and notifications to protect workers and the public.
 
@@ -18,14 +21,16 @@ We can help minimize peoples risk by creating risk profiles and categorization b
 * Hospital Staff
 * Healthcare workers, dentists, Physical therapists.
 
+
 ## Who is our target organization to deliver this for?
 Amazon, Walmart, Kaiser, kroeger, Aldi, Safeway, One Medical, Restaurants Chains, Stanford Medical Center, Salesforce(s customers), etc.. Hospitals, Countys, States, Countries.
 
-# FEATURES: RISK PROFILE: 
+
+## FEATURES: RISK PROFILE: 
 This assessment is taken every time a user opens the app. Users get a ranking that corresponds to this assessment. We can show this is green to red color scale 1-5? or 1-10? of risk. Symptom checker scores factor into this risk profile as well.
 
 
-# FEATURES: Symptom Checker
+## FEATURES: Symptom Checker
 Users go through and answer the symptom checker every time they open the app.
 - Can they skip it?
 App recommends user self distance/isolate or quarantine if they have any symptoms or issues.
@@ -42,14 +47,14 @@ App recommends user self distance/isolate or quarantine if they have any symptom
 * App recommends users to stay the fuck home if any risk.
 
 
-# APP FEATURE: Admin + healthcare providers
+# FEATURES: Admin + healthcare providers
 Can see a map of all interaction points 
 Can filter map by date, time, location (mmmm…)
 
 
-# APP USER QUESTIONNAIRES:
+## APP USER QUESTIONNAIRES:
 
-## Self Isolation Risk Assessment:
+### Self Isolation Risk Assessment:
  
 
 Sync location tracking data. + contact tracing.
