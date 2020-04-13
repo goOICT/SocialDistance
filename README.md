@@ -17,7 +17,7 @@ We can help minimize peoples risk by creating risk profiles and categorization b
 * Healthcare workers, dentists, Physical therapists.
 
 ## Who is our target organization to deliver this for?
-Amazon, wall mart, Kaiser, One Medical, Restaurants Chains, Stanford Medical Center, Salesforce (s customers).
+Amazon, Walmart, Kaiser, kroeger, Aldi, Safeway, One Medical, Restaurants Chains, Stanford Medical Center, Salesforce(s customers). Etc...
 
 # FEATURES: RISK PROFILE: 
 This assessment is taken every time a user opens the app. Users get a ranking that corresponds to this assessment. We can show this is green to red color scale 1-5? or 1-10? of risk. Symptom checker scores factor into this risk profile as well.
@@ -122,15 +122,15 @@ Latest updates from your state on self isolation mandates (If possible)
 
 Telehealth resources. 
 
-Ways to volunteer or help
+* Ways to volunteer or help
 
-With encryption - so nobody knows who anyone else is.
+* With encryption - so nobody knows who anyone else is.
 
-Symptom list graphic
+* Symptom list graphic
 
-Link to CDC: https://www.cdc.gov/coronavirus/2019-ncov/index.html 
+* Link to CDC: https://www.cdc.gov/coronavirus/2019-ncov/index.html 
 
-Link to WHO: https://www.who.int/emergencies/diseases/novel-coronavirus-2019 
+* Link to WHO: https://www.who.int/emergencies/diseases/novel-coronavirus-2019 
 
-W.H.O. situation dashboard Graphic: https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd 
+* W.H.O. situation dashboard Graphic: https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd 
 
