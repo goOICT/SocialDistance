@@ -1,10 +1,14 @@
 # OpenTrace
 Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace is an application that can record user data and detect the presence of other BLE handsets and devices.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelyhoods.
 
-![Image of Open Trace](https://raw.githubusercontent.com/kunai-consulting/OpenTrace/master/Protoype_Asset_v0.png)
-Prototype UI as of April 13, 2020
+![Image of Open Trace](https://raw.githubusercontent.com/kunai-consulting/OpenTrace/master/Screens-anonymous_v1.png)
+Prototype UI, april 13, 2020: Users/Workers ID's are anonymous
 
-We are a team of product developers. We want to help and are doing what we can. Currently looking for teams and executives to partner with to build this solution. Currently in contact with and actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare insitiutes as well was for Companies who employ essential and other types of workers. Eventually we will all need to get back to work.
+![Image of Open Trace](https://raw.githubusercontent.com/kunai-consulting/OpenTrace/master/Screens_v1.png)
+Prototype UI, april 13, 2020: Users/Workers ID's are visible
+
+We are a team of product developers. We want to help and are doing what we can. 
+Currently looking for teams and executives to partner with to build this solution. Currently in contact with and actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare insitiutes as well was for Companies who employ essential and other types of workers. Eventually we will all need to get back to work.
 
 # Product Description and Vision
 ## Problem Statement
