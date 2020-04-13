@@ -75,19 +75,19 @@ Do you experience symptoms now? Did you start to have symptoms, or did you feel 
 
 ### Symptoms: + did these symptoms onset (gradually or abruptly?)
 
-A runny nose
-A Fever
-A Dry Cough
-Fatigue
-Runny nose 
-Nasal Congestion
-Diarrhea
-Body Aches
-Sore Throat
-Headache
-Loss of Appetite
-Shortness of breath
-Respiratory issues
+1. A runny nose
+2. A Fever
+3. A Dry Cough
+4. Fatigue
+5. Runny nose 
+6. Nasal Congestion
+7. Diarrhea
+8. Body Aches
+9. Sore Throat
+10. Headache
+11. Loss of Appetite
+12. Shortness of breath
+13. Respiratory issues
 
 
 ## Results: Based on this chart:
