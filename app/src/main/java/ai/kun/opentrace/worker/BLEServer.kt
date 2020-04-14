@@ -88,7 +88,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     private fun startAdvertising(callback: AdvertiseCallback, uuid: UUID) {
 
         val settings = AdvertiseSettings.Builder()
-            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_BALANCED)
+            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
             .setConnectable(true)
             .setTimeout(Constants.BROADCAST_PERIOD.toInt())
             .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_MEDIUM)

@@ -33,6 +33,9 @@
         android:label="LaunchFragment" >
         <action
             android:id="@+id/action_launchFragment_to_navigation_home"
-            app:destination="@id/navigation_home" />
+            app:destination="@id/navigation_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/mobile_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

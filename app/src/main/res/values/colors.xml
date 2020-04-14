@@ -3,4 +3,8 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="device_ok">@android:color/holo_green_light</color>
+    <color name="device_warn">@android:color/holo_orange_light</color>
+    <color name="device_strong_warn">@android:color/holo_orange_dark</color>
+    <color name="device_too_close">@android:color/holo_red_light</color>
 </resources>
