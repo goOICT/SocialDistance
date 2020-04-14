@@ -97,7 +97,7 @@ class BLEClient : BroadcastReceiver() {
             .build()
 
         val settings = ScanSettings.Builder()
-            .setScanMode(ScanSettings.SCAN_MODE_BALANCED)
+            .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
             .build()
 
         BLETrace.bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
