@@ -1,14 +1,9 @@
 # OpenTrace
 Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace is an application that can record user data and detect the presence of other BLE handsets and devices.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
 
-![Image of Open Trace](https://raw.githubusercontent.com/kunai-consulting/OpenTrace/master/Screens-anonymous_v1.png)
-Prototype UI, april 13, 2020: Users/Workers ID's are anonymous
-
-![Image of Open Trace](https://raw.githubusercontent.com/kunai-consulting/OpenTrace/master/Screens_v1.png)
-Prototype UI, april 13, 2020: Users/Workers ID's are visible
 
 We are a team of product developers. We want to help and are doing what we can. 
-Currently looking for teams and executives to partner with to build this solution. Currently in contact with and actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare insitiutes as well was for Companies who employ essential and other types of workers. Eventually we will all need to get back to work.
+Currently looking for teams and executives to partner with to build this solution. Currently actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare insitiutes as well was for Companies who employ essential and other types of workers. Eventually we will all need to get back to work.
 
 # Product Description and Vision
 ## Problem Statement
@@ -30,61 +25,18 @@ We can help minimize peoples risk by creating risk profiles and categorization b
 Amazon, Walmart, Kaiser, kroeger, Aldi, Safeway, One Medical, Restaurants Chains, Stanford Medical Center, Salesforce(s customers), etc.. Hospitals, Countys, States, Countries.
 
 
-## FEATURES: RISK PROFILE: 
-This assessment is taken every time a user opens the app. Users get a ranking that corresponds to this assessment. We can show this is green to red color scale 1-5? or 1-10? of risk. Symptom checker scores factor into this risk profile as well.
-
-
-## FEATURES: Symptom Checker
+## FEATURES: Symptom Checker features possible if helpful.
 Users go through and answer the symptom checker every time they open the app.
 - Can they skip it?
 App recommends user self distance/isolate or quarantine if they have any symptoms or issues.
 
 
-# FEATURES: Contact Tracing -> Proximity Notifications and tracking
-* Users get a score based on risk assessment above and symptom checker.
-* App uses contact tracing to notify users when they are in proximity with someone with any level of risk above green or low or 0. Shows the risk level of the other user.
-* App logs location, time, date, of the proximity incident and lists them for the user(s).
-* Discuss whether this increases impacts and increases their risk ranking.
-* App defaults to location tracking on.
-* App can work if location disabled, and only use contact tracing through BLE.
-* App must be on to work? - YES?
-* App recommends users to stay the fuck home if any risk.
-
-
-# FEATURES: Admin + healthcare providers
-Can see a map of all interaction points 
-Can filter map by date, time, location (mmmm…)
-
-
-## APP USER QUESTIONNAIRES:
-
-### Self Isolation Risk Assessment:
- 
-
-Sync location tracking data. + contact tracing.
-
-Unique identifier assigned to you.
-
-1. Are you practicing self-distancing according to CDC guidelines? (Y, some, No)
-
-2. If so what date did you start?
-
-3. Are you practicing hand-washing and other prevention as per CDC recommendations? (Yes, some, no)
-
-4. Have you been tested for COVID-19? if yes what date.
-
-5. Have you previously been tested positive for covid-19 and recovered.
-
-6. Have you lived with someone who has been infected
-
-7. Have you lived with someone who has been infected tested and recovered?
-
+# FEATURES: Contact Tracing
+* App uses contact tracing to notify users when they have had contact with someone who has been tested and whos status is verified as positive for Covid-19.
 
 
 ## Symptom Checker: How do you feel?
 Do you experience symptoms now? Did you start to have symptoms, or did you feel sick before today? (if so when <date picker>)
-
-### Symptoms: + did these symptoms onset (gradually or abruptly?)
 
 1. A runny nose
 2. A Fever
@@ -102,30 +54,15 @@ Do you experience symptoms now? Did you start to have symptoms, or did you feel 
 
 
 ## Results: Based on this chart:
-Prioritize 
-
-Fever
-
-Cough
-
-Shortness of breath
-https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html https://www.medicalnewstoday.com/articles/coronavirus-vs-flu#symptoms
-
-You probably have a cold!
-
-You probably have the Flu!
-
-You might have Covid 19 and should try to get tested.
+CDC: recommends if you have these symptoms you get tested for covid-19.
+https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html 
 
 
 ## Self Isolation/Distancing  Clock
 Start day,
-
 Current day
-
 End day
-
-Restart clock.
+Restart clock if newly exposure.
 
 
 ## Stay Informed:
@@ -143,5 +80,4 @@ Telehealth resources.
 
 * Link to WHO: https://www.who.int/emergencies/diseases/novel-coronavirus-2019 
 
-* W.H.O. situation dashboard Graphic: https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd 
-
+* W.H.O. situation dashboard Graphic: https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd
