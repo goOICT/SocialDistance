@@ -10,7 +10,16 @@ Currently looking for teams and executives to partner with to build this solutio
 People need to get back to work eventually, and also many are essential workers continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples risk is minimized, anbd we can flatten the curve. This app is a Worforce Protection Solution, using contact tracing, a symptoms checker and notifications to protect workers and the public.
 
 ## Hypothesis
-We can help minimize peoples risk by creating risk profiles and categorization based on activity and minimize risk through tracking interactions. We can create a model to lower peoples risk.
+Companies can deploy contact tracing to help protect their employees during Covid-19 when coupled with coverage for testing and sick-leave, and temperature testing employees and the like (which companies are starting to implement)
+
+Apple and Google are putting out an API that should well address the privacy concerns and create a standard for organizations to create apps based on. 
+
+We are prototyping improving BLE implementation for use in contact tracing, and can quickly build contact tracing on top of that to implement for organizations and companies. 
+
+Even when Apple and google and facebook put deploy a solution that is either on the OS or an app plugin, there will still  a separate need for companies to have their own app so they are not asking employees to give up their personal health and tracing data to their employers. We think employer based contact tracing app deployments will help with this because when the pandemic is over, employees can delete the app.
+
+We can help companies protect their workers while not suggesting that they sacrifice their personal cell phone data without opting in.
+
 
 ### Users Personas: Essential personnel and eventually all personnel.
 * Grocery Stockers checkers and workers
@@ -27,7 +36,6 @@ Amazon, Walmart, Kaiser, kroeger, Aldi, Safeway, One Medical, Restaurants Chains
 
 ## FEATURES: Symptom Checker features possible if helpful.
 Users go through and answer the symptom checker every time they open the app.
-- Can they skip it?
 App recommends user self distance/isolate or quarantine if they have any symptoms or issues.
 
 
@@ -52,8 +60,7 @@ Do you experience symptoms now? Did you start to have symptoms, or did you feel 
 12. Shortness of breath
 13. Respiratory issues
 
-
-## Results: Based on this chart:
+Results: Based on this chart:
 CDC: recommends if you have these symptoms you get tested for covid-19.
 https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html 
 
