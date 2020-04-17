@@ -12,13 +12,13 @@ People need to get back to work eventually, and also many are essential workers 
 ## Hypothesis
 Companies can deploy contact tracing apps to help protect their employees during Covid-19. Using BLE contract tracing app coupled testing and worker protections and coverage for sick-leave, temperature checks for employees and other techniques (which companies are starting to implement), companies will be able to protect their essential workers and help to flatten the curve.
 
-Apple and {Google are delivering interoperable API's}(https://blog.google/inside-google/company-announcements/apple-and-google-partner-covid-19-contact-tracing-technology) that should well protect the privacy and mitigate concerns, creating a standard and a path for official organizations to create and publish apps through Apple and Google Play stores. Data Rights best practices have emerged for contact tracing can comport to.
+Apple and [Google are delivering interoperable API's](https://blog.google/inside-google/company-announcements/apple-and-google-partner-covid-19-contact-tracing-technology) that should well protect the privacy and mitigate concerns, creating a standard and a path for official organizations to create and publish apps through Apple and Google Play stores. Data Rights best practices have emerged for contact tracing can comport to.
 
-We are prototyping improving BLE implementation for use in contact tracing, and can quickly build contact tracing on top of that to implement for organizations and companies.
+We are prototyping improving BLE implementation for use in contact tracing, to lengthen battery life and optimize performance, and can quickly include contact tracing on top of that to implement for organizations and companies.
 
 We think there is a use case for employers to publish contact tracing apps to help protect employees in addition to the public health organization apps that will be delivered through the App Stores on the Google/Apple API.We hypothesize that companies will want to have their own app so they are not asking employees to give up their personal health and tracing data to their employers. We think employer based contact tracing app deployments will help with this because when the pandemic is over, because employees can delete their app.
 
-This may help companies protect their workers while not suggesting that they sacrifice their personal cell phone data.
+This may help companies add workforce protection for workers while not promoting workers to sacrific their personal cell data.
 
 
 ### Users Personas: Essential personnel and eventually all personnel.
