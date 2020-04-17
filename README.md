@@ -3,11 +3,11 @@ Inspired by TraceTogether and COVID Symptom Tracker, and written in response to 
 
 
 We are a team of product developers. We want to help and are doing what we can. 
-Currently looking for teams and executives to partner with to build this solution. Currently actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare insitiutes as well was for Companies who employ essential and other types of workers. Eventually we will all need to get back to work.
+Currently looking for teams and executives to partner with to build this solution. Currently actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare institutes as well was for Companies who employ essential and other types of workers. Eventually, we will all need to get back to work.
 
 # Product Description and Vision
 ## Problem Statement
-People need to get back to work eventually, and also many are essential workers continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples risk is minimized, anbd we can flatten the curve. This app is a Worforce Protection Solution, using contact tracing, a symptoms checker and notifications to protect workers and the public.
+People need to get back to work eventually, and also many are essential workers continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples risk is minimized, and we can flatten the curve. This app is a Worforce Protection Solution, using contact tracing, a symptoms checker and notifications to protect workers and the public.
 
 ## Hypothesis
 Companies can deploy contact tracing apps to help protect their employees during Covid-19. Using BLE contract tracing app coupled testing and worker protections and coverage for sick-leave, temperature checks for employees and other techniques (which companies are starting to implement), companies will be able to protect their essential workers and help to flatten the curve.
@@ -16,9 +16,9 @@ Apple and [Google are delivering interoperable API's](https://blog.google/inside
 
 We are prototyping improving BLE implementation for use in contact tracing, to lengthen battery life and optimize performance, and can quickly include contact tracing on top of that to implement for organizations and companies.
 
-We think there is a use case for employers to publish contact tracing apps to help protect employees in addition to the public health organization apps that will be delivered through the App Stores on the Google/Apple API.We hypothesize that companies will want to have their own app so they are not asking employees to give up their personal health and tracing data to their employers. We think employer based contact tracing app deployments will help with this because when the pandemic is over, because employees can delete their app.
+We think there is a use case for employers to publish contact tracing apps to help protect employees in addition to the public health organization apps that will be delivered through the App Stores on the Google/Apple API. We hypothesize that companies will want to have their own app so they are not asking employees to give up their personal health and tracing data to their employers. We think employer based contact tracing app deployments will help with this because when the pandemic is over, because employees can delete their app.
 
-This may help companies add workforce protection for workers while not promoting workers to sacrific their personal cell data.
+This may help companies add workforce protection for workers while not promoting workers to sacrifice their personal cell data.
 
 
 ### Users Personas: Essential personnel and eventually all personnel.
