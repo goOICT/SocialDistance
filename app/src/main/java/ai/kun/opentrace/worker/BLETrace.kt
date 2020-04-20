@@ -1,6 +1,5 @@
 package ai.kun.opentrace.worker
 
-import ai.kun.opentrace.dao.Device
 import ai.kun.opentrace.dao.DeviceDao
 import ai.kun.opentrace.dao.DeviceRepository
 import ai.kun.opentrace.dao.DeviceRoomDatabase
@@ -15,6 +14,14 @@ import android.bluetooth.le.BluetoothLeAdvertiser
 import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.location.LocationManager
+import android.os.Build
+import android.provider.Settings
+import android.provider.Settings.SettingNotFoundException
+import android.text.TextUtils
+import androidx.core.content.ContextCompat
+import androidx.core.location.LocationManagerCompat
 import kotlinx.coroutines.GlobalScope
 import java.util.*
 import kotlin.math.pow
@@ -23,6 +30,7 @@ import kotlin.math.pow
 object BLETrace {
     private val mBleServer : BLEServer = BLEServer()
     private val mBleClient : BLEClient = BLEClient()
+    private val TAG = "BLETrace"
 
     private var isInit = false
     lateinit var context : Context
@@ -96,7 +104,7 @@ object BLETrace {
      * background vs foreground, and thus a bunch of code...
      */
     private fun startBackground() {
-        if (isBleEnabled()) {
+        if (isEnabled()) {
             isBackground = true
             isStarted = true
             mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
@@ -105,7 +113,7 @@ object BLETrace {
     }
 
     private fun startForeground() {
-        if (isBleEnabled()) {
+        if (isEnabled()) {
             isBackground = false
             isStarted = true
             mBleServer.enable(Constants.FOREGROUND_TRACE_INTERVAL)
@@ -114,22 +122,21 @@ object BLETrace {
     }
 
     private fun stopBackground() {
-        if (isBleEnabled()) {
+        if (isEnabled()) {
             mBleServer.disable(Constants.BACKGROUND_TRACE_INTERVAL)
             mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
         }
     }
 
     private fun stopForeground() {
-        if (isBleEnabled()) {
+        if (isEnabled()) {
             mBleServer.disable(Constants.FOREGROUND_TRACE_INTERVAL)
             mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL)
         }
     }
 
-    fun isBleEnabled() : Boolean {
-        // TODO: this needs to be more complicated and test for permissions and if bluetooth is on, etc.
-        return uniqueId != null && isInit
+    fun isEnabled() : Boolean {
+        return uniqueId != null && isInit  && bluetoothManager.adapter.isEnabled() // && isLocationEnabled() Location doesn't need to be on
     }
 
     fun init(applicationContext: Context) {
@@ -158,4 +165,8 @@ object BLETrace {
 
     }
 
+    private fun isLocationEnabled(): Boolean {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return LocationManagerCompat.isLocationEnabled(locationManager)
+    }
 }
