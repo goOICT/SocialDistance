@@ -136,7 +136,11 @@ object BLETrace {
     }
 
     fun isEnabled() : Boolean {
-        return uniqueId != null && isInit  && bluetoothManager.adapter.isEnabled() // && isLocationEnabled() Location doesn't need to be on
+        if (uniqueId == null || !bluetoothManager.adapter.isEnabled()) return false
+
+        if (!isInit) init(context) // If bluetooth was off we need to complete the init
+
+        return isInit  // && isLocationEnabled() Location doesn't need to be on
     }
 
     fun init(applicationContext: Context) {
@@ -148,6 +152,7 @@ object BLETrace {
             if (!isInit && uniqueId != null) {
                 bluetoothManager =
                     context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+                if (!bluetoothManager.adapter.isEnabled()) return // bail if bluetooth isn't on
                 bluetoothLeScanner = bluetoothManager.adapter.bluetoothLeScanner
                 bluetoothGattServer = bluetoothManager.openGattServer(context, GattServerCallback)
                 bluetoothLeAdvertiser = bluetoothManager.adapter.bluetoothLeAdvertiser
