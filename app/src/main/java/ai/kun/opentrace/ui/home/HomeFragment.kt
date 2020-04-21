@@ -92,7 +92,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    public fun checkPermissions(context: Context): Boolean {
+    private fun checkPermissions(context: Context): Boolean {
         // Check permissions
         if (!mIsChecking && mIsTraceEnabled) {
             if (mFineLocationGranted &&
@@ -124,26 +124,10 @@ class HomeFragment : Fragment() {
         }
     }
 
-    public fun checkBluetooth(context: Context): Boolean {
+    private fun checkBluetooth(context: Context): Boolean {
         // ??? lazy load this on a thread ???
         val bluetoothManager =
             context.applicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-
-        // Check low energy support
-        if (!context.applicationContext.packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
-            // Get a newer device
-            Log.e(TAG, "No LE Support.")
-            mBluetoothEnabled = false
-            return false
-        }
-
-        // Check advertising
-        if (!bluetoothManager.adapter.isMultipleAdvertisementSupported) {
-            // Unable to run the server on this device, get a better device
-            Log.e(TAG, "No Advertising Support.")
-            mBluetoothEnabled = false
-            return false
-        }
 
         // Check if bluetooth is enabled
         if (!bluetoothManager.adapter.isEnabled()) {
@@ -180,6 +164,24 @@ class HomeFragment : Fragment() {
             mBluetoothEnabled = false
             return false
         }
+
+        // Check low energy support
+        if (!context.applicationContext.packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
+            // Get a newer device
+            Log.e(TAG, "No LE Support.")
+            mBluetoothEnabled = false
+            return false
+        }
+
+        // Check advertising
+        if (!bluetoothManager.adapter.isMultipleAdvertisementSupported) {
+            // Unable to run the server on this device, get a better device
+            Log.e(TAG, "No Advertising Support.")
+            mBluetoothEnabled = false
+            return false
+        }
+
+
 
         mBluetoothEnabled = true
         return true
