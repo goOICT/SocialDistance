@@ -7,6 +7,8 @@ object Constants {
     const val PREF_FILE_NAME = "ai.kun.opentrace.preferences"
     const val PREF_IS_ONBOARDED = "is_onboarded"
 
+    const val USER_TYPE_DEFAULT = "default_user_type"
+
     const val RANGE_ENVIRONMENTAL = 3  // Environmental factor for calculating device range
     const val MANUFACTURE_SUBSTRING = "9b3"
     const val MANUFACTURE_ID = 1023

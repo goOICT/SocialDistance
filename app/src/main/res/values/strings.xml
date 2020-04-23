@@ -10,7 +10,7 @@
     <string name="strong_warning">Danger</string>
     <string name="too_close">Too Close</string>
     <string name="social_distance">Social Distance:</string>
-    <string name="device_identifier">Device Identifier</string>
+    <string name="scan_identifier">Scan Identifier</string>
     <string name="signal_strength">Signal Strength:</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -59,10 +59,13 @@ class LaunchFragment : Fragment() {
             Constants.PREF_FILE_NAME, Context.MODE_PRIVATE
         )
 
-        if (sharedPrefs == null || !sharedPrefs.getBoolean(Constants.PREF_IS_ONBOARDED, false))
+        if (sharedPrefs == null || !sharedPrefs.getBoolean(Constants.PREF_IS_ONBOARDED, false)) {
+            // This user is new so set them up...
+            BLETrace.uniqueId = Constants.USER_TYPE_DEFAULT
             findNavController().navigate(R.id.action_launchFragment_to_onBoardFragment_1)
-        else
+        } else {
             findNavController().navigate(R.id.action_launchFragment_to_navigation_home)
+        }
     }
 
     private fun waitForSignIn() {
@@ -71,15 +74,6 @@ class LaunchFragment : Fragment() {
         task.addOnCompleteListener() {
             if(it.isSuccessful) {
                 Log.d(TAG, "signInAnonymously:success")
-                // TODO: Refactor to eliminate trace
-                // For now we are using the firebase user's ID as the device id
-                // we could have used something actually tied to the physical device
-                // or something input by the user too, but doing this allows a user that
-                // logs in to move from one device to another.  Note that we could still
-                // loose track of the user if they never log in and then switch devices.
-                // If they login later we'll still be good though.  Firebase takes care
-                // of that.
-                BLETrace.uniqueId = auth.currentUser?.uid
             }
             else {
                 Log.w(TAG, "signInAnonymously:failure", task.exception)

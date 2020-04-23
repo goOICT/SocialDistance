@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "device_table")
 data class Device(
-    @PrimaryKey
+
     @ColumnInfo(name = "device_uuid")
     val deviceUuid: String,
 
@@ -23,8 +23,9 @@ data class Device(
     val timeStampNanos: Long,
 
     @ColumnInfo(name = "time_stamp")
-    val timeStam: Long,
+    val timeStamp: Long,
 
+    @PrimaryKey
     @ColumnInfo(name = "session_id")
     val sessionId: String
 )

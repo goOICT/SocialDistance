@@ -23,7 +23,7 @@ class DeviceListAdapter internal constructor(
 
     inner class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val constraintLayout: ConstraintLayout = itemView.findViewById((R.id.constraintLayout_device))
-        val uuidTextView: TextView = itemView.findViewById(R.id.textView_uuid)
+        val scanTextView: TextView = itemView.findViewById(R.id.textView_scan)
         val distanceTextView: TextView = itemView.findViewById(R.id.textView_distance)
         val signalTextView: TextView = itemView.findViewById(R.id.textView_signal)
     }
@@ -35,7 +35,7 @@ class DeviceListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val current = devices[position]
-        holder.uuidTextView.text = current.deviceUuid
+        holder.scanTextView.text = current.sessionId
 
         val signal = current.txPower + current.rssi
         when {

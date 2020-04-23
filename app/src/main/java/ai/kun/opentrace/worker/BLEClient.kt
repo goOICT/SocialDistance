@@ -28,6 +28,7 @@ import android.util.Log
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.nio.charset.StandardCharsets
+import java.util.*
 
 
 class BLEClient : BroadcastReceiver() {
@@ -91,9 +92,7 @@ class BLEClient : BroadcastReceiver() {
         }
 
         val scanFilter = ScanFilter.Builder()
-            .setManufacturerData(
-                Constants.MANUFACTURE_ID,
-                MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8))
+            .setServiceUuid(ParcelUuid(UUID.nameUUIDFromBytes(Constants.USER_TYPE_DEFAULT.toByteArray())))
             .build()
 
         val settings = ScanSettings.Builder()
