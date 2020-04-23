@@ -5,6 +5,7 @@ import ai.kun.opentrace.dao.DeviceRepository
 import ai.kun.opentrace.dao.DeviceRoomDatabase
 import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
 import ai.kun.opentrace.util.Constants
+import ai.kun.opentrace.util.Constants.PREF_FILE_NAME
 import ai.kun.opentrace.util.Constants.PREF_UNIQUE_ID
 import ai.kun.opentrace.util.Constants.RANGE_ENVIRONMENTAL
 import android.app.AlarmManager
@@ -50,7 +51,7 @@ object BLETrace {
         get() {
             synchronized(this) {
                 val sharedPrefs = context.getSharedPreferences(
-                    PREF_UNIQUE_ID, Context.MODE_PRIVATE
+                    PREF_FILE_NAME, Context.MODE_PRIVATE
                 )
                 return sharedPrefs.getString(PREF_UNIQUE_ID, null)
             }
@@ -58,7 +59,7 @@ object BLETrace {
         set(value) {
             synchronized(this) {
                 val sharedPrefs = context.getSharedPreferences(
-                    PREF_UNIQUE_ID, Context.MODE_PRIVATE
+                    PREF_FILE_NAME, Context.MODE_PRIVATE
                 )
                 val editor: SharedPreferences.Editor = sharedPrefs.edit()
                 if (value != null) {
