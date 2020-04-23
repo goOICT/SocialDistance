@@ -7,4 +7,5 @@
     <color name="device_warn">@android:color/holo_orange_light</color>
     <color name="device_strong_warn">@android:color/holo_orange_dark</color>
     <color name="device_too_close">@android:color/holo_red_light</color>
+    <color name="indicator_unselected">#4D000000</color>
 </resources>

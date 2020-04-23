@@ -3,7 +3,6 @@
     <string name="title_home">Social Distance</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_symptoms">Symptoms</string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
     <string name="ok">Ok</string>
@@ -13,4 +12,15 @@
     <string name="social_distance">Social Distance:</string>
     <string name="device_identifier">Device Identifier</string>
     <string name="signal_strength">Signal Strength:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="onboard_one_section_label">Introduction</string>
+    <string name="onboard_two_section_label">More Details</string>
+    <string name="onboard_three_section_label">Location Permission</string>
+    <string name="onboard_one_section_description">A longer description about something bla la la</string>
+    <string name="onboard_two_section_description">A second description about blah blah tra lala</string>
+    <string name="onboard_three_section_description">Something about you need to allow location and two different dialogs</string>
+    <string name="skip">Skip</string>
+    <string name="finish">Finish</string>
 </resources>
