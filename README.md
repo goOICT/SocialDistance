@@ -12,15 +12,15 @@ People need to get back to work eventually, and also many are essential workers 
 ## Hypothesis
 Companies can deploy social distancing and contact tracing apps to help protect their employees during Covid-19. Using BLE, a social distancing (and eventually contract tracing) app coupled testing and worker protections and coverage for sick-leave, temperature checks for employees and other techniques (which companies are starting to implement), companies will be able to protect their essential workers and help to flatten the curve.
 
-Apple and [Google are delivering interoperable API's](https://blog.google/inside-google/company-announcements/apple-and-google-partner-covid-19-contact-tracing-technology) that should well protect the privacy and mitigate concerns, creating a standard and a path for official organizations to create and publish apps through Apple and Google Play stores. Data Rights best practices have emerged for contact tracing that developers can comport to.
-
-We are prototyping improving BLE implementation, to lengthen battery life and optimize performance, and can quickly include contact tracing on top of that to implement for organizations and companies.
-
 We think there is a use case for employers and individuals to use a social distancing apps (and eventually contact tracing apps) to help protect employees in addition to the public health organization apps that will be delivered through the App Stores on the Google/Apple API. 
 Contacty tracing only works to mitigate unknown transmisison after people are infected it is reactive. 
 Social Distancing is proactive, and may help with prevention. We hypothesize that companies will want to have their own app so they are not asking employees to give up their personal health and tracing data to their employers. We think employer based contact tracing app deployments will help with this because when the pandemic is over, because employees can delete their app.
 
 This may help companies add workforce protection for workers while not promoting workers to sacrifice their personal cell data.
+
+We are building an MVP as well as prototyping improvements to BLE implementation, to lengthen battery life and optimize performance, and can quickly include contact tracing on top of that to implement for organizations and companies.
+
+Apple and [Google are delivering interoperable API's](https://blog.google/inside-google/company-announcements/apple-and-google-partner-covid-19-contact-tracing-technology) that should well protect the privacy and mitigate concerns, creating a standard and a path for official organizations to create and publish apps through Apple and Google Play stores. Data Rights best practices have emerged for contact tracing that developers can comport to.
 
 
 ### Users Personas: Essential personnel and eventually all personnel.
