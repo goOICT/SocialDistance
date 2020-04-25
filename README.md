@@ -1,9 +1,11 @@
 # OpenTrace
-Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace is (now) a Social Distancing application that can record user data and detect the presence of other BLE handsets and devices.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
+Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace is (now) a Social Distancing Application that can record user data and detect the presence of other BLE handsets and devices.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
 
 
 We are a team of product developers. We want to help and are doing what we can. 
-Currently looking for teams and executives to partner with to build this solution. Currently actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build both a public use version for governments and healthcare institutes as well was for Companies who employ essential and other types of workers. Eventually, we will all need to get back to work. This could help people do it more safely.
+Currently looking for teams and executives to partner with to build and deploy this solution. Currently actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, Blue Shield California, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build a public use version for governments and healthcare institutes as well as versions for Companies who employ essential and other types of workers. Eventually, we will all need to get back to work. This could help people do it more safely.
+
+![Image of Social Distancing App Design](https://github.com/kunai-consulting/OpenTrace/blob/master/Social-distancing-app-flow.png)
 
 # Product Description and Vision
 ## Problem Statement
