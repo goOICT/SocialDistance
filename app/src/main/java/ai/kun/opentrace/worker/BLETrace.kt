@@ -41,9 +41,6 @@ object BLETrace {
     lateinit var bluetoothLeAdvertiser : BluetoothLeAdvertiser
     lateinit var alarmManager : AlarmManager
 
-    private lateinit var deviceDao: DeviceDao
-    lateinit var deviceRepository: DeviceRepository
-
     public var isBackground : Boolean = true
     public var isStarted: Boolean = false
 
@@ -147,8 +144,7 @@ object BLETrace {
     fun init(applicationContext: Context) {
         synchronized(this) {
             context = applicationContext
-            deviceDao = DeviceRoomDatabase.getDatabase(context, GlobalScope).deviceDao()
-            deviceRepository = DeviceRepository(deviceDao)
+            DeviceRepository.init(applicationContext)
 
             if (!isInit && uniqueId != null) {
                 bluetoothManager =

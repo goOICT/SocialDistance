@@ -2,7 +2,6 @@
     <string name="app_name">OpenTrace</string>
     <string name="title_home">Social Distance</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
     <string name="ok">Ok</string>
@@ -12,6 +11,8 @@
     <string name="social_distance">Social Distance:</string>
     <string name="scan_identifier">Scan Identifier</string>
     <string name="signal_strength">Signal Strength:</string>
+    <string name="notification_channel_name">Social Distance</string>
+    <string name="notification_channel_description">Notify me when someone is too close</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

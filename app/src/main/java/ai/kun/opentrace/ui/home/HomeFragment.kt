@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
             }
 
             homeViewModel.devices.observe(viewLifecycleOwner, Observer { devices ->
-                // Update the cached copy of the words in the adapter.
+                // Update the cached copy of the devices in the adapter.
                 devices?.let { deviceListAdapter.setDevices(it) }
             })
         }
