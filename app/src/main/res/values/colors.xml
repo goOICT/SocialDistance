@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#ac0029</color>
+    <color name="colorPrimaryDark">#7B001D</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="device_ok">@android:color/holo_green_light</color>
-    <color name="device_warn">@android:color/holo_orange_light</color>
-    <color name="device_strong_warn">@android:color/holo_orange_dark</color>
-    <color name="device_too_close">@android:color/holo_red_light</color>
+
+    <color name="red">#bb002d</color>
+    <color name="orange">#ed4718</color>
+    <color name="yellow">#bab013</color>
+    <color name="green">#13ba2c</color>
+
+    <color name="device_ok">@color/green</color>
+    <color name="device_warn">@color/yellow</color>
+    <color name="device_strong_warn">@color/orange</color>
+    <color name="device_too_close">@color/red</color>
+
     <color name="indicator_unselected">#4D000000</color>
 </resources>
