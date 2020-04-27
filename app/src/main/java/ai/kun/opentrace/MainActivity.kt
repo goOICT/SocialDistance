@@ -1,8 +1,6 @@
 package ai.kun.opentrace
 
 import ai.kun.opentrace.worker.BLETrace
-import android.app.NotificationManager
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -47,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_dashboard, R.id.navigation_home))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_history, R.id.navigation_home))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
