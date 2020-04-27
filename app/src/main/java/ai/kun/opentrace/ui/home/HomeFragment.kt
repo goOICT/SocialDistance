@@ -24,14 +24,9 @@ import androidx.recyclerview.widget.RecyclerView
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
 
-    private lateinit var homeViewModel: HomeViewModel
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-
-    private val REQUEST_ENABLE_BT = 1
     private val REQUEST_FINE_LOCATION = 2
     private val REQUEST_BACKGROUND_LOCATION = 3
 
-    private var mIsForeground = true
     private var mIsChecking = false
 
     private var mIsTraceEnabled = true
@@ -134,33 +129,6 @@ class HomeFragment : Fragment() {
             // Request user to enable it
             val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             startActivity(enableBtIntent)
-            /* TODO: I need to add something to listen and see if Bluetooth is enabled...
-            private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        final String action = intent.getAction();
-
-        if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
-            final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,
-                                                 BluetoothAdapter.ERROR);
-            switch (state) {
-            case BluetoothAdapter.STATE_OFF:
-                setButtonText("Bluetooth off");
-                break;
-            case BluetoothAdapter.STATE_TURNING_OFF:
-                setButtonText("Turning Bluetooth off...");
-                break;
-            case BluetoothAdapter.STATE_ON:
-                setButtonText("Bluetooth on");
-                break;
-            case BluetoothAdapter.STATE_TURNING_ON:
-                setButtonText("Turning Bluetooth on...");
-                break;
-            }
-        }
-    }
-};
-             */
             mBluetoothEnabled = false
             return false
         }
