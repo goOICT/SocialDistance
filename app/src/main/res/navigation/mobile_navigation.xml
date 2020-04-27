@@ -18,12 +18,6 @@
         tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="ai.kun.opentrace.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-
-    <fragment
         android:id="@+id/launchFragment"
         android:name="ai.kun.opentrace.ui.launch.LaunchFragment"
         android:label="LaunchFragment" >
