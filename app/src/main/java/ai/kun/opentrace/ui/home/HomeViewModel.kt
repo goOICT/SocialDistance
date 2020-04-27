@@ -8,12 +8,9 @@ import androidx.lifecycle.*
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val deviceRepository: DeviceRepository
-    val devices: LiveData<List<Device>>
+    val devices: MutableLiveData<List<Device>>
 
     init {
-        val devicesDao = DeviceRoomDatabase.getDatabase(application, viewModelScope).deviceDao()
-        deviceRepository = DeviceRepository(devicesDao)
-        devices = deviceRepository.allDevices
+        devices = DeviceRepository.currentDevices
     }
 }
