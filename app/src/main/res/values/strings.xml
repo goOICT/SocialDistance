@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">OpenTrace</string>
     <string name="title_home">Social Distance</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_history">History</string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
     <string name="ok">Ok</string>

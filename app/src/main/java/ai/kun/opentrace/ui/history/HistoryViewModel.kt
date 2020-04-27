@@ -8,12 +8,9 @@ import androidx.lifecycle.*
 
 class HistoryViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val deviceRepository: DeviceRepository
     val devices: LiveData<List<Device>>
 
     init {
-        val devicesDao = DeviceRoomDatabase.getDatabase(application, viewModelScope).deviceDao()
-        deviceRepository = DeviceRepository(devicesDao)
-        devices = deviceRepository.allDevices
+        devices = DeviceRepository.allDevices
     }
 }
