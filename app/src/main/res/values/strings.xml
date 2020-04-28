@@ -24,4 +24,6 @@
     <string name="onboard_three_section_description">Something about you need to allow location and two different dialogs</string>
     <string name="skip">Skip</string>
     <string name="finish">Finish</string>
+    <string name="person_icon">Person Icon</string>
+    <string name="bluetooth_signal_icon">Bluetooth signal icon</string>
 </resources>
