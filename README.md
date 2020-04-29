@@ -57,17 +57,24 @@ The app can be deployed by an organization made available to be downloaded by in
 * Safe Team - Add users to your 'Safe Team' using secure QR codes for each handset. This allows families who are safely socially distancing together to not recieve notifications of eachothers hansets when they are together, but out in public. E.G. A Couple shopping together in a store where all shoppers have the app downloaded and turned on.
 * Employers who deploy this could have option for users to opt in to sending location data for sessions that occured at the workplace if users wanted to contribute to mapping areas in the workplace where social distancing is not possible. Per session.
 
-
 # Future Versions 
 ## Add Contact Tracing
-App can use contact tracing to notify users when they have had contact with someone who has been tested and who's status is verified as positive for Covid-19. User can then get tested.
+App could use contact tracing to notify users when they have had contact with someone who has been tested and who's status is verified as positive for Covid-19. User can then get tested.
 
 This app can be deployed by an organization made available to be downloaded by individual workers. Individuals may opt in to application use and have granular and transparent data and privacy control’s.
 
-## Symptom Checker features possible if helpful.
-Users go through and answer the symptom checker every time they open the app.
+## Testing Status
+Could incorporate testing status for yourself and last date of testing. This can be compared to hostiry of contacts that were not social distanced for users to gain visibility into thier personal risk.
+
+## Self Isolation/Distancing  Clock
+Start day,
+Current day
+End day
+Restart clock if newly exposure.
+
+## Symptom Checker features
+We built this, but took it out when we pivoted away from Contact tracing to a Social Distance app. Users go through and answer the symptom checker every time they open the app.
 App recommends user self distance/isolate or quarantine if they have any symptoms or issues.
-This is mostly built, but we are leaving it out of our v1 to focus on Social Distance features first.
 
 ## Symptom Checker: How do you feel?
 Do you experience symptoms now? Did you start to have symptoms, or did you feel sick before today? (if so when <date picker>)
@@ -89,13 +96,6 @@ Do you experience symptoms now? Did you start to have symptoms, or did you feel 
 Results: Based on this chart:
 CDC: recommends if you have these symptoms you get tested for covid-19.
 https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html 
-
-
-## Self Isolation/Distancing  Clock
-Start day,
-Current day
-End day
-Restart clock if newly exposure.
 
 
 ## Stay Informed:
