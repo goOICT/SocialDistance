@@ -15,8 +15,8 @@ People need to get back to work eventually, and also many are essential workers 
 Companies can deploy social distancing and contact tracing apps to help protect their employees during Covid-19. Using BLE, a Social Distancing app coupled with testing, Contact Tracing, and other worker protections, coverage for sick-leave, temperature checks for employees and other techniques (which companies are starting to implement), will all help companies to protect their essential workers and help to flatten the curve.
 
 We think there is a use case for employers and individuals to use a social distancing apps (and eventually contact tracing apps) to help protect employees in addition to the public health organization apps that will be delivered through the App Stores on the Google/Apple API. 
-Contacty tracing only works to mitigate unknown transmisison after people are infected it is reactive. 
-Social Distancing is proactive, and may help with prevention. We hypothesize that companies will want to have their own app so they are not asking employees to give up their personal health and tracing data to their employers. We think employer based contact tracing app deployments will help with this because when the pandemic is over, because employees can delete their app.
+Contact tracing only works to mitigate unknown transmisison after people are infected it is reactive. 
+Social Distancing is more proactive, and may help with prevention. We hypothesize that companies will want to have their own app so they are not asking employees to give up their personal health and tracing data to their employers. We think employer based contact tracing app deployments will help with this because when the pandemic is over, because employees can delete their app.
 
 This may help companies add workforce protection for workers while not promoting workers to sacrifice their personal cell data.
 
