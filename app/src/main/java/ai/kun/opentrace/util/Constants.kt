@@ -42,8 +42,8 @@ object Constants {
         UUID.fromString(CHARACTERISTIC_TIME_STRING)
 
     const val SIGNAL_DISTANCE_OK = 31 // This or lower is socially distant = green
-    const val SIGNAL_DISTANCE_LIGHT_WARN = 36 // This to SIGNAL_DISTANCE_OK warning = yellow
-    const val SIGNAL_DISTANCE_STRONG_WARN = 45 // This to SIGNAL_DISTANCE_LIGHT_WARN strong warning = orange
+    const val SIGNAL_DISTANCE_LIGHT_WARN = 41 // This to SIGNAL_DISTANCE_OK warning = yellow
+    const val SIGNAL_DISTANCE_STRONG_WARN = 55 // This to SIGNAL_DISTANCE_LIGHT_WARN strong warning = orange
     // ...and above this is not socially distant = red
 
 }
