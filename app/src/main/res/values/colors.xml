@@ -9,11 +9,12 @@
     <color name="device_strong_warn">@color/orange</color>
     <color name="device_too_close">@color/red</color>
 
-    <color name="indicator_unselected">@color/grey</color>
+    <color name="indicator_unselected">@color/light_grey</color>
 
     <color name="black">#12181f</color>
     <color name="grey">#555550</color>
     <color name="medium_grey">#70706d</color>
+    <color name="light_grey">#82827A</color>
     <color name="divider">#cce5e5e5</color>
     <color name="background">#faf8f8</color>
     <color name="white">#ffffff</color>

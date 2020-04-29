@@ -5,6 +5,7 @@ import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.worker.BLETrace
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -44,7 +45,12 @@ class OnBoardFragment : Fragment() {
             ONBOARD_ONE -> {
                 view.findViewById<TextView>(R.id.section_label).text = getText(R.string.onboard_one_section_label)
                 view.findViewById<TextView>(R.id.section_description).text = getText(R.string.onboard_one_section_description)
-                view.findViewById<FrameLayout>(R.id.onboard_frame_layout).setBackgroundColor(context!!.getColor(R.color.design_default_color_secondary))
+                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.drawable.ic_proximity_svg, null)
+
+                view.findViewById<ImageView>(R.id.intro_indicator_0).isSelected = true
+                view.findViewById<ImageView>(R.id.intro_indicator_1).isSelected = false
+                view.findViewById<ImageView>(R.id.intro_indicator_2).isSelected = false
+
                 view.findViewById<Button>(R.id.intro_btn_finish).isGone = true
                 view.findViewById<Button>(R.id.intro_btn_next).isGone = false
                 view.findViewById<ImageButton>(R.id.intro_btn_next).setOnClickListener {
@@ -59,7 +65,12 @@ class OnBoardFragment : Fragment() {
             ONBOARD_TWO -> {
                 view.findViewById<TextView>(R.id.section_label).text = getText(R.string.onboard_two_section_label)
                 view.findViewById<TextView>(R.id.section_description).text = getText(R.string.onboard_two_section_description)
-                view.findViewById<FrameLayout>(R.id.onboard_frame_layout).setBackgroundColor(context!!.getColor(R.color.design_default_color_primary))
+                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.drawable.ic_man_walking_svg, null)
+
+                view.findViewById<ImageView>(R.id.intro_indicator_0).isSelected = false
+                view.findViewById<ImageView>(R.id.intro_indicator_1).isSelected = true
+                view.findViewById<ImageView>(R.id.intro_indicator_2).isSelected = false
+
                 view.findViewById<Button>(R.id.intro_btn_finish).isGone = true
                 view.findViewById<Button>(R.id.intro_btn_next).isGone = false
                 view.findViewById<ImageButton>(R.id.intro_btn_next).setOnClickListener {
@@ -74,7 +85,12 @@ class OnBoardFragment : Fragment() {
             ONBOARD_THREE -> {
                 view.findViewById<TextView>(R.id.section_label).text = getText(R.string.onboard_three_section_label)
                 view.findViewById<TextView>(R.id.section_description).text = getText(R.string.onboard_three_section_description)
-                view.findViewById<FrameLayout>(R.id.onboard_frame_layout).setBackgroundColor(context!!.getColor(R.color.design_default_color_secondary_variant))
+                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.mipmap.map_svg, null)
+
+                view.findViewById<ImageView>(R.id.intro_indicator_0).isSelected = false
+                view.findViewById<ImageView>(R.id.intro_indicator_1).isSelected = false
+                view.findViewById<ImageView>(R.id.intro_indicator_2).isSelected = true
+
                 view.findViewById<Button>(R.id.intro_btn_finish).isGone = false
                 view.findViewById<Button>(R.id.intro_btn_finish).setOnClickListener {
                     onBoardCompleted()
