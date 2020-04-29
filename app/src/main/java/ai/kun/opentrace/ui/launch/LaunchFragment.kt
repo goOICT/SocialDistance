@@ -1,13 +1,11 @@
 package ai.kun.opentrace.ui.launch
 
-import ai.kun.opentrace.MainActivity
 import ai.kun.opentrace.R
 import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.worker.BLETrace
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.delay
 
 
 /*
