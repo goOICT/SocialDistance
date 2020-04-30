@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OpenTrace</string>
+    <string name="app_name">Social Distance Alarm</string>
     <string name="title_home">Distance</string>
     <string name="title_history">History</string>
     <string name="submit">Submit</string>
@@ -11,7 +11,7 @@
     <string name="social_distance">Distance:</string>
     <string name="scan_identifier">Scan Identifier</string>
     <string name="signal_strength">Signal Strength:</string>
-    <string name="notification_channel_name">Social Distance</string>
+    <string name="notification_channel_name">Too Close</string>
     <string name="notification_channel_description">Notify me when someone is too close</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -19,7 +19,7 @@
     <string name="onboard_one_section_label">Introduction</string>
     <string name="onboard_two_section_label">More Details</string>
     <string name="onboard_three_section_label">Location Permission</string>
-    <string name="onboard_one_section_description">Open Trace helps maintain social distance. It can see other devices with the app ON and tell you when they are too close.</string>
+    <string name="onboard_one_section_description">Social Distance Alarm helps maintain social distance. It can see other devices with the app ON and tell you when they are too close.</string>
     <string name="onboard_two_section_description">Use this for teams of people. Everyone’s app must be turned ON. All data is stored locally.</string>
     <string name="onboard_three_section_description">It works by using Bluetooth’s signal strength. It needs location, and Bluetooth access, to alert you when other app users are too close.</string>
     <string name="skip">Skip</string>
