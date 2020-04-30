@@ -36,6 +36,7 @@ class BLEClient : BroadcastReceiver() {
     private val WAKELOCK_TAG = "ai:kun:opentrace:worker:BLEClient"
     private val INTERVAL_KEY = "interval"
     private val CLIENT_REQUEST_CODE = 11
+    private val START_DELAY = 10
 
     private var mScanning = false
     private var mConnected = false
@@ -47,7 +48,7 @@ class BLEClient : BroadcastReceiver() {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            enable(interval)
+            next(interval)
             startScan()
         }
         wl.release()
@@ -57,10 +58,18 @@ class BLEClient : BroadcastReceiver() {
         return (context.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
     }
 
+    fun next(interval: Int) {
+        BLETrace.alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP,
+            System.currentTimeMillis() + interval,
+            getPendingIntent(interval)
+        )
+    }
+
     fun enable(interval: Int) {
         BLETrace.alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
-            ((System.currentTimeMillis() / interval) * interval) + interval,
+            System.currentTimeMillis() + START_DELAY,
             getPendingIntent(interval)
         )
     }

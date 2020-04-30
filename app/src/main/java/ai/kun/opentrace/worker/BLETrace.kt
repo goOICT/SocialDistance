@@ -105,7 +105,7 @@ object BLETrace {
         if (isEnabled()) {
             isBackground = true
             isStarted = true
-            mBleServer.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+            mBleServer.enable(Constants.REBROADCAST_PERIOD)
             mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
         }
     }
@@ -114,21 +114,21 @@ object BLETrace {
         if (isEnabled()) {
             isBackground = false
             isStarted = true
-            mBleServer.enable(Constants.FOREGROUND_TRACE_INTERVAL)
+            mBleServer.enable(Constants.REBROADCAST_PERIOD)
             mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
         }
     }
 
     private fun stopBackground() {
         if (isEnabled()) {
-            mBleServer.disable(Constants.BACKGROUND_TRACE_INTERVAL)
+            mBleServer.disable(Constants.REBROADCAST_PERIOD)
             mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
         }
     }
 
     private fun stopForeground() {
         if (isEnabled()) {
-            mBleServer.disable(Constants.FOREGROUND_TRACE_INTERVAL)
+            mBleServer.disable(Constants.REBROADCAST_PERIOD)
             mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL)
         }
     }

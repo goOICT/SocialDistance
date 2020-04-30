@@ -27,6 +27,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     private val WAKELOCK_TAG = "ai:kun:opentrace:worker:BLEServer"
     private val INTERVAL_KEY = "interval"
     private val SERVER_REQUEST_CODE = 10
+    private val START_DELAY = 10
 
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -36,7 +37,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            enable(interval)
+            next(interval)
 
             GattServerCallback.serverActionListener = this
             setupServer()
@@ -45,9 +46,15 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.release()
     }
 
+    fun next(interval: Int) {
+        BLETrace.alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+            System.currentTimeMillis() + interval,
+            getPendingIntent(interval))
+    }
+
     fun enable(interval: Int) {
         BLETrace.alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
-            ((System.currentTimeMillis() / interval) * interval) + interval,
+            System.currentTimeMillis() + START_DELAY,
             getPendingIntent(interval))
     }
 
@@ -90,7 +97,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         val settings = AdvertiseSettings.Builder()
             .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
             .setConnectable(true)
-            .setTimeout(Constants.BROADCAST_PERIOD.toInt())
+            .setTimeout(0)
             .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_MEDIUM)
             .build()
 
