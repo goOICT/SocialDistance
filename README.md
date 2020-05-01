@@ -49,9 +49,10 @@ The app uses BLE to tell you when other app users are too close to help you main
 The app can be deployed by an organization made available to be downloaded by individual workers. Individuals may opt in to application use and have granular and transparent data and privacy control’s.
 
 ### Features
-* App notifies users for when another app user is close. 4 levels of granularity. "Good Distance"= green, "Warning"= yellow, "Danger" = Orange, "Too Close"= Red
-* Alerts show signal strength and date and time when other devices detected.
-* Coming next...History - App stores a local history of the alerts from coming close to other app user devices. Date and time.
+* Detect Users - App notifies users when another app user is close. 4 levels of granularity. "Good Distance"= green, "Warning"= yellow, "Danger" = Orange, "Too Close"= Red
+* Alerts - user and shows signal strength when other app user devices are detected.
+* History - App stores a local history of the alerts from coming close to other app user devices. Displays Date and Time.
+* Pause detection - user can turn off detection in app when not in use.
 
 ### Roadmap
 * Set your Social Distance. High risk users can set thier social distance 'radious' to be more sensitive that the CDC recommended 6 feet, so that they are notified for 'Too Close' app users sooner.
