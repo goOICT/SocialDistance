@@ -6,6 +6,7 @@ import ai.kun.opentrace.dao.DeviceRoomDatabase
 import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
 import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.PREF_FILE_NAME
+import ai.kun.opentrace.util.Constants.PREF_IS_PAUSED
 import ai.kun.opentrace.util.Constants.PREF_UNIQUE_ID
 import ai.kun.opentrace.util.Constants.RANGE_ENVIRONMENTAL
 import android.app.AlarmManager
@@ -16,6 +17,7 @@ import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.database.Observable
 import android.location.LocationManager
 import android.os.Build
 import android.provider.Settings
@@ -23,6 +25,7 @@ import android.provider.Settings.SettingNotFoundException
 import android.text.TextUtils
 import androidx.core.content.ContextCompat
 import androidx.core.location.LocationManagerCompat
+import androidx.databinding.ObservableBoolean
 import kotlinx.coroutines.GlobalScope
 import java.util.*
 import kotlin.math.pow
@@ -41,8 +44,33 @@ object BLETrace {
     lateinit var bluetoothLeAdvertiser : BluetoothLeAdvertiser
     lateinit var alarmManager : AlarmManager
 
-    public var isBackground : Boolean = true
-    public var isStarted: Boolean = false
+    var isBackground : Boolean = true
+    val isStarted: ObservableBoolean = ObservableBoolean(false)
+    var isPaused : Boolean
+        get() {
+            synchronized(this) {
+                val sharedPrefs = context.getSharedPreferences(
+                    PREF_FILE_NAME, Context.MODE_PRIVATE
+                )
+                return sharedPrefs.getBoolean(PREF_IS_PAUSED, false)
+            }
+        }
+        set(value) {
+            synchronized(this) {
+                val sharedPrefs = context.getSharedPreferences(
+                    PREF_FILE_NAME, Context.MODE_PRIVATE
+                )
+                val editor: SharedPreferences.Editor = sharedPrefs.edit()
+                editor.putBoolean(PREF_IS_PAUSED, value)
+                editor.apply()
+
+            }
+            if (value) {
+                stop()
+            } else {
+                start(isBackground)
+            }
+        }
 
     public var uniqueId : String?
         get() {
@@ -84,7 +112,7 @@ object BLETrace {
 
     fun start(startingBackground: Boolean) {
         synchronized(this) {
-            if (isStarted) stop()
+            if (isStarted.get()) stop()
             if (startingBackground) startBackground() else startForeground()
         }
     }
@@ -102,20 +130,24 @@ object BLETrace {
      * background vs foreground, and thus a bunch of code...
      */
     private fun startBackground() {
-        if (isEnabled()) {
+        if (isEnabled() && !isPaused) {
             isBackground = true
-            isStarted = true
+            isStarted.set(true)
             mBleServer.enable(Constants.REBROADCAST_PERIOD)
             mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+        } else {
+            isStarted.set(false)
         }
     }
 
     private fun startForeground() {
-        if (isEnabled()) {
+        if (isEnabled() && !isPaused) {
             isBackground = false
-            isStarted = true
+            isStarted.set(true)
             mBleServer.enable(Constants.REBROADCAST_PERIOD)
             mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
+        } else {
+            isStarted.set(false)
         }
     }
 
@@ -124,6 +156,7 @@ object BLETrace {
             mBleServer.disable(Constants.REBROADCAST_PERIOD)
             mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
         }
+        isStarted.set(false)
     }
 
     private fun stopForeground() {
@@ -131,6 +164,7 @@ object BLETrace {
             mBleServer.disable(Constants.REBROADCAST_PERIOD)
             mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL)
         }
+        isStarted.set(false)
     }
 
     fun isEnabled() : Boolean {

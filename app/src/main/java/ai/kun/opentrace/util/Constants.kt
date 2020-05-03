@@ -4,6 +4,7 @@ import java.util.*
 
 object Constants {
     const val PREF_UNIQUE_ID = "unique_id"
+    const val PREF_IS_PAUSED = "is_paused"
     const val PREF_FILE_NAME = "ai.kun.opentrace.preferences"
     const val PREF_IS_ONBOARDED = "is_onboarded"
 

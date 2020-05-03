@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kunai.appwithsettings.MainActivity">
+    <item
+        android:id="@+id/app_bar_pause"
+        android:enabled="true"
+        android:title="@string/alarm"
+        android:icon="@drawable/ic_pause_circle_filled_white_24dp"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/app_bar_play"
+        android:enabled="true"
+        android:title="@string/alarm"
+        android:icon="@drawable/ic_play_circle_filled_white_24dp"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_notification_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_notification_settings"
+        app:showAsAction="never" />
+</menu>
