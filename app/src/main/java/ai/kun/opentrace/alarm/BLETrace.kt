@@ -1,9 +1,6 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
-import ai.kun.opentrace.dao.DeviceDao
 import ai.kun.opentrace.dao.DeviceRepository
-import ai.kun.opentrace.dao.DeviceRoomDatabase
-import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
 import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.PREF_FILE_NAME
 import ai.kun.opentrace.util.Constants.PREF_IS_PAUSED
@@ -16,17 +13,9 @@ import android.bluetooth.le.BluetoothLeAdvertiser
 import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
-import android.database.Observable
 import android.location.LocationManager
-import android.os.Build
-import android.provider.Settings
-import android.provider.Settings.SettingNotFoundException
-import android.text.TextUtils
-import androidx.core.content.ContextCompat
 import androidx.core.location.LocationManagerCompat
 import androidx.databinding.ObservableBoolean
-import kotlinx.coroutines.GlobalScope
 import java.util.*
 import kotlin.math.pow
 
@@ -92,7 +81,6 @@ object BLETrace {
                     editor.commit()
                     init(context)
                     deviceNameServiceUuid = UUID.nameUUIDFromBytes(value?.toByteArray())
-                    FirebaseOpenTraceApi().setDeviceUuid(deviceUuid.toString())
                 } else {
                     editor.remove(PREF_UNIQUE_ID)
                     editor.commit()

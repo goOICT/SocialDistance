@@ -2,7 +2,7 @@ package ai.kun.opentrace.ui.launch
 
 import ai.kun.opentrace.R
 import ai.kun.opentrace.util.Constants
-import ai.kun.opentrace.worker.BLETrace
+import ai.kun.opentrace.alarm.BLETrace
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle

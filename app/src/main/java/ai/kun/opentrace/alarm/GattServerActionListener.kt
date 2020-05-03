@@ -1,4 +1,4 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
 import android.bluetooth.BluetoothDevice
 

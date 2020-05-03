@@ -1,6 +1,5 @@
 package ai.kun.opentrace.ui.launch
 
-import ai.kun.opentrace.worker.BLETrace
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

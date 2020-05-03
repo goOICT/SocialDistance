@@ -1,4 +1,4 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
 import ai.kun.opentrace.util.Constants
 import android.content.BroadcastReceiver

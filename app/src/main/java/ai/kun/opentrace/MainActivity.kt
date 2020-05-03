@@ -1,6 +1,6 @@
 package ai.kun.opentrace
 
-import ai.kun.opentrace.worker.BLETrace
+import ai.kun.opentrace.alarm.BLETrace
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
@@ -16,7 +15,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.*
 
 
 class MainActivity : AppCompatActivity()  {
