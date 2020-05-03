@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity()  {
                 R.id.onBoardFragment_1,
                 R.id.onBoardFragment_2,
                 R.id.onBoardFragment_3,
+                R.id.onBoardFragment_4,
                 R.id.launchFragment-> {
                     navView?.visibility = View.GONE
                     toolbar.visibility = View.GONE
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity()  {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     intent.action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
                     intent.putExtra(Settings.EXTRA_APP_PACKAGE, applicationContext.getPackageName())
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 } else {
                     intent.action = "android.settings.APP_NOTIFICATION_SETTINGS"
                     intent.putExtra("app_package", applicationContext.getPackageName())

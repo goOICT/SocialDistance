@@ -97,7 +97,31 @@
             app:argType="integer"
             android:defaultValue="3" />
         <action
+            android:id="@+id/action_onBoardFragment_3_to_onBoardFragment_4"
+            app:destination="@id/onBoardFragment_4"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+        </action>
+        <action
             android:id="@+id/action_onBoardFragment_3_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardFragment_4"
+        android:name="ai.kun.opentrace.ui.launch.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" >
+        <argument
+            android:name="screen"
+            app:argType="integer"
+            android:defaultValue="4" />
+        <action
+            android:id="@+id/action_onBoardFragment_4_to_navigation_home"
             app:destination="@id/navigation_home"
             app:launchSingleTop="true"
             app:popUpTo="@+id/mobile_navigation"
