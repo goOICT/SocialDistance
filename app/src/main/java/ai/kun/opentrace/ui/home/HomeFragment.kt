@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -54,9 +55,29 @@ class HomeFragment : Fragment() {
                 // Update the cached copy of the devices in the adapter.
                 devices?.let { deviceListAdapter.setDevices(it) }
             })
+
+            homeViewModel.isStarted.observe(viewLifecycleOwner, Observer { isStarted ->
+                isStarted?.let {
+                    setVisibility(root, it)
+               }
+            })
         }
 
         return root
+    }
+
+    private fun setVisibility(root: View, isStarted: Boolean) {
+        if (isStarted) {
+            root.findViewById<RecyclerView>(R.id.recyclerView_devices).visibility =
+                View.VISIBLE
+            root.findViewById<ConstraintLayout>(R.id.constraintLayout_paused).visibility =
+                View.GONE
+        } else {
+            root.findViewById<RecyclerView>(R.id.recyclerView_devices).visibility =
+                View.GONE
+            root.findViewById<ConstraintLayout>(R.id.constraintLayout_paused).visibility =
+                View.VISIBLE
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,6 +89,11 @@ class HomeFragment : Fragment() {
         mFineLocationGranted = true
         mBackgroundLocationGranted = true
         mBluetoothEnabled = true
+
+        // Initialize the visibility
+        BLETrace.isStarted.value?.let {
+            setVisibility(view, it)
+        }
     }
 
     override fun onResume() {

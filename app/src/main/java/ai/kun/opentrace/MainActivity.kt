@@ -10,6 +10,8 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.databinding.Observable
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -66,28 +68,25 @@ class MainActivity : AppCompatActivity()  {
         menuInflater.inflate(R.menu.menu_main, menu)
          menu?.let {
              // Change the state of the toolbar depending on the state of BLETrace
-             BLETrace.isStarted.addOnPropertyChangedCallback(object : androidx.databinding.Observable.OnPropertyChangedCallback() {
-                 override fun onPropertyChanged(
-                     sender: androidx.databinding.Observable?,
-                     propertyId: Int
-                 ) {
-                    setPausePlayOption(menu)
-                 }
+             BLETrace.isStarted.observeForever(Observer { isStarted ->
+                    setPausePlayOption(it, isStarted)
              })
 
              // Initialize to the current state
-             setPausePlayOption(menu)
+             setPausePlayOption(it, BLETrace.isStarted.value)
          }
         return true
     }
 
-    private fun setPausePlayOption(optionsMenu: Menu) {
-        if (BLETrace.isStarted.get()) {
-            optionsMenu.findItem(R.id.app_bar_pause).isVisible = true
-            optionsMenu.findItem(R.id.app_bar_play).isVisible = false
-        } else {
-            optionsMenu.findItem(R.id.app_bar_pause).isVisible = false
-            optionsMenu.findItem(R.id.app_bar_play).isVisible = true
+    private fun setPausePlayOption(optionsMenu: Menu, isStarted: Boolean?) {
+        isStarted?.let {
+            if (it) {
+                optionsMenu.findItem(R.id.app_bar_pause).isVisible = true
+                optionsMenu.findItem(R.id.app_bar_play).isVisible = false
+            } else {
+                optionsMenu.findItem(R.id.app_bar_pause).isVisible = false
+                optionsMenu.findItem(R.id.app_bar_play).isVisible = true
+            }
         }
     }
 

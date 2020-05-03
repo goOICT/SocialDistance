@@ -16,6 +16,8 @@ import android.content.SharedPreferences
 import android.location.LocationManager
 import androidx.core.location.LocationManagerCompat
 import androidx.databinding.ObservableBoolean
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import java.util.*
 import kotlin.math.pow
 
@@ -34,7 +36,7 @@ object BLETrace {
     lateinit var alarmManager : AlarmManager
 
     var isBackground : Boolean = true
-    val isStarted: ObservableBoolean = ObservableBoolean(false)
+    val isStarted: MutableLiveData<Boolean> = MutableLiveData(false)
     var isPaused : Boolean
         get() {
             synchronized(this) {
@@ -100,7 +102,7 @@ object BLETrace {
 
     fun start(startingBackground: Boolean) {
         synchronized(this) {
-            if (isStarted.get()) stop()
+            if (isStarted.value!!) stop()
             if (startingBackground) startBackground() else startForeground()
         }
     }
@@ -120,22 +122,22 @@ object BLETrace {
     private fun startBackground() {
         if (isEnabled() && !isPaused) {
             isBackground = true
-            isStarted.set(true)
+            isStarted.postValue(true)
             mBleServer.enable(Constants.REBROADCAST_PERIOD)
             mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
         } else {
-            isStarted.set(false)
+            isStarted.postValue(false)
         }
     }
 
     private fun startForeground() {
         if (isEnabled() && !isPaused) {
             isBackground = false
-            isStarted.set(true)
+            isStarted.postValue(true)
             mBleServer.enable(Constants.REBROADCAST_PERIOD)
             mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
         } else {
-            isStarted.set(false)
+            isStarted.postValue(false)
         }
     }
 
@@ -144,7 +146,7 @@ object BLETrace {
             mBleServer.disable(Constants.REBROADCAST_PERIOD)
             mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
         }
-        isStarted.set(false)
+        isStarted.postValue(false)
     }
 
     private fun stopForeground() {
@@ -152,7 +154,7 @@ object BLETrace {
             mBleServer.disable(Constants.REBROADCAST_PERIOD)
             mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL)
         }
-        isStarted.set(false)
+        isStarted.postValue(false)
     }
 
     fun isEnabled() : Boolean {
