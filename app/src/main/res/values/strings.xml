@@ -26,4 +26,6 @@
     <string name="finish">Finish</string>
     <string name="person_icon">Person Icon</string>
     <string name="bluetooth_signal_icon">Bluetooth signal icon</string>
+    <string name="action_notification_settings">Notification Settings</string>
+    <string name="alarm">Alarm</string>
 </resources>
