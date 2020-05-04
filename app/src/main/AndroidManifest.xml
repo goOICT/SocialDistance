@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ai.kun.opentrace">
+    package="ai.kun.socialdistancealarm">
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -23,23 +23,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="ai.kun.opentrace.OpenTraceApplication">
+        android:name="ai.kun.socialdistancealarm.SocialDistanceAlarm">
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name=".alarm.BLEClient" />
+            android:name="ai.kun.socialdistancealarm.alarm.BLEClient" />
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name=".alarm.BLEServer" />
-        <receiver android:name=".alarm.AutoStart">
+            android:name="ai.kun.socialdistancealarm.alarm.BLEServer" />
+        <receiver android:name="ai.kun.socialdistancealarm.alarm.AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <activity
-            android:name=".MainActivity"
+            android:name="ai.kun.socialdistancealarm.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
