@@ -2,6 +2,7 @@ package ai.kun.opentrace.util
 
 import ai.kun.opentrace.MainActivity
 import ai.kun.opentrace.R
+import ai.kun.opentrace.alarm.BLETrace
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -11,6 +12,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.lifecycle.Observer
 
 
 object NotificationUtils {
@@ -72,40 +74,53 @@ object NotificationUtils {
             notificationChannelDanger.description = context.getString(R.string.notification_channel_description_danger)
             notifyManager.createNotificationChannel(notificationChannelDanger)
         }
+
+        // Listen for pause and clear notifications...
+        BLETrace.isStarted.observeForever(Observer { isStarted ->
+            if (!isStarted) {
+                notifyManager.cancelAll()
+            }
+        })
     }
 
     fun sendNotificationTooClose() {
+        BLETrace.isStarted.value?.let {
+            if (it) {
+                // Sets up the pending intent to update the notification.
+                val updateIntent = Intent(ACTION_TOO_CLOSE_NOTIFICATION)
+                val updatePendingIntent = PendingIntent.getBroadcast(
+                    context,
+                    NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT
+                )
 
-        // Sets up the pending intent to update the notification.
-        val updateIntent = Intent(ACTION_TOO_CLOSE_NOTIFICATION)
-        val updatePendingIntent = PendingIntent.getBroadcast(
-            context,
-            NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT
-        )
+                // Build the notification with all of the parameters using helper
+                // method.
+                val notifyBuilder = getNotificationBuilderTooClose()
 
-        // Build the notification with all of the parameters using helper
-        // method.
-        val notifyBuilder = getNotificationBuilderTooClose()
-
-        // Deliver the notification.
-        notifyManager.notify(NOTIFICATION_ID, notifyBuilder.build())
+                // Deliver the notification.
+                notifyManager.notify(NOTIFICATION_ID, notifyBuilder.build())
+            }
+        }
     }
 
     fun sendNotificationDanger() {
+        BLETrace.isStarted.value?.let {
+            if (it) {
+                // Sets up the pending intent to update the notification.
+                val updateIntent = Intent(ACTION_DANGER_NOTIFICATION)
+                val updatePendingIntent = PendingIntent.getBroadcast(
+                    context,
+                    NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT
+                )
 
-        // Sets up the pending intent to update the notification.
-        val updateIntent = Intent(ACTION_DANGER_NOTIFICATION)
-        val updatePendingIntent = PendingIntent.getBroadcast(
-            context,
-            NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT
-        )
+                // Build the notification with all of the parameters using helper
+                // method.
+                val notifyBuilder = getNotificationBuilderDanger()
 
-        // Build the notification with all of the parameters using helper
-        // method.
-        val notifyBuilder = getNotificationBuilderDanger()
-
-        // Deliver the notification.
-        notifyManager.notify(NOTIFICATION_ID, notifyBuilder.build())
+                // Deliver the notification.
+                notifyManager.notify(NOTIFICATION_ID, notifyBuilder.build())
+            }
+        }
     }
 
     /**
