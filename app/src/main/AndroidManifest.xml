@@ -25,12 +25,12 @@
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name=".worker.BLEClient" />
+            android:name=".alarm.BLEClient" />
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name=".worker.BLEServer" />
-        <receiver android:name=".worker.AutoStart">
+            android:name=".alarm.BLEServer" />
+        <receiver android:name=".alarm.AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

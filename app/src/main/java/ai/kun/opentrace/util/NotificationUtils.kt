@@ -18,8 +18,12 @@ object NotificationUtils {
     public const val ACTION_TOO_CLOSE_NOTIFICATION =
         "ai.kun.opentrace.ACTION_TOO_CLOSE_NOTIFICATION"
 
+    public const val ACTION_DANGER_NOTIFICATION =
+        "ai.kun.opentrace.ACTION_DANGER_NOTIFICATION"
+
     // Notification channel ID.
-    private const val PRIMARY_CHANNEL_ID = "primary_notification_channel"
+    private const val TOO_CLOSE_CHANNEL_ID = "too_close_notification_channel"
+    private const val DANGER_CHANNEL_ID = "danger_notification_channel"
 
     // Notification ID.
     private const val NOTIFICATION_ID = 0
@@ -45,25 +49,32 @@ object NotificationUtils {
             Build.VERSION_CODES.O
         ) {
 
-            // Create the NotificationChannel with all the parameters.
-            val notificationChannel = NotificationChannel(
-                PRIMARY_CHANNEL_ID,
-                context.getString(R.string.notification_channel_name),
+            // Create the NotificationChannels with all the parameters.
+            val notificationChannelTooClose = NotificationChannel(
+                TOO_CLOSE_CHANNEL_ID,
+                context.getString(R.string.notification_channel_name_too_close),
                 NotificationManager.IMPORTANCE_HIGH
             )
-            notificationChannel.enableLights(true)
-            notificationChannel.lightColor = Color.RED
-            notificationChannel.enableVibration(true)
-            notificationChannel.description = context.getString(R.string.notification_channel_description)
-            notifyManager.createNotificationChannel(notificationChannel)
+            notificationChannelTooClose.enableLights(true)
+            notificationChannelTooClose.lightColor = Color.RED
+            notificationChannelTooClose.enableVibration(true)
+            notificationChannelTooClose.description = context.getString(R.string.notification_channel_description_too_close)
+            notifyManager.createNotificationChannel(notificationChannelTooClose)
+
+            val notificationChannelDanger = NotificationChannel(
+                DANGER_CHANNEL_ID,
+                context.getString(R.string.notification_channel_name_danger),
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            notificationChannelDanger.enableLights(true)
+            notificationChannelDanger.lightColor = Color.YELLOW
+            notificationChannelDanger.enableVibration(true)
+            notificationChannelDanger.description = context.getString(R.string.notification_channel_description_danger)
+            notifyManager.createNotificationChannel(notificationChannelDanger)
         }
     }
 
-    /**
-     * OnClick method for the "Notify Me!" button.
-     * Creates and delivers a simple notification.
-     */
-    public fun sendNotification() {
+    fun sendNotificationTooClose() {
 
         // Sets up the pending intent to update the notification.
         val updateIntent = Intent(ACTION_TOO_CLOSE_NOTIFICATION)
@@ -74,7 +85,24 @@ object NotificationUtils {
 
         // Build the notification with all of the parameters using helper
         // method.
-        val notifyBuilder = getNotificationBuilder()
+        val notifyBuilder = getNotificationBuilderTooClose()
+
+        // Deliver the notification.
+        notifyManager.notify(NOTIFICATION_ID, notifyBuilder.build())
+    }
+
+    fun sendNotificationDanger() {
+
+        // Sets up the pending intent to update the notification.
+        val updateIntent = Intent(ACTION_DANGER_NOTIFICATION)
+        val updatePendingIntent = PendingIntent.getBroadcast(
+            context,
+            NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT
+        )
+
+        // Build the notification with all of the parameters using helper
+        // method.
+        val notifyBuilder = getNotificationBuilderDanger()
 
         // Deliver the notification.
         notifyManager.notify(NOTIFICATION_ID, notifyBuilder.build())
@@ -86,7 +114,7 @@ object NotificationUtils {
      * @return NotificationCompat.Builder: notification build with all the
      * parameters.
      */
-    private fun getNotificationBuilder(): NotificationCompat.Builder {
+    private fun getNotificationBuilderTooClose(): NotificationCompat.Builder {
 
         // Set up the pending intent that is delivered when the notification
         // is clicked.
@@ -97,12 +125,37 @@ object NotificationUtils {
         )
 
         // Build the notification with all of the parameters.
-        return NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-            .setContentTitle("Too Close")
-            .setContentText("Another App Was Too Close")
+        return NotificationCompat.Builder(context, TOO_CLOSE_CHANNEL_ID)
+            .setContentTitle(context.getString(R.string.too_close_notification_title))
+            .setContentText(context.getString(R.string.too_close_notification_text))
             .setSmallIcon(R.drawable.ic_report_red_24dp)
             .setAutoCancel(true).setContentIntent(notificationPendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setDefaults(NotificationCompat.DEFAULT_ALL)!!
+    }
+    /**
+     * Helper method that builds the notification.
+     *
+     * @return NotificationCompat.Builder: notification build with all the
+     * parameters.
+     */
+    private fun getNotificationBuilderDanger(): NotificationCompat.Builder {
+
+        // Set up the pending intent that is delivered when the notification
+        // is clicked.
+        val notificationIntent = Intent(context, MainActivity::class.java)
+        val notificationPendingIntent = PendingIntent.getActivity(
+            context, NOTIFICATION_ID, notificationIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        // Build the notification with all of the parameters.
+        return NotificationCompat.Builder(context, DANGER_CHANNEL_ID)
+            .setContentTitle(context.getString(R.string.danger_notification_title))
+            .setContentText(context.getString(R.string.danger_notification_text))
+            .setSmallIcon(R.drawable.ic_warning_orange_24dp)
+            .setAutoCancel(true).setContentIntent(notificationPendingIntent)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setDefaults(NotificationCompat.DEFAULT_ALL)!!
     }
 

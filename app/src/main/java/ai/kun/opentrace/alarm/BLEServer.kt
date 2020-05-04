@@ -1,10 +1,9 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
-import ai.kun.opentrace.util.Constants
 import ai.kun.opentrace.util.Constants.BACKGROUND_TRACE_INTERVAL
 import ai.kun.opentrace.util.Constants.MANUFACTURE_ID
 import ai.kun.opentrace.util.Constants.MANUFACTURE_SUBSTRING
-import ai.kun.opentrace.worker.BLETrace.context
+import ai.kun.opentrace.alarm.BLETrace.context
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.bluetooth.*

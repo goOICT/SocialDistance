@@ -1,9 +1,8 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
 import android.bluetooth.*
 import ai.kun.opentrace.util.BluetoothUtils
 import ai.kun.opentrace.util.ByteUtils
-import android.util.Log
 
 class GattClientCallback(private val mClientActionListener: GattClientActionListener) :
     BluetoothGattCallback() {

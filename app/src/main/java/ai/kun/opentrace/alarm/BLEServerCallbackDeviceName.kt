@@ -1,7 +1,6 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
 import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothGattServerCallback
 import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.AdvertiseSettings
 import android.util.Log

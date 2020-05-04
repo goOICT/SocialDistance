@@ -1,17 +1,9 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
 import ai.kun.opentrace.dao.Device
 import ai.kun.opentrace.dao.DeviceRepository
-import ai.kun.opentrace.dao.DeviceRoomDatabase
-import ai.kun.opentrace.ui.api.FirebaseOpenTraceApi
-import ai.kun.opentrace.util.BluetoothUtils
-import ai.kun.opentrace.util.ByteUtils
 import ai.kun.opentrace.util.Constants
-import ai.kun.opentrace.util.Constants.DEVICE_SHORT_ID
-import ai.kun.opentrace.util.Constants.MANUFACTURE_SUBSTRING
 import ai.kun.opentrace.util.Constants.SCAN_PERIOD
-import ai.kun.opentrace.util.Constants.SERVICE_UUID
-import ai.kun.opentrace.util.Constants.USER_SHORT_ID
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.bluetooth.*
@@ -21,13 +13,11 @@ import android.content.Context
 import android.content.Context.BLUETOOTH_SERVICE
 import android.content.Intent
 import android.os.Build
-import android.os.Handler
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 

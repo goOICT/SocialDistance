@@ -1,6 +1,6 @@
 package ai.kun.opentrace
 
-import ai.kun.opentrace.worker.BLETrace
+import ai.kun.opentrace.alarm.BLETrace
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -8,15 +8,15 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.databinding.Observable
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.*
 
 
 class MainActivity : AppCompatActivity()  {
@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity()  {
                 R.id.onBoardFragment_1,
                 R.id.onBoardFragment_2,
                 R.id.onBoardFragment_3,
+                R.id.onBoardFragment_4,
                 R.id.launchFragment-> {
                     navView?.visibility = View.GONE
                     toolbar.visibility = View.GONE
@@ -67,28 +68,25 @@ class MainActivity : AppCompatActivity()  {
         menuInflater.inflate(R.menu.menu_main, menu)
          menu?.let {
              // Change the state of the toolbar depending on the state of BLETrace
-             BLETrace.isStarted.addOnPropertyChangedCallback(object : androidx.databinding.Observable.OnPropertyChangedCallback() {
-                 override fun onPropertyChanged(
-                     sender: androidx.databinding.Observable?,
-                     propertyId: Int
-                 ) {
-                    setPausePlayOption(menu)
-                 }
+             BLETrace.isStarted.observeForever(Observer { isStarted ->
+                    setPausePlayOption(it, isStarted)
              })
 
              // Initialize to the current state
-             setPausePlayOption(menu)
+             setPausePlayOption(it, BLETrace.isStarted.value)
          }
         return true
     }
 
-    private fun setPausePlayOption(optionsMenu: Menu) {
-        if (BLETrace.isStarted.get()) {
-            optionsMenu.findItem(R.id.app_bar_pause).isVisible = true
-            optionsMenu.findItem(R.id.app_bar_play).isVisible = false
-        } else {
-            optionsMenu.findItem(R.id.app_bar_pause).isVisible = false
-            optionsMenu.findItem(R.id.app_bar_play).isVisible = true
+    private fun setPausePlayOption(optionsMenu: Menu, isStarted: Boolean?) {
+        isStarted?.let {
+            if (it) {
+                optionsMenu.findItem(R.id.app_bar_pause).isVisible = true
+                optionsMenu.findItem(R.id.app_bar_play).isVisible = false
+            } else {
+                optionsMenu.findItem(R.id.app_bar_pause).isVisible = false
+                optionsMenu.findItem(R.id.app_bar_play).isVisible = true
+            }
         }
     }
 
@@ -103,6 +101,7 @@ class MainActivity : AppCompatActivity()  {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     intent.action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
                     intent.putExtra(Settings.EXTRA_APP_PACKAGE, applicationContext.getPackageName())
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 } else {
                     intent.action = "android.settings.APP_NOTIFICATION_SETTINGS"
                     intent.putExtra("app_package", applicationContext.getPackageName())

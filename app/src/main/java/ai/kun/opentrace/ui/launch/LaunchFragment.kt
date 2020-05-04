@@ -2,10 +2,9 @@ package ai.kun.opentrace.ui.launch
 
 import ai.kun.opentrace.R
 import ai.kun.opentrace.util.Constants
-import ai.kun.opentrace.worker.BLETrace
+import ai.kun.opentrace.alarm.BLETrace
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.delay
 
 
 /*
@@ -67,7 +65,7 @@ class LaunchFragment : Fragment() {
     }
 
     private fun waitForSignIn() {
-        val auth = FirebaseAuth.getInstance()
+/*        val auth = FirebaseAuth.getInstance()
         val task = auth.signInAnonymously()
         task.addOnCompleteListener() {
             if(it.isSuccessful) {
@@ -78,7 +76,7 @@ class LaunchFragment : Fragment() {
                 Toast.makeText(context, "Authentication failed.",
                     Toast.LENGTH_SHORT).show()
             }
-        }
+        }*/
 
         moveToHome()
     }

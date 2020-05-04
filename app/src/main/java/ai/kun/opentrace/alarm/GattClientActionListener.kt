@@ -1,4 +1,4 @@
-package ai.kun.opentrace.worker
+package ai.kun.opentrace.alarm
 
 interface GattClientActionListener {
     fun log(message: String)
