@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -93,6 +94,11 @@ class HomeFragment : Fragment() {
         // Initialize the visibility
         BLETrace.isStarted.value?.let {
             setVisibility(view, it)
+        }
+
+        // Initialize the resume when tapping on the blue text...
+        view.findViewById<TextView>(R.id.TextView_resume_detecting).setOnClickListener {
+            BLETrace.isPaused = false
         }
     }
 

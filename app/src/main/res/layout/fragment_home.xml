@@ -75,7 +75,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_the_app_has_paused" />
 
         <TextView
-            android:id="@+id/button"
+            android:id="@+id/TextView_resume_detecting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
