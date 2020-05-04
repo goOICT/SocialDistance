@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -154,6 +155,14 @@ class HomeFragment : Fragment() {
         // ??? lazy load this on a thread ???
         val bluetoothManager =
             context.applicationContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+
+        // Check if it's even there
+        if (bluetoothManager.adapter == null) {
+            //TODO: show something meaning full to the user
+            Toast.makeText(context, "No Bluetooth Adapter, this phone is not supported.", Toast.LENGTH_LONG)
+            Log.e(TAG, "Bluetooth adapter was null.")
+            return false
+        }
 
         // Check if bluetooth is enabled
         if (!bluetoothManager.adapter.isEnabled()) {
