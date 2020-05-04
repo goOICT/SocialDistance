@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="ai.kun.opentrace.ui.home.HomeFragment"
+        android:name="ai.kun.socialdistancealarm.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="ai.kun.opentrace.ui.history.HistoryFragment"
+        android:name="ai.kun.socialdistancealarm.ui.history.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/launchFragment"
-        android:name="ai.kun.opentrace.ui.launch.LaunchFragment"
+        android:name="ai.kun.socialdistancealarm.ui.launch.LaunchFragment"
         android:label="LaunchFragment" >
         <action
             android:id="@+id/action_launchFragment_to_navigation_home"
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardFragment_1"
-        android:name="ai.kun.opentrace.ui.launch.OnBoardFragment"
+        android:name="ai.kun.socialdistancealarm.ui.launch.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" >
         <argument
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardFragment_2"
-        android:name="ai.kun.opentrace.ui.launch.OnBoardFragment"
+        android:name="ai.kun.socialdistancealarm.ui.launch.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" >
         <argument
@@ -89,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardFragment_3"
-        android:name="ai.kun.opentrace.ui.launch.OnBoardFragment"
+        android:name="ai.kun.socialdistancealarm.ui.launch.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" >
         <argument
@@ -113,7 +113,7 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardFragment_4"
-        android:name="ai.kun.opentrace.ui.launch.OnBoardFragment"
+        android:name="ai.kun.socialdistancealarm.ui.launch.OnBoardFragment"
         android:label="fragment_on_board"
         tools:layout="@layout/fragment_on_board" >
         <argument
