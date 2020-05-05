@@ -3,7 +3,7 @@ package ai.kun.socialdistancealarm.alarm
 import ai.kun.socialdistancealarm.util.Constants.BACKGROUND_TRACE_INTERVAL
 import ai.kun.socialdistancealarm.util.Constants.MANUFACTURE_ID
 import ai.kun.socialdistancealarm.util.Constants.MANUFACTURE_SUBSTRING
-import ai.kun.socialdistancealarm.alarm.BLETrace.context
+import ai.kun.socialdistancealarm.alarm.BLETrace.getAlarmManager
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.bluetooth.*
@@ -36,7 +36,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            next(interval)
+            next(interval, context)
 
             GattServerCallback.serverActionListener = this
             setupServer()
@@ -45,29 +45,28 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.release()
     }
 
-    fun next(interval: Int) {
-        BLETrace.alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+    fun next(interval: Int, context: Context) {
+        getAlarmManager(context).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + interval,
-            getPendingIntent(interval))
+            getPendingIntent(interval, context))
     }
 
-    fun enable(interval: Int) {
-        BLETrace.alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+    fun enable(interval: Int, context: Context) {
+        getAlarmManager(context).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + START_DELAY,
-            getPendingIntent(interval))
+            getPendingIntent(interval, context))
     }
 
-    fun disable(interval: Int) {
+    fun disable(interval: Int, context: Context) {
         synchronized (BLETrace) {
-            val alarmManager =
-                context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmManager = getAlarmManager(context)
 
-            alarmManager.cancel(getPendingIntent(interval))
+            alarmManager.cancel(getPendingIntent(interval, context))
             stopAdvertising(BLETrace.bluetoothLeAdvertiser)
         }
     }
 
-    private fun getPendingIntent(interval: Int) : PendingIntent {
+    private fun getPendingIntent(interval: Int, context: Context) : PendingIntent {
         val intent = Intent(context, BLEServer::class.java)
         intent.putExtra(INTERVAL_KEY, interval)
         return PendingIntent.getBroadcast(context, SERVER_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -92,26 +91,29 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
     // Advertising
     private fun startAdvertising(callback: AdvertiseCallback, uuid: UUID) {
+        try {
+            val settings = AdvertiseSettings.Builder()
+                .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
+                .setConnectable(true)
+                .setTimeout(0)
+                .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_MEDIUM)
+                .build()
 
-        val settings = AdvertiseSettings.Builder()
-            .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
-            .setConnectable(true)
-            .setTimeout(0)
-            .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_MEDIUM)
-            .build()
-
-        val data = AdvertiseData.Builder()
-            .setIncludeDeviceName(false)
-            .setIncludeTxPowerLevel(true)
-            .addManufacturerData(
-                MANUFACTURE_ID,
-                MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8)
-            )
-            .addServiceUuid(ParcelUuid(uuid))
-            .build()
-        BLETrace.bluetoothLeAdvertiser.stopAdvertising(callback)
-        BLETrace.bluetoothLeAdvertiser.startAdvertising(settings, data, callback)
-        Log.d(TAG, ">>>>>>>>>>BLE Beacon Started")
+            val data = AdvertiseData.Builder()
+                .setIncludeDeviceName(false)
+                .setIncludeTxPowerLevel(true)
+                .addManufacturerData(
+                    MANUFACTURE_ID,
+                    MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8)
+                )
+                .addServiceUuid(ParcelUuid(uuid))
+                .build()
+            BLETrace.bluetoothLeAdvertiser.stopAdvertising(callback)
+            BLETrace.bluetoothLeAdvertiser.startAdvertising(settings, data, callback)
+            Log.d(TAG, ">>>>>>>>>>BLE Beacon Started")
+        } catch (exception: Exception) {
+            Log.e(TAG, "${exception::class.qualifiedName} while starting advertising caused by ${exception.localizedMessage}")
+        }
     }
 
     private fun stopAdvertising(bluetoothLeAdvertiser: BluetoothLeAdvertiser) {

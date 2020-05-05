@@ -26,12 +26,11 @@ object BLETrace {
     private val TAG = "BLETrace"
 
     private var isInit = false
-    lateinit var context : Context
+    private lateinit var context : Context
     lateinit var bluetoothGattServer : BluetoothGattServer
     lateinit var bluetoothManager : BluetoothManager
     lateinit var bluetoothLeScanner : BluetoothLeScanner
     lateinit var bluetoothLeAdvertiser : BluetoothLeAdvertiser
-    lateinit var alarmManager : AlarmManager
 
     var isBackground : Boolean = true
     val isStarted: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -80,7 +79,7 @@ object BLETrace {
                     editor.putString(PREF_UNIQUE_ID, value)
                     editor.commit()
                     init(context)
-                    deviceNameServiceUuid = UUID.nameUUIDFromBytes(value?.toByteArray())
+                    deviceNameServiceUuid = UUID.nameUUIDFromBytes(value.toByteArray())
                 } else {
                     editor.remove(PREF_UNIQUE_ID)
                     editor.commit()
@@ -121,8 +120,8 @@ object BLETrace {
         if (isEnabled() && !isPaused) {
             isBackground = true
             isStarted.postValue(true)
-            mBleServer.enable(Constants.REBROADCAST_PERIOD)
-            mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL)
+            mBleServer.enable(Constants.REBROADCAST_PERIOD, context)
+            mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL, context)
         } else {
             isStarted.postValue(false)
         }
@@ -132,8 +131,8 @@ object BLETrace {
         if (isEnabled() && !isPaused) {
             isBackground = false
             isStarted.postValue(true)
-            mBleServer.enable(Constants.REBROADCAST_PERIOD)
-            mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL)
+            mBleServer.enable(Constants.REBROADCAST_PERIOD, context)
+            mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL, context)
         } else {
             isStarted.postValue(false)
         }
@@ -141,16 +140,16 @@ object BLETrace {
 
     private fun stopBackground() {
         if (isEnabled()) {
-            mBleServer.disable(Constants.REBROADCAST_PERIOD)
-            mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL)
+            mBleServer.disable(Constants.REBROADCAST_PERIOD, context)
+            mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL, context)
         }
         isStarted.postValue(false)
     }
 
     private fun stopForeground() {
         if (isEnabled()) {
-            mBleServer.disable(Constants.REBROADCAST_PERIOD)
-            mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL)
+            mBleServer.disable(Constants.REBROADCAST_PERIOD, context)
+            mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL, context)
         }
         isStarted.postValue(false)
     }
@@ -176,11 +175,14 @@ object BLETrace {
                 bluetoothGattServer = bluetoothManager.openGattServer(context, GattServerCallback)
                 bluetoothLeAdvertiser = bluetoothManager.adapter.bluetoothLeAdvertiser
 
-                alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
                 deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
                 isInit = true
             }
         }
+    }
+
+    fun getAlarmManager(applicationContext: Context): AlarmManager {
+        return applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
 
     fun calculateDistance(rssi: Int, txPower: Int): Float? {
