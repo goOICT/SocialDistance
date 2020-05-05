@@ -9,7 +9,7 @@ Currently looking for teams and executives to partner with to build and deploy t
 
 # Product Description and Vision
 ## Problem Statement
-People need to get back to work eventually, and also many are essential workers continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples risk is minimized, and we can flatten the curve. We started building a contact tracing app for the Workforce Protection, and pivoted recently to building a Social Distancing app to help protect people and workforces. Contact tracing could easily be added on top of the social distancing features. (We would add and pair a symptom checker, and contact tracing notification capabilities to protect workers and the public.)
+People need to get back to work eventually, and also many are essential workers that continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples' risk is minimized, and we can flatten the curve. We started building a contact tracing app for the Workforce Protection, and pivoted recently to building a Social Distancing app to help protect people and workforces. Contact tracing could easily be added on top of the social distancing features. (We would add and pair a symptom checker, and contact tracing notification capabilities to protect workers and the public.)
 
 ## Hypothesis
 Companies can deploy social distancing and contact tracing apps to help protect their employees during Covid-19 and beyond. Using BLE, a Social Distancing app coupled with testing, Contact Tracing, and other workforce protection measures, coverage for sick-leave, temperature checks for employees and other techniques (which companies are starting to implement), will all help companies to protect their essential workers and help to flatten the curve.
@@ -58,7 +58,7 @@ The app can be deployed by an organization made available to be downloaded by in
 * Set your Social Distance. High risk users can set thier social distance 'radious' to be more sensitive that the CDC recommended 6 feet, so that they are notified for 'Too Close' app users sooner.
 * History - Allow users to see the location and map of where a Social Distant alert/contact happened. This data only stored locally (on their handset). 
 * Safe Team - Add users to your 'Safe Team' using secure QR codes for each handset. This allows families who are safely socially distancing together to not recieve notifications of eachothers hansets when they are together, but out in public. E.G. A Couple shopping together in a store where all shoppers have the app downloaded and turned on.
-* Employers who deploy this could have option for users to opt in to sending location data for sessions that occured at the workplace if users wanted to contribute to mapping areas in the workplace where social distancing is not possible. Per session.
+* Employers who deploy this could have option for users to opt in to sending location data for sessions that occured at the workplace if users wanted to contribute to mapping areas in the workplace where social distancing is not possible, per session.
 
 # Future Versions 
 ## Add Contact Tracing
@@ -67,7 +67,7 @@ App could use contact tracing to notify users when they have had contact with so
 This app can be deployed by an organization made available to be downloaded by individual workers. Individuals may opt in to application use and have granular and transparent data and privacy control’s.
 
 ## Testing Status
-Could incorporate testing status for yourself and last date of testing. This can be compared to hostiry of contacts that were not social distanced for users to gain visibility into thier personal risk.
+Could incorporate testing status for yourself and last date of testing. This can be compared to a history of contacts that were not social distanced for users to gain visibility into thier personal risk.
 
 ## Self Isolation/Distancing  Clock
 Start day,
