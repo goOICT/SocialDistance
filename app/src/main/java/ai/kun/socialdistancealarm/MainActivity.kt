@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity()  {
                     intent.putExtra("app_package", applicationContext.getPackageName())
                     intent.putExtra("app_uid", applicationContext.getApplicationInfo().uid)
                 }
-                applicationContext.startActivity(intent)
+                startActivity(intent)
                 return true
             }
             R.id.app_bar_pause -> {
