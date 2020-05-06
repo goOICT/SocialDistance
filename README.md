@@ -7,6 +7,9 @@ Currently looking for teams and executives to partner with to build and deploy t
 
 ![Image of Social Distancing App Design](https://github.com/kunai-consulting/OpenTrace/blob/master/Social-distancing-app-flow.png)
 
+## Video Demo : ~8m
+[![](http://img.youtube.com/vi/umMaZ4Q8uBM/0.jpg)](http://www.youtube.com/watch?v=umMaZ4Q8uBM "Video Demo")
+
 # Product Description and Vision
 ## Problem Statement
 People need to get back to work eventually, and also many are essential workers that continue to work through this global pandemic dealing with Covid-19 that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples' risk is minimized, and we can flatten the curve. We started building a contact tracing app for the Workforce Protection, and pivoted recently to building a Social Distancing app to help protect people and workforces. Contact tracing could easily be added on top of the social distancing features. (We would add and pair a symptom checker, and contact tracing notification capabilities to protect workers and the public.)
