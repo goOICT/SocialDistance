@@ -125,12 +125,14 @@ class OnBoardFragment : Fragment() {
     }
 
     private fun onBoardCompleted() {
-        val sharedPrefs = BLETrace.context.getSharedPreferences(
-            Constants.PREF_FILE_NAME, Context.MODE_PRIVATE
-        )
-        val editor: SharedPreferences.Editor = sharedPrefs.edit()
-        editor.putBoolean(Constants.PREF_IS_ONBOARDED, true)
-        editor.apply()
+        context?.let {
+            val sharedPrefs = it.applicationContext.getSharedPreferences(
+                Constants.PREF_FILE_NAME, Context.MODE_PRIVATE
+            )
+            val editor: SharedPreferences.Editor = sharedPrefs.edit()
+            editor.putBoolean(Constants.PREF_IS_ONBOARDED, true)
+            editor.apply()
+        }
     }
 
 }

@@ -38,7 +38,7 @@ class BLEClient : BroadcastReceiver() {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            next(interval)
+            next(interval, context)
             startScan()
         }
         wl.release()
@@ -48,34 +48,34 @@ class BLEClient : BroadcastReceiver() {
         return (context.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
     }
 
-    fun next(interval: Int) {
-        BLETrace.alarmManager.setExactAndAllowWhileIdle(
+    fun next(interval: Int, context: Context) {
+        BLETrace.getAlarmManager(context).setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + interval,
-            getPendingIntent(interval)
+            getPendingIntent(interval, context)
         )
     }
 
-    fun enable(interval: Int) {
-        BLETrace.alarmManager.setExactAndAllowWhileIdle(
+    fun enable(interval: Int, context: Context) {
+        BLETrace.getAlarmManager(context).setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + START_DELAY,
-            getPendingIntent(interval)
+            getPendingIntent(interval, context)
         )
     }
 
-    fun disable(interval: Int) {
+    fun disable(interval: Int, context: Context) {
         synchronized(BLETrace) {
-            BLETrace.alarmManager.cancel(getPendingIntent(interval))
+            BLETrace.getAlarmManager(context).cancel(getPendingIntent(interval, context))
             stopScan()
         }
     }
 
-    private fun getPendingIntent(interval: Int): PendingIntent {
-        val intent = Intent(BLETrace.context, BLEClient::class.java)
+    private fun getPendingIntent(interval: Int, context: Context): PendingIntent {
+        val intent = Intent(context, BLEClient::class.java)
         intent.putExtra(INTERVAL_KEY, interval)
         return PendingIntent.getBroadcast(
-            BLETrace.context,
+            context,
             CLIENT_REQUEST_CODE,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT
@@ -98,10 +98,14 @@ class BLEClient : BroadcastReceiver() {
             .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
             .build()
 
-        BLETrace.bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
-        BtleScanCallback.handler.postDelayed(Runnable { stopScan() }, SCAN_PERIOD)
-        mScanning = true
-        Log.d(TAG, "+++++++Started scanning.")
+        try {
+            BLETrace.bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
+            BtleScanCallback.handler.postDelayed(Runnable { stopScan() }, SCAN_PERIOD)
+            mScanning = true
+            Log.d(TAG, "+++++++Started scanning.")
+        } catch (exception: Exception) {
+            Log.e(TAG, "${exception::class.qualifiedName} while starting scanning caused by ${exception.localizedMessage}")
+        }
     }
 
     private fun stopScan() {
