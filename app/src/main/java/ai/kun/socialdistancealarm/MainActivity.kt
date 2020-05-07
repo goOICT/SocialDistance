@@ -105,8 +105,8 @@ class MainActivity : AppCompatActivity()  {
                     intent.putExtra("app_package", applicationContext.getPackageName())
                     intent.putExtra("app_uid", applicationContext.getApplicationInfo().uid)
                 }
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                applicationContext.startActivity(intent)
+                startActivity(intent)
+
                 return true
             }
             R.id.app_bar_pause -> {
