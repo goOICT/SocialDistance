@@ -6,8 +6,7 @@ import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_LIGHT_WARN
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_OK
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_STRONG_WARN
 import ai.kun.socialdistancealarm.util.Constants.TIME_FORMAT
-import ai.kun.socialdistancealarm.util.DateUtils
-import ai.kun.socialdistancealarm.util.DateUtils.getCurrentFormattedDateString
+import ai.kun.socialdistancealarm.util.DateUtils.getFormattedDateString
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
@@ -16,8 +15,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import java.text.SimpleDateFormat
-import java.util.*
 
 class DeviceHistoryListAdapter internal constructor(
     adapterContext: Context
@@ -72,7 +69,7 @@ class DeviceHistoryListAdapter internal constructor(
         }
 
         holder.signalTextView.text = signal.toString()
-        holder.timestampTextView.text = getCurrentFormattedDateString(TIME_FORMAT, current.timeStamp).toLowerCase()
+        holder.timestampTextView.text = getFormattedDateString(TIME_FORMAT, current.timeStamp).toLowerCase()
     }
 
     internal fun setDevices(devices: List<Device>) {
