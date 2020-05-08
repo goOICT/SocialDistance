@@ -77,7 +77,6 @@
         android:layout_marginTop="2dp"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/textView_signal_title"
-        app:layout_constraintTop_toBottomOf="@+id/textView_signal_title"
-        tools:text="9:30 am" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_signal_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
