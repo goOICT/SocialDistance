@@ -68,4 +68,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_bluetooth_too_close_icon"
         android:contentDescription="@string/bluetooth_signal_icon" />
+
+    <TextView
+        android:id="@+id/textView_timestamp"
+        style="@style/BodyText2Grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_signal_title"
+        app:layout_constraintTop_toBottomOf="@+id/textView_signal_title"
+        tools:text="9:30 am" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
