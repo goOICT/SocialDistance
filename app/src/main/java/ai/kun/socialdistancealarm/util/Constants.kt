@@ -46,5 +46,6 @@ object Constants {
     const val SIGNAL_DISTANCE_LIGHT_WARN = 41 // This to SIGNAL_DISTANCE_OK warning = yellow
     const val SIGNAL_DISTANCE_STRONG_WARN = 55 // This to SIGNAL_DISTANCE_LIGHT_WARN strong warning = orange
     // ...and above this is not socially distant = red
+    const val TIME_FORMAT = "h:mm a"
 
 }

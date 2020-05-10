@@ -5,6 +5,8 @@ import ai.kun.socialdistancealarm.dao.Device
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_LIGHT_WARN
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_OK
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_STRONG_WARN
+import ai.kun.socialdistancealarm.util.Constants.TIME_FORMAT
+import ai.kun.socialdistancealarm.util.DateUtils.getFormattedDateString
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
@@ -25,6 +27,7 @@ class DeviceHistoryListAdapter internal constructor(
     inner class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val distanceTextView: TextView = itemView.findViewById(R.id.textView_distance)
         val signalTextView: TextView = itemView.findViewById(R.id.textView_signal)
+        val timestampTextView: TextView = itemView.findViewById(R.id.textView_timestamp)
         val peopleImageView: ImageView = itemView.findViewById(R.id.imageView_people)
         val bluetoothImageView: ImageView = itemView.findViewById(R.id.imageView_bluetooth_signal_icon)
     }
@@ -66,6 +69,7 @@ class DeviceHistoryListAdapter internal constructor(
         }
 
         holder.signalTextView.text = signal.toString()
+        holder.timestampTextView.text = getFormattedDateString(TIME_FORMAT, current.timeStamp).toLowerCase()
     }
 
     internal fun setDevices(devices: List<Device>) {
