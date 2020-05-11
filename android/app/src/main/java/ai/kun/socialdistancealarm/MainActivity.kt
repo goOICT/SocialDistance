@@ -1,6 +1,11 @@
 package ai.kun.socialdistancealarm
 
 import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.socialdistancealarm.ui.home.HomeFragment
+import ai.kun.socialdistancealarm.ui.settings.SettingsActivity
+import ai.kun.socialdistancealarm.ui.timer.TimerFragment
+import ai.kun.socialdistancealarm.ui.timer.TimerState
+import ai.kun.socialdistancealarm.util.PrefUtil
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,7 +24,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class MainActivity : AppCompatActivity()  {
+class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +45,7 @@ class MainActivity : AppCompatActivity()  {
                 R.id.onBoardFragment_2,
                 R.id.onBoardFragment_3,
                 R.id.onBoardFragment_4,
-                R.id.launchFragment-> {
+                R.id.launchFragment -> {
                     navView.visibility = View.GONE
                     toolbar.visibility = View.GONE
                 }
@@ -52,7 +58,8 @@ class MainActivity : AppCompatActivity()  {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_history, R.id.navigation_home))
+        val appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.navigation_history, R.id.navigation_home))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -65,15 +72,15 @@ class MainActivity : AppCompatActivity()  {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
-         menu?.let {
-             // Change the state of the toolbar depending on the state of BLETrace
-             BLETrace.isStarted.observeForever(Observer { isStarted ->
-                    setPausePlayOption(it, isStarted)
-             })
+        menu?.let {
+            // Change the state of the toolbar depending on the state of BLETrace
+            BLETrace.isStarted.observeForever(Observer { isStarted ->
+                setPausePlayOption(it, isStarted)
+            })
 
-             // Initialize to the current state
-             setPausePlayOption(it, BLETrace.isStarted.value)
-         }
+            // Initialize to the current state
+            setPausePlayOption(it, BLETrace.isStarted.value)
+        }
         return true
     }
 
@@ -111,9 +118,15 @@ class MainActivity : AppCompatActivity()  {
             }
             R.id.app_bar_pause -> {
                 BLETrace.isPaused = true
+                PrefUtil.setTimerState(TimerState.Paused, this)
             }
             R.id.app_bar_play -> {
                 BLETrace.isPaused = false
+                PrefUtil.setTimerState(TimerState.Running, this)
+            }
+            R.id.action_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)
