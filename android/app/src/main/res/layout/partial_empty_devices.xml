@@ -22,7 +22,6 @@
         android:layout_marginStart="24dp"
         android:text="@string/there_are_no_app_users_detected"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_people"
         app:layout_constraintStart_toEndOf="@+id/imageView_people"
         app:layout_constraintTop_toTopOf="@+id/imageView_people"
