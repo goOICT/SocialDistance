@@ -61,7 +61,6 @@ class HomeFragment : Fragment() {
                 devices?.let {
                     emptyDevices.visibility = View.GONE
                     recyclerView_devices.visibility = View.VISIBLE
-
                     deviceListAdapter.setDevices(it)
                 } ?: kotlin.run {
                     emptyDevices.visibility = View.VISIBLE
