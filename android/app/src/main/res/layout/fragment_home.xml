@@ -7,18 +7,29 @@
     android:background="@color/background"
     tools:context=".ui.home.HomeFragment">
 
+    <FrameLayout
+        android:id="@+id/child_fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_devices"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="21dp"
         android:background="@color/white"
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/child_fragment_container"
         tools:itemCount="3"
         tools:listitem="@layout/item_device" />
 

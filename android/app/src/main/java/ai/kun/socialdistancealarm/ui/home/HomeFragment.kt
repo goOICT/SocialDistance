@@ -2,6 +2,8 @@ package ai.kun.socialdistancealarm.ui.home
 
 import ai.kun.socialdistancealarm.R
 import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.socialdistancealarm.ui.base.BaseFragment
+import ai.kun.socialdistancealarm.ui.timer.TimerFragment
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
@@ -16,14 +18,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
     private val TAG = "HomeFragment"
 
     private val REQUEST_FINE_LOCATION = 2
@@ -43,6 +44,9 @@ class HomeFragment : Fragment() {
     ): View? {
         val homeViewModel: HomeViewModel by viewModels()
         val root = inflater.inflate(R.layout.fragment_home, container, false)
+
+        addFragment(R.id.child_fragment_container, TimerFragment.newInstance(), "TIMER_FRAGMENT_TAG")
+
         val recyclerView = root.findViewById<RecyclerView>(R.id.recyclerView_devices)
         context?.let { fragmentContext ->
             val deviceListAdapter = DeviceListAdapter(fragmentContext)
@@ -60,7 +64,7 @@ class HomeFragment : Fragment() {
 
             homeViewModel.isStarted.observe(viewLifecycleOwner, Observer { isStarted ->
                 isStarted?.let {
-                    setVisibility(root, it)
+//                    setVisibility(root, it)
                }
             })
         }
@@ -94,7 +98,7 @@ class HomeFragment : Fragment() {
 
         // Initialize the visibility
         BLETrace.isStarted.value?.let {
-            setVisibility(view, it)
+//            setVisibility(view, it)
         }
 
         // Initialize the resume when tapping on the blue text...
@@ -241,5 +245,4 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 }

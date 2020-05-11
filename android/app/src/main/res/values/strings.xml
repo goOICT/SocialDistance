@@ -35,5 +35,6 @@
     <string name="alarm">Alarm</string>
     <string name="onboard_three_section_label">Device detection</string>
     <string name="onboard_three_section_description">Detection will run unless paused.  While paused, the app will not detect other devices or be able to be detected.</string>
-
+    <string name="action_settings">Settings</string>
+    <string name="msg_timer">This lists updates every 10 seconds.</string>
 </resources>

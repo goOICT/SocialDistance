@@ -104,5 +104,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    implementation 'com.pavelsikun:material-seekbar-preference:2.3.0'
 
 }
