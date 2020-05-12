@@ -42,12 +42,15 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            this.appContext = context.applicationContext
+            appContext = context.applicationContext
+            BLETrace.init(appContext)
             next(interval)
 
             GattServerCallback.serverActionListener = this
-            setupServer()
-            startAdvertising(BLEServerCallbackDeviceName, BLETrace.deviceNameServiceUuid)
+            if (BLETrace.isEnabled()) {
+                setupServer()
+                startAdvertising(BLEServerCallbackDeviceName, BLETrace.deviceNameServiceUuid)
+            }
         }
         wl.release()
     }

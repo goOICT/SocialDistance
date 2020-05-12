@@ -172,6 +172,8 @@ object BLETrace {
             DeviceRepository.init(applicationContext)
 
             if (!isInit && uniqueId != null) {
+                deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
+
                 bluetoothManager =
                     context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
                 bluetoothManager?.let {
@@ -182,7 +184,6 @@ object BLETrace {
                     bluetoothLeAdvertiser = it.adapter.bluetoothLeAdvertiser
                 }
 
-                deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
                 isInit = true
 
                 // If we weren't paused we're started and in the background...
