@@ -39,8 +39,8 @@ class BLEClient : BroadcastReceiver() {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            next(interval, context)
-            startScan(context)
+            next(interval, context.applicationContext)
+            startScan(context.applicationContext)
         }
         wl.release()
     }
