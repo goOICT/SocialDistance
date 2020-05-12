@@ -45,10 +45,6 @@ class BLEClient : BroadcastReceiver() {
         wl.release()
     }
 
-    private fun getAdapter(context: Context): BluetoothAdapter? {
-        return (context.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
-    }
-
     fun next(interval: Int, context: Context) {
         BLETrace.getAlarmManager(context).setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
@@ -100,17 +96,7 @@ class BLEClient : BroadcastReceiver() {
             .build()
 
         try {
-            val bluetoothManager =
-                context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-            if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
-                val msg = " The adapter was not enabled or was null while starting scanning."
-                Log.e(TAG, msg)
-                FirebaseCrashlytics.getInstance().log(TAG + msg)
-                return
-            }
-            val bluetoothLeScanner = bluetoothManager.adapter.bluetoothLeScanner
-
-            bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
+            BLETrace.bluetoothLeScanner!!.startScan(listOf(scanFilter), settings, BtleScanCallback)
             BtleScanCallback.handler.postDelayed(Runnable { stopScan(context) }, SCAN_PERIOD)
             mScanning = true
             Log.d(TAG, "+++++++Started scanning.")
@@ -125,18 +111,8 @@ class BLEClient : BroadcastReceiver() {
 
         synchronized(BLETrace) {
             try {
-                val bluetoothManager =
-                    context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-                if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
-                    val msg = " The adapter was not enabled or was null while stopping scanning."
-                    Log.e(TAG, msg)
-                    FirebaseCrashlytics.getInstance().log(TAG + msg)
-                    return
-                }
-                val bluetoothLeScanner = bluetoothManager.adapter.bluetoothLeScanner
-
-                if (mScanning && bluetoothManager.adapter.isEnabled) {
-                    bluetoothLeScanner.stopScan(BtleScanCallback)
+                if (mScanning && BLETrace.bluetoothManager!!.adapter.isEnabled) {
+                    BLETrace.bluetoothLeScanner!!.stopScan(BtleScanCallback)
                     scanComplete()
                 }
 

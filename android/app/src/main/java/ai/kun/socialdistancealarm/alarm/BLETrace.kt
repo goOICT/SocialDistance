@@ -29,6 +29,10 @@ object BLETrace {
 
     private var isInit = false
     private lateinit var context : Context
+    var bluetoothGattServer : BluetoothGattServer? = null
+    var bluetoothManager : BluetoothManager? = null
+    var bluetoothLeScanner : BluetoothLeScanner? = null
+    var bluetoothLeAdvertiser : BluetoothLeAdvertiser? = null
 
     var isBackground : Boolean = true
     val isStarted: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -153,14 +157,8 @@ object BLETrace {
     }
 
     fun isEnabled() : Boolean {
-        try {
-            val bluetoothManager =
-                context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-            if (uniqueId == null || bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) return false
-        } catch (exception: Exception) {
-            val msg = " ${exception::class.qualifiedName} while checking enabled caused by ${exception.localizedMessage}"
-            Log.e(TAG, msg)
-            FirebaseCrashlytics.getInstance().log(TAG + msg)
+        bluetoothManager?.let {
+            if (uniqueId == null || it.adapter == null || !it.adapter.isEnabled()) return false
         }
 
         if (!isInit) init(context) // If bluetooth was off we need to complete the init
@@ -174,6 +172,16 @@ object BLETrace {
             DeviceRepository.init(applicationContext)
 
             if (!isInit && uniqueId != null) {
+                bluetoothManager =
+                    context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+                bluetoothManager?.let {
+                    if (it.adapter == null || !it.adapter.isEnabled()) return // bail if bluetooth isn't on
+                    bluetoothLeScanner = it.adapter.bluetoothLeScanner
+                    bluetoothGattServer =
+                        it.openGattServer(context, GattServerCallback)
+                    bluetoothLeAdvertiser = it.adapter.bluetoothLeAdvertiser
+                }
+
                 deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
                 isInit = true
 
