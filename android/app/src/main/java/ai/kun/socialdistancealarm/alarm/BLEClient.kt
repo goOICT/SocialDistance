@@ -129,32 +129,46 @@ class BLEClient : BroadcastReceiver() {
 
     private fun scanComplete() {
 
-        if (BtleScanCallback.mScanResults.isEmpty()) {
-            return
-        }
+        if (!BtleScanCallback.mScanResults.isEmpty()) {
+            for (deviceAddress in BtleScanCallback.mScanResults.keys) {
+                val result: ScanResult? = BtleScanCallback.mScanResults.get(deviceAddress)
+                result?.let { scanResult ->
+                    var uuid: ParcelUuid? = scanResult.scanRecord?.serviceUuids?.get(0)
+                    var rssi: Int = scanResult.rssi
+                    var txPower: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        scanResult.txPower
+                    } else {
+                        -1
+                    }
+                    val distance = BLETrace.calculateDistance(rssi, txPower)
+                    var timeStampNanos: Long = scanResult.timestampNanos
+                    val timeStamp: Long = System.currentTimeMillis()
+                    var sessionId = deviceAddress
 
-        for (deviceAddress in BtleScanCallback.mScanResults.keys) {
-            val result: ScanResult? = BtleScanCallback.mScanResults.get(deviceAddress)
-            result?.let { scanResult ->
-                var uuid: ParcelUuid? = scanResult.scanRecord?.serviceUuids?.get(0)
-                var rssi: Int = scanResult.rssi
-                var txPower: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    scanResult.txPower
-                } else {
-                    -1
+                    Log.d(
+                        TAG,
+                        "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++"
+                    )
+                    val device = Device(
+                        uuid.toString(),
+                        distance,
+                        rssi,
+                        txPower,
+                        timeStampNanos,
+                        timeStamp,
+                        sessionId
+                    )
+                    GlobalScope.launch { DeviceRepository.insert(device) }
                 }
-                val distance = BLETrace.calculateDistance(rssi, txPower)
-                var timeStampNanos: Long = scanResult.timestampNanos
-                val timeStamp: Long = System.currentTimeMillis()
-                var sessionId = deviceAddress
-
-                Log.d(TAG, "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++")
-                val device = Device(uuid.toString(), distance, rssi, txPower, timeStampNanos, timeStamp, sessionId)
-                GlobalScope.launch {DeviceRepository.insert(device) }
             }
+
+            GlobalScope.launch {DeviceRepository.updateCurrentDevices() }
+            // Clear the scan results
+            BtleScanCallback.mScanResults.clear()
+        } else {
+            GlobalScope.launch { DeviceRepository.noCurrentDevices() }
         }
 
-        // Clear the scan results
-        BtleScanCallback.mScanResults.clear()
+
     }
 }

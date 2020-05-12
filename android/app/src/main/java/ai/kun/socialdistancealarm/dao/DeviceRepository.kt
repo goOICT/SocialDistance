@@ -26,7 +26,6 @@ object DeviceRepository {
     suspend fun insert(device: Device) {
         deviceDao.insert(device)
         currentDevices.postValue(getCurrentDevices())
-
         // Notify the user when we are adding a device that's too close
         val signal = device.txPower + device.rssi
         when {
@@ -43,6 +42,22 @@ object DeviceRepository {
         }
         //TODO: delete anything that's too old
     }
+
+    // thread, blocking the UI.
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun updateCurrentDevices() {
+        //TODO: consolidate all the notifications here
+
+    }
+
+    // thread, blocking the UI.
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun noCurrentDevices() {
+        currentDevices.postValue(emptyList())
+    }
+
 
     // thread, blocking the UI.
     @Suppress("RedundantSuspendModifier")
