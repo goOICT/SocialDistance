@@ -16,6 +16,7 @@ import android.os.Build
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -38,14 +39,11 @@ class BLEClient : BroadcastReceiver() {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            next(interval, context)
-            startScan()
+            BLETrace.init(context.applicationContext)
+            next(interval, context.applicationContext)
+            if (BLETrace.isEnabled()) startScan(context.applicationContext)
         }
         wl.release()
-    }
-
-    private fun getAdapter(context: Context): BluetoothAdapter? {
-        return (context.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager).adapter
     }
 
     fun next(interval: Int, context: Context) {
@@ -67,7 +65,7 @@ class BLEClient : BroadcastReceiver() {
     fun disable(interval: Int, context: Context) {
         synchronized(BLETrace) {
             BLETrace.getAlarmManager(context).cancel(getPendingIntent(interval, context))
-            stopScan()
+            stopScan(context)
         }
     }
 
@@ -84,7 +82,7 @@ class BLEClient : BroadcastReceiver() {
 
 
     // Scanning
-    private fun startScan() {
+    private fun startScan(context: Context) {
         if (mScanning) {
             Log.w(TAG,"Already scanning")
             return
@@ -99,21 +97,30 @@ class BLEClient : BroadcastReceiver() {
             .build()
 
         try {
-            BLETrace.bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
-            BtleScanCallback.handler.postDelayed(Runnable { stopScan() }, SCAN_PERIOD)
+            BLETrace.bluetoothLeScanner!!.startScan(listOf(scanFilter), settings, BtleScanCallback)
+            BtleScanCallback.handler.postDelayed(Runnable { stopScan(context) }, SCAN_PERIOD)
             mScanning = true
             Log.d(TAG, "+++++++Started scanning.")
         } catch (exception: Exception) {
-            Log.e(TAG, "${exception::class.qualifiedName} while starting scanning caused by ${exception.localizedMessage}")
+            val msg = " ${exception::class.qualifiedName} while starting scanning caused by ${exception.localizedMessage}"
+            Log.e(TAG, msg)
+            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 
-    private fun stopScan() {
+    private fun stopScan(context: Context) {
 
         synchronized(BLETrace) {
-            if (mScanning && BLETrace.bluetoothManager.adapter.isEnabled) {
-                BLETrace.bluetoothLeScanner.stopScan(BtleScanCallback)
-                scanComplete()
+            try {
+                if (mScanning && BLETrace.bluetoothManager!!.adapter.isEnabled) {
+                    BLETrace.bluetoothLeScanner!!.stopScan(BtleScanCallback)
+                    scanComplete()
+                }
+
+            } catch (exception: Exception) {
+                val msg = " ${exception::class.qualifiedName} while stopping scanning caused by ${exception.localizedMessage}"
+                Log.e(TAG, msg)
+                FirebaseCrashlytics.getInstance().log(TAG + msg)
             }
             mScanning = false
         }
@@ -122,32 +129,45 @@ class BLEClient : BroadcastReceiver() {
 
     private fun scanComplete() {
 
-        if (BtleScanCallback.mScanResults.isEmpty()) {
-            return
-        }
+        if (!BtleScanCallback.mScanResults.isEmpty()) {
+            for (deviceAddress in BtleScanCallback.mScanResults.keys) {
+                val result: ScanResult? = BtleScanCallback.mScanResults.get(deviceAddress)
+                result?.let { scanResult ->
+                    var uuid: ParcelUuid? = scanResult.scanRecord?.serviceUuids?.get(0)
+                    var rssi: Int = scanResult.rssi
+                    var txPower: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        scanResult.txPower
+                    } else {
+                        -1
+                    }
+                    val distance = BLETrace.calculateDistance(rssi, txPower)
+                    var timeStampNanos: Long = scanResult.timestampNanos
+                    val timeStamp: Long = System.currentTimeMillis()
+                    var sessionId = deviceAddress
 
-        for (deviceAddress in BtleScanCallback.mScanResults.keys) {
-            val result: ScanResult? = BtleScanCallback.mScanResults.get(deviceAddress)
-            result?.let { scanResult ->
-                var uuid: ParcelUuid? = scanResult.scanRecord?.serviceUuids?.get(0)
-                var rssi: Int = scanResult.rssi
-                var txPower: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    scanResult.txPower
-                } else {
-                    -1
+                    Log.d(
+                        TAG,
+                        "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++"
+                    )
+                    val device = Device(
+                        uuid.toString(),
+                        distance,
+                        rssi,
+                        txPower,
+                        timeStampNanos,
+                        timeStamp,
+                        sessionId
+                    )
+                    GlobalScope.launch { DeviceRepository.insert(device) }
                 }
-                val distance = BLETrace.calculateDistance(rssi, txPower)
-                var timeStampNanos: Long = scanResult.timestampNanos
-                val timeStamp: Long = System.currentTimeMillis()
-                var sessionId = deviceAddress
-
-                Log.d(TAG, "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++")
-                val device = Device(uuid.toString(), distance, rssi, txPower, timeStampNanos, timeStamp, sessionId)
-                GlobalScope.launch {DeviceRepository.insert(device) }
             }
+
+            // Clear the scan results
+            BtleScanCallback.mScanResults.clear()
+        } else {
+            GlobalScope.launch { DeviceRepository.noCurrentDevices() }
         }
 
-        // Clear the scan results
-        BtleScanCallback.mScanResults.clear()
+
     }
 }

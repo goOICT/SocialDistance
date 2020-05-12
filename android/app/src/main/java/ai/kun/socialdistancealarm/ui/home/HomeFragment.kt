@@ -2,6 +2,7 @@ package ai.kun.socialdistancealarm.ui.home
 
 import ai.kun.socialdistancealarm.R
 import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.socialdistancealarm.dao.DeviceRepository
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
@@ -22,6 +23,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
@@ -55,9 +59,22 @@ class HomeFragment : Fragment() {
 
             homeViewModel.devices.observe(viewLifecycleOwner, Observer { devices ->
                 // Update the cached copy of the devices in the adapter.
-                devices?.let { deviceListAdapter.setDevices(it) }
+                devices?.let {
+                    if (devices.isEmpty()) {
+                        emptyDevices.visibility = View.VISIBLE
+                        recyclerView_devices.visibility = View.GONE
+                    } else {
+                        emptyDevices.visibility = View.GONE
+                        recyclerView_devices.visibility = View.VISIBLE
+                        deviceListAdapter.setDevices(it)
+                    }
+                } ?: kotlin.run {
+                    emptyDevices.visibility = View.VISIBLE
+                    recyclerView_devices.visibility = View.GONE
+                }
             })
 
+            // Watch for pausing...
             homeViewModel.isStarted.observe(viewLifecycleOwner, Observer { isStarted ->
                 isStarted?.let {
                     setVisibility(root, it)
@@ -70,6 +87,9 @@ class HomeFragment : Fragment() {
 
     private fun setVisibility(root: View, isStarted: Boolean) {
         if (isStarted) {
+            // Update the devices
+            GlobalScope.launch {DeviceRepository.updateCurrentDevices()}
+
             root.findViewById<RecyclerView>(R.id.recyclerView_devices).visibility =
                 View.VISIBLE
             root.findViewById<ConstraintLayout>(R.id.constraintLayout_paused).visibility =
@@ -241,5 +261,4 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 }

@@ -14,8 +14,10 @@ import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.SharedPreferences
 import android.location.LocationManager
+import android.util.Log
 import androidx.core.location.LocationManagerCompat
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.util.*
 import kotlin.math.pow
 
@@ -27,10 +29,10 @@ object BLETrace {
 
     private var isInit = false
     private lateinit var context : Context
-    lateinit var bluetoothGattServer : BluetoothGattServer
-    lateinit var bluetoothManager : BluetoothManager
-    lateinit var bluetoothLeScanner : BluetoothLeScanner
-    lateinit var bluetoothLeAdvertiser : BluetoothLeAdvertiser
+    var bluetoothGattServer : BluetoothGattServer? = null
+    var bluetoothManager : BluetoothManager? = null
+    var bluetoothLeScanner : BluetoothLeScanner? = null
+    var bluetoothLeAdvertiser : BluetoothLeAdvertiser? = null
 
     var isBackground : Boolean = true
     val isStarted: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -155,7 +157,9 @@ object BLETrace {
     }
 
     fun isEnabled() : Boolean {
-        if (uniqueId == null || bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) return false
+        bluetoothManager?.let {
+            if (uniqueId == null || it.adapter == null || !it.adapter.isEnabled()) return false
+        }
 
         if (!isInit) init(context) // If bluetooth was off we need to complete the init
 
@@ -168,15 +172,23 @@ object BLETrace {
             DeviceRepository.init(applicationContext)
 
             if (!isInit && uniqueId != null) {
+                deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
+
                 bluetoothManager =
                     context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-                if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) return // bail if bluetooth isn't on
-                bluetoothLeScanner = bluetoothManager.adapter.bluetoothLeScanner
-                bluetoothGattServer = bluetoothManager.openGattServer(context, GattServerCallback)
-                bluetoothLeAdvertiser = bluetoothManager.adapter.bluetoothLeAdvertiser
+                bluetoothManager?.let {
+                    if (it.adapter == null || !it.adapter.isEnabled()) return // bail if bluetooth isn't on
+                    bluetoothLeScanner = it.adapter.bluetoothLeScanner
+                    bluetoothGattServer =
+                        it.openGattServer(context, GattServerCallback)
+                    bluetoothLeAdvertiser = it.adapter.bluetoothLeAdvertiser
+                }
 
-                deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
                 isInit = true
+
+                // If we weren't paused we're started and in the background...
+                if (!isPaused) isStarted.postValue(true) else isStarted.postValue(false)
+                isBackground = true
             }
         }
     }
