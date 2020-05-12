@@ -176,6 +176,10 @@ object BLETrace {
             if (!isInit && uniqueId != null) {
                 deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
                 isInit = true
+
+                // If we weren't paused we're started and in the background...
+                if (!isPaused) isStarted.postValue(true) else isStarted.postValue(false)
+                isBackground = true
             }
         }
     }

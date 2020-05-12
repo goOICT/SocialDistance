@@ -1,12 +1,15 @@
 package ai.kun.socialdistancealarm.alarm
 
+import ai.kun.socialdistancealarm.alarm.BLETrace.getAlarmManager
 import ai.kun.socialdistancealarm.util.Constants.BACKGROUND_TRACE_INTERVAL
 import ai.kun.socialdistancealarm.util.Constants.MANUFACTURE_ID
 import ai.kun.socialdistancealarm.util.Constants.MANUFACTURE_SUBSTRING
-import ai.kun.socialdistancealarm.alarm.BLETrace.getAlarmManager
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.bluetooth.*
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothGattServer
+import android.bluetooth.BluetoothGattService
+import android.bluetooth.BluetoothManager
 import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.AdvertiseData
 import android.bluetooth.le.AdvertiseSettings
@@ -128,7 +131,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
             val settings = AdvertiseSettings.Builder()
                 .setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY)
                 .setConnectable(true)
-                .setTimeout(0)
+                .setTimeout(180000)
                 .setTxPowerLevel(AdvertiseSettings.ADVERTISE_TX_POWER_MEDIUM)
                 .build()
 

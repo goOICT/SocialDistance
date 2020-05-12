@@ -31,7 +31,7 @@ object Constants {
     const val DEVICE_SHORT_ID = "e0df"
     const val CLIENT_CONFIGURATION_DESCRIPTOR_SHORT_ID = "8ea1"
     const val SCAN_PERIOD: Long = 4000
-    const val REBROADCAST_PERIOD = 120000
+    const val REBROADCAST_PERIOD = 30000
     const val BACKGROUND_TRACE_INTERVAL = 10000
     const val FOREGROUND_TRACE_INTERVAL = 10000
 
