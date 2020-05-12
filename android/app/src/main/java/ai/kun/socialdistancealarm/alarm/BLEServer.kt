@@ -17,6 +17,7 @@ import android.content.Intent
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.nio.charset.StandardCharsets
 import java.util.*
 
@@ -28,6 +29,8 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     private val SERVER_REQUEST_CODE = 10
     private val START_DELAY = 10
 
+    lateinit var appContext: Context
+
 
     override fun onReceive(context: Context, intent: Intent) {
         val interval = intent.getIntExtra(INTERVAL_KEY, BACKGROUND_TRACE_INTERVAL)
@@ -36,7 +39,8 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            next(interval, context)
+            this.appContext = context.applicationContext
+            next(interval)
 
             GattServerCallback.serverActionListener = this
             setupServer()
@@ -45,24 +49,36 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.release()
     }
 
-    fun next(interval: Int, context: Context) {
-        getAlarmManager(context).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+    fun next(interval: Int) {
+        getAlarmManager(appContext).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + interval,
-            getPendingIntent(interval, context))
+            getPendingIntent(interval, appContext))
     }
 
     fun enable(interval: Int, context: Context) {
-        getAlarmManager(context).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+        this.appContext = context.applicationContext
+        getAlarmManager(appContext).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + START_DELAY,
-            getPendingIntent(interval, context))
+            getPendingIntent(interval, appContext))
     }
 
     fun disable(interval: Int, context: Context) {
         synchronized (BLETrace) {
-            val alarmManager = getAlarmManager(context)
+            this.appContext = context.applicationContext
+            val alarmManager = getAlarmManager(appContext)
 
-            alarmManager.cancel(getPendingIntent(interval, context))
-            stopAdvertising(BLETrace.bluetoothLeAdvertiser)
+            alarmManager.cancel(getPendingIntent(interval, appContext))
+            val bluetoothManager =
+                appContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+            if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
+                Log.e(
+                    TAG,
+                    "Not able to disable because of the state of the Bluetooth adapter.  This shouldn't happen."
+                )
+                return
+            }
+
+            stopAdvertising(bluetoothManager.adapter.bluetoothLeAdvertiser)
         }
     }
 
@@ -75,12 +91,29 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
     // GattServer
     private fun setupServer() {
-        if (BLETrace.bluetoothGattServer.getService(BLETrace.deviceNameServiceUuid) == null) {
-            val deviceService = BluetoothGattService(
-                BLETrace.deviceNameServiceUuid,
-                BluetoothGattService.SERVICE_TYPE_PRIMARY
-            )
-            BLETrace.bluetoothGattServer.addService(deviceService)
+        try {
+            val bluetoothManager =
+                appContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+            if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
+                Log.e(
+                    TAG,
+                    "Not able to set up because of the state of the Bluetooth adapter.  This shouldn't happen."
+                )
+                return
+            }
+            val bluetoothGattServer =
+                bluetoothManager.openGattServer(appContext, GattServerCallback)
+            if (bluetoothGattServer.getService(BLETrace.deviceNameServiceUuid) == null) {
+                val deviceService = BluetoothGattService(
+                    BLETrace.deviceNameServiceUuid,
+                    BluetoothGattService.SERVICE_TYPE_PRIMARY
+                )
+                bluetoothGattServer.addService(deviceService)
+            }
+        } catch (exception: Exception) {
+            val msg = " ${exception::class.qualifiedName} while setting up the server caused by ${exception.localizedMessage}"
+            Log.e(TAG, msg)
+            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 
@@ -108,11 +141,24 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
                 )
                 .addServiceUuid(ParcelUuid(uuid))
                 .build()
-            BLETrace.bluetoothLeAdvertiser.stopAdvertising(callback)
-            BLETrace.bluetoothLeAdvertiser.startAdvertising(settings, data, callback)
+
+            val bluetoothManager =
+                appContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+            if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
+                Log.e(
+                    TAG,
+                    "Not able to start advertising because of the state of the Bluetooth adapter.  This shouldn't happen."
+                )
+                return
+            }
+
+            bluetoothManager.adapter.bluetoothLeAdvertiser.stopAdvertising(callback)
+            bluetoothManager.adapter.bluetoothLeAdvertiser.startAdvertising(settings, data, callback)
             Log.d(TAG, ">>>>>>>>>>BLE Beacon Started")
         } catch (exception: Exception) {
-            Log.e(TAG, "${exception::class.qualifiedName} while starting advertising caused by ${exception.localizedMessage}")
+            val msg = " ${exception::class.qualifiedName} while starting advertising caused by ${exception.localizedMessage}"
+            Log.e(TAG, msg)
+            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 
@@ -148,6 +194,15 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         offset: Int,
         value: ByteArray
     ) {
-        BLETrace.bluetoothGattServer.sendResponse(device, requestId, status, offset, value)
+        val bluetoothManager =
+            appContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
+            val msg = "Not able to send a response because of the state of the Bluetooth adapter.  This shouldn't happen."
+            Log.e(TAG, msg)
+            FirebaseCrashlytics.getInstance().log(TAG + msg)
+            return
+        }
+        val bluetoothGattServer = bluetoothManager.openGattServer(appContext, GattServerCallback)
+        bluetoothGattServer.sendResponse(device, requestId, status, offset, value)
     }
 }

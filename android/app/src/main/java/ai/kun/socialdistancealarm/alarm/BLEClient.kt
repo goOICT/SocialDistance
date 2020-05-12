@@ -16,6 +16,7 @@ import android.os.Build
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -39,7 +40,7 @@ class BLEClient : BroadcastReceiver() {
         synchronized(BLETrace) {
             // Chain the next alarm...
             next(interval, context)
-            startScan()
+            startScan(context)
         }
         wl.release()
     }
@@ -67,7 +68,7 @@ class BLEClient : BroadcastReceiver() {
     fun disable(interval: Int, context: Context) {
         synchronized(BLETrace) {
             BLETrace.getAlarmManager(context).cancel(getPendingIntent(interval, context))
-            stopScan()
+            stopScan(context)
         }
     }
 
@@ -84,7 +85,7 @@ class BLEClient : BroadcastReceiver() {
 
 
     // Scanning
-    private fun startScan() {
+    private fun startScan(context: Context) {
         if (mScanning) {
             Log.w(TAG,"Already scanning")
             return
@@ -99,21 +100,50 @@ class BLEClient : BroadcastReceiver() {
             .build()
 
         try {
-            BLETrace.bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
-            BtleScanCallback.handler.postDelayed(Runnable { stopScan() }, SCAN_PERIOD)
+            val bluetoothManager =
+                context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+            if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
+                val msg = " The adapter was not enabled or was null while starting scanning."
+                Log.e(TAG, msg)
+                FirebaseCrashlytics.getInstance().log(TAG + msg)
+                return
+            }
+            val bluetoothLeScanner = bluetoothManager.adapter.bluetoothLeScanner
+
+            bluetoothLeScanner.startScan(listOf(scanFilter), settings, BtleScanCallback)
+            BtleScanCallback.handler.postDelayed(Runnable { stopScan(context) }, SCAN_PERIOD)
             mScanning = true
             Log.d(TAG, "+++++++Started scanning.")
         } catch (exception: Exception) {
-            Log.e(TAG, "${exception::class.qualifiedName} while starting scanning caused by ${exception.localizedMessage}")
+            val msg = " ${exception::class.qualifiedName} while starting scanning caused by ${exception.localizedMessage}"
+            Log.e(TAG, msg)
+            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 
-    private fun stopScan() {
+    private fun stopScan(context: Context) {
 
         synchronized(BLETrace) {
-            if (mScanning && BLETrace.bluetoothManager.adapter.isEnabled) {
-                BLETrace.bluetoothLeScanner.stopScan(BtleScanCallback)
-                scanComplete()
+            try {
+                val bluetoothManager =
+                    context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+                if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
+                    val msg = " The adapter was not enabled or was null while stopping scanning."
+                    Log.e(TAG, msg)
+                    FirebaseCrashlytics.getInstance().log(TAG + msg)
+                    return
+                }
+                val bluetoothLeScanner = bluetoothManager.adapter.bluetoothLeScanner
+
+                if (mScanning && bluetoothManager.adapter.isEnabled) {
+                    bluetoothLeScanner.stopScan(BtleScanCallback)
+                    scanComplete()
+                }
+
+            } catch (exception: Exception) {
+                val msg = " ${exception::class.qualifiedName} while stopping scanning caused by ${exception.localizedMessage}"
+                Log.e(TAG, msg)
+                FirebaseCrashlytics.getInstance().log(TAG + msg)
             }
             mScanning = false
         }
