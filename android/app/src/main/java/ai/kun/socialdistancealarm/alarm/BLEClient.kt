@@ -162,7 +162,6 @@ class BLEClient : BroadcastReceiver() {
                 }
             }
 
-            GlobalScope.launch {DeviceRepository.updateCurrentDevices() }
             // Clear the scan results
             BtleScanCallback.mScanResults.clear()
         } else {

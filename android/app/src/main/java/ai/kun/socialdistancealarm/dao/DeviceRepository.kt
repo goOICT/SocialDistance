@@ -47,8 +47,7 @@ object DeviceRepository {
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun updateCurrentDevices() {
-        //TODO: consolidate all the notifications here
-
+        currentDevices.postValue(getCurrentDevices())
     }
 
     // thread, blocking the UI.

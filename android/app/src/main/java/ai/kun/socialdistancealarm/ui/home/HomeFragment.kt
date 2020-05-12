@@ -2,6 +2,7 @@ package ai.kun.socialdistancealarm.ui.home
 
 import ai.kun.socialdistancealarm.R
 import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.socialdistancealarm.dao.DeviceRepository
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
@@ -23,6 +24,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
@@ -74,7 +77,7 @@ class HomeFragment : Fragment() {
             // Watch for pausing...
             homeViewModel.isStarted.observe(viewLifecycleOwner, Observer { isStarted ->
                 isStarted?.let {
-                    setVisibility(root, it, homeViewModel)
+                    setVisibility(root, it)
                }
             })
         }
@@ -82,16 +85,10 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    private fun setVisibility(
-        root: View,
-        isStarted: Boolean,
-        homeViewModel: HomeViewModel?
-    ) {
+    private fun setVisibility(root: View, isStarted: Boolean) {
         if (isStarted) {
-            // Clear the devices
-            homeViewModel?.let {
-                it.devices.postValue(emptyList())
-            }
+            // Update the devices
+            GlobalScope.launch {DeviceRepository.updateCurrentDevices()}
 
             root.findViewById<RecyclerView>(R.id.recyclerView_devices).visibility =
                 View.VISIBLE
@@ -117,7 +114,7 @@ class HomeFragment : Fragment() {
 
         // Initialize the visibility
         BLETrace.isStarted.value?.let {
-            setVisibility(view, it, null)
+            setVisibility(view, it)
         }
 
         // Initialize the resume when tapping on the blue text...
