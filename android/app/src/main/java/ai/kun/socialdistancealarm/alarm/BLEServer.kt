@@ -74,17 +74,8 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
             val alarmManager = getAlarmManager(appContext)
 
             alarmManager.cancel(getPendingIntent(interval, appContext))
-            val bluetoothManager =
-                appContext.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
-            if (bluetoothManager.adapter == null || !bluetoothManager.adapter.isEnabled()) {
-                Log.e(
-                    TAG,
-                    "Not able to disable because of the state of the Bluetooth adapter.  This shouldn't happen."
-                )
-                return
-            }
 
-            stopAdvertising(bluetoothManager.adapter.bluetoothLeAdvertiser)
+            stopAdvertising()
         }
     }
 
@@ -147,10 +138,16 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         }
     }
 
-    private fun stopAdvertising(bluetoothLeAdvertiser: BluetoothLeAdvertiser) {
+    private fun stopAdvertising() {
         synchronized(this) {
-            bluetoothLeAdvertiser.stopAdvertising((BLEServerCallbackDeviceName))
-            log("<<<<<<<<<<BLE Beacon Forced Stopped")
+            try {
+                BLETrace.bluetoothLeAdvertiser?.stopAdvertising((BLEServerCallbackDeviceName))
+                log("<<<<<<<<<<BLE Beacon Forced Stopped")
+            }catch (exception: Exception) {
+                val msg = " ${exception::class.qualifiedName} while stopping advertising caused by ${exception.localizedMessage}"
+                Log.e(TAG, msg)
+                FirebaseCrashlytics.getInstance().log(TAG + msg)
+            }
         }
     }
 
