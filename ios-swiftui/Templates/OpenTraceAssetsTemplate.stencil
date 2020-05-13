@@ -1,0 +1,23 @@
+// Generated Code - Do not edit
+// Use the swiftgen rake task instead
+
+import SwiftUI
+import UIKit
+
+public extension UIColor {
+  {% for color in catalogs.first.assets %}
+  static var app{{ color.name }}: UIColor { UIColor(named: "{{ color.name }}")! }
+  {% endfor %}  
+}
+
+public extension Color {
+  {% for color in catalogs.first.assets %}
+  static var app{{ color.name }}: Color { Color("{{ color.name }}") }
+  {% endfor %}
+}
+
+public extension UIImage {
+  {% for image in catalogs.1.assets %}
+  static var {{ image.name }}: UIImage { UIImage(named: "{{ image.name }}")! }
+  {% endfor %}
+}

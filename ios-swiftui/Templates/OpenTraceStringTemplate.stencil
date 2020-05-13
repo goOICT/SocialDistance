@@ -1,0 +1,15 @@
+// Generated Code - Do not edit
+// Use the swiftgen rake task instead
+
+import Foundation
+
+// swiftlint:disable all
+public extension String {
+  struct Local {
+    {% if tables.count > 0 %}
+    {% for string in tables.first.levels.strings %}
+    public static let {{ string.key }} = NSLocalizedString("{{ string.key }}", comment: "")
+    {% endfor %}
+    {% endif %}
+  }
+}

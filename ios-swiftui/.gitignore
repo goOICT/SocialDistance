@@ -1,0 +1,7 @@
+Carthage/
+Mint/
+.swiftpm/
+*.xcodeproj/
+*.entitlements
+Info.plist
+.DS_Store

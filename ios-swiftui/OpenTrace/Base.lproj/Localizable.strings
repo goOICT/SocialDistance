@@ -1,0 +1,42 @@
+"onboardOneSectionLabel" = "Introduction";
+"onboardTwoSectionLabel" = "Made for Teams";
+"onboardThreeSectionLabel" = "Device Detection";
+"onboardFourSectionLabel" = "Location Permission";
+"onboardOneSectionDescription" = "Social Distance Alarm helps maintain social distance. It can see other devices with the app ON and tell you when they are too close.";
+"onboardTwoSectionDescription" = "Use this for teams of people.\nEveryone’s app must be turned ON.\nAll data is stored locally.";
+"onboardThreeSectionDescription" = "Detection will run unless paused.  While paused, the app will not detect other devices or be able to be detected";
+"onboardFourSectionDescription" = "It works by using Bluetooth’s signal strength. It needs location, and Bluetooth access, to alert you when other app users are too close.";
+"onboardContinueButtonTitle" = "Continue";
+"distanceSceneTitle" = "Distance";
+"historySceneTitle" = "History";
+"settingsSceneTitle" = "Settings";
+
+// Unused strings copied from the Android app below this line
+
+"appName" = "Social Distance Alarm";
+"submit" = "Submit";
+"send" = "Send";
+"ok" = "Ok";
+"warning" = "Warning";
+"strongWarning" = "Danger";
+"tooClose" = "Too Close";
+"socialDistance" = "Distance:";
+"scanIdentifier" = "Scan Identifier";
+"signalStrength" = "Signal Strength:";
+"notificationChannelNameTooClose" = "Too Close";
+"notificationChannelDescriptionTooClose" = "Notify me when someone is too close";
+"notificationChannelNameDanger" = "Danger";
+"notificationChannelDescriptionDanger" = "Notify me when someone is getting very close";
+"tooCloseNotificationTitle" = "Too Close";
+"tooCloseNotificationText" = "Another app was too close";
+"dangerNotificationTitle" = "Danger";
+"dangerNotificationText" = "Another app was getting very close";
+"helloBlankFragment" = "Hello blank fragment";
+"skip" = "Skip";
+"finish" = "Finish";
+"personIcon" = "Person Icon";
+"bluetoothSignalIcon" = "Bluetooth signal icon";
+"actionNotificationSettings" = "Notification Settings";
+"alarm" = "Alarm";
+
+
