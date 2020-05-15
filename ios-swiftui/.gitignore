@@ -1,6 +1,1 @@
-Carthage/
-Mint/
-.swiftpm/
-*.xcodeproj/
-Info.plist
 .DS_Store

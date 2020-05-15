@@ -6,7 +6,6 @@
 //  Copyright © 2020 Jaya. All rights reserved.
 //
 
-import OpenTraceCore
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

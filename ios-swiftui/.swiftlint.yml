@@ -1,5 +1,0 @@
-excluded:
-  - build
-  - vendor
-  - Carthage
-  - docs
