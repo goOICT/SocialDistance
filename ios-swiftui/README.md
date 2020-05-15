@@ -2,11 +2,5 @@
 
 ## Installation
 
-* Requires XCode 11.4.1 and Ruby (MacOS includes Ruby already)
-* Install the Mint package manager `brew install mint`
-* From this directory run `rake opentrace`
-
-The rake task will install all dependencies, build the project, and open XCode
-(will take a while on the first run).
-
-
+There are no dependencies yet so just need to open `opentrace.xcodeproj` with
+Xcode and 11.4.1 and hit run.
