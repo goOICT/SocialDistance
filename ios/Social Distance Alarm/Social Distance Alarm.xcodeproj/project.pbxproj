@@ -16,6 +16,7 @@
 		C12E6E062467ADBA0036C930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E052467ADBA0036C930 /* Assets.xcassets */; };
 		C12E6E092467ADBA0036C930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E072467ADBA0036C930 /* LaunchScreen.storyboard */; };
 		C12E6E142467ADBB0036C930 /* Social_Distance_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */; };
+		C199FEB72470C0A900B6F210 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEB62470BF5100B6F210 /* BluetoothManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		C12E6E0F2467ADBB0036C930 /* Social Distance AlarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Social Distance AlarmTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_Distance_AlarmTests.swift; sourceTree = "<group>"; };
 		C12E6E152467ADBB0036C930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C199FEB62470BF5100B6F210 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		C12E6DF62467ADB80036C930 /* Social Distance Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				C199FEB62470BF5100B6F210 /* BluetoothManager.swift */,
 				C12E6DF72467ADB80036C930 /* AppDelegate.swift */,
 				C12E6DF92467ADB80036C930 /* SceneDelegate.swift */,
 				C12E6DFB2467ADB80036C930 /* FirstViewController.swift */,
@@ -210,6 +213,7 @@
 				C12E6DFC2467ADB80036C930 /* FirstViewController.swift in Sources */,
 				C12E6E042467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld in Sources */,
 				C12E6DF82467ADB80036C930 /* AppDelegate.swift in Sources */,
+				C199FEB72470C0A900B6F210 /* BluetoothManager.swift in Sources */,
 				C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +412,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3AC7V9ZUF4;
 				INFOPLIST_FILE = "Social Distance AlarmTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -429,6 +434,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3AC7V9ZUF4;
 				INFOPLIST_FILE = "Social Distance AlarmTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (

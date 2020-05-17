@@ -9,6 +9,8 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    private lazy var bluetoothManager: BluetoothManager = CoreBluetoothManager()
 
     var window: UIWindow?
 
@@ -40,6 +42,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        
+        
+        bluetoothManager.startScanning()
+        bluetoothManager.startAdvertising()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
