@@ -110,7 +110,7 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         DeviceRepository.sharedInstance.updateCurrentDevices()
         central.scanForPeripherals(withServices: [uuid])
 
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { _ in
             self.scanForApps(central: central, uuid: uuid)
         }
     }
@@ -132,7 +132,7 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         let dateString = dateFormatter.string(from: date)
         print(dateString)
         print("++++++++++++")
-        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+
     }
     
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AudioToolbox
 
 class DeviceRepository {
     
@@ -22,6 +23,7 @@ class DeviceRepository {
     }()
     
     func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date) {
+        // Add the device to the database
         let newDevice = Device(context: self.context)
         newDevice.deviceUuid = deviceUuid
         newDevice.rssi = rssi
@@ -31,17 +33,47 @@ class DeviceRepository {
         
         newDevice.scanDate = scanDate
 
+        // TODO: remove old devices
+    }
+    
+    func updateCurrentDevices() {
         do {
             try context.save()
         } catch {
             print("Error saving context \(error)")
         }
         
-        // TODO: remove old devices
+        currentListener?.onRepositoryUpdate()
+        doAlerts()
     }
     
-    func updateCurrentDevices() {
-        currentListener?.onRepositoryUpdate()
+    func doAlerts() {
+        var tooClose = false
+        var danger = false
+        var warn = false
+        for device in getCurrentDevices() {
+            let signal = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower)
+            
+            if (signal >= AppConstants.signalDistanceStrongWarn) {
+                tooClose = true
+            } else if (signal >= AppConstants.signlaDistanceLightWarn) {
+                danger = true
+            } else if (signal >= AppConstants.signalDistanceOk) {
+                warn = true
+            }
+        }
+        
+        // Warn about proximity with feeback
+        if (tooClose) {
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+        } else if (danger) {
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) { }
+        } else if (warn) {
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(1520)) { }
+        }
     }
     
     func noCurrentDevices() {

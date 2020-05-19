@@ -16,6 +16,8 @@
 		C12E6E062467ADBA0036C930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E052467ADBA0036C930 /* Assets.xcassets */; };
 		C12E6E092467ADBA0036C930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E072467ADBA0036C930 /* LaunchScreen.storyboard */; };
 		C12E6E142467ADBB0036C930 /* Social_Distance_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */; };
+		C1965910247379CD009E8F96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196590F247379CD009E8F96 /* Constants.swift */; };
+		C196591324737F6C009E8F96 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196591224737F6C009E8F96 /* Util.swift */; };
 		C199FEB72470C0A900B6F210 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEB62470BF5100B6F210 /* BluetoothManager.swift */; };
 		C199FEBC2470CF8E00B6F210 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEBB2470CF8E00B6F210 /* DeviceRepository.swift */; };
 		C199FEC02471211C00B6F210 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C199FEBF2471211C00B6F210 /* Colors.xcassets */; };
@@ -46,6 +48,8 @@
 		C12E6E0F2467ADBB0036C930 /* Social Distance AlarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Social Distance AlarmTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_Distance_AlarmTests.swift; sourceTree = "<group>"; };
 		C12E6E152467ADBB0036C930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C196590F247379CD009E8F96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C196591224737F6C009E8F96 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C199FEB62470BF5100B6F210 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		C199FEBB2470CF8E00B6F210 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		C199FEBF2471211C00B6F210 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				C12E6E0A2467ADBA0036C930 /* Info.plist */,
 				C199FEBA2470CF0B00B6F210 /* Data Model */,
 				C199FEBF2471211C00B6F210 /* Colors.xcassets */,
+				C196591124737F44009E8F96 /* Util */,
 			);
 			path = "Social Distance Alarm";
 			sourceTree = "<group>";
@@ -113,6 +118,15 @@
 				C12E6E152467ADBB0036C930 /* Info.plist */,
 			);
 			path = "Social Distance AlarmTests";
+			sourceTree = "<group>";
+		};
+		C196591124737F44009E8F96 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C196590F247379CD009E8F96 /* Constants.swift */,
+				C196591224737F6C009E8F96 /* Util.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		C199FEB92470CA5A00B6F210 /* Alarm */ = {
@@ -258,7 +272,9 @@
 				C12E6DF82467ADB80036C930 /* AppDelegate.swift in Sources */,
 				C199FEB72470C0A900B6F210 /* BluetoothManager.swift in Sources */,
 				C199FEC82471DF7000B6F210 /* DeviceDistanceTableViewCell.swift in Sources */,
+				C196591324737F6C009E8F96 /* Util.swift in Sources */,
 				C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */,
+				C1965910247379CD009E8F96 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
