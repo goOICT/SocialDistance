@@ -92,7 +92,7 @@ class DeviceRepository {
         let timePredicate = NSPredicate(format: "scanDate >= %@", startTime)
         let request: NSFetchRequest<Device> = Device.fetchRequest()
         request.predicate = timePredicate
-        let sortDesc = NSSortDescriptor(key: "scanDate", ascending: false)
+        let sortDesc = NSSortDescriptor(key: "rssi", ascending: false)
         request.sortDescriptors = [sortDesc]
         
         do {

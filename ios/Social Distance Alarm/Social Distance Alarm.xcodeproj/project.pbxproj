@@ -10,7 +10,7 @@
 		C12E6DF82467ADB80036C930 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DF72467ADB80036C930 /* AppDelegate.swift */; };
 		C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DF92467ADB80036C930 /* SceneDelegate.swift */; };
 		C12E6DFC2467ADB80036C930 /* DistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DFB2467ADB80036C930 /* DistanceViewController.swift */; };
-		C12E6DFE2467ADB80036C930 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DFD2467ADB80036C930 /* HistoryViewController.swift */; };
+		C12E6DFE2467ADB80036C930 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DFD2467ADB80036C930 /* HistoryTableViewController.swift */; };
 		C12E6E012467ADB80036C930 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12E6DFF2467ADB80036C930 /* Main.storyboard */; };
 		C12E6E042467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C12E6E022467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld */; };
 		C12E6E062467ADBA0036C930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E052467ADBA0036C930 /* Assets.xcassets */; };
@@ -39,7 +39,7 @@
 		C12E6DF72467ADB80036C930 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C12E6DF92467ADB80036C930 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C12E6DFB2467ADB80036C930 /* DistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceViewController.swift; sourceTree = "<group>"; };
-		C12E6DFD2467ADB80036C930 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		C12E6DFD2467ADB80036C930 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C12E6E002467ADB80036C930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C12E6E032467ADB80036C930 /* Social_Distance_Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Social_Distance_Alarm.xcdatamodel; sourceTree = "<group>"; };
 		C12E6E052467ADBA0036C930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 		C199FEC22471D80A00B6F210 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				C12E6DFD2467ADB80036C930 /* HistoryViewController.swift */,
+				C12E6DFD2467ADB80036C930 /* HistoryTableViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C12E6DFE2467ADB80036C930 /* HistoryViewController.swift in Sources */,
+				C12E6DFE2467ADB80036C930 /* HistoryTableViewController.swift in Sources */,
 				C199FEBC2470CF8E00B6F210 /* DeviceRepository.swift in Sources */,
 				C12E6DFC2467ADB80036C930 /* DistanceViewController.swift in Sources */,
 				C12E6E042467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld in Sources */,
