@@ -107,9 +107,10 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
             central.stopScan()
         }
 
+        DeviceRepository.sharedInstance.updateCurrentDevices()
         central.scanForPeripherals(withServices: [uuid])
 
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
             self.scanForApps(central: central, uuid: uuid)
         }
     }
@@ -119,15 +120,15 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         let uuid = advertisementData[CBAdvertisementDataServiceUUIDsKey]
         let uuidOverflow = advertisementData[CBAdvertisementDataOverflowServiceUUIDsKey]
         let rssi = RSSI
-        let txPower = advertisementData[CBAdvertisementDataTxPowerLevelKey]
+        let txPower = advertisementData[CBAdvertisementDataTxPowerLevelKey] as! Int32?
+        let date = Date()
+        DeviceRepository.sharedInstance.insert(deviceUuid: uuid.debugDescription, rssi: Int32(truncating: rssi), txPower: txPower, scanDate: date)
         print("------------")
         print(uuid)
-        print(uuidOverflow)
         print(rssi)
         print(txPower)
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = Date()
         let dateString = dateFormatter.string(from: date)
         print(dateString)
         print("++++++++++++")
