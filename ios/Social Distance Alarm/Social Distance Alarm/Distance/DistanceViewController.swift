@@ -20,6 +20,7 @@ class DistanceViewController: UIViewController, UITableViewDataSource, UITableVi
         distanceTableView.dataSource = self
         
         DeviceRepository.sharedInstance.currentListener = self
+        onRepositoryUpdate()
     }
 
     //MARK: - Tableview Datasource Methods
@@ -34,13 +35,21 @@ class DistanceViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let power = (device.rssi - device.txPower) * -1
         cell.distanceDescription.text = String(format: "Signal strength: %d", power)
+        
+        tableView.sizeToFit()
           
         return cell
     }
 
     func onRepositoryUpdate() {
         deviceArray = DeviceRepository.sharedInstance.getCurrentDevices()
-        distanceTableView.reloadData()
+        
+        if (deviceArray.count != 0) {
+            distanceTableView.isHidden = false
+            distanceTableView.reloadData()
+        } else {
+            distanceTableView.isHidden = true
+        }
     }
 }
 
