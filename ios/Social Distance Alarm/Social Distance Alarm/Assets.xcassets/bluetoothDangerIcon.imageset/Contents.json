@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bluetoothDangerIcon-2.pdf",
+      "filename" : "bluetoothDangerIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bluetoothDangerIcon-1.pdf",
+      "filename" : "bluetoothDangerIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bluetoothDangerIcon.pdf",
+      "filename" : "bluetoothDangerIcon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
