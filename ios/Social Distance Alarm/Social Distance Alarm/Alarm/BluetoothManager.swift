@@ -15,12 +15,14 @@ protocol BluetoothManagerDelegate: AnyObject {
 protocol BluetoothManager {
     var peripherals: Dictionary<UUID, CBPeripheral> { get }
     var delegate: BluetoothManagerDelegate? { get set }
+    var isPaused: Bool { get set }
     func startAdvertising()
     func startScanning()
 }
 
 class CoreBluetoothManager: NSObject, BluetoothManager {
     // MARK: - Public properties
+    var isPaused: Bool = false
     weak var delegate: BluetoothManagerDelegate?
     private(set) var peripherals = Dictionary<UUID, CBPeripheral>() {
         didSet {
@@ -30,13 +32,16 @@ class CoreBluetoothManager: NSObject, BluetoothManager {
 
     // MARK: - Public methods
     func startAdvertising() {
+        isPaused = false
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil,
                                                 options: [CBCentralManagerOptionRestoreIdentifierKey: "ai.kun.socialdistancealarm.peripheral"])
     }
 
     func startScanning() {
+        isPaused = false
         centralManager = CBCentralManager(delegate: self, queue: nil,
             options: [CBCentralManagerOptionRestoreIdentifierKey: "ai.kun.socialdistancealarm.central"])
+
     }
 
     // MARK: - Private properties
@@ -70,6 +75,7 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
             peripheralManager.stopAdvertising()
         }
 
+        if (!isPaused) {
             let uuid = CBUUID(string: Constants.SERVICE_UUID.rawValue)
             var advertisingData: [String : Any] = [
                 CBAdvertisementDataLocalNameKey: "social-distance-alarm",
@@ -80,14 +86,15 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
         
             peripheralManager.startAdvertising(advertisingData)
 
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
-            self.broadcastToApps(peripheralManager: peripheralManager, advertisingData: advertisingData)
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+                self.broadcastToApps(peripheralManager: peripheralManager, advertisingData: advertisingData)
+            }
         }
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
         print("Peripheral Manager willRestoreState called")
-        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        peripheralManager?.stopAdvertising()
     }
 }
 
@@ -107,11 +114,13 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
             central.stopScan()
         }
 
-        DeviceRepository.sharedInstance.updateCurrentDevices()
-        central.scanForPeripherals(withServices: [uuid])
+        if (!isPaused) {
+            DeviceRepository.sharedInstance.updateCurrentDevices()
+            central.scanForPeripherals(withServices: [uuid])
 
-        Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { _ in
-            self.scanForApps(central: central, uuid: uuid)
+            Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { _ in
+                self.scanForApps(central: central, uuid: uuid)
+            }
         }
     }
 
@@ -122,7 +131,9 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         let rssi = RSSI
         let txPower = advertisementData[CBAdvertisementDataTxPowerLevelKey] as! Int32?
         let date = Date()
-        DeviceRepository.sharedInstance.insert(deviceUuid: uuid.debugDescription, rssi: Int32(truncating: rssi), txPower: txPower, scanDate: date)
+        if (uuid != nil) {
+            DeviceRepository.sharedInstance.insert(deviceUuid: uuid.debugDescription, rssi: Int32(truncating: rssi), txPower: txPower, scanDate: date)
+        }
         print("------------")
         print(uuid)
         print(rssi)
@@ -137,6 +148,5 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
     
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
         print("Central Manager willRestoreState called")
-        centralManager = CBCentralManager(delegate: self, queue: nil)
     }
 }

@@ -74,7 +74,7 @@
                                                     <color key="textColor" name="grey"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothTooCloseIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Rqr-Od-nfM">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothTooCloseIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Rqr-Od-nfM">
                                                     <rect key="frame" x="308" y="30.5" width="37" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="37" id="ctk-mR-fTW"/>
