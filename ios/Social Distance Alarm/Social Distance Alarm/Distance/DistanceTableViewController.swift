@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FirstViewController.swift
 //  Social Distance Alarm
 //
 //  Created by Aaron Cooley on 5/9/20.
@@ -8,18 +8,20 @@
 
 import UIKit
 
-class HistoryTableViewController: UITableViewController, DeviceRepositoryListener {
+class DistanceTableViewController: UITableViewController,  DeviceRepositoryListener {
+    
     var deviceArray = [Device]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DeviceRepository.sharedInstance.currentListener = self
         onRepositoryUpdate()
-        
     }
 
     //MARK: - Tableview Datasource Methods
@@ -28,21 +30,12 @@ class HistoryTableViewController: UITableViewController, DeviceRepositoryListene
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceItemCell", for: indexPath) as! DeviceHistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceItemCell", for: indexPath) as! DeviceDistanceTableViewCell
           
         let device = deviceArray[indexPath.row]
         
         let power = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower)
         cell.signalStrength.text = String(format: "Signal strength: %d", power)
-        
-        let dateFormatter : DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = device.scanDate
-        var dateString: String = ""
-        if (date != nil) {
-            dateString = dateFormatter.string(from: date!)
-        }
-        cell.date.text = dateString
         
         if (power > AppConstants.signalDistanceStrongWarn) {
             cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothTooCloseIcon.pdf").withRenderingMode(.alwaysTemplate)
@@ -74,7 +67,13 @@ class HistoryTableViewController: UITableViewController, DeviceRepositoryListene
     }
 
     func onRepositoryUpdate() {
-        deviceArray = DeviceRepository.sharedInstance.getAllDevices()
+        deviceArray = DeviceRepository.sharedInstance.getCurrentDevices()
+
+        if (deviceArray.count != 0) {
+
+        } else {
+
+        }
         tableView.reloadData()
     }
 }
