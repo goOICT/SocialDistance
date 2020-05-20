@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bluetoothGoodIcon.pdf",
+      "filename" : "bluetoothGoodIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bluetoothGoodIcon-1.pdf",
+      "filename" : "bluetoothGoodIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bluetoothGoodIcon-2.pdf",
+      "filename" : "bluetoothGoodIcon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

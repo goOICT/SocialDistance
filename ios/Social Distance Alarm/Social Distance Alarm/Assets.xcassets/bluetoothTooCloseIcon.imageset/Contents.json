@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bluetoothTooCloseIcon.pdf",
+      "filename" : "bluetoothTooCloseIcon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bluetoothTooCloseIcon-1.pdf",
+      "filename" : "bluetoothTooCloseIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bluetoothTooCloseIcon-2.pdf",
+      "filename" : "bluetoothTooCloseIcon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
