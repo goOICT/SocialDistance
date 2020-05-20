@@ -28,7 +28,7 @@ class HistoryTableViewController: UITableViewController, DeviceRepositoryListene
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceItemCell", for: indexPath) as! DeviceHistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryItemCell", for: indexPath) as! DeviceHistoryTableViewCell
           
         let device = deviceArray[indexPath.row]
         
