@@ -1,0 +1,6 @@
+framework module Pods_Social_Distance_AlarmTests {
+  umbrella header "Pods-Social Distance AlarmTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
