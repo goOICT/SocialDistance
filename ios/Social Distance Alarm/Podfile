@@ -6,6 +6,7 @@ target 'Social Distance Alarm' do
   use_frameworks!
 
   # Pods for Social Distance Alarm
+  pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
 
   target 'Social Distance AlarmTests' do
