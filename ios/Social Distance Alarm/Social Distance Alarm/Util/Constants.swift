@@ -14,5 +14,7 @@ enum AppConstants {
     static let signlaDistanceLightWarn = 41 // This to SIGNAL_DISTANCE_OK warning = yellow
     static let signalDistanceStrongWarn = 55 // This to SIGNAL_DISTANCE_LIGHT_WARN strong warning = orange
     // ...and above this is not socially distant = red
+    
+    static let pauseNotificationId = "Pause Notification"
 
 }

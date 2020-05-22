@@ -11,14 +11,25 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var bluetoothManager: BluetoothManager = CoreBluetoothManager()
-
-    var window: UIWindow?
-    
-    
     let notificationCenter = UNUserNotificationCenter.current()
 
 
+    var window: UIWindow?
+
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        notificationCenter.delegate = self
+        
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        
+        notificationCenter.requestAuthorization(options: options) {
+            (didAllow, error) in
+            if !didAllow {
+                print("User has declined notifications")
+            }
+        }
+
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
@@ -58,9 +69,65 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+    
         bluetoothManager.pause(true)
+        
+        // Going into the background pauses our ability to scan other iPhones that
+        // are also in the background, so we pause scanning and let the user know
+        // with a notification...
+        scheduleNotification()
     }
 
 
 }
 
+extension SceneDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.notification.request.identifier == "PocketMode" {
+            print("Handling notifications with the Local Notification Identifier")
+        }
+        
+        completionHandler()
+    }
+    
+    func scheduleNotification() {
+        
+        let content = UNMutableNotificationContent()
+        let categoryIdentifire = "Pause Notification Type"
+        
+        content.title = "Paused"
+        content.body = "Social Distance Alarm is paused. Tap here to resume scanning for devices, or long press for pocket mode."
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        content.categoryIdentifier = categoryIdentifire
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let identifier = AppConstants.pauseNotificationId
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+            }
+        }
+        
+        let pocketModeAction = UNNotificationAction(identifier: "PocketMode", title: "Pocket Mode", options: [])
+        let category = UNNotificationCategory(identifier: categoryIdentifire,
+                                              actions: [pocketModeAction],
+                                              intentIdentifiers: [],
+                                              options: [])
+        
+        notificationCenter.setNotificationCategories([category])
+    }
+}

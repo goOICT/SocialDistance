@@ -23,7 +23,7 @@ class LockScreenViewController: UIViewController, SlideButtonDelegate {
     // MARK: - Navigation
     func buttonStatus(status: String, sender: MMSlidingButton) {
         performSegue(withIdentifier: "unwindToPocketView", sender: self)
-                self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override var prefersStatusBarHidden: Bool {

@@ -16,6 +16,6 @@ class PocketViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func unindToPocketView( _ seg: UIStoryboardSegue) {}
+    @IBAction func unwindToPocketView( _ seg: UIStoryboardSegue) {}
 
 }
