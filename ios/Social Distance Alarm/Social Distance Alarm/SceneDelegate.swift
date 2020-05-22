@@ -13,6 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private lazy var bluetoothManager: BluetoothManager = CoreBluetoothManager()
 
     var window: UIWindow?
+    
+    
+    let notificationCenter = UNUserNotificationCenter.current()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -55,7 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-        bluetoothManager.isPaused = true
+        bluetoothManager.pause(true)
     }
 
 

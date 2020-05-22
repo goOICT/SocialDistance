@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D9A1D0C38BD64E04DCB7BCE /* Pods_Social_Distance_Alarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012E026F008811B299D62139 /* Pods_Social_Distance_Alarm.framework */; };
 		569045D794FE22AC21100E82 /* Pods_Social_Distance_AlarmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14296E0BE1B0B35726D2CFA /* Pods_Social_Distance_AlarmTests.framework */; };
+		C10F0EAC24772CA80059A2A3 /* MMSlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F0EAB24772CA80059A2A3 /* MMSlidingButton.swift */; };
+		C10F0EAE24773A280059A2A3 /* LockScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F0EAD24773A280059A2A3 /* LockScreenViewController.swift */; };
 		C12E6DF82467ADB80036C930 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DF72467ADB80036C930 /* AppDelegate.swift */; };
 		C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DF92467ADB80036C930 /* SceneDelegate.swift */; };
 		C12E6DFC2467ADB80036C930 /* DistanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DFB2467ADB80036C930 /* DistanceTableViewController.swift */; };
@@ -18,7 +20,6 @@
 		C12E6E062467ADBA0036C930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E052467ADBA0036C930 /* Assets.xcassets */; };
 		C12E6E092467ADBA0036C930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E072467ADBA0036C930 /* LaunchScreen.storyboard */; };
 		C12E6E142467ADBB0036C930 /* Social_Distance_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */; };
-		C14CB98F2474CA100043498E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C14CB98E2474CA100043498E /* GoogleService-Info.plist */; };
 		C15B66902473D89600962D98 /* AppNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15B668F2473D89600962D98 /* AppNavigationViewController.swift */; };
 		C15B66922474A6F600962D98 /* DeviceHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15B66912474A6F600962D98 /* DeviceHistoryTableViewCell.swift */; };
 		C1965910247379CD009E8F96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196590F247379CD009E8F96 /* Constants.swift */; };
@@ -27,6 +28,8 @@
 		C199FEBC2470CF8E00B6F210 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEBB2470CF8E00B6F210 /* DeviceRepository.swift */; };
 		C199FEC02471211C00B6F210 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C199FEBF2471211C00B6F210 /* Colors.xcassets */; };
 		C199FEC82471DF7000B6F210 /* DeviceDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEC72471DF7000B6F210 /* DeviceDistanceTableViewCell.swift */; };
+		C1A1D2E0247785B200F53479 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1A1D2DF247785B200F53479 /* GoogleService-Info.plist */; };
+		C1B7199E24750FF400A6F9E9 /* PocketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B7199D24750FF400A6F9E9 /* PocketViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,8 @@
 		012E026F008811B299D62139 /* Pods_Social_Distance_Alarm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Distance_Alarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FCB639F33A2F680D973D29D /* Pods-Social Distance Alarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance Alarm.debug.xcconfig"; path = "Target Support Files/Pods-Social Distance Alarm/Pods-Social Distance Alarm.debug.xcconfig"; sourceTree = "<group>"; };
 		A2DB025B31558F287CF1D31E /* Pods-Social Distance AlarmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance AlarmTests.release.xcconfig"; path = "Target Support Files/Pods-Social Distance AlarmTests/Pods-Social Distance AlarmTests.release.xcconfig"; sourceTree = "<group>"; };
+		C10F0EAB24772CA80059A2A3 /* MMSlidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMSlidingButton.swift; sourceTree = "<group>"; };
+		C10F0EAD24773A280059A2A3 /* LockScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenViewController.swift; sourceTree = "<group>"; };
 		C12E6DF42467ADB80036C930 /* Social Distance Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Distance Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12E6DF72467ADB80036C930 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C12E6DF92467ADB80036C930 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +61,6 @@
 		C12E6E0F2467ADBB0036C930 /* Social Distance AlarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Social Distance AlarmTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_Distance_AlarmTests.swift; sourceTree = "<group>"; };
 		C12E6E152467ADBB0036C930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C14CB98E2474CA100043498E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C15B668F2473D89600962D98 /* AppNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationViewController.swift; sourceTree = "<group>"; };
 		C15B66912474A6F600962D98 /* DeviceHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		C196590F247379CD009E8F96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 		C199FEBB2470CF8E00B6F210 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		C199FEBF2471211C00B6F210 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		C199FEC72471DF7000B6F210 /* DeviceDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDistanceTableViewCell.swift; sourceTree = "<group>"; };
+		C1A1D2DF247785B200F53479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C1B7199D24750FF400A6F9E9 /* PocketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketViewController.swift; sourceTree = "<group>"; };
 		E14296E0BE1B0B35726D2CFA /* Pods_Social_Distance_AlarmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Distance_AlarmTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5F6CBA7C445A48999273DD /* Pods-Social Distance AlarmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance AlarmTests.debug.xcconfig"; path = "Target Support Files/Pods-Social Distance AlarmTests/Pods-Social Distance AlarmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F0C2276326643DE982141D9F /* Pods-Social Distance Alarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance Alarm.release.xcconfig"; path = "Target Support Files/Pods-Social Distance Alarm/Pods-Social Distance Alarm.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,7 +130,8 @@
 		C12E6DF62467ADB80036C930 /* Social Distance Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				C14CB98E2474CA100043498E /* GoogleService-Info.plist */,
+				C1B7199C24750FAA00A6F9E9 /* Pocket */,
+				C1A1D2DF247785B200F53479 /* GoogleService-Info.plist */,
 				C199FEB92470CA5A00B6F210 /* Alarm */,
 				C12E6DF72467ADB80036C930 /* AppDelegate.swift */,
 				C12E6DF92467ADB80036C930 /* SceneDelegate.swift */,
@@ -193,6 +200,16 @@
 				C15B66912474A6F600962D98 /* DeviceHistoryTableViewCell.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		C1B7199C24750FAA00A6F9E9 /* Pocket */ = {
+			isa = PBXGroup;
+			children = (
+				C1B7199D24750FF400A6F9E9 /* PocketViewController.swift */,
+				C10F0EAB24772CA80059A2A3 /* MMSlidingButton.swift */,
+				C10F0EAD24773A280059A2A3 /* LockScreenViewController.swift */,
+			);
+			path = Pocket;
 			sourceTree = "<group>";
 		};
 		E3D552C994FA551CFDB2B5BE /* Frameworks */ = {
@@ -290,9 +307,9 @@
 			files = (
 				C12E6E092467ADBA0036C930 /* LaunchScreen.storyboard in Resources */,
 				C199FEC02471211C00B6F210 /* Colors.xcassets in Resources */,
-				C14CB98F2474CA100043498E /* GoogleService-Info.plist in Resources */,
 				C12E6E062467ADBA0036C930 /* Assets.xcassets in Resources */,
 				C12E6E012467ADB80036C930 /* Main.storyboard in Resources */,
+				C1A1D2E0247785B200F53479 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +392,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C15B66902473D89600962D98 /* AppNavigationViewController.swift in Sources */,
+				C10F0EAE24773A280059A2A3 /* LockScreenViewController.swift in Sources */,
 				C12E6DFE2467ADB80036C930 /* HistoryTableViewController.swift in Sources */,
+				C10F0EAC24772CA80059A2A3 /* MMSlidingButton.swift in Sources */,
 				C199FEBC2470CF8E00B6F210 /* DeviceRepository.swift in Sources */,
 				C12E6DFC2467ADB80036C930 /* DistanceTableViewController.swift in Sources */,
 				C12E6E042467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld in Sources */,
@@ -386,6 +405,7 @@
 				C196591324737F6C009E8F96 /* Util.swift in Sources */,
 				C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */,
 				C1965910247379CD009E8F96 /* Constants.swift in Sources */,
+				C1B7199E24750FF400A6F9E9 /* PocketViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,8 +588,8 @@
 			baseConfigurationReference = F0C2276326643DE982141D9F /* Pods-Social Distance Alarm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3AC7V9ZUF4;
 				INFOPLIST_FILE = "Social Distance Alarm/Info.plist";
@@ -580,7 +600,7 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "ai.kun.Social-Distance-Alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Aaron house and Randall";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
