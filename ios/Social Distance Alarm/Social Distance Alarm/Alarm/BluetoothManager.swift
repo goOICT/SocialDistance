@@ -15,12 +15,31 @@ protocol BluetoothManagerDelegate: AnyObject {
 protocol BluetoothManager {
     var peripherals: Dictionary<UUID, CBPeripheral> { get }
     var delegate: BluetoothManagerDelegate? { get set }
-    var isPaused: Bool { get set }
+    func pause(_ with: Bool)
     func startAdvertising()
     func startScanning()
 }
 
 class CoreBluetoothManager: NSObject, BluetoothManager {
+    func pause(_ with: Bool) {
+        self.isPaused = with
+        
+        if (isPaused) {
+            // Make sure the user knows we are paused...
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {
+                AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {
+                    AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {
+                        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {
+                            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {}
+                        }
+                    }
+                }
+            }
+            
+            
+        }
+    }
+    
     // MARK: - Public properties
     var isPaused: Bool = false
     weak var delegate: BluetoothManagerDelegate?

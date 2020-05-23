@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,27 +13,28 @@
             <objects>
                 <tableViewController id="9pv-A4-QxB" customClass="DistanceTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vbh-a9-1P1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" name="background"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeviceItemCell" id="IOX-8d-I2k" customClass="DeviceDistanceTableViewCell" customModule="Social_Distance_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="110"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IOX-8d-I2k" id="tXJ-IY-hUy">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hzW-zD-neq">
-                                            <rect key="frame" x="21" y="34.5" width="28" height="41"/>
+                                            <rect key="frame" x="17" y="34.666666666666664" width="28" height="40.999999999999993"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40.5" id="llX-NN-cA6"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Too Close" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vna-tV-1aQ">
-                                            <rect key="frame" x="78" y="27" width="264" height="22"/>
+                                            <rect key="frame" x="43" y="27" width="264" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="DQb-ZQ-iTC"/>
                                             </constraints>
@@ -41,7 +43,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signal strength: 52" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH8-dV-67e">
-                                            <rect key="frame" x="78" y="51" width="264" height="24.5"/>
+                                            <rect key="frame" x="43" y="51" width="264" height="24.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="ZR4-jo-suy"/>
                                                 <constraint firstAttribute="height" constant="24" id="rCC-cA-Tni"/>
@@ -51,7 +53,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothTooCloseIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mQN-ht-iGR">
-                                            <rect key="frame" x="350" y="38" width="37" height="34"/>
+                                            <rect key="frame" x="315" y="38" width="37" height="34"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
@@ -95,27 +97,28 @@
             <objects>
                 <tableViewController id="8rJ-Kc-sve" customClass="HistoryTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Eu-yt-WYz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" name="background"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryItemCell" id="7pQ-Ej-Wrx" userLabel="HistoryItemCell" customClass="DeviceHistoryTableViewCell" customModule="Social_Distance_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="119.5"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="119.33333587646484"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7pQ-Ej-Wrx" id="Ahf-6L-Uxk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119.33333587646484"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-wb-bFK">
-                                            <rect key="frame" x="21" y="39.5" width="28" height="40.5"/>
+                                            <rect key="frame" x="17" y="39.333333333333343" width="28" height="40.666666666666657"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40.5" id="8Im-gx-woz"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Too Close" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDi-IP-3zo">
-                                            <rect key="frame" x="78" y="24" width="264" height="22"/>
+                                            <rect key="frame" x="74" y="24" width="264" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="DEj-h5-bYz"/>
                                                 <constraint firstAttribute="height" constant="22" id="OnB-sd-JQq"/>
@@ -125,7 +128,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signal strength: 52" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV2-ps-xec">
-                                            <rect key="frame" x="78" y="48" width="264" height="23.5"/>
+                                            <rect key="frame" x="74" y="48" width="264" height="23.333333333333329"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="I0r-fL-pko"/>
                                             </constraints>
@@ -134,10 +137,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothTooCloseIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rea-WM-Aue">
-                                            <rect key="frame" x="350" y="43" width="37" height="34"/>
+                                            <rect key="frame" x="315" y="42.666666666666664" width="37" height="33.999999999999993"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-05-19 16:21:47" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1J-kg-c36">
-                                            <rect key="frame" x="78" y="72.5" width="264" height="24"/>
+                                            <rect key="frame" x="43" y="72.333333333333329" width="264" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="dun-fE-9u0"/>
                                                 <constraint firstAttribute="height" constant="24" id="z8l-RP-GbC"/>
@@ -187,6 +190,139 @@
             </objects>
             <point key="canvasLocation" x="1659.4202898550725" y="359.59821428571428"/>
         </scene>
+        <!--Pocket mode-->
+        <scene sceneID="yPN-Vq-L55">
+            <objects>
+                <viewController id="fxI-tF-Ky4" customClass="PocketViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vc1-zN-jFD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pocketModeSvg" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-gJ-eCJ">
+                                <rect key="frame" x="21" y="76" width="333" height="245"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLM-V9-Z4A">
+                                <rect key="frame" x="16" y="417" width="343" height="1"/>
+                                <color key="backgroundColor" name="divider"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Py6-2U-zFy"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeJ-GI-V9u">
+                                <rect key="frame" x="106.66666666666669" y="427" width="162" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="eow-ox-uCg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Put app in pocket mode">
+                                    <color key="titleColor" name="blue"/>
+                                </state>
+                                <connections>
+                                    <segue destination="36U-Tj-7Us" kind="show" id="3Hy-Ck-JZd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It’s a good idea to put the app in pocket mode when you’re not using your phone so the app stays on and detects other devices." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4H-I6-33X">
+                                <rect key="frame" x="13" y="336" width="349" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="lPW-3R-78q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="background"/>
+                        <constraints>
+                            <constraint firstItem="bLM-V9-Z4A" firstAttribute="centerX" secondItem="ZeJ-GI-V9u" secondAttribute="centerX" id="4SM-pu-V5O"/>
+                            <constraint firstItem="bLM-V9-Z4A" firstAttribute="leading" secondItem="Vc1-zN-jFD" secondAttribute="leadingMargin" id="7XA-XA-8Wd"/>
+                            <constraint firstItem="Rrw-gJ-eCJ" firstAttribute="centerX" secondItem="Vc1-zN-jFD" secondAttribute="centerX" id="BNG-1D-nMF"/>
+                            <constraint firstItem="n4H-I6-33X" firstAttribute="top" secondItem="Rrw-gJ-eCJ" secondAttribute="bottom" constant="15" id="Bvd-XT-akv"/>
+                            <constraint firstItem="n4H-I6-33X" firstAttribute="leading" secondItem="9yj-nO-vAM" secondAttribute="leading" constant="13" id="EQu-ty-Oab"/>
+                            <constraint firstItem="n4H-I6-33X" firstAttribute="top" secondItem="Vc1-zN-jFD" secondAttribute="centerY" id="KvN-qc-IiX"/>
+                            <constraint firstItem="n4H-I6-33X" firstAttribute="centerX" secondItem="bLM-V9-Z4A" secondAttribute="centerX" id="Txq-xy-4IV"/>
+                            <constraint firstItem="9yj-nO-vAM" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZeJ-GI-V9u" secondAttribute="bottom" id="Ual-6B-YHD"/>
+                            <constraint firstItem="bLM-V9-Z4A" firstAttribute="top" secondItem="n4H-I6-33X" secondAttribute="bottom" constant="16" id="YYd-hN-94P"/>
+                            <constraint firstItem="ZeJ-GI-V9u" firstAttribute="top" secondItem="bLM-V9-Z4A" secondAttribute="bottom" constant="9" id="bmJ-Lh-Rt2"/>
+                            <constraint firstItem="Rrw-gJ-eCJ" firstAttribute="centerX" secondItem="Vc1-zN-jFD" secondAttribute="centerX" id="cuE-hd-2As"/>
+                            <constraint firstItem="Rrw-gJ-eCJ" firstAttribute="centerX" secondItem="n4H-I6-33X" secondAttribute="centerX" id="xtv-eP-g2M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9yj-nO-vAM"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Pocket mode" id="aRP-o6-920" userLabel="Pocket"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kp1-Ze-d7I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1657.9710144927537" y="1058.7053571428571"/>
+        </scene>
+        <!--LockScreen-->
+        <scene sceneID="WtV-Cr-fFT">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="36U-Tj-7Us" userLabel="LockScreen" customClass="LockScreenViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EjH-mX-BQ5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="f60-t4-eoo" customClass="MMSlidingButton" customModule="Social_Distance_Alarm" customModuleProvider="target">
+                                <rect key="frame" x="10" y="122" width="355" height="75"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="zGK-Ai-zP6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dragPointWidth">
+                                        <real key="value" value="70"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonTextColor">
+                                        <color key="value" name="grey"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                                        <color key="value" name="black"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="dragPointTextColor">
+                                        <color key="value" name="grey"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonUnlockedTextColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonUnlockedColor">
+                                        <color key="value" name="lightGrey"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonCornerRadius">
+                                        <real key="value" value="34.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleAspectFit" image="iconDark" translatesAutoresizingMaskIntoConstraints="NO" id="zRF-5I-NIe">
+                                <rect key="frame" x="267" y="483" width="71" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="IrV-70-dMC"/>
+                                    <constraint firstAttribute="height" constant="71" id="Rl4-eG-yl1"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="srz-XQ-EuC" firstAttribute="trailing" secondItem="f60-t4-eoo" secondAttribute="trailing" constant="10" id="UeP-XT-9TK"/>
+                            <constraint firstItem="srz-XQ-EuC" firstAttribute="bottom" secondItem="zRF-5I-NIe" secondAttribute="bottom" constant="84" id="ZO4-if-6nf"/>
+                            <constraint firstItem="f60-t4-eoo" firstAttribute="centerX" secondItem="EjH-mX-BQ5" secondAttribute="centerX" id="hie-7B-9Xg"/>
+                            <constraint firstItem="f60-t4-eoo" firstAttribute="top" secondItem="srz-XQ-EuC" secondAttribute="top" constant="122" id="mLO-Gh-7Ur"/>
+                            <constraint firstItem="f60-t4-eoo" firstAttribute="leading" secondItem="srz-XQ-EuC" secondAttribute="leading" constant="10" id="o5C-BY-Nb2"/>
+                            <constraint firstItem="srz-XQ-EuC" firstAttribute="trailing" secondItem="zRF-5I-NIe" secondAttribute="trailing" constant="37" id="tXW-p9-d0H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="srz-XQ-EuC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7DW-w4-7MY"/>
+                    <connections>
+                        <outlet property="navigation" destination="7DW-w4-7MY" id="obq-cV-aKd"/>
+                        <outlet property="slidingButton" destination="f60-t4-eoo" id="tUh-8v-FWN"/>
+                        <segue destination="Ite-nt-RHu" kind="unwind" identifier="unwindToPocketView" unwindAction="unwindToPocketView:" id="4F5-8a-0mh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mE2-LW-B6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Ite-nt-RHu" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2584" y="1059"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -195,10 +331,12 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="8lo-V3-sCb" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="Uq8-yo-BL1" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="MOF-9v-07W" kind="relationship" relationship="viewControllers" id="moX-Vc-p8Q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -212,7 +350,7 @@
                     <tabBarItem key="tabBarItem" title="History" image="historyIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="t78-sG-PAa">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="red"/>
                         <color key="barTintColor" name="red"/>
@@ -239,7 +377,7 @@
                     <tabBarItem key="tabBarItem" title="Distance" image="bluetoothGoodIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="3DE-Bp-CsK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="red"/>
                         <color key="barTintColor" name="red"/>
@@ -259,23 +397,59 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
+        <!--Pocket-->
+        <scene sceneID="SPp-1Y-mib">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MOF-9v-07W" userLabel="Pocket" customClass="AppNavigationViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Pocket" image="pocketModeIcon" id="Bij-ca-u2x" userLabel="Pocket"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="hxm-7Z-ptk">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="red"/>
+                        <color key="barTintColor" name="red"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fxI-tF-Ky4" kind="relationship" relationship="rootViewController" id="SzH-vY-Lg9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hrM-iW-RbP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749" y="1059"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bluetoothGoodIcon" width="16" height="18"/>
         <image name="bluetoothTooCloseIcon" width="37" height="34"/>
         <image name="historyIcon" width="21" height="18"/>
+        <image name="iconDark" width="71" height="71"/>
         <image name="personIcon" width="28" height="40"/>
+        <image name="pocketModeIcon" width="25" height="15"/>
+        <image name="pocketModeSvg" width="333" height="245"/>
         <namedColor name="background">
             <color red="0.98039215686274506" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black">
             <color red="0.070588235294117646" green="0.094117647058823528" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="blue">
+            <color red="0.035294117647058823" green="0.18431372549019609" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="divider">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grey">
             <color red="0.33333333333333331" green="0.33333333333333331" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGrey">
+            <color red="0.50980392156862742" green="0.50980392156862742" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
             <color red="0.73333333333333328" green="0.0" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

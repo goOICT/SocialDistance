@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 import AudioToolbox
 
+protocol DeviceRepositoryListener {
+    func onRepositoryUpdate()
+}
+
 class DeviceRepository {
     
     public var currentListener: DeviceRepositoryListener? = nil
@@ -120,6 +124,4 @@ class DeviceRepository {
     }
 }
 
-protocol DeviceRepositoryListener {
-    func onRepositoryUpdate()
-}
+
