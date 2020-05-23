@@ -315,7 +315,7 @@
                     <connections>
                         <outlet property="navigation" destination="7DW-w4-7MY" id="obq-cV-aKd"/>
                         <outlet property="slidingButton" destination="f60-t4-eoo" id="tUh-8v-FWN"/>
-                        <segue destination="Ite-nt-RHu" kind="unwind" identifier="unwindToPocketView" unwindAction="unindToPocketView:" id="4F5-8a-0mh"/>
+                        <segue destination="Ite-nt-RHu" kind="unwind" identifier="unwindToPocketView" unwindAction="unwindToPocketView:" id="4F5-8a-0mh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE2-LW-B6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

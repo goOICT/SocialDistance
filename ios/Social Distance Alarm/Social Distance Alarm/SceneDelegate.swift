@@ -77,8 +77,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // with a notification...
         scheduleNotification()
     }
-
-
 }
 
 extension SceneDelegate: UNUserNotificationCenterDelegate {
