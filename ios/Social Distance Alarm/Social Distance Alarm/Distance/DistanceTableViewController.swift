@@ -44,19 +44,19 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
             cell.personIcon.tintColor = #colorLiteral(red: 0.7333333333, green: 0, blue: 0.1764705882, alpha: 1)
             cell.distanceDescription.text = "Too Close"
         } else if (power > AppConstants.signlaDistanceLightWarn) {
-            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothDangerIcon")
+            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothDangerIcon").withRenderingMode(.alwaysTemplate)
             cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.9294117647, green: 0.2784313725, blue: 0.09411764706, alpha: 1)
             cell.personIcon.image = #imageLiteral(resourceName: "personIcon.pdf").withRenderingMode(.alwaysTemplate)
             cell.personIcon.tintColor = #colorLiteral(red: 0.9294117647, green: 0.2784313725, blue: 0.09411764706, alpha: 1)
             cell.distanceDescription.text = "Danger"
         } else if (power > AppConstants.signalDistanceOk) {
-            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothWarningIcon")
+            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothWarningIcon").withRenderingMode(.alwaysTemplate)
             cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.7294117647, green: 0.6901960784, blue: 0.07450980392, alpha: 1)
             cell.personIcon.image = #imageLiteral(resourceName: "personIcon.pdf").withRenderingMode(.alwaysTemplate)
             cell.personIcon.tintColor = #colorLiteral(red: 0.7294117647, green: 0.6901960784, blue: 0.07450980392, alpha: 1)
             cell.distanceDescription.text = "Warning"
         } else {
-            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothGoodIcon")
+            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothGoodIcon").withRenderingMode(.alwaysTemplate)
             cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
             cell.personIcon.image = #imageLiteral(resourceName: "personIcon.pdf").withRenderingMode(.alwaysTemplate)
             cell.personIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
