@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rQ3-8T-7Pn">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -397,6 +397,63 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
+        <!--Carousel View Controller-->
+        <scene sceneID="S3u-fv-0uK">
+            <objects>
+                <viewController id="rQ3-8T-7Pn" userLabel="Carousel View Controller" customClass="CarouselViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XXu-uZ-aEB" userLabel="View">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3B-5x-SuT" userLabel="Vw Container">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" name="background"/>
+                                <connections>
+                                    <segue destination="xKA-zR-UnE" kind="embed" id="fV4-ud-EDg"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwx-cE-Rbg">
+                                <rect key="frame" x="304" y="740" width="35" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="mT0-cp-yDz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" name="blueOnboarding"/>
+                                </state>
+                                <connections>
+                                    <action selector="onNextPressed:" destination="rQ3-8T-7Pn" eventType="touchUpInside" id="dzg-BC-Gsz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="background"/>
+                        <constraints>
+                            <constraint firstItem="F3B-5x-SuT" firstAttribute="centerX" secondItem="XXu-uZ-aEB" secondAttribute="centerX" id="2AO-cU-HXb"/>
+                            <constraint firstItem="F3B-5x-SuT" firstAttribute="top" secondItem="XXu-uZ-aEB" secondAttribute="topMargin" id="6EB-td-4Cd"/>
+                            <constraint firstItem="nnh-ZT-TFJ" firstAttribute="trailing" secondItem="mwx-cE-Rbg" secondAttribute="trailing" constant="36" id="DAv-01-aBk"/>
+                            <constraint firstItem="nnh-ZT-TFJ" firstAttribute="bottom" secondItem="F3B-5x-SuT" secondAttribute="bottom" id="JMe-bW-fCt"/>
+                            <constraint firstItem="mwx-cE-Rbg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nnh-ZT-TFJ" secondAttribute="leading" constant="30" id="MZz-cs-M0j"/>
+                            <constraint firstAttribute="bottom" secondItem="mwx-cE-Rbg" secondAttribute="bottom" constant="27" id="j4k-F5-sd0"/>
+                            <constraint firstItem="F3B-5x-SuT" firstAttribute="leading" secondItem="nnh-ZT-TFJ" secondAttribute="leading" id="mN4-tZ-oa3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nnh-ZT-TFJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="carouselView" destination="F3B-5x-SuT" id="uJa-GZ-dUG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ls-9w-NJI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2.3999999999999999" y="1734.9753694581282"/>
+        </scene>
+        <!--Carousel Page View Controller-->
+        <scene sceneID="OY9-DP-7HN">
+            <objects>
+                <pageViewController storyboardIdentifier="onBoardPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="xKA-zR-UnE" customClass="CarouselPageViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2EO-Aj-nqY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="754" y="1729"/>
+        </scene>
         <!--Pocket-->
         <scene sceneID="SPp-1Y-mib">
             <objects>
@@ -441,6 +498,9 @@
         </namedColor>
         <namedColor name="blue">
             <color red="0.035294117647058823" green="0.18431372549019609" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="blueOnboarding">
+            <color red="0.043137254901960784" green="0.34509803921568627" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="divider">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
