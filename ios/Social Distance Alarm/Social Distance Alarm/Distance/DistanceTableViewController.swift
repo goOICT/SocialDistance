@@ -11,9 +11,13 @@ import UIKit
 class DistanceTableViewController: UITableViewController,  DeviceRepositoryListener {
     
     var deviceArray = [Device]()
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !defaults.bool(forKey: AppConstants.onboardedKey) {
+            performSegue(withIdentifier: "showOnboardView", sender: self)
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -75,6 +79,12 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
 
         }
         tableView.reloadData()
+    }
+    
+    @IBAction func unwindToDistanceView( _ seg: UIStoryboardSegue) {
+        defaults.set(true, forKey: AppConstants.onboardedKey)
+        CoreBluetoothManager.sharedInstance.startScanning()
+        CoreBluetoothManager.sharedInstance.startAdvertising()
     }
 }
 

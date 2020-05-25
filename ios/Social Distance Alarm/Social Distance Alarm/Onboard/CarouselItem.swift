@@ -11,11 +11,12 @@ class CarouselItem: UIView {
     @IBOutlet var vwContent: UIView!
     
     // MARK: - Init
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

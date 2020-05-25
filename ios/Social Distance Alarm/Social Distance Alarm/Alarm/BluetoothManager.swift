@@ -21,6 +21,13 @@ protocol BluetoothManager {
 }
 
 class CoreBluetoothManager: NSObject, BluetoothManager {
+    
+    static let sharedInstance: CoreBluetoothManager = {
+        let instance = CoreBluetoothManager()
+        // setup code
+        return instance
+    }()
+    
     func pause(_ with: Bool) {
         self.isPaused = with
         
@@ -35,8 +42,6 @@ class CoreBluetoothManager: NSObject, BluetoothManager {
                     }
                 }
             }
-            
-            
         }
     }
     
