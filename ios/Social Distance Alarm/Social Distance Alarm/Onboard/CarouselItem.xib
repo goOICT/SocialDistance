@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarouselItem" customModule="Social_Distance_Alarm" customModuleProvider="target">
+            <connections>
+                <outlet property="onboardImage" destination="geO-Ef-k7t" id="Ka5-DA-cEm"/>
+                <outlet property="onboardTextLabel" destination="zGY-zp-1ci" id="RC1-d5-Pn1"/>
+                <outlet property="onboardTitleLabel" destination="NH7-Cp-eX4" id="tKL-vP-zi4"/>
+                <outlet property="vwContent" destination="iN0-l3-epB" id="oMo-V9-jkv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="481" height="817"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="proximitySvg" translatesAutoresizingMaskIntoConstraints="NO" id="geO-Ef-k7t">
+                    <rect key="frame" x="53" y="2.5" width="375" height="812"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQS-Nw-rQm">
+                    <rect key="frame" x="0.0" y="651" width="481" height="166"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-Cp-eX4">
+                            <rect key="frame" x="175.5" y="32" width="130" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="kGL-qS-nWd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                            <color key="textColor" name="black"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGY-zp-1ci">
+                            <rect key="frame" x="30" y="67" width="421" height="88"/>
+                            <string key="text">Open Trace helps maintain social distance.
+It can see other devices with the app ON
+and tell you when they are too close.</string>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="textColor" name="black"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="zGY-zp-1ci" secondAttribute="bottom" constant="11" id="4nV-d0-ISc"/>
+                        <constraint firstItem="zGY-zp-1ci" firstAttribute="top" secondItem="NH7-Cp-eX4" secondAttribute="bottom" constant="11" id="8wD-20-5dO"/>
+                        <constraint firstItem="NH7-Cp-eX4" firstAttribute="top" secondItem="IQS-Nw-rQm" secondAttribute="top" constant="32" id="8z8-hq-Q3S"/>
+                        <constraint firstItem="NH7-Cp-eX4" firstAttribute="centerX" secondItem="IQS-Nw-rQm" secondAttribute="centerX" id="iMD-hQ-d4F"/>
+                        <constraint firstAttribute="height" constant="166" id="kCO-RS-mBP"/>
+                        <constraint firstAttribute="trailing" secondItem="zGY-zp-1ci" secondAttribute="trailing" constant="30" id="n20-oF-KD3"/>
+                        <constraint firstItem="zGY-zp-1ci" firstAttribute="leading" secondItem="IQS-Nw-rQm" secondAttribute="leading" constant="30" id="pnI-HC-d5N"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUO-KK-ExO">
+                    <rect key="frame" x="21" y="21" width="51" height="45"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="kunaiLogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="uXq-UQ-97z">
+                            <rect key="frame" x="13" y="7" width="25" height="31"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="APy-W3-2jG"/>
+                        <constraint firstItem="uXq-UQ-97z" firstAttribute="centerX" secondItem="NUO-KK-ExO" secondAttribute="centerX" id="Daz-BI-3GL"/>
+                        <constraint firstAttribute="width" constant="51" id="Ld6-fm-mtk"/>
+                        <constraint firstItem="uXq-UQ-97z" firstAttribute="centerY" secondItem="NUO-KK-ExO" secondAttribute="centerY" id="lk5-JR-AXl"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="7"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="rect" keyPath="layer.shadowOffset">
+                            <rect key="value" x="2" y="2" width="2" height="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                            <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" name="background"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IQS-Nw-rQm" secondAttribute="bottom" id="0DF-po-GO7"/>
+                <constraint firstItem="geO-Ef-k7t" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5m7-r6-xBC"/>
+                <constraint firstItem="NUO-KK-ExO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="21" id="7xu-OX-faE"/>
+                <constraint firstItem="geO-Ef-k7t" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CBi-Ae-rWZ"/>
+                <constraint firstItem="NUO-KK-ExO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21" id="Efs-1U-SkA"/>
+                <constraint firstItem="IQS-Nw-rQm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KSF-mO-TJm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IQS-Nw-rQm" secondAttribute="trailing" id="aIV-Tg-mUA"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="261.60000000000002" y="-172.26386806596702"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="kunaiLogoIcon" width="25" height="31"/>
+        <image name="proximitySvg" width="375" height="812"/>
+        <namedColor name="background">
+            <color red="0.98039215686274506" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.070588235294117646" green="0.094117647058823528" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

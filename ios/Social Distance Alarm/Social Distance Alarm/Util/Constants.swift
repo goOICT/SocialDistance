@@ -16,5 +16,6 @@ enum AppConstants {
     // ...and above this is not socially distant = red
     
     static let pauseNotificationId = "Pause Notification"
+    static let onboardedKey = "onboardedKey"
 
 }

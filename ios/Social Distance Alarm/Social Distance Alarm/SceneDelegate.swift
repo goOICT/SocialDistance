@@ -10,12 +10,10 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
-    private lazy var bluetoothManager: BluetoothManager = CoreBluetoothManager()
     let notificationCenter = UNUserNotificationCenter.current()
 
-
     var window: UIWindow?
-
+    let defaults = UserDefaults.standard
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -57,9 +55,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         
-        
-        bluetoothManager.startScanning()
-        bluetoothManager.startAdvertising()
+        if defaults.bool(forKey: AppConstants.onboardedKey) {
+            CoreBluetoothManager.sharedInstance.startScanning()
+            CoreBluetoothManager.sharedInstance.startAdvertising()
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -70,7 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     
-        bluetoothManager.pause(true)
+        CoreBluetoothManager.sharedInstance.pause(true)
         
         // Going into the background pauses our ability to scan other iPhones that
         // are also in the background, so we pause scanning and let the user know
