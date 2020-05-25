@@ -13,9 +13,15 @@
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="ai.kun.socialdistancealarm.ui.history.HistoryFragment"
+        android:name="ai.kun.socialdistancealarm.ui.history.TeamsFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/navigation_teams"
+        android:name="ai.kun.socialdistancealarm.ui.history.TeamsFragment"
+        android:label="@string/title_teams"
+        tools:layout="@layout/fragment_teams" />
 
     <fragment
         android:id="@+id/launchFragment"
