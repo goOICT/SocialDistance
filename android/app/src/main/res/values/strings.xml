@@ -37,5 +37,11 @@
     <string name="onboard_three_section_description">Detection will run unless paused.  While paused, the app will not detect other devices or be able to be detected.</string>
     <string name="there_are_no_app_users_detected">There are no app users \n detected.</string>
     <string name="title_teams">Teams</string>
-
+    <string name="prompt_point_at_a_barcode">Point at team member\'s QRCode</string>
+    <string name="prompt_move_camera_closer">Move camera closer</string>
+    <string name="prompt_searching">Decoding...</string>
+    <string name="product_search_button">Search object</string>
+    <string name="cd_settings_button">Settings</string>
+    <string name="cd_close_button">Back</string>
+    <string name="cd_flash_button">Toggle camera flash</string>
 </resources>

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="ai.kun.socialdistancealarm.ui.history.TeamsFragment"
+        android:name="ai.kun.socialdistancealarm.ui.history.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 

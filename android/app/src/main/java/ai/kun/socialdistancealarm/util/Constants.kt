@@ -48,4 +48,6 @@ object Constants {
     // ...and above this is not socially distant = red
     const val TIME_FORMAT = "h:mm a"
 
+    const val QR_CODE_SIZE = 200
+
 }

@@ -9,10 +9,27 @@
 
     <ImageView
         android:id="@+id/barcodeImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:elevation="@dimen/card_elevation"
+        android:contentDescription="@string/prompt_point_at_a_barcode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cameraButton"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:elevation="@dimen/card_elevation"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="21dp"
+        android:backgroundTint="@color/black"
+        android:clickable="true"
+        android:src="@drawable/ic_photo_camera_black_24dp"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
