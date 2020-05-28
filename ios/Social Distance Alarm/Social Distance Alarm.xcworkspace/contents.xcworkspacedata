@@ -5,7 +5,7 @@
       location = "group:Social Distance Alarm.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Features/SocialDistanceSDK/SocialDistanceSDK.xcodeproj">
+      location = "group:SocialDistanceSDK/SocialDistanceSDK.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
