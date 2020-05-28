@@ -2,6 +2,7 @@
 <img src="https://github.com/kunai-consulting/OpenTrace/blob/master/play_store.png" width="100"> 
 Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace project produced **Social Distance Alarm App** that detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
 
+
 We are a team of product developers. We want to help and are doing what we can. 
 
 Currently looking for teams and executives to partner with to build and deploy this solution: 
