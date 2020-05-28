@@ -1,11 +1,12 @@
 # OpenTrace - Social Distance Alarm
 <img src="https://github.com/kunai-consulting/OpenTrace/blob/master/play_store.png" width="100"> 
-Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace project produced a Social Distancing Alarm Application that detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
+Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace project produced **Social Distancing Alarm Application** that detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
 
 We are a team of product developers. We want to help and are doing what we can. 
 Currently looking for teams and executives to partner with to build and deploy this solution. Currently actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, Blue Shield California, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build a public use version for governments and healthcare institutes as well as versions for Companies who employ essential and other types of workers. Eventually, we will all need to get back to work. This could help people do it more safely.
 
-There is the free open source version "Social Disatnce Alarm. We are also partnering with teams to deploy custom solutions based on Social Distance Alarm for workforce protection for companies and organizations.
+There is the free open source version of [**Social Distance Alarm App**](https://play.google.com/store/apps/details?id=ai.kun.socialdistancealarm). 
+We are also partnering with companies and organizations to deploy custom workforce protection solutions based on Social Distance Alarm.
 
 ### [Download the App on Google Play Store](https://play.google.com/store/apps/details?id=ai.kun.socialdistancealarm)
 
@@ -17,7 +18,7 @@ There is the free open source version "Social Disatnce Alarm. We are also partne
 
 # Product Description and Vision
 ## Problem Statement
-People need to get back to work eventually. Many essential workers continue to work through this COVID-19 global pandemic that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples' risk is minimized, and we can flatten the curve. We started building a contact tracing app for the Workforce Protection, and pivoted recently to building a Social Distancing app to help protect people and workforces. Contact tracing could easily be added on top of the social distancing features. See Roadmap below.
+People need to get back to work eventually. Many essential workers continue to work through this COVID-19 global pandemic that we now find ourselves in. We need them not to get sick so our supply chain stays running and peoples' risk is minimized, and we can flatten the curve. We started building a contact tracing app for the Workforce Protection, and pivoted recently to building Social Distancing Alarm App to help protect people and workforces. Contact tracing could easily be added on top of the social distancing features. See Roadmap below.
 
 ## Hypothesis
 Individuals can use Social Distance Alarm for free in groups to help them maintain social distance. 
@@ -66,9 +67,10 @@ The app can be deployed by an organization made available to be downloaded by in
 * Pause detection - user can turn off detection in app when not in use.
 
 ### Roadmap
-* Set your Social Distance. High risk users can set thier social distance 'radious' to be more sensitive that the CDC recommended 6 feet, so that they are notified for 'Too Close' app users sooner. 
-* Safe Teams - Add users to your 'Safe Team' using secure QR codes for each handset. This allows families who are safely socially distancing together to not recieve notifications of eachothers hansets when they are together, but out in public. E.G. A Couple shopping together in a store where all shoppers have the app downloaded and turned on.
+* **Set your Social Distance** -  High risk users can set thier social distance 'radious' to be more sensitive that the CDC recommended 6 feet, so that they are notified for 'Too Close' app users sooner. 
+* **Safe Teams** - Add users to your 'Safe Team' using secure QR codes for each handset. This allows families who are safely socially distancing together to not recieve notifications of eachothers hansets when they are together, but out in public. E.G. A Couple shopping together in a store where all shoppers have the app downloaded and turned on.
 * Employers who deploy this could have option for users to opt in to sending location data for sessions that occured at the workplace if users wanted to contribute to mapping areas in the workplace where social distancing is not possible, per session.
+* **IOS Version** - IOS version is built, and we are working to get this through the Apple Play store now. Contact us if you would like a download.
 
 # Future Versions 
 ## Add Contact Tracing
