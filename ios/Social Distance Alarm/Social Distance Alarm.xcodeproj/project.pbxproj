@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D9A1D0C38BD64E04DCB7BCE /* Pods_Social_Distance_Alarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012E026F008811B299D62139 /* Pods_Social_Distance_Alarm.framework */; };
 		569045D794FE22AC21100E82 /* Pods_Social_Distance_AlarmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14296E0BE1B0B35726D2CFA /* Pods_Social_Distance_AlarmTests.framework */; };
+		AECF6F69247FE7970040CEDF /* SocialDistanceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AECF6F68247FE7970040CEDF /* SocialDistanceSDK.framework */; };
+		AECF6F6A247FE7970040CEDF /* SocialDistanceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AECF6F68247FE7970040CEDF /* SocialDistanceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C10F0EAC24772CA80059A2A3 /* MMSlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F0EAB24772CA80059A2A3 /* MMSlidingButton.swift */; };
 		C10F0EAE24773A280059A2A3 /* LockScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10F0EAD24773A280059A2A3 /* LockScreenViewController.swift */; };
 		C12E6DF82467ADB80036C930 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DF72467ADB80036C930 /* AppDelegate.swift */; };
@@ -16,16 +18,12 @@
 		C12E6DFC2467ADB80036C930 /* DistanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DFB2467ADB80036C930 /* DistanceTableViewController.swift */; };
 		C12E6DFE2467ADB80036C930 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6DFD2467ADB80036C930 /* HistoryTableViewController.swift */; };
 		C12E6E012467ADB80036C930 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12E6DFF2467ADB80036C930 /* Main.storyboard */; };
-		C12E6E042467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C12E6E022467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld */; };
 		C12E6E062467ADBA0036C930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E052467ADBA0036C930 /* Assets.xcassets */; };
 		C12E6E092467ADBA0036C930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E072467ADBA0036C930 /* LaunchScreen.storyboard */; };
 		C12E6E142467ADBB0036C930 /* Social_Distance_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */; };
 		C15B66902473D89600962D98 /* AppNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15B668F2473D89600962D98 /* AppNavigationViewController.swift */; };
 		C15B66922474A6F600962D98 /* DeviceHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15B66912474A6F600962D98 /* DeviceHistoryTableViewCell.swift */; };
 		C1965910247379CD009E8F96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196590F247379CD009E8F96 /* Constants.swift */; };
-		C196591324737F6C009E8F96 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196591224737F6C009E8F96 /* Util.swift */; };
-		C199FEB72470C0A900B6F210 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEB62470BF5100B6F210 /* BluetoothManager.swift */; };
-		C199FEBC2470CF8E00B6F210 /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEBB2470CF8E00B6F210 /* DeviceRepository.swift */; };
 		C199FEC02471211C00B6F210 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C199FEBF2471211C00B6F210 /* Colors.xcassets */; };
 		C199FEC82471DF7000B6F210 /* DeviceDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEC72471DF7000B6F210 /* DeviceDistanceTableViewCell.swift */; };
 		C19D8BFB2479C5AE00D6E6F4 /* CarouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B161A52479A1FD00A93AAC /* CarouselItem.xib */; };
@@ -47,10 +45,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AECF6F6B247FE7980040CEDF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AECF6F6A247FE7970040CEDF /* SocialDistanceSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		012E026F008811B299D62139 /* Pods_Social_Distance_Alarm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Distance_Alarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FCB639F33A2F680D973D29D /* Pods-Social Distance Alarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance Alarm.debug.xcconfig"; path = "Target Support Files/Pods-Social Distance Alarm/Pods-Social Distance Alarm.debug.xcconfig"; sourceTree = "<group>"; };
 		A2DB025B31558F287CF1D31E /* Pods-Social Distance AlarmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance AlarmTests.release.xcconfig"; path = "Target Support Files/Pods-Social Distance AlarmTests/Pods-Social Distance AlarmTests.release.xcconfig"; sourceTree = "<group>"; };
+		AECF6F68247FE7970040CEDF /* SocialDistanceSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialDistanceSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10F0EAB24772CA80059A2A3 /* MMSlidingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMSlidingButton.swift; sourceTree = "<group>"; };
 		C10F0EAD24773A280059A2A3 /* LockScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenViewController.swift; sourceTree = "<group>"; };
 		C12E6DF42467ADB80036C930 /* Social Distance Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Distance Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +72,6 @@
 		C12E6DFB2467ADB80036C930 /* DistanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceTableViewController.swift; sourceTree = "<group>"; };
 		C12E6DFD2467ADB80036C930 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C12E6E002467ADB80036C930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C12E6E032467ADB80036C930 /* Social_Distance_Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Social_Distance_Alarm.xcdatamodel; sourceTree = "<group>"; };
 		C12E6E052467ADBA0036C930 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C12E6E082467ADBA0036C930 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C12E6E0A2467ADBA0036C930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,9 +81,6 @@
 		C15B668F2473D89600962D98 /* AppNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationViewController.swift; sourceTree = "<group>"; };
 		C15B66912474A6F600962D98 /* DeviceHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		C196590F247379CD009E8F96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C196591224737F6C009E8F96 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		C199FEB62470BF5100B6F210 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
-		C199FEBB2470CF8E00B6F210 /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		C199FEBF2471211C00B6F210 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		C199FEC72471DF7000B6F210 /* DeviceDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDistanceTableViewCell.swift; sourceTree = "<group>"; };
 		C1A1D2DF247785B200F53479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -92,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D9A1D0C38BD64E04DCB7BCE /* Pods_Social_Distance_Alarm.framework in Frameworks */,
+				AECF6F69247FE7970040CEDF /* SocialDistanceSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +153,6 @@
 				C1B1619D24799C3C00A93AAC /* Onboard */,
 				C1B7199C24750FAA00A6F9E9 /* Pocket */,
 				C1A1D2DF247785B200F53479 /* GoogleService-Info.plist */,
-				C199FEB92470CA5A00B6F210 /* Alarm */,
 				C12E6DF72467ADB80036C930 /* AppDelegate.swift */,
 				C12E6DF92467ADB80036C930 /* SceneDelegate.swift */,
 				C199FEC12471D7FD00B6F210 /* Distance */,
@@ -152,7 +161,6 @@
 				C12E6E052467ADBA0036C930 /* Assets.xcassets */,
 				C12E6E072467ADBA0036C930 /* LaunchScreen.storyboard */,
 				C12E6E0A2467ADBA0036C930 /* Info.plist */,
-				C199FEBA2470CF0B00B6F210 /* Data Model */,
 				C199FEBF2471211C00B6F210 /* Colors.xcassets */,
 				C196591124737F44009E8F96 /* Util */,
 			);
@@ -174,26 +182,8 @@
 				C1A1D2E124784D0400F53479 /* NotificationHandler.swift */,
 				C15B668F2473D89600962D98 /* AppNavigationViewController.swift */,
 				C196590F247379CD009E8F96 /* Constants.swift */,
-				C196591224737F6C009E8F96 /* Util.swift */,
 			);
 			path = Util;
-			sourceTree = "<group>";
-		};
-		C199FEB92470CA5A00B6F210 /* Alarm */ = {
-			isa = PBXGroup;
-			children = (
-				C199FEB62470BF5100B6F210 /* BluetoothManager.swift */,
-			);
-			path = Alarm;
-			sourceTree = "<group>";
-		};
-		C199FEBA2470CF0B00B6F210 /* Data Model */ = {
-			isa = PBXGroup;
-			children = (
-				C12E6E022467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld */,
-				C199FEBB2470CF8E00B6F210 /* DeviceRepository.swift */,
-			);
-			path = "Data Model";
 			sourceTree = "<group>";
 		};
 		C199FEC12471D7FD00B6F210 /* Distance */ = {
@@ -238,6 +228,7 @@
 		E3D552C994FA551CFDB2B5BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AECF6F68247FE7970040CEDF /* SocialDistanceSDK.framework */,
 				012E026F008811B299D62139 /* Pods_Social_Distance_Alarm.framework */,
 				E14296E0BE1B0B35726D2CFA /* Pods_Social_Distance_AlarmTests.framework */,
 			);
@@ -256,6 +247,7 @@
 				C12E6DF12467ADB80036C930 /* Frameworks */,
 				C12E6DF22467ADB80036C930 /* Resources */,
 				E67CDB6BCC37D223279399E2 /* [CP] Embed Pods Frameworks */,
+				AECF6F6B247FE7980040CEDF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -420,17 +412,13 @@
 				C12E6DFE2467ADB80036C930 /* HistoryTableViewController.swift in Sources */,
 				C10F0EAC24772CA80059A2A3 /* MMSlidingButton.swift in Sources */,
 				C1B1619F24799C5D00A93AAC /* CarouselViewController.swift in Sources */,
-				C199FEBC2470CF8E00B6F210 /* DeviceRepository.swift in Sources */,
 				C12E6DFC2467ADB80036C930 /* DistanceTableViewController.swift in Sources */,
-				C12E6E042467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld in Sources */,
 				C1A1D2E224784D0400F53479 /* NotificationHandler.swift in Sources */,
 				C12E6DF82467ADB80036C930 /* AppDelegate.swift in Sources */,
 				C1B161A124799C6400A93AAC /* CarouselPageViewController.swift in Sources */,
-				C199FEB72470C0A900B6F210 /* BluetoothManager.swift in Sources */,
 				C199FEC82471DF7000B6F210 /* DeviceDistanceTableViewCell.swift in Sources */,
 				C1B161A62479A1FD00A93AAC /* CarouselItem.swift in Sources */,
 				C15B66922474A6F600962D98 /* DeviceHistoryTableViewCell.swift in Sources */,
-				C196591324737F6C009E8F96 /* Util.swift in Sources */,
 				C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */,
 				C1965910247379CD009E8F96 /* Constants.swift in Sources */,
 				C1B7199E24750FF400A6F9E9 /* PocketViewController.swift in Sources */,
@@ -713,19 +701,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		C12E6E022467ADB80036C930 /* Social_Distance_Alarm.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C12E6E032467ADB80036C930 /* Social_Distance_Alarm.xcdatamodel */,
-			);
-			currentVersion = C12E6E032467ADB80036C930 /* Social_Distance_Alarm.xcdatamodel */;
-			path = Social_Distance_Alarm.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C12E6DEC2467ADB80036C930 /* Project object */;
 }

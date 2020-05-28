@@ -8,11 +8,11 @@ enum Constants: String {
     case PERIPHERAL_MANAGER_ID = "ai.kun.socialdistancealarm.peripheral"
 }
 
-protocol BluetoothManagerDelegate: AnyObject {
+public protocol BluetoothManagerDelegate: AnyObject {
     func peripheralsDidUpdate()
 }
 
-protocol BluetoothManager {
+public protocol BluetoothManager {
     var peripherals: Dictionary<UUID, CBPeripheral> { get }
     var delegate: BluetoothManagerDelegate? { get set }
     func pause(_ with: Bool)
@@ -20,15 +20,15 @@ protocol BluetoothManager {
     func startScanning()
 }
 
-class CoreBluetoothManager: NSObject, BluetoothManager {
+public class CoreBluetoothManager: NSObject, BluetoothManager {
     
-    static let sharedInstance: CoreBluetoothManager = {
+    public static let sharedInstance: CoreBluetoothManager = {
         let instance = CoreBluetoothManager()
         // setup code
         return instance
     }()
     
-    func pause(_ with: Bool) {
+    public func pause(_ with: Bool) {
         self.isPaused = with
         
         if (isPaused) {
@@ -47,21 +47,21 @@ class CoreBluetoothManager: NSObject, BluetoothManager {
     
     // MARK: - Public properties
     var isPaused: Bool = false
-    weak var delegate: BluetoothManagerDelegate?
-    private(set) var peripherals = Dictionary<UUID, CBPeripheral>() {
+    weak public var delegate: BluetoothManagerDelegate?
+    private(set) public var peripherals = Dictionary<UUID, CBPeripheral>() {
         didSet {
             delegate?.peripheralsDidUpdate()
         }
     }
 
     // MARK: - Public methods
-    func startAdvertising() {
+    public func startAdvertising() {
         isPaused = false
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil,
                                                 options: [CBCentralManagerOptionRestoreIdentifierKey: "ai.kun.socialdistancealarm.peripheral"])
     }
 
-    func startScanning() {
+    public func startScanning() {
         isPaused = false
         centralManager = CBCentralManager(delegate: self, queue: nil,
             options: [CBCentralManagerOptionRestoreIdentifierKey: "ai.kun.socialdistancealarm.central"])
@@ -75,7 +75,7 @@ class CoreBluetoothManager: NSObject, BluetoothManager {
 }
 
 extension CoreBluetoothManager: CBPeripheralManagerDelegate {
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+    public func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         if peripheral.state == .poweredOn {
             if peripheral.isAdvertising {
                 peripheral.stopAdvertising()
@@ -116,14 +116,14 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
         }
     }
     
-    func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
+    public func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
         print("Peripheral Manager willRestoreState called")
         peripheralManager?.stopAdvertising()
     }
 }
 
 extension CoreBluetoothManager: CBCentralManagerDelegate {
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
 
             let uuid = CBUUID(string: Constants.SERVICE_UUID.rawValue)
@@ -148,7 +148,7 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         }
     }
 
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
+    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         peripherals[peripheral.identifier] = peripheral
         let uuid = advertisementData[CBAdvertisementDataServiceUUIDsKey]
         let uuidOverflow = advertisementData[CBAdvertisementDataOverflowServiceUUIDsKey]
@@ -170,7 +170,7 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
 
     }
     
-    func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
+    public func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
         print("Central Manager willRestoreState called")
     }
 }

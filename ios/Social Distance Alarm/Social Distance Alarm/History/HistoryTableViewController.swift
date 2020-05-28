@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SocialDistanceSDK
 
 class HistoryTableViewController: UITableViewController, DeviceRepositoryListener {
     var deviceArray = [Device]()

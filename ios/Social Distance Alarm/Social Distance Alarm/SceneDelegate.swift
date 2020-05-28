@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SocialDistanceSDK
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
