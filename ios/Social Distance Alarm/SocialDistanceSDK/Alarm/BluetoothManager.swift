@@ -142,8 +142,8 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
             DeviceRepository.sharedInstance.updateCurrentDevices()
             central.scanForPeripherals(withServices: [uuid])
 
-            Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { _ in
-                self.scanForApps(central: central, uuid: uuid)
+            Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { [weak self] _ in
+                self?.scanForApps(central: central, uuid: uuid)
             }
         }
     }
