@@ -1,6 +1,6 @@
 # OpenTrace - Social Distance Alarm
 <img src="https://github.com/kunai-consulting/OpenTrace/blob/master/play_store.png" width="100"> 
-Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace project produced **Social Distancing Alarm Application** that detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
+Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace project produced **Social Distance Alarm App** that detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
 
 We are a team of product developers. We want to help and are doing what we can. 
 Currently looking for teams and executives to partner with to build and deploy this solution. Currently actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, Blue Shield California, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build a public use version for governments and healthcare institutes as well as versions for Companies who employ essential and other types of workers. Eventually, we will all need to get back to work. This could help people do it more safely.
@@ -61,15 +61,15 @@ The app uses BLE to tell you when other app users are too close to help you main
 The app can be deployed by an organization made available to be downloaded by individual workers. Individuals may opt in to application use and have granular and transparent data and privacy control’s.
 
 ### Features
-* Detect Users - App notifies users when another app user is close. 4 levels of granularity. "Good Distance"= green, "Warning"= yellow, "Danger" = Orange, "Too Close"= Red
-* Alerts - user and shows signal strength when other app user devices are detected.
-* History - App stores a local history of the alerts from coming close to other app user devices. Displays Date and Time.
-* Pause detection - user can turn off detection in app when not in use.
+* **Detect Users** - App notifies users when another app user is close. 4 levels of granularity. "Good Distance"= green, "Warning"= yellow, "Danger" = Orange, "Too Close"= Red
+* **Alerts** - user and shows signal strength when other app user devices are detected.
+* **History** - App stores a local history of the alerts from coming close to other app user devices. Displays Date and Time.
+* **Pause Detection** - user can turn off detection in app when not in use.
 
 ### Roadmap
-* **Set your Social Distance** -  High risk users can set thier social distance 'radious' to be more sensitive that the CDC recommended 6 feet, so that they are notified for 'Too Close' app users sooner. 
+* **Set Your Social Distance** -  High risk users can set thier social distance 'radious' to be more sensitive that the CDC recommended 6 feet, so that they are notified for 'Too Close' app users sooner. 
 * **Safe Teams** - Add users to your 'Safe Team' using secure QR codes for each handset. This allows families who are safely socially distancing together to not recieve notifications of eachothers hansets when they are together, but out in public. E.G. A Couple shopping together in a store where all shoppers have the app downloaded and turned on.
-* Employers who deploy this could have option for users to opt in to sending location data for sessions that occured at the workplace if users wanted to contribute to mapping areas in the workplace where social distancing is not possible, per session.
+* **Data Storeage for Employers** - Could have option for users to opt in to sending location data for sessions that occured at the workplace if users wanted to contribute to mapping areas in the workplace where social distancing is not possible, per session.
 * **IOS Version** - IOS version is built, and we are working to get this through the Apple Play store now. Contact us if you would like a download.
 
 # Future Versions 
