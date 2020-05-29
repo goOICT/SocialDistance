@@ -10,6 +10,9 @@ enum Constants: String {
 
 public protocol BluetoothManagerDelegate: AnyObject {
     func peripheralsDidUpdate()
+    func advertisingStarted()
+    func scanningStarted()
+    func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber)
 }
 
 public protocol BluetoothManager {
@@ -139,7 +142,7 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         }
 
         if (!isPaused) {
-            DeviceRepository.sharedInstance.updateCurrentDevices()
+            delegate?.scanningStarted()
             central.scanForPeripherals(withServices: [uuid])
 
             Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { [weak self] _ in
@@ -150,23 +153,22 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
 
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         peripherals[peripheral.identifier] = peripheral
-        let uuid = advertisementData[CBAdvertisementDataServiceUUIDsKey]
-        let uuidOverflow = advertisementData[CBAdvertisementDataOverflowServiceUUIDsKey]
-        let rssi = RSSI
-        let txPower = advertisementData[CBAdvertisementDataTxPowerLevelKey] as! Int32?
-        let date = Date()
-        if (uuid != nil) {
-            DeviceRepository.sharedInstance.insert(deviceUuid: uuid.debugDescription, rssi: Int32(truncating: rssi), txPower: txPower, scanDate: date)
-        }
-        print("------------")
-        print(uuid)
-        print(rssi)
-        print(txPower)
-        let dateFormatter : DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateString = dateFormatter.string(from: date)
-        print(dateString)
-        print("++++++++++++")
+        let uuids = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID]
+        // let uuidOverflow = advertisementData[CBAdvertisementDataOverflowServiceUUIDsKey]
+        let txPowerNumber = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? NSNumber
+        
+        guard let uuid = uuids?.first, let txPower = txPowerNumber else { return }
+
+        delegate?.didDiscoverPeripheral(uuid: uuid.uuidString, rssi: RSSI, txPower: txPower)
+//        print("------------")
+//        print(uuid)
+//        print(rssi)
+//        print(txPower)
+//        let dateFormatter : DateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        let dateString = dateFormatter.string(from: date)
+//        print(dateString)
+//        print("++++++++++++")
 
     }
     
