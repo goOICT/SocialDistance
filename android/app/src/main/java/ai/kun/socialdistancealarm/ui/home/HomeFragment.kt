@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -23,6 +24,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -94,11 +97,13 @@ class HomeFragment : Fragment() {
                 View.VISIBLE
             root.findViewById<ConstraintLayout>(R.id.constraintLayout_paused).visibility =
                 View.GONE
+            root.findViewById<FloatingActionButton>(R.id.pausePlayFab).setImageResource(R.drawable.ic_baseline_pause_24)
         } else {
             root.findViewById<RecyclerView>(R.id.recyclerView_devices).visibility =
                 View.GONE
             root.findViewById<ConstraintLayout>(R.id.constraintLayout_paused).visibility =
                 View.VISIBLE
+            root.findViewById<FloatingActionButton>(R.id.pausePlayFab).setImageResource(R.drawable.ic_baseline_play_arrow_24)
         }
     }
 
@@ -121,6 +126,12 @@ class HomeFragment : Fragment() {
         view.findViewById<TextView>(R.id.TextView_resume_detecting).setOnClickListener {
             BLETrace.isPaused = false
         }
+
+        view.findViewById<FloatingActionButton>(R.id.pausePlayFab).setOnClickListener {
+            BLETrace.isStarted.value?.let { isStarted ->
+                BLETrace.isPaused = isStarted
+            }
+        }
     }
 
     override fun onResume() {
@@ -130,6 +141,7 @@ class HomeFragment : Fragment() {
             checkPermissions(it)
             checkBluetooth(it)
         }
+
         startTrace()
     }
 
