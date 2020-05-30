@@ -6,6 +6,8 @@ import ai.kun.socialdistancealarm.alarm.BLETrace
 import ai.kun.socialdistancealarm.util.BarcodeEncoder
 import ai.kun.socialdistancealarm.util.Constants
 import android.Manifest
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -35,7 +37,7 @@ class TeamsFragment : Fragment() {
     private val REQUEST_CAMERA = 4
     private val SCAN_ACTIVITY = 1
 
-    private var scanMessage: String? = null
+    private var scanMessage: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,14 +69,37 @@ class TeamsFragment : Fragment() {
             }
         }
 
+        val resetButton = root.findViewById<Button>(R.id.resetButton)
+        resetButton.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(context)
+                .setCancelable(true)
+                .setMessage(R.string.reset_dialog_message)
+                .setTitle(R.string.are_you_sure)
+                .setPositiveButton(R.string.ok, { dialogInterface: DialogInterface, i: Int ->
+                    BLETrace.leaveTeam()
+                })
+                .show()
+        }
+
         return root
     }
 
     override fun onResume() {
         super.onResume()
         scanMessage?.let {
-            Toast.makeText(context, it, Toast.LENGTH_LONG)
+            val alertDialog = AlertDialog.Builder(context)
+                .setMessage(it)
+                .setCancelable(false)
+                .setPositiveButton(R.string.ok, { dialogInterface: DialogInterface, i: Int ->
+                })
+            if (it == R.string.scanned_this_app_will_be_added) {
+                alertDialog.setTitle(R.string.scannned)
+            } else {
+                alertDialog.setTitle(R.string.try_again)
+            }
             scanMessage = null
+
+            alertDialog.show()
         }
     }
 
@@ -87,27 +112,26 @@ class TeamsFragment : Fragment() {
         if (requestCode == SCAN_ACTIVITY) {
             if (data == null) {
                 Log.w(TAG, "Data returned from intent was null.")
-                scanMessage = "Nothing Scanned, try again."
+                scanMessage = R.string.nothing_scanned
             }
             data?.let {
                 val uuidString = it.getStringExtra("UUID")
                 if (uuidString == null) {
                     Log.w(TAG, "Data returned from intent had a UUID that was null.")
-                    scanMessage = "No data Scanned, try again."
+                    scanMessage = R.string.no_data_scanned
                 }
                 uuidString?.let {
                     try {
                         val uuid = UUID.fromString(uuidString)
 
-                        //TODO: make this a modal with an ok, etc.
-                        scanMessage = "Scanned! This app user will be added to your team."
+                        scanMessage = R.string.scanned_this_app_will_be_added
 
                         var newSet = BLETrace.teamUuids!!.toMutableSet()
                         newSet.add(uuidString)
                         BLETrace.teamUuids = newSet
                     } catch (e: IllegalArgumentException) {
                         Log.w(TAG, "Data returned was not a UUID.")
-                        scanMessage = "You didn't scan the other app, try again."
+                        scanMessage = R.string.you_didnt_scan
                     }
                 }
             }

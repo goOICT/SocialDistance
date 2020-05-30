@@ -44,4 +44,12 @@
     <string name="cd_settings_button">Settings</string>
     <string name="cd_close_button">Back</string>
     <string name="cd_flash_button">Toggle camera flash</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="reset_dialog_message">Resetting your team will remove handsets you scanned and remove you from handsets that have scanned you.</string>
+    <string name="nothing_scanned">Nothing Scanned, try again.</string>
+    <string name="no_data_scanned">No data Scanned, try again.</string>
+    <string name="scanned_this_app_will_be_added">This app user will be added to your team.</string>
+    <string name="you_didnt_scan">You didn\'t scan the other app, try again.</string>
+    <string name="scannned">Scanned!</string>
+    <string name="try_again">Try Again</string>
 </resources>

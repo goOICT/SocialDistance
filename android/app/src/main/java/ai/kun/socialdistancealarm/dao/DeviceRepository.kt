@@ -76,7 +76,7 @@ object DeviceRepository {
     private fun getCurrentDevices(): List<Device> {
         return deviceDao.getCurrentDevicesOrderByRssi(
             // TODO: AFC adjust the * 1.5
-            System.currentTimeMillis() - (Constants.FOREGROUND_TRACE_INTERVAL + 2000),
+            System.currentTimeMillis() - (Constants.FOREGROUND_TRACE_INTERVAL + 500),
             System.currentTimeMillis())
     }
 }
