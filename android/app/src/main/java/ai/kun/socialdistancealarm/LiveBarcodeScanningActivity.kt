@@ -37,6 +37,7 @@ import ai.kun.socialdistancealarm.barcodedetection.BarcodeProcessor
 import ai.kun.socialdistancealarm.barcodedetection.BarcodeResultFragment
 import ai.kun.socialdistancealarm.camera.CameraSource
 import ai.kun.socialdistancealarm.camera.CameraSourcePreview
+import android.app.Activity
 import java.io.IOException
 import java.util.*
 
@@ -190,11 +191,13 @@ class LiveBarcodeScanningActivity : AppCompatActivity(), OnClickListener {
         })
 
         workflowModel?.detectedBarcode?.observe(this, Observer { barcode ->
+            val returnIntent = Intent()
             if (barcode != null) {
-                val barcodeFieldList = ArrayList<BarcodeField>()
-                barcodeFieldList.add(BarcodeField("Raw Value", barcode.rawValue ?: ""))
-                BarcodeResultFragment.show(supportFragmentManager, barcodeFieldList)
+                returnIntent.putExtra("UUID", barcode.rawValue)
             }
+
+            setResult(Activity.RESULT_OK, returnIntent)
+            finish()
         })
     }
 

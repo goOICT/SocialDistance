@@ -2,6 +2,7 @@ package ai.kun.socialdistancealarm.ui.history
 
 import ai.kun.socialdistancealarm.LiveBarcodeScanningActivity
 import ai.kun.socialdistancealarm.R
+import ai.kun.socialdistancealarm.alarm.BLETrace
 import ai.kun.socialdistancealarm.util.BarcodeEncoder
 import ai.kun.socialdistancealarm.util.Constants
 import android.Manifest
@@ -15,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,12 +26,17 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix;
+import java.util.*
 
 
 class TeamsFragment : Fragment() {
     private val TAG = "TeamsFragment"
 
     private val REQUEST_CAMERA = 4
+    private val SCAN_ACTIVITY = 1
+
+    private var scanMessage: String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,7 +50,7 @@ class TeamsFragment : Fragment() {
         val multiFormatWriter = MultiFormatWriter()
         try {
             val bitMatrix: BitMatrix =
-                multiFormatWriter.encode("SomeIDother", BarcodeFormat.QR_CODE, Constants.QR_CODE_SIZE, Constants.QR_CODE_SIZE)
+                multiFormatWriter.encode(BLETrace.uuidString, BarcodeFormat.QR_CODE, Constants.QR_CODE_SIZE, Constants.QR_CODE_SIZE)
             val barcodeEncoder = BarcodeEncoder()
             val bitmap: Bitmap = barcodeEncoder.createBitmap(bitMatrix)
             barCodeImageView.setImageBitmap(bitmap)
@@ -63,8 +70,48 @@ class TeamsFragment : Fragment() {
         return root
     }
 
+    override fun onResume() {
+        super.onResume()
+        scanMessage?.let {
+            Toast.makeText(context, it, Toast.LENGTH_LONG)
+            scanMessage = null
+        }
+    }
+
     private fun scanBarcode() {
-        startActivity(Intent(activity, LiveBarcodeScanningActivity::class.java))
+        startActivityForResult(Intent(activity, LiveBarcodeScanningActivity::class.java), SCAN_ACTIVITY)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == SCAN_ACTIVITY) {
+            if (data == null) {
+                Log.w(TAG, "Data returned from intent was null.")
+                scanMessage = "Nothing Scanned, try again."
+            }
+            data?.let {
+                val uuidString = it.getStringExtra("UUID")
+                if (uuidString == null) {
+                    Log.w(TAG, "Data returned from intent had a UUID that was null.")
+                    scanMessage = "No data Scanned, try again."
+                }
+                uuidString?.let {
+                    try {
+                        val uuid = UUID.fromString(uuidString)
+
+                        //TODO: make this a modal with an ok, etc.
+                        scanMessage = "Scanned! This app user will be added to your team."
+
+                        var newSet = BLETrace.teamUuids!!.toMutableSet()
+                        newSet.add(uuidString)
+                        BLETrace.teamUuids = newSet
+                    } catch (e: IllegalArgumentException) {
+                        Log.w(TAG, "Data returned was not a UUID.")
+                        scanMessage = "You didn't scan the other app, try again."
+                    }
+                }
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(

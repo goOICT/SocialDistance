@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = arrayOf(Device::class), version = 3, exportSchema = false)
+@Database(entities = arrayOf(Device::class), version = 5, exportSchema = false)
 public abstract class DeviceRoomDatabase : RoomDatabase() {
 
     abstract fun deviceDao(): DeviceDao

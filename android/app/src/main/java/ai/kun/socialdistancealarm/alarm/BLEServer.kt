@@ -130,7 +130,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
             BLETrace.bluetoothLeAdvertiser!!.stopAdvertising(callback)
             BLETrace.bluetoothLeAdvertiser!!.startAdvertising(settings, data, callback)
-            Log.d(TAG, ">>>>>>>>>>BLE Beacon Started")
+            Log.d(TAG, ">>>>>>>>>>BLE Beacon Started UUID: $uuid")
         } catch (exception: Exception) {
             val msg = " ${exception::class.qualifiedName} while starting advertising caused by ${exception.localizedMessage}"
             Log.e(TAG, msg)
@@ -141,7 +141,8 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     private fun stopAdvertising() {
         synchronized(this) {
             try {
-                BLETrace.bluetoothLeAdvertiser?.stopAdvertising((BLEServerCallbackDeviceName))
+                BLETrace.bluetoothLeAdvertiser?.stopAdvertising(BLEServerCallbackDeviceName)
+                BLETrace.bluetoothGattServer?.let { stopServer(it) }
                 log("<<<<<<<<<<BLE Beacon Forced Stopped")
             }catch (exception: Exception) {
                 val msg = " ${exception::class.qualifiedName} while stopping advertising caused by ${exception.localizedMessage}"

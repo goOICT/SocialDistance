@@ -4,6 +4,7 @@ import ai.kun.socialdistancealarm.dao.DeviceRepository
 import ai.kun.socialdistancealarm.util.Constants
 import ai.kun.socialdistancealarm.util.Constants.PREF_FILE_NAME
 import ai.kun.socialdistancealarm.util.Constants.PREF_IS_PAUSED
+import ai.kun.socialdistancealarm.util.Constants.PREF_TEAM_IDS
 import ai.kun.socialdistancealarm.util.Constants.PREF_UNIQUE_ID
 import ai.kun.socialdistancealarm.util.Constants.RANGE_ENVIRONMENTAL
 import android.app.AlarmManager
@@ -14,11 +15,10 @@ import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.SharedPreferences
 import android.location.LocationManager
-import android.util.Log
 import androidx.core.location.LocationManagerCompat
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.util.*
+import kotlin.collections.HashSet
 import kotlin.math.pow
 
 
@@ -53,16 +53,15 @@ object BLETrace {
                 val editor: SharedPreferences.Editor = sharedPrefs.edit()
                 editor.putBoolean(PREF_IS_PAUSED, value)
                 editor.apply()
-
-            }
-            if (value) {
-                stop()
-            } else {
-                start(isBackground)
+                if (value) {
+                    stop()
+                } else {
+                    start(isBackground)
+                }
             }
         }
 
-    public var uniqueId : String?
+    var uuidString : String?
         get() {
             synchronized(this) {
                 val sharedPrefs = context.getSharedPreferences(
@@ -81,7 +80,7 @@ object BLETrace {
                     editor.putString(PREF_UNIQUE_ID, value)
                     editor.commit()
                     init(context)
-                    deviceNameServiceUuid = UUID.nameUUIDFromBytes(value.toByteArray())
+                    deviceNameServiceUuid = UUID.fromString(value)
                 } else {
                     editor.remove(PREF_UNIQUE_ID)
                     editor.commit()
@@ -90,12 +89,61 @@ object BLETrace {
             }
         }
 
-    public var deviceUuid : String? = null
-        get() = if (uniqueId == null) {
-            null
-        } else {
-            UUID.nameUUIDFromBytes(uniqueId?.toByteArray()).toString()
+    var teamUuids : Set<String>?
+        get() {
+            synchronized(this) {
+                val sharedPrefs = context.getSharedPreferences(
+                    PREF_FILE_NAME, Context.MODE_PRIVATE
+                )
+                return sharedPrefs.getStringSet(PREF_TEAM_IDS, HashSet<String>())
+            }
         }
+        set(value) {
+            synchronized(this) {
+                val sharedPrefs = context.getSharedPreferences(
+                    PREF_FILE_NAME, Context.MODE_PRIVATE
+                )
+                val editor: SharedPreferences.Editor = sharedPrefs.edit()
+                if (value != null) {
+                    editor.putStringSet(PREF_TEAM_IDS, value)
+                    editor.commit()
+                } else {
+                    editor.remove(PREF_TEAM_IDS)
+                    editor.commit()
+                }
+            }
+        }
+
+    fun leaveTeam() {
+        synchronized( this) {
+            teamUuids = null
+            uuidString = getNewUniqueId()
+            isStarted.value?.let {
+                if (it) {
+                    stop()
+                    start(isBackground)
+                }
+            }
+        }
+    }
+
+    fun isTeamMember(scannnedUuid: String): Boolean {
+        synchronized(this) {
+            return teamUuids?.let {
+                it.toTypedArray().contains(scannnedUuid)
+            } ?: false
+        }
+    }
+
+    fun isIosUuid(scannedUuid: String) : Boolean {
+        return scannedUuid.substring(0..3) == Constants.IOS_SERVICE_STRING.substring(0..3)
+    }
+
+    fun getNewUniqueId() : String {
+        val stringChars = (('0'..'9') + ('a'..'f')).toList().toTypedArray()
+        val id = "0${((1..11).map { stringChars.random() }.joinToString(""))}"
+        return Constants.ANDROID_SERVICE_STRING.replaceAfterLast('-', id)
+    }
 
     lateinit var deviceNameServiceUuid: UUID
 
@@ -156,9 +204,11 @@ object BLETrace {
         isStarted.postValue(false)
     }
 
+
+
     fun isEnabled() : Boolean {
         bluetoothManager?.let {
-            if (uniqueId == null || it.adapter == null || !it.adapter.isEnabled()) return false
+            if (uuidString == null || it.adapter == null || !it.adapter.isEnabled()) return false
         }
 
         if (!isInit) init(context) // If bluetooth was off we need to complete the init
@@ -171,8 +221,8 @@ object BLETrace {
             context = applicationContext
             DeviceRepository.init(applicationContext)
 
-            if (!isInit && uniqueId != null) {
-                deviceNameServiceUuid = UUID.nameUUIDFromBytes(uniqueId?.toByteArray())
+            if (!isInit && uuidString != null) {
+                deviceNameServiceUuid = UUID.fromString(uuidString)
 
                 bluetoothManager =
                     context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager

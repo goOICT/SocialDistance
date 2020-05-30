@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "device_table")
 data class Device(
 
+    @PrimaryKey
     @ColumnInfo(name = "device_uuid")
     val deviceUuid: String,
 
@@ -25,7 +26,12 @@ data class Device(
     @ColumnInfo(name = "time_stamp")
     val timeStamp: Long,
 
-    @PrimaryKey
     @ColumnInfo(name = "session_id")
-    val sessionId: String
+    val sessionId: String,
+
+    @ColumnInfo(name = "is_team_member")
+    val isTeamMember: Boolean,
+
+    @ColumnInfo(name = "is_android")
+    val isAndroid: Boolean
 )
