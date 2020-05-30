@@ -21,6 +21,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity()  {
     private val TAG = "MainActivity"
 
+    var isToolbarPausePlayHidden = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,9 +45,17 @@ class MainActivity : AppCompatActivity()  {
                     navView.visibility = View.GONE
                     toolbar.visibility = View.GONE
                 }
+                R.id.navigation_home -> {
+                    navView.visibility = View.VISIBLE
+                    toolbar.visibility = View.VISIBLE
+                    isToolbarPausePlayHidden = true
+                    invalidateOptionsMenu()
+                }
                 else -> {
                     navView.visibility = View.VISIBLE
                     toolbar.visibility = View.VISIBLE
+                    isToolbarPausePlayHidden = false
+                    invalidateOptionsMenu()
                 }
             }
         }
@@ -65,26 +75,32 @@ class MainActivity : AppCompatActivity()  {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
-         menu?.let {
-             // Change the state of the toolbar depending on the state of BLETrace
-             BLETrace.isStarted.observeForever(Observer { isStarted ->
-                    setPausePlayOption(it, isStarted)
-             })
+        menu?.let {
+            // Change the state of the toolbar depending on the state of BLETrace
+            BLETrace.isStarted.observeForever(Observer { isStarted ->
+                setPausePlayOption(it, isStarted)
+            })
 
-             // Initialize to the current state
-             setPausePlayOption(it, BLETrace.isStarted.value)
-         }
+            // Initialize to the current state
+            setPausePlayOption(it, BLETrace.isStarted.value)
+        }
+
         return true
     }
 
     private fun setPausePlayOption(optionsMenu: Menu, isStarted: Boolean?) {
         isStarted?.let {
-            if (it) {
-                optionsMenu.findItem(R.id.app_bar_pause).isVisible = true
+            if (isToolbarPausePlayHidden) {
+                optionsMenu.findItem(R.id.app_bar_pause).isVisible = false
                 optionsMenu.findItem(R.id.app_bar_play).isVisible = false
             } else {
-                optionsMenu.findItem(R.id.app_bar_pause).isVisible = false
-                optionsMenu.findItem(R.id.app_bar_play).isVisible = true
+                if (it) {
+                    optionsMenu.findItem(R.id.app_bar_pause).isVisible = true
+                    optionsMenu.findItem(R.id.app_bar_play).isVisible = false
+                } else {
+                    optionsMenu.findItem(R.id.app_bar_pause).isVisible = false
+                    optionsMenu.findItem(R.id.app_bar_play).isVisible = true
+                }
             }
         }
     }

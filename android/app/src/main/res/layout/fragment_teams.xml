@@ -23,16 +23,17 @@
         android:id="@+id/cameraButton"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        android:elevation="@dimen/card_elevation"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/black"
         android:clickable="true"
+        android:elevation="@dimen/card_elevation"
+        android:focusable="true"
         android:src="@drawable/ic_photo_camera_black_24dp"
         android:tint="@color/white"
+        app:backgroundTint="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/resetButton"
