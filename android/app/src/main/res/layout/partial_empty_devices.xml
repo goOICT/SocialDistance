@@ -3,7 +3,7 @@
     android:id="@+id/cardViewEmptyDevices"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="10dp"
+    android:elevation="@dimen/card_elevation"
     android:background="@android:color/white"
     xmlns:android="http://schemas.android.com/apk/res/android">
 

@@ -37,7 +37,11 @@ class DeviceListAdapter internal constructor(
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val current = devices[position]
 
-        val signal = current.txPower + current.rssi
+        // Fix for older handset that don't report power...
+        val txPower = if (current.txPower + current.rssi < 0) 127 else current.txPower
+
+        // Notify the user when we are adding a device that's too close
+        val signal = txPower + current.rssi
         when {
             signal <= SIGNAL_DISTANCE_OK -> {
                 holder.distanceTextView.text = context.resources.getString(R.string.ok)
@@ -63,6 +67,13 @@ class DeviceListAdapter internal constructor(
                 holder.peopleImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.red, context.theme))
                 holder.bluetoothImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.red, context.theme))
             }
+        }
+
+        if (current.isTeamMember) {
+            holder.distanceTextView.text = context.resources.getString(R.string.ok)
+            holder.peopleImageView.setImageResource(R.drawable.ic_people_black_24dp)
+            holder.peopleImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.green, context.theme))
+            holder.bluetoothImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.green, context.theme))
         }
 
         holder.signalTextView.text = signal.toString()

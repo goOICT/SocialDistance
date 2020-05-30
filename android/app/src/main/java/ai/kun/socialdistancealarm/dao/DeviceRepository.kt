@@ -26,18 +26,26 @@ object DeviceRepository {
     suspend fun insert(device: Device) {
         deviceDao.insert(device)
         currentDevices.postValue(getCurrentDevices())
-        // Notify the user when we are adding a device that's too close
-        val signal = device.txPower + device.rssi
-        when {
-            signal <= Constants.SIGNAL_DISTANCE_OK -> {
-            }
-            signal <= Constants.SIGNAL_DISTANCE_LIGHT_WARN -> {
-            }
-            signal <= Constants.SIGNAL_DISTANCE_STRONG_WARN -> {
-                NotificationUtils.sendNotificationDanger()
-            }
-            else -> {
-                NotificationUtils.sendNotificationTooClose()
+
+        // Alert if we need to...
+        if (!device.isTeamMember) {
+            // Fix for older handset that don't report power...
+            val txPower = if (device.txPower + device.rssi < 0) 127 else device.txPower
+
+            // Notify the user when we are adding a device that's too close
+            val signal = txPower + device.rssi
+
+            when {
+                signal <= Constants.SIGNAL_DISTANCE_OK -> {
+                }
+                signal <= Constants.SIGNAL_DISTANCE_LIGHT_WARN -> {
+                }
+                signal <= Constants.SIGNAL_DISTANCE_STRONG_WARN -> {
+                    NotificationUtils.sendNotificationDanger()
+                }
+                else -> {
+                    NotificationUtils.sendNotificationTooClose()
+                }
             }
         }
         //TODO: delete anything that's too old
@@ -67,7 +75,8 @@ object DeviceRepository {
 
     private fun getCurrentDevices(): List<Device> {
         return deviceDao.getCurrentDevicesOrderByRssi(
-            System.currentTimeMillis() - (Constants.FOREGROUND_TRACE_INTERVAL),
+            // TODO: AFC adjust the * 1.5
+            System.currentTimeMillis() - (Constants.FOREGROUND_TRACE_INTERVAL + 500),
             System.currentTimeMillis())
     }
 }

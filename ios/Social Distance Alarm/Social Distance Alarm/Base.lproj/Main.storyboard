@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController id="9pv-A4-QxB" customClass="DistanceTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vbh-a9-1P1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
@@ -100,7 +100,7 @@
             <objects>
                 <tableViewController id="8rJ-Kc-sve" customClass="HistoryTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Eu-yt-WYz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
@@ -198,7 +198,7 @@
             <objects>
                 <viewController id="fxI-tF-Ky4" customClass="PocketViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vc1-zN-jFD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pocketModeSvg" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-gJ-eCJ">
@@ -262,7 +262,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="36U-Tj-7Us" userLabel="LockScreen" customClass="LockScreenViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EjH-mX-BQ5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="f60-t4-eoo" customClass="MMSlidingButton" customModule="Social_Distance_Alarm" customModuleProvider="target">
@@ -405,7 +405,7 @@
             <objects>
                 <viewController id="rQ3-8T-7Pn" userLabel="Carousel View Controller" customClass="CarouselViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XXu-uZ-aEB" userLabel="View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3B-5x-SuT" userLabel="Vw Container">

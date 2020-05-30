@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_history" />
 
     <fragment
+        android:id="@+id/navigation_teams"
+        android:name="ai.kun.socialdistancealarm.ui.history.TeamsFragment"
+        android:label="@string/title_teams"
+        tools:layout="@layout/fragment_teams" />
+
+    <fragment
         android:id="@+id/launchFragment"
         android:name="ai.kun.socialdistancealarm.ui.launch.LaunchFragment"
         android:label="LaunchFragment" >

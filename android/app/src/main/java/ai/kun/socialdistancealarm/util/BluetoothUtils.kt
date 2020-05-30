@@ -3,7 +3,7 @@ package ai.kun.socialdistancealarm.util
 import ai.kun.socialdistancealarm.util.Constants.CHARACTERISTIC_DEVICE_STRING
 import ai.kun.socialdistancealarm.util.Constants.CHARACTERISTIC_USER_STRING
 import ai.kun.socialdistancealarm.util.Constants.CLIENT_CONFIGURATION_DESCRIPTOR_SHORT_ID
-import ai.kun.socialdistancealarm.util.Constants.SERVICE_STRING
+import ai.kun.socialdistancealarm.util.Constants.ANDROID_SERVICE_STRING
 import android.bluetooth.BluetoothGatt
 import android.bluetooth.BluetoothGattCharacteristic
 import android.bluetooth.BluetoothGattDescriptor
@@ -93,7 +93,7 @@ object BluetoothUtils {
 
     // Service
     private fun matchesServiceUuidString(serviceIdString: String): Boolean {
-        return uuidMatches(serviceIdString, SERVICE_STRING)
+        return uuidMatches(serviceIdString, ANDROID_SERVICE_STRING)
     }
 
     fun findService(serviceList: List<BluetoothGattService>): BluetoothGattService? {
