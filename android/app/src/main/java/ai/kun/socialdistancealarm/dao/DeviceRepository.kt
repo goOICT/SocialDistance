@@ -74,9 +74,19 @@ object DeviceRepository {
     }
 
     private fun getCurrentDevices(): List<Device> {
-        return deviceDao.getCurrentDevicesOrderByRssi(
-            // TODO: AFC adjust the * 1.5
-            System.currentTimeMillis() - (Constants.FOREGROUND_TRACE_INTERVAL + 500),
+        // Get a rolling average of the devices seen over the last two scans
+        val devices = deviceDao.getCurrentDevicesOrderByRssi(
+            System.currentTimeMillis() - (Constants.FOREGROUND_TRACE_INTERVAL * 2),
             System.currentTimeMillis())
+        var averagedDevices  = mutableListOf<Device>()
+        for (device in devices) {
+            val current = averagedDevices.lastOrNull { it.deviceUuid.contentEquals(device.deviceUuid) }
+            current?.let {
+                it.rssi = (it.rssi + device.rssi).div(2)
+                it.txPower = (it.txPower + device.txPower).div(2)
+            } ?: averagedDevices.add(device)
+        }
+
+        return averagedDevices
     }
 }
