@@ -8,11 +8,12 @@ enum Constants: String {
     case PERIPHERAL_MANAGER_ID = "ai.kun.socialdistancealarm.peripheral"
 }
 
+@objc
 public protocol BluetoothManagerDelegate: AnyObject {
     func peripheralsDidUpdate()
     func advertisingStarted()
     func scanningStarted()
-    func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber)
+    func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?)
 }
 
 public protocol BluetoothManager {
@@ -23,6 +24,7 @@ public protocol BluetoothManager {
     func startScanning()
 }
 
+@objcMembers
 public class CoreBluetoothManager: NSObject, BluetoothManager {
     
     public static let sharedInstance: CoreBluetoothManager = {
@@ -111,10 +113,11 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
 
             advertisingData[CBAdvertisementDataLocalNameKey] = "SDAlarm"
         
+            delegate?.advertisingStarted()
             peripheralManager.startAdvertising(advertisingData)
 
-            Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
-                self.broadcastToApps(peripheralManager: peripheralManager, advertisingData: advertisingData)
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { [weak self] _ in
+                self?.broadcastToApps(peripheralManager: peripheralManager, advertisingData: advertisingData)
             }
         }
     }
@@ -155,11 +158,11 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         peripherals[peripheral.identifier] = peripheral
         let uuids = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID]
         // let uuidOverflow = advertisementData[CBAdvertisementDataOverflowServiceUUIDsKey]
-        let txPowerNumber = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? NSNumber
-        
-        guard let uuid = uuids?.first, let txPower = txPowerNumber else { return }
+        let txPowerLevel = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? NSNumber
 
-        delegate?.didDiscoverPeripheral(uuid: uuid.uuidString, rssi: RSSI, txPower: txPower)
+        guard let uuid = uuids?.first else { return }
+
+        delegate?.didDiscoverPeripheral(uuid: uuid.uuidString, rssi: RSSI, txPower: txPowerLevel)
 //        print("------------")
 //        print(uuid)
 //        print(rssi)
