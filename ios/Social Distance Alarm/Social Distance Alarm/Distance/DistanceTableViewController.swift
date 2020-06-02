@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SocialDistanceSDK
 
 class DistanceTableViewController: UITableViewController,  DeviceRepositoryListener {
     
