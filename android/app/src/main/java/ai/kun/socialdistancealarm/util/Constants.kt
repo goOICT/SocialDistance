@@ -14,7 +14,6 @@ object Constants {
     const val MANUFACTURE_ID = 1023
     const val ANDROID_SERVICE_STRING = "d2b86f9a-264e-3ac6-838a-0d00c1f549ed"
     const val IOS_SERVICE_STRING =     "00086f9a-264e-3ac6-838a-0d00c1f549ed"
-    const val test =                   "38400000-8cf0-11bd-b23e-10b96e4ef00d"
     var ANDROID_PREFIX = ANDROID_SERVICE_STRING.subSequence(0..7 )
     var IOS_PREFIX = IOS_SERVICE_STRING.subSequence(0..7 )
     const val SERVICE_STRING_MASK =    "ffffffff-0000-0000-0000-000000000000"

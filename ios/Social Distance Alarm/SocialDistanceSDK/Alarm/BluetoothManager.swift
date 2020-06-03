@@ -3,7 +3,8 @@ import CoreBluetooth
 import AudioToolbox
 
 enum Constants: String {
-    case SERVICE_UUID = "d2b86f9a-264e-3ac6-838a-0d00c1f549ed"
+    case IOS_SERVICE_UUID = "00086f9a-264e-3ac6-838a-0d00c1f549ed"
+    case ANDROID_SERVICE_UUID = "d2b86f9a-264e-3ac6-838a-0d00c1f549ed"
     case CENTRAL_MANAGER_ID = "ai.kun.socialdistancealarm.central"
     case PERIPHERAL_MANAGER_ID = "ai.kun.socialdistancealarm.peripheral"
 }
@@ -13,7 +14,7 @@ public protocol BluetoothManagerDelegate: AnyObject {
     func peripheralsDidUpdate()
     func advertisingStarted()
     func scanningStarted()
-    func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?)
+    func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?, isAndroid: Bool)
 }
 
 public protocol BluetoothManager {
@@ -26,6 +27,9 @@ public protocol BluetoothManager {
 
 @objcMembers
 public class CoreBluetoothManager: NSObject, BluetoothManager {
+    
+    let androidPrefix = String(Constants.ANDROID_SERVICE_UUID.rawValue.prefix(7))
+    let iosPrefix = String(Constants.IOS_SERVICE_UUID.rawValue.prefix(7))
     
     public static let sharedInstance: CoreBluetoothManager = {
         let instance = CoreBluetoothManager()
@@ -86,7 +90,7 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
                 peripheral.stopAdvertising()
             }
 
-            let uuid = CBUUID(string: Constants.SERVICE_UUID.rawValue)
+            let uuid = CBUUID(string: Constants.IOS_SERVICE_UUID.rawValue)
             var advertisingData: [String : Any] = [
                 CBAdvertisementDataLocalNameKey: "social-distance-alarm",
                 CBAdvertisementDataServiceUUIDsKey: [uuid]
@@ -105,7 +109,7 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
         }
 
         if (!isPaused) {
-            let uuid = CBUUID(string: Constants.SERVICE_UUID.rawValue)
+            let uuid = CBUUID(string: Constants.IOS_SERVICE_UUID.rawValue)
             var advertisingData: [String : Any] = [
                 CBAdvertisementDataLocalNameKey: "social-distance-alarm",
                 CBAdvertisementDataServiceUUIDsKey: [uuid]
@@ -131,25 +135,23 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
 extension CoreBluetoothManager: CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
-
-            let uuid = CBUUID(string: Constants.SERVICE_UUID.rawValue)
-            scanForApps(central: central, uuid: uuid)
+            scanForApps(central: central)
         } else {
             #warning("Error handling")
         }
     }
     
-    func scanForApps(central: CBCentralManager, uuid: CBUUID) {
+    func scanForApps(central: CBCentralManager) {
         if central.isScanning {
             central.stopScan()
         }
 
         if (!isPaused) {
             delegate?.scanningStarted()
-            central.scanForPeripherals(withServices: [uuid])
+            central.scanForPeripherals(withServices: nil)
 
             Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { [weak self] _ in
-                self?.scanForApps(central: central, uuid: uuid)
+                self?.scanForApps(central: central)
             }
         }
     }
@@ -159,19 +161,15 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         let uuids = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID]
         // let uuidOverflow = advertisementData[CBAdvertisementDataOverflowServiceUUIDsKey]
         let txPowerLevel = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? NSNumber
-
+ 
         guard let uuid = uuids?.first else { return }
+        
+        let isAndroid = uuid.uuidString.lowercased().hasPrefix(androidPrefix)
+        
+        if (isAndroid || uuid.uuidString.lowercased().hasPrefix(iosPrefix)) {
+                delegate?.didDiscoverPeripheral(uuid: uuid.uuidString, rssi: RSSI, txPower: txPowerLevel, isAndroid: isAndroid)
 
-        delegate?.didDiscoverPeripheral(uuid: uuid.uuidString, rssi: RSSI, txPower: txPowerLevel)
-//        print("------------")
-//        print(uuid)
-//        print(rssi)
-//        print(txPower)
-//        let dateFormatter : DateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        let dateString = dateFormatter.string(from: date)
-//        print(dateString)
-//        print("++++++++++++")
+        }
 
     }
     
