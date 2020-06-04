@@ -3,10 +3,11 @@ import CoreBluetooth
 import AudioToolbox
 
 enum Constants: String {
-    case IOS_SERVICE_UUID = "00086f9a-264e-3ac6-838a-0d00c1f549ed"
+    case IOS_SERVICE_UUID =     "00086f9a-264e-3ac6-838a-000000000000"
     case ANDROID_SERVICE_UUID = "d2b86f9a-264e-3ac6-838a-0d00c1f549ed"
     case CENTRAL_MANAGER_ID = "ai.kun.socialdistancealarm.central"
     case PERIPHERAL_MANAGER_ID = "ai.kun.socialdistancealarm.peripheral"
+    case DEFAULTS_UUID_KEY = "Device UUID"
 }
 
 @objc
@@ -20,13 +21,32 @@ public protocol BluetoothManagerDelegate: AnyObject {
 public protocol BluetoothManager {
     var peripherals: Dictionary<UUID, CBPeripheral> { get }
     var delegate: BluetoothManagerDelegate? { get set }
+    var uuidString: String { get set }
     func pause(_ with: Bool)
     func startAdvertising()
     func startScanning()
 }
 
+func getNewUniqueId() -> String {
+    let stringChars = "0123456789abcdef"
+    let postfix = String((0...11).map{ _ in stringChars.randomElement()! })
+    return Constants.IOS_SERVICE_UUID.rawValue.replacingOccurrences(of: "000000000000", with: postfix)
+}
+
 @objcMembers
 public class CoreBluetoothManager: NSObject, BluetoothManager {
+    
+    public var uuidString: String =  {
+        let currentId = UserDefaults.standard.string(forKey: Constants.DEFAULTS_UUID_KEY.rawValue)
+        if (currentId == nil) {
+           let newId = getNewUniqueId()
+            UserDefaults.standard.set(newId, forKey: Constants.DEFAULTS_UUID_KEY.rawValue)
+            return newId
+        } else {
+            return currentId!
+        }
+    }()
+    
     
     let androidPrefix = String(Constants.ANDROID_SERVICE_UUID.rawValue.prefix(7))
     let iosPrefix = String(Constants.IOS_SERVICE_UUID.rawValue.prefix(7))
@@ -90,7 +110,7 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
                 peripheral.stopAdvertising()
             }
 
-            let uuid = CBUUID(string: Constants.IOS_SERVICE_UUID.rawValue)
+            let uuid = CBUUID(string: uuidString)
             var advertisingData: [String : Any] = [
                 CBAdvertisementDataLocalNameKey: "social-distance-alarm",
                 CBAdvertisementDataServiceUUIDsKey: [uuid]

@@ -122,13 +122,9 @@ public class DeviceRepository {
         }
     }
     
-    func noCurrentDevices() {
-        currentListener?.onRepositoryUpdate()
-    }
-    
     public func getCurrentDevices() -> [Device] {
         var deviceArray = [Device]()
-        let startTime = (Date() - 10) as NSDate
+        let startTime = (Date() - AppConstants.traceInterval) as NSDate
         let timePredicate = NSPredicate(format: "scanDate >= %@", startTime)
         let request: NSFetchRequest<Device> = Device.fetchRequest()
         request.predicate = timePredicate
@@ -170,11 +166,14 @@ extension DeviceRepository: BluetoothManagerDelegate {
     }
     
     public func scanningStarted() {
-        // Not used by the current Social Distance Alarm app
+        // This gets called every time the scanning cycle loops
+        // so we are using it to make sure the UI is up to date
+        currentListener?.onRepositoryUpdate()
     }
     
     public func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?, isAndroid: Bool) {
         insert(deviceUuid: uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: isAndroid)
+        updateCurrentDevices()
     }
     
     
