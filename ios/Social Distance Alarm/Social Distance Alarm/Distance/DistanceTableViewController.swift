@@ -31,10 +31,18 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
 
     //MARK: - Tableview Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return deviceArray.count
+        return deviceArray.count > 0 ? deviceArray.count : 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (deviceArray.count > 0) {
+            return configureDeviceItemCell(indexPath: indexPath)
+        } else {
+            return configureNoUsersCell(indexPath: indexPath)
+        }
+    }
+    
+    private func configureDeviceItemCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceItemCell", for: indexPath) as! DeviceDistanceTableViewCell
           
         let device = deviceArray[indexPath.row]
@@ -71,6 +79,12 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
         return cell
     }
 
+    private func configureNoUsersCell(indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoUsersItemCell", for: indexPath) as! NoUsersTableViewCell
+        
+        return cell
+    }
+    
     func onRepositoryUpdate() {
         deviceArray = DeviceRepository.sharedInstance.getCurrentDevices()
 
