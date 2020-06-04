@@ -98,6 +98,8 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
     
     @IBAction func unwindToDistanceView( _ seg: UIStoryboardSegue) {
         defaults.set(true, forKey: AppConstants.onboardedKey)
+        let bluetoothManager = CoreBluetoothManager.sharedInstance
+        bluetoothManager.delegate = (DeviceRepository.sharedInstance as BluetoothManagerDelegate)
         CoreBluetoothManager.sharedInstance.startScanning()
         CoreBluetoothManager.sharedInstance.startAdvertising()
     }
