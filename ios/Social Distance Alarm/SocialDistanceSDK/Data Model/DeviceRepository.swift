@@ -61,11 +61,12 @@ public class DeviceRepository {
         return instance
     }()
     
-    func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date) {
+    func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date, isAndroid: Bool) {
         // Add the device to the database
         let newDevice = Device(context: self.context)
         newDevice.deviceUuid = deviceUuid
         newDevice.rssi = rssi
+        newDevice.isAndroid = isAndroid
         if (txPower != nil) {
             newDevice.txPower = txPower!
         }
@@ -157,4 +158,24 @@ public class DeviceRepository {
         
         return deviceArray
     }
+}
+
+extension DeviceRepository: BluetoothManagerDelegate {
+    public func peripheralsDidUpdate() {
+        // Not used by the current Social Distance Alarm app
+    }
+    
+    public func advertisingStarted() {
+        // Not used by the current Social Distance Alarm app
+    }
+    
+    public func scanningStarted() {
+        // Not used by the current Social Distance Alarm app
+    }
+    
+    public func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?, isAndroid: Bool) {
+        insert(deviceUuid: uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: isAndroid)
+    }
+    
+    
 }
