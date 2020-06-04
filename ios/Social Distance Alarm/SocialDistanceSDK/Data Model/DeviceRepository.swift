@@ -137,7 +137,19 @@ public class DeviceRepository {
             print("Error fetching current devices \(error)")
         }
         
-        return deviceArray
+        // Remove duplicate scans and average the values
+        var averagedDevices = [Device]()
+        for device in deviceArray {
+            let current = averagedDevices.first(where: {$0.deviceUuid?.lowercased() == device.deviceUuid?.lowercased()})
+            if (current != nil) {
+                current!.rssi = (current!.rssi + device.rssi) / 2
+                current!.txPower = (current!.txPower + device.txPower) / 2
+            } else {
+                averagedDevices.append(device)
+            }
+        }
+        
+        return averagedDevices
     }
     
     public func getAllDevices() -> [Device] {
