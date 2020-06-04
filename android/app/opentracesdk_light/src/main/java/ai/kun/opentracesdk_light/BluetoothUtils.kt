@@ -3,6 +3,7 @@ package ai.kun.opentracesdk_light
 import android.app.AlarmManager
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
+import android.bluetooth.le.BluetoothLeAdvertiser
 import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.Intent
@@ -47,6 +48,10 @@ class BluetoothUtils {
 
         fun getBluetoothScanner(context: Context): BluetoothLeScanner {
             return getBluetoothManager(context).adapter.bluetoothLeScanner
+        }
+
+        fun getBluetoothAdvertiser(context: Context): BluetoothLeAdvertiser {
+            return getBluetoothManager(context).adapter.bluetoothLeAdvertiser
         }
 
         fun getAlarmManager(context: Context): AlarmManager {
