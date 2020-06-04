@@ -81,21 +81,21 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoUsersItemCell" id="iZb-1n-lhz" customClass="NoUsersTableViewCell" customModule="Social_Distance_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="138" width="375" height="90.666664123535156"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="91.666664123535156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZb-1n-lhz" id="Vrc-kO-CRv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90.666664123535156"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91.666664123535156"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothGoodIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-ls-zFr">
-                                            <rect key="frame" x="316" y="33.333333333333336" width="22" height="24"/>
+                                            <rect key="frame" x="316" y="34" width="22" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="0Ea-df-iOy"/>
                                                 <constraint firstAttribute="width" constant="22" id="HpE-4r-sPG"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os5-gk-O08">
-                                            <rect key="frame" x="37" y="35" width="187" height="20.666666666666671"/>
+                                            <rect key="frame" x="37" y="35" width="187" height="21.666666666666671"/>
                                             <string key="text">There are no app users 
 detected.</string>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -371,6 +371,8 @@ detected.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="redHeaderGradient"/>
                     </tabBar>
                     <connections>
                         <segue destination="8lo-V3-sCb" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -556,6 +558,9 @@ detected.</string>
         </namedColor>
         <namedColor name="red">
             <color red="0.73333333333333328" green="0.0" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="redHeaderGradient">
+            <color red="0.67450980392156867" green="0.0" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
