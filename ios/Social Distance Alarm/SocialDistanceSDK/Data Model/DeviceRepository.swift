@@ -61,11 +61,12 @@ public class DeviceRepository {
         return instance
     }()
     
-    func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date) {
+    func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date, isAndroid: Bool) {
         // Add the device to the database
         let newDevice = Device(context: self.context)
         newDevice.deviceUuid = deviceUuid
         newDevice.rssi = rssi
+        newDevice.isAndroid = isAndroid
         if (txPower != nil) {
             newDevice.txPower = txPower!
         }
@@ -121,13 +122,9 @@ public class DeviceRepository {
         }
     }
     
-    func noCurrentDevices() {
-        currentListener?.onRepositoryUpdate()
-    }
-    
     public func getCurrentDevices() -> [Device] {
         var deviceArray = [Device]()
-        let startTime = (Date() - 10) as NSDate
+        let startTime = (Date() - AppConstants.traceInterval) as NSDate
         let timePredicate = NSPredicate(format: "scanDate >= %@", startTime)
         let request: NSFetchRequest<Device> = Device.fetchRequest()
         request.predicate = timePredicate
@@ -140,7 +137,19 @@ public class DeviceRepository {
             print("Error fetching current devices \(error)")
         }
         
-        return deviceArray
+        // Remove duplicate scans and average the values
+        var averagedDevices = [Device]()
+        for device in deviceArray {
+            let current = averagedDevices.first(where: {$0.deviceUuid?.lowercased() == device.deviceUuid?.lowercased()})
+            if (current != nil) {
+                current!.rssi = (current!.rssi + device.rssi) / 2
+                current!.txPower = (current!.txPower + device.txPower) / 2
+            } else {
+                averagedDevices.append(device)
+            }
+        }
+        
+        return averagedDevices
     }
     
     public func getAllDevices() -> [Device] {
@@ -157,4 +166,27 @@ public class DeviceRepository {
         
         return deviceArray
     }
+}
+
+extension DeviceRepository: BluetoothManagerDelegate {
+    public func peripheralsDidUpdate() {
+        // Not used by the current Social Distance Alarm app
+    }
+    
+    public func advertisingStarted() {
+        // Not used by the current Social Distance Alarm app
+    }
+    
+    public func scanningStarted() {
+        // This gets called every time the scanning cycle loops
+        // so we are using it to make sure the UI is up to date
+        currentListener?.onRepositoryUpdate()
+    }
+    
+    public func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?, isAndroid: Bool) {
+        insert(deviceUuid: uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: isAndroid)
+        updateCurrentDevices()
+    }
+    
+    
 }

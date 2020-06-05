@@ -57,8 +57,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to undo the changes made on entering the background.
         
         if defaults.bool(forKey: AppConstants.onboardedKey) {
-            CoreBluetoothManager.sharedInstance.startScanning()
-            CoreBluetoothManager.sharedInstance.startAdvertising()
+            let bluetoothManager = CoreBluetoothManager.sharedInstance
+            bluetoothManager.delegate = (DeviceRepository.sharedInstance as BluetoothManagerDelegate)
+            bluetoothManager.startScanning()
+            bluetoothManager.startAdvertising()
         }
     }
 
