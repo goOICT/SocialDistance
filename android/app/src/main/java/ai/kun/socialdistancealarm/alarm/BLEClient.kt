@@ -131,53 +131,25 @@ class BLEClient : BroadcastReceiver() {
     }
 
     private fun scanComplete() {
-
         var noCurrentDevices = true
         if (!BtleScanCallback.mScanResults.isEmpty()) {
             for (deviceAddress in BtleScanCallback.mScanResults.keys) {
-                val result: ScanResult? = BtleScanCallback.mScanResults.get(deviceAddress)
-                result?.let { scanResult ->
-                    var uuid: ParcelUuid? = scanResult.scanRecord?.serviceUuids?.get(0)
-                    var isAndroid = (uuid.toString().startsWith(ANDROID_PREFIX))
+                val result: Device? = BtleScanCallback.mScanResults.get(deviceAddress)
+                result?.let { device ->
+                    Log.d(
+                        TAG,
+                        "+++++++++++++ Traced: device=${device.deviceUuid} rssi=${device.rssi} txPower=${device.txPower} timeStampNanos=${device.timeStampNanos} timeStamp=${device.timeStamp} sessionId=${device.sessionId} +++++++++++++"
+                    )
 
-                    // Only record devices where the UUID is one from our app...
-                    if (isAndroid || uuid.toString().startsWith(IOS_PREFIX)) {
-                        var rssi: Int = scanResult.rssi
-                        var txPower: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            scanResult.txPower
-                        } else {
-                            -1
-                        }
-                        val distance = BLETrace.calculateDistance(rssi, txPower)
-                        var timeStampNanos: Long = scanResult.timestampNanos
-                        val timeStamp: Long = System.currentTimeMillis()
-                        var sessionId = deviceAddress
-
-                        Log.d(
-                            TAG,
-                            "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++"
-                        )
-                        val device = Device(
-                            uuid.toString(),
-                            distance,
-                            rssi,
-                            txPower,
-                            timeStampNanos,
-                            timeStamp,
-                            sessionId,
-                            BLETrace.isTeamMember(uuid.toString()),
-                            isAndroid
-                        )
-                        GlobalScope.launch { DeviceRepository.insert(device) }
-                        noCurrentDevices = false
-                    }
+                    GlobalScope.launch { DeviceRepository.insert(device) }
+                    noCurrentDevices = false
                 }
             }
 
             // Clear the scan results
             BtleScanCallback.mScanResults.clear()
         }
-        if (noCurrentDevices){
+        if (noCurrentDevices) {
             GlobalScope.launch { DeviceRepository.noCurrentDevices() }
         }
 

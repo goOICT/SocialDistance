@@ -91,6 +91,29 @@ object BluetoothUtils {
         return uuidMatches(uuidSubstring, CLIENT_CONFIGURATION_DESCRIPTOR_SHORT_ID)
     }
 
+    /**
+     * Calculates the strength of the signal from another handset taking into consideration
+     * the type of handset and the reported transmission power.
+     *
+     * @param rssi The RSSI reported from the scan
+     * @param txPower The transmission power reported from the scan
+     * @param isAndroid If the handset was iOS or Android
+     * @return A signal strength
+     */
+    fun calculateSignal(rssi: Int, txPower: Int, isAndroid: Boolean): Int {
+        // Fix for older handset that don't report power...
+        val adjustedTxPower = if (txPower + rssi < 0) Constants.ASSUMED_TX_POWER else txPower
+
+        // Notify the user when we are adding a device that's too close
+        var signal = adjustedTxPower + rssi
+
+        if (!isAndroid) signal -= Constants.IOS_SIGNAL_REDUCTION
+
+        return signal
+    }
+
+
+
     // Service
     private fun matchesServiceUuidString(serviceIdString: String): Boolean {
         return uuidMatches(serviceIdString, ANDROID_SERVICE_STRING)

@@ -2,6 +2,7 @@ package ai.kun.socialdistancealarm.ui.history
 
 import ai.kun.socialdistancealarm.R
 import ai.kun.socialdistancealarm.dao.Device
+import ai.kun.socialdistancealarm.util.BluetoothUtils
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_LIGHT_WARN
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_OK
 import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_STRONG_WARN
@@ -40,11 +41,9 @@ class DeviceHistoryListAdapter internal constructor(
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val current = devices[position]
 
-        // Fix for older handset that don't report power...
-        val txPower = if (current.txPower + current.rssi < 0) 127 else current.txPower
-
         // Notify the user when we are adding a device that's too close
-        val signal = txPower + current.rssi
+        val signal = BluetoothUtils.calculateSignal(current.rssi, current.txPower, current.isAndroid)
+        holder.peopleImageView.setImageResource(R.drawable.ic_emoji_people_icon)
         when {
             signal <= SIGNAL_DISTANCE_OK -> {
                 holder.distanceTextView.text = context.resources.getString(R.string.ok)

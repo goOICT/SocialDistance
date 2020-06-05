@@ -124,6 +124,9 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
     }
     
     func broadcastToApps(peripheralManager: CBPeripheralManager, advertisingData: [String : Any]) {
+        // Default to the packaged repository if none was present...
+        if (delegate == nil) { delegate = DeviceRepository.sharedInstance }
+        
         if (peripheralManager.isAdvertising) {
             peripheralManager.stopAdvertising()
         }
@@ -162,6 +165,9 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
     }
     
     func scanForApps(central: CBCentralManager) {
+        // Default to the packaged repository if none was present...
+        if (delegate == nil) { delegate = DeviceRepository.sharedInstance }
+
         if central.isScanning {
             central.stopScan()
         }
@@ -170,7 +176,7 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
             delegate?.scanningStarted()
             central.scanForPeripherals(withServices: nil)
 
-            Timer.scheduledTimer(withTimeInterval: AppConstants.traceInterval, repeats: false) { [weak self] _ in
+            Timer.scheduledTimer(withTimeInterval: SdkConstants.traceInterval, repeats: false) { [weak self] _ in
                 self?.scanForApps(central: central)
             }
         }
@@ -188,7 +194,6 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         
         if (isAndroid || uuid.uuidString.lowercased().hasPrefix(iosPrefix)) {
                 delegate?.didDiscoverPeripheral(uuid: uuid.uuidString, rssi: RSSI, txPower: txPowerLevel, isAndroid: isAndroid)
-
         }
 
     }

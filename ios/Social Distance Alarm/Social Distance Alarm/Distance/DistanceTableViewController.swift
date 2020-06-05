@@ -47,7 +47,7 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
           
         let device = deviceArray[indexPath.row]
         
-        let power = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower)
+        let power = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower, isAndroid: device.isAndroid)
         cell.signalStrength.text = String(format: "Signal strength: %d", power)
         
         if (power > AppConstants.signalDistanceStrongWarn) {

@@ -9,7 +9,17 @@
 import Foundation
 
 public struct Util {
-    public static func signlaStrength(rssi: Int32, txPower: Int32) -> Int32 {
-        return 127 + (rssi)
+    public static func signlaStrength(rssi: Int32, txPower: Int32, isAndroid: Bool) -> Int32 {
+        //print("-----------------")
+        //print("rssi: ", rssi)
+        //print("txPower: ", txPower)
+        //print("isAndroid: ", isAndroid)
+        //print("+++++++++++++++++")
+        
+        var signal = SdkConstants.assumedTxPower + rssi
+        
+        if (!isAndroid) { signal -= SdkConstants.iosSignalReduction }
+        
+        return signal
     }
 }

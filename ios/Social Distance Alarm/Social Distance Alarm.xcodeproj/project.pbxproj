@@ -22,9 +22,9 @@
 		C12E6E062467ADBA0036C930 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E052467ADBA0036C930 /* Assets.xcassets */; };
 		C12E6E092467ADBA0036C930 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C12E6E072467ADBA0036C930 /* LaunchScreen.storyboard */; };
 		C12E6E142467ADBB0036C930 /* Social_Distance_AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */; };
+		C146EA122489EC5200434CE5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C146EA112489EC5200434CE5 /* AppConstants.swift */; };
 		C15B66902473D89600962D98 /* AppNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15B668F2473D89600962D98 /* AppNavigationViewController.swift */; };
 		C15B66922474A6F600962D98 /* DeviceHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15B66912474A6F600962D98 /* DeviceHistoryTableViewCell.swift */; };
-		C1965910247379CD009E8F96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196590F247379CD009E8F96 /* Constants.swift */; };
 		C199FEC02471211C00B6F210 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C199FEBF2471211C00B6F210 /* Colors.xcassets */; };
 		C199FEC82471DF7000B6F210 /* DeviceDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199FEC72471DF7000B6F210 /* DeviceDistanceTableViewCell.swift */; };
 		C19D8BFB2479C5AE00D6E6F4 /* CarouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B161A52479A1FD00A93AAC /* CarouselItem.xib */; };
@@ -80,9 +80,9 @@
 		C12E6E0F2467ADBB0036C930 /* Social Distance AlarmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Social Distance AlarmTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12E6E132467ADBB0036C930 /* Social_Distance_AlarmTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social_Distance_AlarmTests.swift; sourceTree = "<group>"; };
 		C12E6E152467ADBB0036C930 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C146EA112489EC5200434CE5 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		C15B668F2473D89600962D98 /* AppNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigationViewController.swift; sourceTree = "<group>"; };
 		C15B66912474A6F600962D98 /* DeviceHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceHistoryTableViewCell.swift; sourceTree = "<group>"; };
-		C196590F247379CD009E8F96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C199FEBF2471211C00B6F210 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		C199FEC72471DF7000B6F210 /* DeviceDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDistanceTableViewCell.swift; sourceTree = "<group>"; };
 		C1A1D2DF247785B200F53479 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -183,7 +183,7 @@
 			children = (
 				C1A1D2E124784D0400F53479 /* NotificationHandler.swift */,
 				C15B668F2473D89600962D98 /* AppNavigationViewController.swift */,
-				C196590F247379CD009E8F96 /* Constants.swift */,
+				C146EA112489EC5200434CE5 /* AppConstants.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -421,10 +421,10 @@
 				C12E6DF82467ADB80036C930 /* AppDelegate.swift in Sources */,
 				C1B161A124799C6400A93AAC /* CarouselPageViewController.swift in Sources */,
 				C199FEC82471DF7000B6F210 /* DeviceDistanceTableViewCell.swift in Sources */,
+				C146EA122489EC5200434CE5 /* AppConstants.swift in Sources */,
 				C1B161A62479A1FD00A93AAC /* CarouselItem.swift in Sources */,
 				C15B66922474A6F600962D98 /* DeviceHistoryTableViewCell.swift in Sources */,
 				C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */,
-				C1965910247379CD009E8F96 /* Constants.swift in Sources */,
 				C1B7199E24750FF400A6F9E9 /* PocketViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
