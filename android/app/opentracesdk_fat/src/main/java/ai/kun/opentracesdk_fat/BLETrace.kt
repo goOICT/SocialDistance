@@ -1,11 +1,14 @@
-package ai.kun.opentracesdk_fat.alarm
+package ai.kun.opentracesdk_fat
 
-import ai.kun.opentracesdk_fat.dao.DeviceRepository
+import ai.kun.opentracesdk_fat.alarm.BLEClient
+import ai.kun.opentracesdk_fat.alarm.BLEServer
+import ai.kun.opentracesdk_fat.alarm.GattServerCallback
 import ai.kun.opentracesdk_fat.util.Constants
 import ai.kun.opentracesdk_fat.util.Constants.PREF_FILE_NAME
 import ai.kun.opentracesdk_fat.util.Constants.PREF_IS_PAUSED
 import ai.kun.opentracesdk_fat.util.Constants.PREF_TEAM_IDS
 import ai.kun.opentracesdk_fat.util.Constants.PREF_UNIQUE_ID
+import ai.kun.opentracesdk_fat.util.NotificationUtils
 import android.app.AlarmManager
 import android.bluetooth.BluetoothGattServer
 import android.bluetooth.BluetoothManager
@@ -21,8 +24,10 @@ import kotlin.collections.HashSet
 
 
 object BLETrace {
-    private val mBleServer : BLEServer = BLEServer()
-    private val mBleClient : BLEClient = BLEClient()
+    private val mBleServer : BLEServer =
+        BLEServer()
+    private val mBleClient : BLEClient =
+        BLEClient()
     private val TAG = "BLETrace"
 
     private var isInit = false
@@ -115,7 +120,8 @@ object BLETrace {
     fun leaveTeam() {
         synchronized( this) {
             teamUuids = null
-            uuidString = getNewUniqueId()
+            uuidString =
+                getNewUniqueId()
             isStarted.value?.let {
                 if (it) {
                     stop()
@@ -168,8 +174,12 @@ object BLETrace {
         if (isEnabled() && !isPaused) {
             isBackground = true
             isStarted.postValue(true)
-            mBleServer.enable(Constants.REBROADCAST_PERIOD, context)
-            mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL, context)
+            mBleServer.enable(Constants.REBROADCAST_PERIOD,
+                context
+            )
+            mBleClient.enable(Constants.BACKGROUND_TRACE_INTERVAL,
+                context
+            )
         } else {
             isStarted.postValue(false)
         }
@@ -179,8 +189,12 @@ object BLETrace {
         if (isEnabled() && !isPaused) {
             isBackground = false
             isStarted.postValue(true)
-            mBleServer.enable(Constants.REBROADCAST_PERIOD, context)
-            mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL, context)
+            mBleServer.enable(Constants.REBROADCAST_PERIOD,
+                context
+            )
+            mBleClient.enable(Constants.FOREGROUND_TRACE_INTERVAL,
+                context
+            )
         } else {
             isStarted.postValue(false)
         }
@@ -188,16 +202,24 @@ object BLETrace {
 
     private fun stopBackground() {
         if (isEnabled()) {
-            mBleServer.disable(Constants.REBROADCAST_PERIOD, context)
-            mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL, context)
+            mBleServer.disable(Constants.REBROADCAST_PERIOD,
+                context
+            )
+            mBleClient.disable(Constants.BACKGROUND_TRACE_INTERVAL,
+                context
+            )
         }
         isStarted.postValue(false)
     }
 
     private fun stopForeground() {
         if (isEnabled()) {
-            mBleServer.disable(Constants.REBROADCAST_PERIOD, context)
-            mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL, context)
+            mBleServer.disable(Constants.REBROADCAST_PERIOD,
+                context
+            )
+            mBleClient.disable(Constants.FOREGROUND_TRACE_INTERVAL,
+                context
+            )
         }
         isStarted.postValue(false)
     }
@@ -209,7 +231,9 @@ object BLETrace {
             if (uuidString == null || it.adapter == null || !it.adapter.isEnabled()) return false
         }
 
-        if (!isInit) init(context) // If bluetooth was off we need to complete the init
+        if (!isInit) init(
+            context
+        ) // If bluetooth was off we need to complete the init
 
         return isInit  // && isLocationEnabled() Location doesn't need to be on
     }
@@ -220,7 +244,9 @@ object BLETrace {
             DeviceRepository.init(applicationContext)
 
             if (!isInit && uuidString != null) {
-                deviceNameServiceUuid = UUID.fromString(uuidString)
+                deviceNameServiceUuid = UUID.fromString(
+                    uuidString
+                )
 
                 bluetoothManager =
                     context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
@@ -228,7 +254,10 @@ object BLETrace {
                     if (it.adapter == null || !it.adapter.isEnabled()) return // bail if bluetooth isn't on
                     bluetoothLeScanner = it.adapter.bluetoothLeScanner
                     bluetoothGattServer =
-                        it.openGattServer(context, GattServerCallback)
+                        it.openGattServer(
+                            context,
+                            GattServerCallback
+                        )
                     bluetoothLeAdvertiser = it.adapter.bluetoothLeAdvertiser
                 }
 
@@ -239,6 +268,8 @@ object BLETrace {
                 isBackground = true
             }
         }
+
+        NotificationUtils.init(applicationContext)
     }
 
     fun getAlarmManager(applicationContext: Context): AlarmManager {

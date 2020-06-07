@@ -1,6 +1,6 @@
 package ai.kun.socialdistancealarm
 
-import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.opentracesdk_fat.BLETrace
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle

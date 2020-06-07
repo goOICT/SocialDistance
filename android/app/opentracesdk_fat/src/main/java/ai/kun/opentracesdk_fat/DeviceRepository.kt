@@ -1,7 +1,10 @@
-package ai.kun.socialdistancealarm.dao
+package ai.kun.opentracesdk_fat
 
-import ai.kun.socialdistancealarm.util.Constants
-import ai.kun.socialdistancealarm.util.NotificationUtils
+import ai.kun.opentracesdk_fat.dao.Device
+import ai.kun.opentracesdk_fat.dao.DeviceDao
+import ai.kun.opentracesdk_fat.dao.DeviceRoomDatabase
+import ai.kun.opentracesdk_fat.util.Constants
+import ai.kun.opentracesdk_fat.util.NotificationUtils
 import android.content.Context
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
@@ -16,7 +19,10 @@ object DeviceRepository {
     lateinit var allDevices: LiveData<List<Device>>
 
     fun init(applicationContext: Context) {
-        deviceDao = DeviceRoomDatabase.getDatabase(applicationContext, GlobalScope).deviceDao()
+        deviceDao = DeviceRoomDatabase.getDatabase(
+            applicationContext,
+            GlobalScope
+        ).deviceDao()
         allDevices = deviceDao.getAllDevices()
     }
 
@@ -25,7 +31,9 @@ object DeviceRepository {
     @WorkerThread
     suspend fun insert(device: Device) {
         deviceDao.insert(device)
-        currentDevices.postValue(getCurrentDevices())
+        currentDevices.postValue(
+            getCurrentDevices()
+        )
 
         // Alert if we need to...
         if (!device.isTeamMember) {
@@ -55,7 +63,9 @@ object DeviceRepository {
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun updateCurrentDevices() {
-        currentDevices.postValue(getCurrentDevices())
+        currentDevices.postValue(
+            getCurrentDevices()
+        )
     }
 
     // thread, blocking the UI.

@@ -1,6 +1,7 @@
 package ai.kun.opentracesdk_fat.alarm
 
-import ai.kun.opentracesdk_fat.alarm.BLETrace.getAlarmManager
+import ai.kun.opentracesdk_fat.BLETrace
+import ai.kun.opentracesdk_fat.BLETrace.getAlarmManager
 import ai.kun.opentracesdk_fat.util.Constants.BACKGROUND_TRACE_INTERVAL
 import ai.kun.opentracesdk_fat.util.Constants.MANUFACTURE_ID
 import ai.kun.opentracesdk_fat.util.Constants.MANUFACTURE_SUBSTRING
@@ -9,18 +10,15 @@ import android.app.PendingIntent
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGattServer
 import android.bluetooth.BluetoothGattService
-import android.bluetooth.BluetoothManager
 import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.AdvertiseData
 import android.bluetooth.le.AdvertiseSettings
-import android.bluetooth.le.BluetoothLeAdvertiser
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import java.nio.charset.StandardCharsets
 import java.util.*
 
@@ -89,7 +87,8 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     // GattServer
     private fun setupServer() {
         try {
-            if (BLETrace.bluetoothGattServer!!.getService(BLETrace.deviceNameServiceUuid) == null) {
+            if (BLETrace.bluetoothGattServer!!.getService(
+                    BLETrace.deviceNameServiceUuid) == null) {
                 val deviceService = BluetoothGattService(
                     BLETrace.deviceNameServiceUuid,
                     BluetoothGattService.SERVICE_TYPE_PRIMARY
@@ -99,7 +98,6 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         } catch (exception: Exception) {
             val msg = " ${exception::class.qualifiedName} while setting up the server caused by ${exception.localizedMessage}"
             Log.e(TAG, msg)
-            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 
@@ -134,7 +132,6 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         } catch (exception: Exception) {
             val msg = " ${exception::class.qualifiedName} while starting advertising caused by ${exception.localizedMessage}"
             Log.e(TAG, msg)
-            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 
@@ -147,7 +144,6 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
             }catch (exception: Exception) {
                 val msg = " ${exception::class.qualifiedName} while stopping advertising caused by ${exception.localizedMessage}"
                 Log.e(TAG, msg)
-                FirebaseCrashlytics.getInstance().log(TAG + msg)
             }
         }
     }
@@ -182,7 +178,6 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         } catch (exception: Exception) {
             val msg = " ${exception::class.qualifiedName} while sending a response caused by ${exception.localizedMessage}"
             Log.e(TAG, msg)
-            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 }

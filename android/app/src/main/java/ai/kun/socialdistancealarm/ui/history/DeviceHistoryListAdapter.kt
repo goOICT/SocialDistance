@@ -1,11 +1,11 @@
 package ai.kun.socialdistancealarm.ui.history
 
 import ai.kun.socialdistancealarm.R
-import ai.kun.socialdistancealarm.dao.Device
-import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_LIGHT_WARN
-import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_OK
-import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_STRONG_WARN
-import ai.kun.socialdistancealarm.util.Constants.TIME_FORMAT
+import ai.kun.opentracesdk_fat.dao.Device
+import ai.kun.opentracesdk_fat.util.Constants.SIGNAL_DISTANCE_LIGHT_WARN
+import ai.kun.opentracesdk_fat.util.Constants.SIGNAL_DISTANCE_OK
+import ai.kun.opentracesdk_fat.util.Constants.SIGNAL_DISTANCE_STRONG_WARN
+import ai.kun.opentracesdk_fat.util.Constants.TIME_FORMAT
 import ai.kun.socialdistancealarm.util.DateUtils.getFormattedDateString
 import android.content.Context
 import android.content.res.ColorStateList

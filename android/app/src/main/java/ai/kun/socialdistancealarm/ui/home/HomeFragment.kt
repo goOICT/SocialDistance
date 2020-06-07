@@ -1,8 +1,8 @@
 package ai.kun.socialdistancealarm.ui.home
 
 import ai.kun.socialdistancealarm.R
-import ai.kun.socialdistancealarm.alarm.BLETrace
-import ai.kun.socialdistancealarm.dao.DeviceRepository
+import ai.kun.opentracesdk_fat.BLETrace
+import ai.kun.opentracesdk_fat.DeviceRepository
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
@@ -16,7 +16,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,7 +24,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

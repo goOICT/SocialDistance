@@ -2,7 +2,6 @@ package ai.kun.opentracesdk_fat
 
 import ai.kun.opentracesdk_fat.alarm.BLEClient
 import ai.kun.opentracesdk_fat.alarm.BLEServer
-import ai.kun.opentracesdk_fat.alarm.BLETrace
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent

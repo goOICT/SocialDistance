@@ -1,24 +1,22 @@
 package ai.kun.opentracesdk_fat.alarm
 
+import ai.kun.opentracesdk_fat.BLETrace
 import ai.kun.opentracesdk_fat.dao.Device
-import ai.kun.opentracesdk_fat.dao.DeviceRepository
+import ai.kun.opentracesdk_fat.DeviceRepository
 import ai.kun.opentracesdk_fat.util.Constants
 import ai.kun.opentracesdk_fat.util.Constants.ANDROID_PREFIX
 import ai.kun.opentracesdk_fat.util.Constants.IOS_PREFIX
 import ai.kun.opentracesdk_fat.util.Constants.SCAN_PERIOD
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.bluetooth.*
 import android.bluetooth.le.*
 import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Context.BLUETOOTH_SERVICE
 import android.content.Intent
 import android.os.Build
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -107,7 +105,6 @@ class BLEClient : BroadcastReceiver() {
         } catch (exception: Exception) {
             val msg = " ${exception::class.qualifiedName} while starting scanning caused by ${exception.localizedMessage}"
             Log.e(TAG, msg)
-            FirebaseCrashlytics.getInstance().log(TAG + msg)
         }
     }
 
@@ -123,7 +120,6 @@ class BLEClient : BroadcastReceiver() {
             } catch (exception: Exception) {
                 val msg = " ${exception::class.qualifiedName} while stopping scanning caused by ${exception.localizedMessage}"
                 Log.e(TAG, msg)
-                FirebaseCrashlytics.getInstance().log(TAG + msg)
             }
             mScanning = false
         }
@@ -148,18 +144,17 @@ class BLEClient : BroadcastReceiver() {
                         } else {
                             -1
                         }
-                        val distance = BLETrace.calculateDistance(rssi, txPower)
                         var timeStampNanos: Long = scanResult.timestampNanos
                         val timeStamp: Long = System.currentTimeMillis()
                         var sessionId = deviceAddress
 
                         Log.d(
                             TAG,
-                            "+++++++++++++ Traced: device=$uuid distance=$distance rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++"
+                            "+++++++++++++ Traced: device=$uuid  rssi=$rssi txPower=$txPower timeStampNanos=$timeStampNanos timeStamp=$timeStamp sessionId=$sessionId +++++++++++++"
                         )
                         val device = Device(
                             uuid.toString(),
-                            distance,
+                            null,
                             rssi,
                             txPower,
                             timeStampNanos,

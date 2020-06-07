@@ -1,7 +1,7 @@
 package ai.kun.opentracesdk_fat.util
 
 import ai.kun.opentracesdk_fat.R
-import ai.kun.opentracesdk_fat.alarm.BLETrace
+import ai.kun.opentracesdk_fat.BLETrace
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent

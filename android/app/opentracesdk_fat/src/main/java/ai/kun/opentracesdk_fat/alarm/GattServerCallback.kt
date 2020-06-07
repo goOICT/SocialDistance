@@ -1,7 +1,7 @@
 package ai.kun.opentracesdk_fat.alarm
 
-import ai.kun.socialdistancealarm.util.ByteUtils
-import ai.kun.socialdistancealarm.util.Constants
+import ai.kun.opentracesdk_fat.util.ByteUtils
+import ai.kun.opentracesdk_fat.util.Constants
 import android.bluetooth.*
 
 object GattServerCallback: BluetoothGattServerCallback() {
