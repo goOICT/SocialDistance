@@ -31,6 +31,7 @@ object BLETrace {
     private val TAG = "BLETrace"
 
     private var isInit = false
+    var isReactNative = false
     private lateinit var context : Context
     var bluetoothGattServer : BluetoothGattServer? = null
     var bluetoothManager : BluetoothManager? = null
@@ -238,9 +239,10 @@ object BLETrace {
         return isInit  // && isLocationEnabled() Location doesn't need to be on
     }
 
-    fun init(applicationContext: Context) {
+    fun init(applicationContext: Context, isReactNative: Boolean = false) {
         synchronized(this) {
             context = applicationContext
+            this.isReactNative = isReactNative
             DeviceRepository.init(applicationContext)
 
             if (!isInit && uuidString != null) {

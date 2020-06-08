@@ -27,6 +27,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     private val TAG = "BLEServer"
     private val WAKELOCK_TAG = "ai:kun:socialdistancealarm:worker:BLEServer"
     private val INTERVAL_KEY = "interval"
+    private val ISREACTNATIVE_KEY = "isReactNative"
     private val SERVER_REQUEST_CODE = 10
     private val START_DELAY = 10
 
@@ -35,13 +36,14 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
     override fun onReceive(context: Context, intent: Intent) {
         val interval = intent.getIntExtra(INTERVAL_KEY, BACKGROUND_TRACE_INTERVAL)
+        val isReactNative = intent.getBooleanExtra(ISREACTNATIVE_KEY, false)
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKELOCK_TAG)
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
             appContext = context.applicationContext
-            BLETrace.init(appContext)
+            BLETrace.init(appContext, isReactNative)
             next(interval)
 
             GattServerCallback.serverActionListener = this
@@ -80,6 +82,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     private fun getPendingIntent(interval: Int, context: Context) : PendingIntent {
         val intent = Intent(context, BLEServer::class.java)
         intent.putExtra(INTERVAL_KEY, interval)
+        intent.putExtra(ISREACTNATIVE_KEY, BLETrace.isReactNative)
         return PendingIntent.getBroadcast(context, SERVER_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 

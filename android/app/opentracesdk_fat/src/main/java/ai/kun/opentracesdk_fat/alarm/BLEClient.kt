@@ -25,7 +25,13 @@ import java.util.*
 class BLEClient : BroadcastReceiver() {
     private val TAG = "BLEClient"
     private val WAKELOCK_TAG = "ai:kun:socialdistancealarm:worker:BLEClient"
+
     private val INTERVAL_KEY = "interval"
+    private val ISREACTNATIVE_KEY = "isReactNative"
+
+    private val RSSI_KEY = "rssi"
+    private val UUID_KEY = "uuid"
+
     private val CLIENT_REQUEST_CODE = 11
     private val START_DELAY = 10
 
@@ -34,12 +40,13 @@ class BLEClient : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         val interval = intent.getIntExtra(INTERVAL_KEY, Constants.BACKGROUND_TRACE_INTERVAL)
+        val isReactNative = intent.getBooleanExtra(ISREACTNATIVE_KEY, false)
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, WAKELOCK_TAG)
         wl.acquire(interval.toLong())
         synchronized(BLETrace) {
             // Chain the next alarm...
-            BLETrace.init(context.applicationContext)
+            BLETrace.init(context.applicationContext, isReactNative)
             next(interval, context.applicationContext)
             if (BLETrace.isEnabled()) startScan(context.applicationContext)
         }
@@ -72,6 +79,7 @@ class BLEClient : BroadcastReceiver() {
     private fun getPendingIntent(interval: Int, context: Context): PendingIntent {
         val intent = Intent(context, BLEClient::class.java)
         intent.putExtra(INTERVAL_KEY, interval)
+        intent.putExtra(ISREACTNATIVE_KEY, BLETrace.isReactNative)
         return PendingIntent.getBroadcast(
             context,
             CLIENT_REQUEST_CODE,
@@ -114,7 +122,7 @@ class BLEClient : BroadcastReceiver() {
             try {
                 if (mScanning && BLETrace.bluetoothManager!!.adapter.isEnabled) {
                     BLETrace.bluetoothLeScanner!!.stopScan(BtleScanCallback)
-                    scanComplete()
+                    scanComplete(context)
                 }
 
             } catch (exception: Exception) {
@@ -126,7 +134,7 @@ class BLEClient : BroadcastReceiver() {
         Log.d(TAG, "-------Stopped scanning.")
     }
 
-    private fun scanComplete() {
+    private fun scanComplete(context: Context) {
 
         var noCurrentDevices = true
         if (!BtleScanCallback.mScanResults.isEmpty()) {
@@ -163,7 +171,18 @@ class BLEClient : BroadcastReceiver() {
                             BLETrace.isTeamMember(uuid.toString()),
                             isAndroid
                         )
-                        GlobalScope.launch { DeviceRepository.insert(device) }
+
+                        if (BLETrace.isReactNative) {
+                            // If the library was run from RN start the RN background service to deal with the new scan
+                            // TODO: we should pass the name of the class in from the original init call, but for now it's hardcoded
+                            val intent = Intent(context.applicationContext, Class.forName("com.reactlibrary.RNBluetoothCallbacksReceiver"))
+                            intent.putExtra(RSSI_KEY, device.rssi)
+                            intent.putExtra(UUID_KEY, device.deviceUuid)
+                            context.applicationContext.startService(intent)
+                        } else {
+                            // If the library was run from a native app use the built-in Device Repository
+                            GlobalScope.launch { DeviceRepository.insert(device) }
+                        }
                         noCurrentDevices = false
                     }
                 }
