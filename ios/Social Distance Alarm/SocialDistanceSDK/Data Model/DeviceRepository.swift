@@ -61,12 +61,13 @@ public class DeviceRepository {
         return instance
     }()
     
-    func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date, isAndroid: Bool) {
+    func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date, isAndroid: Bool, isTeamMember: Bool) {
         // Add the device to the database
         let newDevice = Device(context: self.context)
         newDevice.deviceUuid = deviceUuid
         newDevice.rssi = rssi
         newDevice.isAndroid = isAndroid
+        newDevice.isTeamMember = isTeamMember
         if (txPower != nil) {
             newDevice.txPower = txPower!
         }
@@ -92,14 +93,16 @@ public class DeviceRepository {
         var danger = false
         var warn = false
         for device in getCurrentDevices() {
-            let signal = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower)
-            
-            if (signal >= AppConstants.signalDistanceStrongWarn) {
-                tooClose = true
-            } else if (signal >= AppConstants.signlaDistanceLightWarn) {
-                danger = true
-            } else if (signal >= AppConstants.signalDistanceOk) {
-                warn = true
+            if (!device.isTeamMember) {
+                let signal = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower)
+                
+                if (signal >= AppConstants.signalDistanceStrongWarn) {
+                    tooClose = true
+                } else if (signal >= AppConstants.signlaDistanceLightWarn) {
+                    danger = true
+                } else if (signal >= AppConstants.signalDistanceOk) {
+                    warn = true
+                }
             }
         }
         
@@ -184,9 +187,17 @@ extension DeviceRepository: BluetoothManagerDelegate {
     }
     
     public func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?, isAndroid: Bool) {
-        insert(deviceUuid: uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: isAndroid)
+        insert(deviceUuid: uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: isAndroid, isTeamMember: checkTeamMember(uuid: uuid))
         updateCurrentDevices()
     }
     
+    public func checkTeamMember(uuid: String) -> Bool {
+        let teamUuids = UserDefaults.standard.stringArray(forKey: Constants.TEAM_UUIDS_KEY.rawValue)
+        if (teamUuids == nil) {
+            return false
+        } else {
+            return teamUuids!.contains(uuid)
+        }
+    }
     
 }

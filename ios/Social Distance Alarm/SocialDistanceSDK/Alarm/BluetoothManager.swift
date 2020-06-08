@@ -8,6 +8,7 @@ enum Constants: String {
     case CENTRAL_MANAGER_ID = "ai.kun.socialdistancealarm.central"
     case PERIPHERAL_MANAGER_ID = "ai.kun.socialdistancealarm.peripheral"
     case DEFAULTS_UUID_KEY = "Device UUID"
+    case TEAM_UUIDS_KEY = "Team UUIDs"
 }
 
 @objc
