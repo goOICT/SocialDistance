@@ -22,6 +22,7 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

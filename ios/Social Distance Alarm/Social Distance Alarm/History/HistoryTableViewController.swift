@@ -79,4 +79,3 @@ class HistoryTableViewController: UITableViewController, DeviceRepositoryListene
         tableView.reloadData()
     }
 }
-
