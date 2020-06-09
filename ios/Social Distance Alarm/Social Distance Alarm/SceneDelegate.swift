@@ -98,6 +98,15 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
             print("Handling notifications with the Local Notification Identifier")
         }
         
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController as? UITabBarController else {
+            perror("Cannot instantiate UITabBarController from rootViewController")
+            completionHandler()
+            return
+        }
+        
+        // Default to Pocket Mode tab
+        rootViewController.selectedIndex = 2
+        
         completionHandler()
     }
     
