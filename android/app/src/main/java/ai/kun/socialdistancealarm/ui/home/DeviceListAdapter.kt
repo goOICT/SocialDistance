@@ -1,11 +1,12 @@
 package ai.kun.socialdistancealarm.ui.home
 
 import ai.kun.socialdistancealarm.R
-import ai.kun.socialdistancealarm.dao.Device
-import ai.kun.socialdistancealarm.util.BluetoothUtils
-import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_LIGHT_WARN
-import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_OK
-import ai.kun.socialdistancealarm.util.Constants.SIGNAL_DISTANCE_STRONG_WARN
+
+import ai.kun.opentracesdk_fat.dao.Device
+import ai.kun.opentracesdk_fat.util.BluetoothUtils
+import ai.kun.opentracesdk_fat.util.Constants.SIGNAL_DISTANCE_LIGHT_WARN
+import ai.kun.opentracesdk_fat.util.Constants.SIGNAL_DISTANCE_OK
+import ai.kun.opentracesdk_fat.util.Constants.SIGNAL_DISTANCE_STRONG_WARN
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater

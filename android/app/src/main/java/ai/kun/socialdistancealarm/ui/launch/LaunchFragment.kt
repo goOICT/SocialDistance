@@ -2,7 +2,7 @@ package ai.kun.socialdistancealarm.ui.launch
 
 import ai.kun.socialdistancealarm.R
 import ai.kun.socialdistancealarm.util.Constants
-import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.opentracesdk_fat.BLETrace
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater

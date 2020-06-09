@@ -30,11 +30,11 @@
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name="ai.kun.socialdistancealarm.alarm.BLEClient" />
+            android:name="ai.kun.opentracesdk_fat.alarm.BLEClient" />
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name="ai.kun.socialdistancealarm.alarm.BLEServer" />
+            android:name="ai.kun.opentracesdk_fat.alarm.BLEServer" />
         <receiver android:name="ai.kun.socialdistancealarm.alarm.AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

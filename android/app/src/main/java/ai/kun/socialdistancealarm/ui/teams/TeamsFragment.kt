@@ -2,7 +2,7 @@ package ai.kun.socialdistancealarm.ui.history
 
 import ai.kun.socialdistancealarm.LiveBarcodeScanningActivity
 import ai.kun.socialdistancealarm.R
-import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.opentracesdk_fat.BLETrace
 import ai.kun.socialdistancealarm.util.BarcodeEncoder
 import ai.kun.socialdistancealarm.util.Constants
 import android.Manifest
@@ -18,8 +18,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.floatingactionbutton.FloatingActionButton
