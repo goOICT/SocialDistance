@@ -130,10 +130,9 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
                 print("Error \(error.localizedDescription)")
             }
         }
-        
-        let pocketModeAction = UNNotificationAction(identifier: "PocketMode", title: "Pocket Mode", options: [])
+                
         let category = UNNotificationCategory(identifier: categoryIdentifire,
-                                              actions: [pocketModeAction],
+                                              actions: [],
                                               intentIdentifiers: [],
                                               options: [])
         
