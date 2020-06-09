@@ -1,5 +1,6 @@
 package ai.kun.socialdistancealarm.dao
 
+import ai.kun.socialdistancealarm.util.BluetoothUtils
 import ai.kun.socialdistancealarm.util.Constants
 import ai.kun.socialdistancealarm.util.NotificationUtils
 import android.content.Context
@@ -29,11 +30,7 @@ object DeviceRepository {
 
         // Alert if we need to...
         if (!device.isTeamMember) {
-            // Fix for older handset that don't report power...
-            val txPower = if (device.txPower + device.rssi < 0) 127 else device.txPower
-
-            // Notify the user when we are adding a device that's too close
-            val signal = txPower + device.rssi
+            val signal = BluetoothUtils.calculateSignal(device.rssi, device.txPower, device.isAndroid)
 
             when {
                 signal <= Constants.SIGNAL_DISTANCE_OK -> {

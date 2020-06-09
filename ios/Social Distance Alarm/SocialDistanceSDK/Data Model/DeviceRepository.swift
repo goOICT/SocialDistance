@@ -92,13 +92,13 @@ public class DeviceRepository {
         var danger = false
         var warn = false
         for device in getCurrentDevices() {
-            let signal = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower)
+            let signal = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower, isAndroid: device.isAndroid)
             
-            if (signal >= AppConstants.signalDistanceStrongWarn) {
+            if (signal >= SdkConstants.signalDistanceStrongWarn) {
                 tooClose = true
-            } else if (signal >= AppConstants.signlaDistanceLightWarn) {
+            } else if (signal >= SdkConstants.signlaDistanceLightWarn) {
                 danger = true
-            } else if (signal >= AppConstants.signalDistanceOk) {
+            } else if (signal >= SdkConstants.signalDistanceOk) {
                 warn = true
             }
         }
@@ -124,7 +124,7 @@ public class DeviceRepository {
     
     public func getCurrentDevices() -> [Device] {
         var deviceArray = [Device]()
-        let startTime = (Date() - AppConstants.traceInterval) as NSDate
+        let startTime = (Date() - SdkConstants.traceInterval * 4) as NSDate
         let timePredicate = NSPredicate(format: "scanDate >= %@", startTime)
         let request: NSFetchRequest<Device> = Device.fetchRequest()
         request.predicate = timePredicate
@@ -187,6 +187,4 @@ extension DeviceRepository: BluetoothManagerDelegate {
         insert(deviceUuid: uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: isAndroid)
         updateCurrentDevices()
     }
-    
-    
 }
