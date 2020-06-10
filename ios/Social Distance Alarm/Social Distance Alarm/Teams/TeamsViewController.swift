@@ -9,7 +9,7 @@
 import UIKit
 import SocialDistanceSDK
 
-class TeamsViewController: UIViewController {
+class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate {
 
     @IBOutlet weak var qrCodeImage: UIImageView!
     
@@ -36,9 +36,17 @@ class TeamsViewController: UIViewController {
     }
     
     @IBAction func addTeamMemberAction(_ sender: Any) {
+        let vc = QRCodeScannerViewController()
+        vc.delegate = self
+        vc.modalPresentationStyle = .automatic
+        self.tabBarController?.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func resetTeamsAction(_ sender: Any) {
     }
     
+    // QRCodeScannerViewControllerDelegate
+    func foundQRCode(value: String) {
+        // TODO: Aaron: the `value` is your scanned QR code
+    }
 }

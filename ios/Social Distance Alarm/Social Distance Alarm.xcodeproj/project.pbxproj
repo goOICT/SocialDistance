@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D9A1D0C38BD64E04DCB7BCE /* Pods_Social_Distance_Alarm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012E026F008811B299D62139 /* Pods_Social_Distance_Alarm.framework */; };
 		569045D794FE22AC21100E82 /* Pods_Social_Distance_AlarmTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E14296E0BE1B0B35726D2CFA /* Pods_Social_Distance_AlarmTests.framework */; };
+		5FC449C124914BE700995F26 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC449C024914BE700995F26 /* QRCodeScannerViewController.swift */; };
 		5FC6376D2487D94F006B52B6 /* NoUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FC6376C2487D94F006B52B6 /* NoUsersTableViewCell.swift */; };
 		AECF6F69247FE7970040CEDF /* SocialDistanceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AECF6F68247FE7970040CEDF /* SocialDistanceSDK.framework */; };
 		AECF6F6A247FE7970040CEDF /* SocialDistanceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AECF6F68247FE7970040CEDF /* SocialDistanceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		012E026F008811B299D62139 /* Pods_Social_Distance_Alarm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Distance_Alarm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC449C024914BE700995F26 /* QRCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScannerViewController.swift; sourceTree = "<group>"; };
 		5FC6376C2487D94F006B52B6 /* NoUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoUsersTableViewCell.swift; sourceTree = "<group>"; };
 		9FCB639F33A2F680D973D29D /* Pods-Social Distance Alarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance Alarm.debug.xcconfig"; path = "Target Support Files/Pods-Social Distance Alarm/Pods-Social Distance Alarm.debug.xcconfig"; sourceTree = "<group>"; };
 		A2DB025B31558F287CF1D31E /* Pods-Social Distance AlarmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance AlarmTests.release.xcconfig"; path = "Target Support Files/Pods-Social Distance AlarmTests/Pods-Social Distance AlarmTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				C1CD88AE24906642009E8238 /* TeamsViewController.swift */,
+				5FC449C024914BE700995F26 /* QRCodeScannerViewController.swift */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				C15B66922474A6F600962D98 /* DeviceHistoryTableViewCell.swift in Sources */,
 				C12E6DFA2467ADB80036C930 /* SceneDelegate.swift in Sources */,
 				C1B7199E24750FF400A6F9E9 /* PocketViewController.swift in Sources */,
+				5FC449C124914BE700995F26 /* QRCodeScannerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
