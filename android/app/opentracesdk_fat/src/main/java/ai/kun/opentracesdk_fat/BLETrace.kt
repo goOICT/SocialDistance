@@ -17,6 +17,7 @@ import android.bluetooth.le.BluetoothLeScanner
 import android.content.Context
 import android.content.SharedPreferences
 import android.location.LocationManager
+import android.util.Log
 import androidx.core.location.LocationManagerCompat
 import androidx.lifecycle.MutableLiveData
 import java.util.*
@@ -83,7 +84,7 @@ object BLETrace {
                 if (value != null) {
                     editor.putString(PREF_UNIQUE_ID, value)
                     editor.commit()
-                    init(context)
+                    init(context, this.isReactNative)
                     deviceNameServiceUuid = UUID.fromString(value)
                 } else {
                     editor.remove(PREF_UNIQUE_ID)
@@ -173,6 +174,7 @@ object BLETrace {
      */
     private fun startBackground() {
         if (isEnabled() && !isPaused) {
+            Log.i(TAG, "startBackground")
             isBackground = true
             isStarted.postValue(true)
             mBleServer.enable(Constants.REBROADCAST_PERIOD,
@@ -182,12 +184,14 @@ object BLETrace {
                 context
             )
         } else {
+            Log.i(TAG, "startBackground not possible");
             isStarted.postValue(false)
         }
     }
 
     private fun startForeground() {
         if (isEnabled() && !isPaused) {
+            Log.i(TAG, "startForeground")
             isBackground = false
             isStarted.postValue(true)
             mBleServer.enable(Constants.REBROADCAST_PERIOD,
@@ -233,7 +237,8 @@ object BLETrace {
         }
 
         if (!isInit) init(
-            context
+            context,
+            this.isReactNative
         ) // If bluetooth was off we need to complete the init
 
         return isInit  // && isLocationEnabled() Location doesn't need to be on
@@ -243,7 +248,10 @@ object BLETrace {
         synchronized(this) {
             context = applicationContext
             this.isReactNative = isReactNative
-            DeviceRepository.init(applicationContext)
+            if (!isReactNative) {
+                DeviceRepository.init(applicationContext)
+            }
+
 
             if (!isInit && uuidString != null) {
                 deviceNameServiceUuid = UUID.fromString(
@@ -271,7 +279,10 @@ object BLETrace {
             }
         }
 
-        NotificationUtils.init(applicationContext)
+        if (!isReactNative) {
+            NotificationUtils.init(applicationContext)
+        }
+
     }
 
     fun getAlarmManager(applicationContext: Context): AlarmManager {

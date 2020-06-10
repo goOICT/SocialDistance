@@ -3,6 +3,7 @@ package ai.kun.opentracesdk_fat.util
 import java.util.*
 
 object Constants {
+    const val INTENT_DEVICE_SCANNED = "ai.kun.socialdistancealarm.device_scanned"
     const val PREF_TEAM_IDS = "team_ids"
     const val PREF_UNIQUE_ID = "unique_uuid"
     const val PREF_IS_PAUSED = "is_paused"

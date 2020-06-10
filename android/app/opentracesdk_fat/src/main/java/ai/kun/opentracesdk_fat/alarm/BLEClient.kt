@@ -17,6 +17,7 @@ import android.os.Build
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
+import androidx.core.app.AlarmManagerCompat
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -39,6 +40,7 @@ class BLEClient : BroadcastReceiver() {
     private var mConnected = false
 
     override fun onReceive(context: Context, intent: Intent) {
+        Log.i(TAG, "onReceive")
         val interval = intent.getIntExtra(INTERVAL_KEY, Constants.BACKGROUND_TRACE_INTERVAL)
         val isReactNative = intent.getBooleanExtra(ISREACTNATIVE_KEY, false)
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
@@ -54,15 +56,17 @@ class BLEClient : BroadcastReceiver() {
     }
 
     fun next(interval: Int, context: Context) {
-        BLETrace.getAlarmManager(context).setExactAndAllowWhileIdle(
+        val alarmManager = BLETrace.getAlarmManager(context)
+        AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager,
             AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + interval,
-            getPendingIntent(interval, context)
-        )
+            getPendingIntent(interval, context))
+
     }
 
     fun enable(interval: Int, context: Context) {
-        BLETrace.getAlarmManager(context).setExactAndAllowWhileIdle(
+        val alarmManager = BLETrace.getAlarmManager(context)
+        AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager,
             AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + START_DELAY,
             getPendingIntent(interval, context)
@@ -135,7 +139,21 @@ class BLEClient : BroadcastReceiver() {
     }
 
     private fun scanComplete(context: Context) {
+        if (BLETrace.isReactNative ) {
+            val devices = BtleScanCallback.mScanResults.values
+            Intent().also {  intent ->
+                intent.action = Constants.INTENT_DEVICE_SCANNED
+                intent.putExtra(RSSI_KEY, devices.map { it.rssi }.toIntArray())
+                val ids = devices.map { it.deviceUuid }
+                intent.putExtra(UUID_KEY, ids.toTypedArray())
+                Log.i(TAG, "Sending ids ${ids.size}")
+                context.sendBroadcast(intent)
+            }
+            return
+        }
+
         var noCurrentDevices = true
+
         if (!BtleScanCallback.mScanResults.isEmpty()) {
             for (deviceAddress in BtleScanCallback.mScanResults.keys) {
                 val result: Device? = BtleScanCallback.mScanResults.get(deviceAddress)
@@ -145,17 +163,9 @@ class BLEClient : BroadcastReceiver() {
                         "+++++++++++++ Traced: device=${device.deviceUuid} rssi=${device.rssi} txPower=${device.txPower} timeStampNanos=${device.timeStampNanos} timeStamp=${device.timeStamp} sessionId=${device.sessionId} +++++++++++++"
                     )
 
-                    if (BLETrace.isReactNative) {
-                        // If the library was run from RN start the RN background service to deal with the new scan
-                        // TODO: we should pass the name of the class in from the original init call, but for now it's hardcoded
-                        val intent = Intent(context.applicationContext, Class.forName("com.reactlibrary.RNBluetoothCallbacksReceiver"))
-                        intent.putExtra(RSSI_KEY, device.rssi)
-                        intent.putExtra(UUID_KEY, device.deviceUuid)
-                        context.applicationContext.startService(intent)
-                    } else {
-                        // If the library was run from a native app use the built-in Device Repository
-                        GlobalScope.launch { DeviceRepository.insert(device) }
-                    }
+
+                    // If the library was run from a native app use the built-in Device Repository
+                    GlobalScope.launch { DeviceRepository.insert(device) }
 
                     noCurrentDevices = false
                 }
