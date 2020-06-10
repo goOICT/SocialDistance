@@ -7,24 +7,38 @@
 //
 
 import UIKit
+import SocialDistanceSDK
 
 class TeamsViewController: UIViewController {
 
+    @IBOutlet weak var qrCodeImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Build and show the current UUID String as a QRCode
+        qrCodeImage.image = generateQRCode(from: CoreBluetoothManager.sharedInstance.uuidString)
     }
     
+    private func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
 
-    /*
-    // MARK: - Navigation
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 6, y: 6)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+
+        return nil
     }
-    */
-
+    
+    @IBAction func addTeamMemberAction(_ sender: Any) {
+    }
+    
+    @IBAction func resetTeamsAction(_ sender: Any) {
+    }
+    
 }
