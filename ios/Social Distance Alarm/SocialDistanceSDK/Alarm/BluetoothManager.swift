@@ -132,7 +132,7 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
         }
 
         if (!isPaused) {
-            let uuid = CBUUID(string: Constants.IOS_SERVICE_UUID.rawValue)
+            let uuid = CBUUID(string: uuidString)
             var advertisingData: [String : Any] = [
                 CBAdvertisementDataLocalNameKey: "social-distance-alarm",
                 CBAdvertisementDataServiceUUIDsKey: [uuid]
