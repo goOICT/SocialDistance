@@ -183,8 +183,11 @@ extension DeviceRepository: BluetoothManagerDelegate {
         currentListener?.onRepositoryUpdate()
     }
     
-    public func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?, isAndroid: Bool) {
-        insert(deviceUuid: uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: isAndroid)
+    public func didDiscoverPeripheral(ids: [DeviceId], rssi: NSNumber, txPower: NSNumber?) {
+        ids.forEach { deviceId in
+            insert(deviceUuid: deviceId.uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: deviceId.isAndroid)
+        }
         updateCurrentDevices()
     }
+    
 }

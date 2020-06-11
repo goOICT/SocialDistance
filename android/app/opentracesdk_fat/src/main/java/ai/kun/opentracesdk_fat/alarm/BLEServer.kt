@@ -2,6 +2,7 @@ package ai.kun.opentracesdk_fat.alarm
 
 import ai.kun.opentracesdk_fat.BLETrace
 import ai.kun.opentracesdk_fat.BLETrace.getAlarmManager
+import ai.kun.opentracesdk_fat.util.BluetoothUtils
 import ai.kun.opentracesdk_fat.util.Constants.BACKGROUND_TRACE_INTERVAL
 import ai.kun.opentracesdk_fat.util.Constants.MANUFACTURE_ID
 import ai.kun.opentracesdk_fat.util.Constants.MANUFACTURE_SUBSTRING
@@ -19,6 +20,7 @@ import android.content.Intent
 import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
+import androidx.core.app.AlarmManagerCompat
 import java.nio.charset.StandardCharsets
 import java.util.*
 
@@ -35,6 +37,7 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
 
     override fun onReceive(context: Context, intent: Intent) {
+        Log.i(TAG, "onReceive")
         val interval = intent.getIntExtra(INTERVAL_KEY, BACKGROUND_TRACE_INTERVAL)
         val isReactNative = intent.getBooleanExtra(ISREACTNATIVE_KEY, false)
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
@@ -56,14 +59,18 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     }
 
     fun next(interval: Int) {
-        getAlarmManager(appContext).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+        val alarmManager = BLETrace.getAlarmManager(appContext)
+        AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager,
+            AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + interval,
             getPendingIntent(interval, appContext))
     }
 
     fun enable(interval: Int, context: Context) {
         this.appContext = context.applicationContext
-        getAlarmManager(appContext).setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+        val alarmManager = BLETrace.getAlarmManager(appContext)
+        AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager,
+            AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis() + START_DELAY,
             getPendingIntent(interval, appContext))
     }

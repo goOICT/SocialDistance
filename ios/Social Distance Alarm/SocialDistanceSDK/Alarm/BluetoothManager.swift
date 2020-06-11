@@ -10,12 +10,37 @@ enum Constants: String {
     case DEFAULTS_UUID_KEY = "Device UUID"
 }
 
+public extension CBUUID {
+    static let androidPrefix = String(Constants.ANDROID_SERVICE_UUID.rawValue.prefix(7))
+    static let iosPrefix = String(Constants.IOS_SERVICE_UUID.rawValue.prefix(7))
+    
+    var hasSocialDistancePrefix: Bool {
+        let lowercased = uuidString.lowercased()
+        return lowercased.hasPrefix(CBUUID.iosPrefix) || lowercased.hasPrefix(CBUUID.androidPrefix)
+    }
+    
+    var isAndroid: Bool {
+        uuidString.lowercased().hasPrefix(CBUUID.androidPrefix)
+    }
+}
+
+@objcMembers
+public class DeviceId: NSObject {
+    public let uuid: String
+    public let isAndroid: Bool
+    
+    init(CBUUID: CBUUID) {
+        self.uuid = CBUUID.uuidString
+        self.isAndroid = CBUUID.isAndroid
+    }
+}
+
 @objc
 public protocol BluetoothManagerDelegate: AnyObject {
     func peripheralsDidUpdate()
     func advertisingStarted()
     func scanningStarted()
-    func didDiscoverPeripheral(uuid: String, rssi: NSNumber, txPower: NSNumber?, isAndroid: Bool)
+    func didDiscoverPeripheral(ids: [DeviceId], rssi: NSNumber, txPower: NSNumber?)
 }
 
 public protocol BluetoothManager {
@@ -185,20 +210,18 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         peripherals[peripheral.identifier] = peripheral
         let uuids = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID]
-        // let uuidOverflow = advertisementData[CBAdvertisementDataOverflowServiceUUIDsKey]
         let txPowerLevel = advertisementData[CBAdvertisementDataTxPowerLevelKey] as? NSNumber
- 
-        guard let uuid = uuids?.first else { return }
         
-        let isAndroid = uuid.uuidString.lowercased().hasPrefix(androidPrefix)
-        
-        if (isAndroid || uuid.uuidString.lowercased().hasPrefix(iosPrefix)) {
-                delegate?.didDiscoverPeripheral(uuid: uuid.uuidString, rssi: RSSI, txPower: txPowerLevel, isAndroid: isAndroid)
-        }
-
+        guard let ids = uuids, !ids.filter({ (cbUid) -> Bool in
+            return cbUid.hasSocialDistancePrefix
+        }).isEmpty else { return }
+    
+        delegate?.didDiscoverPeripheral(ids: ids.map(DeviceId.init), rssi: RSSI, txPower: txPowerLevel)
     }
     
     public func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
         print("Central Manager willRestoreState called")
     }
 }
+
+
