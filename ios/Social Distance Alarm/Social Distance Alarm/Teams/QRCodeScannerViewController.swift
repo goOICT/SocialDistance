@@ -57,21 +57,12 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
+        
+        createOverlay()
 
         captureSession.startRunning()
     }
-
-    func failed() {
-        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-        ac.addAction(
-            UIAlertAction(
-                title: "OK",
-                style: .default,
-                handler: {_ in self.dismiss(animated: true, completion: nil)}))
-        present(ac, animated: true)
-        captureSession = nil
-    }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -100,10 +91,48 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
 
         dismiss(animated: true)
     }
+    
+    private func failed() {
+        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
+        ac.addAction(
+            UIAlertAction(
+                title: "OK",
+                style: .default,
+                handler: {_ in self.dismiss(animated: true, completion: nil)}))
+        present(ac, animated: true)
+        captureSession = nil
+    }
 
-    func found(code: String) {
+    private func found(code: String) {
         dismiss(animated: true, completion: nil)
         delegate?.foundQRCode(value: code)
+    }
+    
+    private func createOverlay() {
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        
+        let transparentHoleWidth = screenWidth * 0.6
+        let transparentHoleHeight = transparentHoleWidth
+        
+        let overlayView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        let path = CGMutablePath()
+        
+        path.addRect(CGRect(x: (screenWidth - transparentHoleWidth) / 2.0, y: screenHeight * 0.26, width: transparentHoleWidth, height: transparentHoleHeight))
+        path.addRect(CGRect(origin: .zero, size: overlayView.frame.size))
+
+        let maskLayer = CAShapeLayer()
+        maskLayer.backgroundColor = UIColor.black.cgColor
+        maskLayer.path = path
+        
+        maskLayer.fillRule = .evenOdd
+        
+        overlayView.layer.mask = maskLayer
+        overlayView.clipsToBounds = true
+        
+        self.view.addSubview(overlayView)
     }
 
     override var prefersStatusBarHidden: Bool {
