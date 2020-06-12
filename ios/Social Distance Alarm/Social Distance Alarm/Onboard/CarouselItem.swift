@@ -16,8 +16,6 @@ class CarouselItem: UIView {
         initWithNib()
     }
     
-    
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()

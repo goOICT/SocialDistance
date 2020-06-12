@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "proximitySvg.png",
+      "filename" : "introSvg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "proximitySvg@2x.png",
+      "filename" : "introSvg@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "proximitySvg@3x.png",
+      "filename" : "introSvg@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
