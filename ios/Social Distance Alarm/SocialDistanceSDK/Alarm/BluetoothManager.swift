@@ -2,17 +2,18 @@ import Foundation
 import CoreBluetooth
 import AudioToolbox
 
-enum Constants: String {
+public enum SocialDistanceSdkConstants: String {
     case IOS_SERVICE_UUID =     "00086f9a-264e-3ac6-838a-000000000000"
     case ANDROID_SERVICE_UUID = "d2b86f9a-264e-3ac6-838a-0d00c1f549ed"
     case CENTRAL_MANAGER_ID = "ai.kun.socialdistancealarm.central"
     case PERIPHERAL_MANAGER_ID = "ai.kun.socialdistancealarm.peripheral"
     case DEFAULTS_UUID_KEY = "Device UUID"
+    case TEAMS_KEY = "teamsKey"
 }
 
 public extension CBUUID {
-    static let androidPrefix = String(Constants.ANDROID_SERVICE_UUID.rawValue.prefix(7))
-    static let iosPrefix = String(Constants.IOS_SERVICE_UUID.rawValue.prefix(7))
+    static let androidPrefix = String(SocialDistanceSdkConstants.ANDROID_SERVICE_UUID.rawValue.prefix(7))
+    static let iosPrefix = String(SocialDistanceSdkConstants.IOS_SERVICE_UUID.rawValue.prefix(7))
     
     var hasSocialDistancePrefix: Bool {
         let lowercased = uuidString.lowercased()
@@ -55,26 +56,32 @@ public protocol BluetoothManager {
 func getNewUniqueId() -> String {
     let stringChars = "0123456789abcdef"
     let postfix = String((0...11).map{ _ in stringChars.randomElement()! })
-    return Constants.IOS_SERVICE_UUID.rawValue.replacingOccurrences(of: "000000000000", with: postfix)
+    return SocialDistanceSdkConstants.IOS_SERVICE_UUID.rawValue.replacingOccurrences(of: "000000000000", with: postfix)
 }
+
 
 @objcMembers
 public class CoreBluetoothManager: NSObject, BluetoothManager {
     
     public var uuidString: String =  {
-        let currentId = UserDefaults.standard.string(forKey: Constants.DEFAULTS_UUID_KEY.rawValue)
+        let currentId = UserDefaults.standard.string(forKey: SocialDistanceSdkConstants.DEFAULTS_UUID_KEY.rawValue)
         if (currentId == nil) {
-           let newId = getNewUniqueId()
-            UserDefaults.standard.set(newId, forKey: Constants.DEFAULTS_UUID_KEY.rawValue)
+            let newId = getNewUniqueId()
+            UserDefaults.standard.set(newId, forKey: SocialDistanceSdkConstants.DEFAULTS_UUID_KEY.rawValue)
             return newId
         } else {
             return currentId!
         }
     }()
     
+    public func resetUuidString(){
+        let newId = getNewUniqueId()
+        uuidString = newId
+        UserDefaults.standard.set(newId, forKey: SocialDistanceSdkConstants.DEFAULTS_UUID_KEY.rawValue)
+    }
     
-    let androidPrefix = String(Constants.ANDROID_SERVICE_UUID.rawValue.prefix(7))
-    let iosPrefix = String(Constants.IOS_SERVICE_UUID.rawValue.prefix(7))
+    let androidPrefix = String(SocialDistanceSdkConstants.ANDROID_SERVICE_UUID.rawValue.prefix(7))
+    let iosPrefix = String(SocialDistanceSdkConstants.IOS_SERVICE_UUID.rawValue.prefix(7))
     
     public static let sharedInstance: CoreBluetoothManager = {
         let instance = CoreBluetoothManager()

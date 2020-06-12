@@ -45,18 +45,6 @@ class TeamsFragment : Fragment() {
         val historyViewModel: HistoryViewModel by viewModels()
         val root = inflater.inflate(R.layout.fragment_teams, container, false)
 
-        // Show the QR Code...
-        val barCodeImageView = root.findViewById<ImageView>(R.id.barcodeImage)
-        val multiFormatWriter = MultiFormatWriter()
-        try {
-            val bitMatrix: BitMatrix =
-                multiFormatWriter.encode(BLETrace.uuidString, BarcodeFormat.QR_CODE, Constants.QR_CODE_SIZE, Constants.QR_CODE_SIZE)
-            val barcodeEncoder = BarcodeEncoder()
-            val bitmap: Bitmap = barcodeEncoder.createBitmap(bitMatrix)
-            barCodeImageView.setImageBitmap(bitmap)
-        } catch (e: WriterException) {
-            e.printStackTrace()
-        }
 
         val cameraButton = root.findViewById<FloatingActionButton>(R.id.cameraButton)
         cameraButton.setOnClickListener {
@@ -69,12 +57,13 @@ class TeamsFragment : Fragment() {
 
         val resetButton = root.findViewById<Button>(R.id.resetButton)
         resetButton.setOnClickListener {
-            val alertDialog = AlertDialog.Builder(context)
+            AlertDialog.Builder(context)
                 .setCancelable(true)
                 .setMessage(R.string.reset_dialog_message)
                 .setTitle(R.string.are_you_sure)
                 .setPositiveButton(R.string.ok, { dialogInterface: DialogInterface, i: Int ->
                     BLETrace.leaveTeam()
+                    setQrCode()
                 })
                 .show()
         }
@@ -82,8 +71,25 @@ class TeamsFragment : Fragment() {
         return root
     }
 
+    private fun setQrCode() {
+        // Show the QR Code...
+        val barCodeImageView = view?.findViewById<ImageView>(R.id.barcodeImage)
+        val multiFormatWriter = MultiFormatWriter()
+        try {
+            val bitMatrix: BitMatrix =
+                multiFormatWriter.encode(BLETrace.uuidString, BarcodeFormat.QR_CODE, Constants.QR_CODE_SIZE, Constants.QR_CODE_SIZE)
+            val barcodeEncoder = BarcodeEncoder()
+            val bitmap: Bitmap = barcodeEncoder.createBitmap(bitMatrix)
+            barCodeImageView?.setImageBitmap(bitmap)
+        } catch (e: WriterException) {
+            e.printStackTrace()
+        }
+
+    }
+
     override fun onResume() {
         super.onResume()
+        setQrCode()
         scanMessage?.let {
             val alertDialog = AlertDialog.Builder(context)
                 .setMessage(it)

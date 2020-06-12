@@ -76,6 +76,13 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
             cell.personIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
             cell.distanceDescription.text = "Ok"
         }
+        
+        if (device.isTeamMember) {
+            cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
+            cell.personIcon.image = UIImage(systemName: "person.2.fill")?.withRenderingMode(.alwaysTemplate)
+            cell.personIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
+            cell.distanceDescription.text = "Ok"
+        }
           
         return cell
     }
