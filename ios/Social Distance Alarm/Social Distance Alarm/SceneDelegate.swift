@@ -116,7 +116,7 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
         let categoryIdentifire = "Pause Notification Type"
         
         content.title = "Paused"
-        content.body = "Social Distance Alarm is paused. Tap here to resume scanning for devices, or long press for pocket mode."
+        content.body = "Social Distance Alarm is paused. Tap here to resume scanning for devices."
         content.sound = UNNotificationSound.default
         content.badge = 1
         content.categoryIdentifier = categoryIdentifire

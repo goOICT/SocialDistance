@@ -41,6 +41,7 @@ class DeviceListAdapter internal constructor(
 
         // Notify the user when we are adding a device that's too close
         val signal = BluetoothUtils.calculateSignal(current.rssi, current.txPower, current.isAndroid)
+        holder.peopleImageView.setImageResource(R.drawable.ic_emoji_people_icon)
         when {
             signal <= SIGNAL_DISTANCE_OK -> {
                 holder.distanceTextView.text = context.resources.getString(R.string.ok)

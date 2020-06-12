@@ -48,12 +48,10 @@ class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate
         alert.addAction(UIAlertAction(title: "Yes, Reset", style: .default, handler: { _ in
             CoreBluetoothManager.sharedInstance.resetUuidString()
             DeviceRepository.sharedInstance.resetTeam()
+            self.qrCodeImage.image = self.generateQRCode(from: CoreBluetoothManager.sharedInstance.uuidString)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         self.present(alert, animated: true)
-        
-
-        
     }
     
     // QRCodeScannerViewControllerDelegate
