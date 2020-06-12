@@ -24,8 +24,8 @@ class CarouselPageViewController: UIPageViewController {
     }
     
     fileprivate func populateItems() {
-        let images = [#imageLiteral(resourceName: "proximitySvg"), #imageLiteral(resourceName: "manWalkingSvg"), #imageLiteral(resourceName: "pocketModeSvgFullScreen"), #imageLiteral(resourceName: "mapSvg")]
-        let titles = ["Introduction", "More details", "Pocket mode", "Location permission"]
+        let images = [#imageLiteral(resourceName: "proximitySvg"), #imageLiteral(resourceName: "teamsSvg"), #imageLiteral(resourceName: "pocketModeSvgFullScreen"), #imageLiteral(resourceName: "mapSvg")]
+        let titles = ["Introduction", "Teams", "Pocket mode", "Location permission"]
         let texts = ["Open Trace helps maintain social distance. It can see other devices with the app ON and tell you when they are too close.",
                     "Use this for teams of people. Everyone’s app must be turned ON. All data is stored locally.",
                     "You can put the app in pocket mode when you’re not using your phone so the app stays on and detects other devices.",

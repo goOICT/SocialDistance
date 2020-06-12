@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "manWalkingSvg.png",
+      "filename" : "teamsSvg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "manWalkingSvg@2x.png",
+      "filename" : "teamsSvg@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "manWalkingSvg@3x.png",
+      "filename" : "teamsSvg@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
