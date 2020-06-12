@@ -70,8 +70,8 @@ public class DeviceRepository {
         if (txPower != nil) {
             newDevice.txPower = txPower!
         }
-        
         newDevice.scanDate = scanDate
+        newDevice.isTeamMember = isTeamMember(uuidString: deviceUuid)
 
         // TODO: remove old devices
     }
@@ -92,14 +92,16 @@ public class DeviceRepository {
         var danger = false
         var warn = false
         for device in getCurrentDevices() {
-            let signal = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower, isAndroid: device.isAndroid)
-            
-            if (signal >= SdkConstants.signalDistanceStrongWarn) {
-                tooClose = true
-            } else if (signal >= SdkConstants.signlaDistanceLightWarn) {
-                danger = true
-            } else if (signal >= SdkConstants.signalDistanceOk) {
-                warn = true
+            if (!device.isTeamMember) {
+                let signal = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower, isAndroid: device.isAndroid)
+                
+                if (signal >= SdkConstants.signalDistanceStrongWarn) {
+                    tooClose = true
+                } else if (signal >= SdkConstants.signlaDistanceLightWarn) {
+                    danger = true
+                } else if (signal >= SdkConstants.signalDistanceOk) {
+                    warn = true
+                }
             }
         }
         
@@ -165,6 +167,49 @@ public class DeviceRepository {
         }
         
         return deviceArray
+    }
+    
+    public func resetTeam() {
+        UserDefaults.standard.removeObject(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
+    }
+    
+    public func addTeamMember(uuidString: String) -> Bool {
+        let value = uuidString.lowercased()
+        
+        if (UUID(uuidString: value) == nil) {
+            return false
+        }
+
+        var teams = UserDefaults.standard.stringArray(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
+        
+        if (teams == nil) {
+            UserDefaults.standard.set([value], forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
+            return true
+        } else {
+            if (teams!.contains(value)) {
+                return true
+            } else {
+                teams!.append(value)
+                UserDefaults.standard.set(teams, forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
+                return true
+
+            }
+        }
+    }
+    
+    func isTeamMember(uuidString: String) -> Bool {
+        let value = uuidString.lowercased()
+        let teams = UserDefaults.standard.stringArray(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
+        
+        if (teams == nil) {
+            return false
+        } else {
+            if (teams!.contains(value)) {
+                return true
+            } else {
+                return false
+            }
+        }
     }
 }
 

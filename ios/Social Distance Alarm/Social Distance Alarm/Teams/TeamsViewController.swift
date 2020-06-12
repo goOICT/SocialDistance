@@ -12,6 +12,7 @@ import SocialDistanceSDK
 class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate {
 
     @IBOutlet weak var qrCodeImage: UIImageView!
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +44,29 @@ class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate
     }
     
     @IBAction func resetTeamsAction(_ sender: Any) {
+        let alert = UIAlertController(title: "Are you sure?", message: "Resetting your team will remove handsets you scanned and remove you from handsets that have scanned you.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes, Reset", style: .default, handler: { _ in
+            CoreBluetoothManager.sharedInstance.resetUuidString()
+            DeviceRepository.sharedInstance.resetTeam()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        self.present(alert, animated: true)
+        
+
+        
     }
     
     // QRCodeScannerViewControllerDelegate
     func foundQRCode(value: String) {
-        // TODO: Aaron: the `value` is your scanned QR code
+        if (!DeviceRepository.sharedInstance.addTeamMember(uuidString: value)) {
+            let alert = UIAlertController(title: "Oops!", message: "The QR code you scanned wasn't from our app.  Try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Scanned!", message: "The handset you scanned has been added to your existing team.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+        
     }
 }
