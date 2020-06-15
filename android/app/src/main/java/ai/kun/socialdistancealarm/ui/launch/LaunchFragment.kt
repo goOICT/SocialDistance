@@ -2,7 +2,7 @@ package ai.kun.socialdistancealarm.ui.launch
 
 import ai.kun.socialdistancealarm.R
 import ai.kun.socialdistancealarm.util.Constants
-import ai.kun.socialdistancealarm.alarm.BLETrace
+import ai.kun.opentracesdk_fat.BLETrace
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -53,8 +53,8 @@ class LaunchFragment : Fragment() {
         )
 
         if (sharedPrefs == null || !sharedPrefs.getBoolean(Constants.PREF_IS_ONBOARDED, false)) {
-            // This user is new so set them up...
-            BLETrace.uniqueId = Constants.USER_TYPE_DEFAULT
+            BLETrace.uuidString = BLETrace.getNewUniqueId()
+            BLETrace.init(requireContext().applicationContext)
             findNavController().navigate(R.id.action_launchFragment_to_onBoardFragment_1)
         } else {
             findNavController().navigate(R.id.action_launchFragment_to_navigation_home)

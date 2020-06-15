@@ -107,4 +107,18 @@
             app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pausePlayFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/red_header"
+        android:backgroundTint="@color/red_header"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_pause_24"
+        app:backgroundTint="@color/red_header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

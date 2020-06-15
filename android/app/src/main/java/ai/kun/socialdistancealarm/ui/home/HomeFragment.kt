@@ -1,8 +1,8 @@
 package ai.kun.socialdistancealarm.ui.home
 
 import ai.kun.socialdistancealarm.R
-import ai.kun.socialdistancealarm.alarm.BLETrace
-import ai.kun.socialdistancealarm.dao.DeviceRepository
+import ai.kun.opentracesdk_fat.BLETrace
+import ai.kun.opentracesdk_fat.DeviceRepository
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
@@ -23,6 +23,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -94,11 +95,13 @@ class HomeFragment : Fragment() {
                 View.VISIBLE
             root.findViewById<ConstraintLayout>(R.id.constraintLayout_paused).visibility =
                 View.GONE
+            root.findViewById<FloatingActionButton>(R.id.pausePlayFab).setImageResource(R.drawable.ic_baseline_pause_24)
         } else {
             root.findViewById<RecyclerView>(R.id.recyclerView_devices).visibility =
                 View.GONE
             root.findViewById<ConstraintLayout>(R.id.constraintLayout_paused).visibility =
                 View.VISIBLE
+            root.findViewById<FloatingActionButton>(R.id.pausePlayFab).setImageResource(R.drawable.ic_baseline_play_arrow_24)
         }
     }
 
@@ -121,6 +124,12 @@ class HomeFragment : Fragment() {
         view.findViewById<TextView>(R.id.TextView_resume_detecting).setOnClickListener {
             BLETrace.isPaused = false
         }
+
+        view.findViewById<FloatingActionButton>(R.id.pausePlayFab).setOnClickListener {
+            BLETrace.isStarted.value?.let { isStarted ->
+                BLETrace.isPaused = isStarted
+            }
+        }
     }
 
     override fun onResume() {
@@ -130,6 +139,7 @@ class HomeFragment : Fragment() {
             checkPermissions(it)
             checkBluetooth(it)
         }
+
         startTrace()
     }
 

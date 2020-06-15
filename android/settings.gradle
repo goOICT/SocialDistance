@@ -1,2 +1,3 @@
+include ':app:opentracesdk_fat'
 rootProject.name='OpenTrace'
 include ':app'

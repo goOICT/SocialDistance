@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AECF6F3C247FE6460040CEDF /* SocialDistanceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AECF6F32247FE6460040CEDF /* SocialDistanceSDK.framework */; };
+		AECF6F41247FE6460040CEDF /* SocialDistanceSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF6F40247FE6460040CEDF /* SocialDistanceSDKTests.swift */; };
+		AECF6F43247FE6460040CEDF /* SocialDistanceSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = AECF6F35247FE6460040CEDF /* SocialDistanceSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AECF6F5D247FE7250040CEDF /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF6F5C247FE7250040CEDF /* BluetoothManager.swift */; };
+		AECF6F78247FE87F0040CEDF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF6F77247FE87F0040CEDF /* Util.swift */; };
+		AECF6F7C247FE9150040CEDF /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF6F7B247FE9150040CEDF /* DeviceRepository.swift */; };
+		AECF6F80247FE9530040CEDF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF6F7F247FE9530040CEDF /* Constants.swift */; };
+		AECF6F83247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AECF6F81247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AECF6F3D247FE6460040CEDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AECF6F29247FE6460040CEDF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AECF6F31247FE6460040CEDF;
+			remoteInfo = SocialDistanceSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AECF6F32247FE6460040CEDF /* SocialDistanceSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocialDistanceSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AECF6F35247FE6460040CEDF /* SocialDistanceSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocialDistanceSDK.h; sourceTree = "<group>"; };
+		AECF6F36247FE6460040CEDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AECF6F3B247FE6460040CEDF /* SocialDistanceSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialDistanceSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AECF6F40247FE6460040CEDF /* SocialDistanceSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialDistanceSDKTests.swift; sourceTree = "<group>"; };
+		AECF6F42247FE6460040CEDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AECF6F5C247FE7250040CEDF /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		AECF6F77247FE87F0040CEDF /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		AECF6F7B247FE9150040CEDF /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
+		AECF6F7F247FE9530040CEDF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AECF6F82247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Social_Distance_Alarm.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AECF6F2F247FE6460040CEDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AECF6F38247FE6460040CEDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AECF6F3C247FE6460040CEDF /* SocialDistanceSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AECF6F28247FE6460040CEDF = {
+			isa = PBXGroup;
+			children = (
+				AECF6F6C247FE7EE0040CEDF /* Util */,
+				AECF6F5E247FE7330040CEDF /* Data Model */,
+				AECF6F5B247FE70A0040CEDF /* Alarm */,
+				AECF6F34247FE6460040CEDF /* SocialDistanceSDK */,
+				AECF6F3F247FE6460040CEDF /* SocialDistanceSDKTests */,
+				AECF6F33247FE6460040CEDF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AECF6F33247FE6460040CEDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AECF6F32247FE6460040CEDF /* SocialDistanceSDK.framework */,
+				AECF6F3B247FE6460040CEDF /* SocialDistanceSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AECF6F34247FE6460040CEDF /* SocialDistanceSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AECF6F35247FE6460040CEDF /* SocialDistanceSDK.h */,
+				AECF6F36247FE6460040CEDF /* Info.plist */,
+			);
+			path = SocialDistanceSDK;
+			sourceTree = "<group>";
+		};
+		AECF6F3F247FE6460040CEDF /* SocialDistanceSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				AECF6F40247FE6460040CEDF /* SocialDistanceSDKTests.swift */,
+				AECF6F42247FE6460040CEDF /* Info.plist */,
+			);
+			path = SocialDistanceSDKTests;
+			sourceTree = "<group>";
+		};
+		AECF6F5B247FE70A0040CEDF /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				AECF6F5C247FE7250040CEDF /* BluetoothManager.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		AECF6F5E247FE7330040CEDF /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				AECF6F81247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodeld */,
+				AECF6F7B247FE9150040CEDF /* DeviceRepository.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		AECF6F6C247FE7EE0040CEDF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				AECF6F77247FE87F0040CEDF /* Util.swift */,
+				AECF6F7F247FE9530040CEDF /* Constants.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AECF6F2D247FE6460040CEDF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AECF6F43247FE6460040CEDF /* SocialDistanceSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AECF6F31247FE6460040CEDF /* SocialDistanceSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AECF6F46247FE6460040CEDF /* Build configuration list for PBXNativeTarget "SocialDistanceSDK" */;
+			buildPhases = (
+				AECF6F2D247FE6460040CEDF /* Headers */,
+				AECF6F2E247FE6460040CEDF /* Sources */,
+				AECF6F2F247FE6460040CEDF /* Frameworks */,
+				AECF6F30247FE6460040CEDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SocialDistanceSDK;
+			productName = SocialDistanceSDK;
+			productReference = AECF6F32247FE6460040CEDF /* SocialDistanceSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AECF6F3A247FE6460040CEDF /* SocialDistanceSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AECF6F49247FE6460040CEDF /* Build configuration list for PBXNativeTarget "SocialDistanceSDKTests" */;
+			buildPhases = (
+				AECF6F37247FE6460040CEDF /* Sources */,
+				AECF6F38247FE6460040CEDF /* Frameworks */,
+				AECF6F39247FE6460040CEDF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AECF6F3E247FE6460040CEDF /* PBXTargetDependency */,
+			);
+			name = SocialDistanceSDKTests;
+			productName = SocialDistanceSDKTests;
+			productReference = AECF6F3B247FE6460040CEDF /* SocialDistanceSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AECF6F29247FE6460040CEDF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = kunai;
+				TargetAttributes = {
+					AECF6F31247FE6460040CEDF = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					AECF6F3A247FE6460040CEDF = {
+						CreatedOnToolsVersion = 11.4;
+					};
+				};
+			};
+			buildConfigurationList = AECF6F2C247FE6460040CEDF /* Build configuration list for PBXProject "SocialDistanceSDK" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AECF6F28247FE6460040CEDF;
+			productRefGroup = AECF6F33247FE6460040CEDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECF6F31247FE6460040CEDF /* SocialDistanceSDK */,
+				AECF6F3A247FE6460040CEDF /* SocialDistanceSDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AECF6F30247FE6460040CEDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AECF6F39247FE6460040CEDF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AECF6F2E247FE6460040CEDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AECF6F5D247FE7250040CEDF /* BluetoothManager.swift in Sources */,
+				AECF6F78247FE87F0040CEDF /* Util.swift in Sources */,
+				AECF6F83247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodeld in Sources */,
+				AECF6F7C247FE9150040CEDF /* DeviceRepository.swift in Sources */,
+				AECF6F80247FE9530040CEDF /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AECF6F37247FE6460040CEDF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AECF6F41247FE6460040CEDF /* SocialDistanceSDKTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AECF6F3E247FE6460040CEDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AECF6F31247FE6460040CEDF /* SocialDistanceSDK */;
+			targetProxy = AECF6F3D247FE6460040CEDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AECF6F44247FE6460040CEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AECF6F45247FE6460040CEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AECF6F47247FE6460040CEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B2W24A22W7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SocialDistanceSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.kun.SocialDistanceSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AECF6F48247FE6460040CEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B2W24A22W7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SocialDistanceSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.kun.SocialDistanceSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AECF6F4A247FE6460040CEDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B2W24A22W7;
+				INFOPLIST_FILE = SocialDistanceSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.kun.SocialDistanceSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AECF6F4B247FE6460040CEDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B2W24A22W7;
+				INFOPLIST_FILE = SocialDistanceSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.kun.SocialDistanceSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AECF6F2C247FE6460040CEDF /* Build configuration list for PBXProject "SocialDistanceSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AECF6F44247FE6460040CEDF /* Debug */,
+				AECF6F45247FE6460040CEDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AECF6F46247FE6460040CEDF /* Build configuration list for PBXNativeTarget "SocialDistanceSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AECF6F47247FE6460040CEDF /* Debug */,
+				AECF6F48247FE6460040CEDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AECF6F49247FE6460040CEDF /* Build configuration list for PBXNativeTarget "SocialDistanceSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AECF6F4A247FE6460040CEDF /* Debug */,
+				AECF6F4B247FE6460040CEDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AECF6F81247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AECF6F82247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodel */,
+			);
+			currentVersion = AECF6F82247FEC660040CEDF /* Social_Distance_Alarm.xcdatamodel */;
+			path = Social_Distance_Alarm.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AECF6F29247FE6460040CEDF /* Project object */;
+}

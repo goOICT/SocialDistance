@@ -2,7 +2,6 @@ package ai.kun.socialdistancealarm.ui.launch
 
 import ai.kun.socialdistancealarm.R
 import ai.kun.socialdistancealarm.util.Constants
-import ai.kun.socialdistancealarm.alarm.BLETrace
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -43,7 +42,7 @@ class OnBoardFragment : Fragment() {
             ONBOARD_ONE -> {
                 view.findViewById<TextView>(R.id.section_label).text = getText(R.string.onboard_one_section_label)
                 view.findViewById<TextView>(R.id.section_description).text = getText(R.string.onboard_one_section_description)
-                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.drawable.ic_proximity_svg, null)
+                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.drawable.intro_svg, null)
 
                 view.findViewById<ImageView>(R.id.intro_indicator_0).isSelected = true
                 view.findViewById<ImageView>(R.id.intro_indicator_1).isSelected = false
@@ -55,16 +54,11 @@ class OnBoardFragment : Fragment() {
                 view.findViewById<ImageButton>(R.id.intro_btn_next).setOnClickListener {
                     findNavController().navigate(R.id.action_onBoardFragment_1_to_onBoardFragment_2)
                 }
-                view.findViewById<Button>(R.id.intro_btn_skip).isGone = false
-                view.findViewById<Button>(R.id.intro_btn_skip).setOnClickListener {
-                    onBoardCompleted()
-                    findNavController().navigate(R.id.action_onBoardFragment_1_to_navigation_home)
-                }
             }
             ONBOARD_TWO -> {
                 view.findViewById<TextView>(R.id.section_label).text = getText(R.string.onboard_two_section_label)
                 view.findViewById<TextView>(R.id.section_description).text = getText(R.string.onboard_two_section_description)
-                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.drawable.ic_man_walking_svg, null)
+                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.drawable.teams_svg, null)
 
                 view.findViewById<ImageView>(R.id.intro_indicator_0).isSelected = false
                 view.findViewById<ImageView>(R.id.intro_indicator_1).isSelected = true
@@ -76,16 +70,11 @@ class OnBoardFragment : Fragment() {
                 view.findViewById<ImageButton>(R.id.intro_btn_next).setOnClickListener {
                     findNavController().navigate(R.id.action_onBoardFragment_2_to_onBoardFragment_3)
                 }
-                view.findViewById<Button>(R.id.intro_btn_skip).isGone = false
-                view.findViewById<Button>(R.id.intro_btn_skip).setOnClickListener {
-                    onBoardCompleted()
-                    findNavController().navigate(R.id.action_onBoardFragment_2_to_navigation_home)
-                }
             }
             ONBOARD_THREE -> {
                 view.findViewById<TextView>(R.id.section_label).text = getText(R.string.onboard_three_section_label)
                 view.findViewById<TextView>(R.id.section_description).text = getText(R.string.onboard_three_section_description)
-                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.mipmap.phones_svg, null)
+                view.findViewById<ImageView>(R.id.section_img).background = resources.getDrawable(R.drawable.paused_svg, null)
 
                 view.findViewById<ImageView>(R.id.intro_indicator_0).isSelected = false
                 view.findViewById<ImageView>(R.id.intro_indicator_1).isSelected = false
@@ -96,11 +85,6 @@ class OnBoardFragment : Fragment() {
                 view.findViewById<Button>(R.id.intro_btn_next).isGone = false
                 view.findViewById<ImageButton>(R.id.intro_btn_next).setOnClickListener {
                     findNavController().navigate(R.id.action_onBoardFragment_3_to_onBoardFragment_4)
-                }
-                view.findViewById<Button>(R.id.intro_btn_skip).isGone = false
-                view.findViewById<Button>(R.id.intro_btn_skip).setOnClickListener {
-                    onBoardCompleted()
-                    findNavController().navigate(R.id.action_onBoardFragment_3_to_navigation_home)
                 }
             }
             ONBOARD_FOUR -> {
@@ -119,7 +103,6 @@ class OnBoardFragment : Fragment() {
                     findNavController().navigate(R.id.action_onBoardFragment_4_to_navigation_home)
                 }
                 view.findViewById<ImageButton>(R.id.intro_btn_next).isGone = true
-                view.findViewById<Button>(R.id.intro_btn_skip).isGone = true
             }
         }
     }

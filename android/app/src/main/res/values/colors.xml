@@ -25,4 +25,12 @@
     <color name="green">#13ba2c</color>
     <color name="yellow">#bab013</color>
     <color name="blue_onboarding">#0b58ad</color>
+
+    <color name="barcode_reticle_background">#99000000</color>
+    <color name="barcode_reticle_stroke">#40000000</color>
+    <color name="barcode_field_value">#797979</color>
+    <color name="barcode_field_box_stroke">#757575</color>
+    <color name="reticle_ripple">#9AFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="dark">#9A000000</color>
 </resources>

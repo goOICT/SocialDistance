@@ -16,6 +16,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,11 +30,11 @@
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name="ai.kun.socialdistancealarm.alarm.BLEClient" />
+            android:name="ai.kun.opentracesdk_fat.alarm.BLEClient" />
         <receiver
             android:enabled="true"
             android:exported="false"
-            android:name="ai.kun.socialdistancealarm.alarm.BLEServer" />
+            android:name="ai.kun.opentracesdk_fat.alarm.BLEServer" />
         <receiver android:name="ai.kun.socialdistancealarm.alarm.AutoStart">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -46,6 +49,13 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".LiveBarcodeScanningActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"
+            android:screenOrientation="fullSensor">
         </activity>
     </application>
 

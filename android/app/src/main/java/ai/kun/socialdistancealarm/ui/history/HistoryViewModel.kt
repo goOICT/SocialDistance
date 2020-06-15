@@ -1,7 +1,7 @@
 package ai.kun.socialdistancealarm.ui.history
 
-import ai.kun.socialdistancealarm.dao.Device
-import ai.kun.socialdistancealarm.dao.DeviceRepository
+import ai.kun.opentracesdk_fat.dao.Device
+import ai.kun.opentracesdk_fat.DeviceRepository
 import android.app.Application
 import androidx.lifecycle.*
 

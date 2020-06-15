@@ -1,0 +1,10 @@
+<resources>
+    <string name="notification_channel_name_too_close">Too Close</string>
+    <string name="notification_channel_description_too_close">Notify me when someone is too close</string>
+    <string name="notification_channel_name_danger">Danger</string>
+    <string name="notification_channel_description_danger">Notify me when someone is getting very close</string>
+    <string name="too_close_notification_title">Too Close</string>
+    <string name="too_close_notification_text">Another app was too close</string>
+    <string name="danger_notification_title">Danger</string>
+    <string name="danger_notification_text">Another app was getting very close</string>
+</resources>
