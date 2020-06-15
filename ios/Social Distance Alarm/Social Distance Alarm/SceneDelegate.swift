@@ -94,10 +94,6 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        if response.notification.request.identifier == "PocketMode" {
-            print("Handling notifications with the Local Notification Identifier")
-        }
-        
         guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController as? UITabBarController else {
             perror("Cannot instantiate UITabBarController from rootViewController")
             completionHandler()
@@ -105,7 +101,7 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
         }
         
         // Default to Pocket Mode tab
-        rootViewController.selectedIndex = 2
+        rootViewController.selectedIndex = 3
         
         completionHandler()
     }
