@@ -119,13 +119,13 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
     public func startAdvertising() {
         isPaused = false
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil,
-                                                options: [CBCentralManagerOptionRestoreIdentifierKey: "ai.kun.socialdistancealarm.peripheral"])
+                                                options: nil)
     }
 
     public func startScanning() {
         isPaused = false
         centralManager = CBCentralManager(delegate: self, queue: nil,
-            options: [CBCentralManagerOptionRestoreIdentifierKey: "ai.kun.socialdistancealarm.central"])
+            options: nil)
 
     }
 
