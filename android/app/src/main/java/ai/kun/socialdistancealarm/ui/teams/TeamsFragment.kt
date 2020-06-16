@@ -18,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -55,7 +56,7 @@ class TeamsFragment : Fragment() {
             }
         }
 
-        val resetButton = root.findViewById<Button>(R.id.resetButton)
+        val resetButton = root.findViewById<TextView>(R.id.TextView_exit_teams)
         resetButton.setOnClickListener {
             AlertDialog.Builder(context)
                 .setCancelable(true)
@@ -64,6 +65,7 @@ class TeamsFragment : Fragment() {
                 .setPositiveButton(R.string.ok, { dialogInterface: DialogInterface, i: Int ->
                     BLETrace.leaveTeam()
                     setQrCode()
+                    setTeamCount()
                 })
                 .show()
         }
@@ -87,6 +89,13 @@ class TeamsFragment : Fragment() {
 
     }
 
+    private fun setTeamCount() {
+        val teamCountTextView = view?.findViewById<TextView>(R.id.TextView_team_count)
+        val text = getString(R.string.your_team_has_0_people)
+        val count = BLETrace.teamUuids?.let { it.size } ?: 0
+        teamCountTextView?.let { it.text = text.replace("0", count.toString(), true) }
+    }
+
     override fun onResume() {
         super.onResume()
         setQrCode()
@@ -105,6 +114,8 @@ class TeamsFragment : Fragment() {
 
             alertDialog.show()
         }
+
+        setTeamCount()
     }
 
     private fun scanBarcode() {
