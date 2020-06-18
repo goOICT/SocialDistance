@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "proximitySvg.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "proximitySvg@2x.png"
+    },
+    {
+      "scale" : "3x",
+      "filename" : "proximitySvg@3x.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

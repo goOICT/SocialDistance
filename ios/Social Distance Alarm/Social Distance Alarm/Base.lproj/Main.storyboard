@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController id="9pv-A4-QxB" customClass="DistanceTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vbh-a9-1P1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
@@ -81,21 +81,21 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoUsersItemCell" id="iZb-1n-lhz" customClass="NoUsersTableViewCell" customModule="Social_Distance_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="138" width="375" height="91.5"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZb-1n-lhz" id="Vrc-kO-CRv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothGoodIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-ls-zFr">
-                                            <rect key="frame" x="316" y="34" width="22" height="24"/>
+                                            <rect key="frame" x="316" y="33.666666666666664" width="22" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="0Ea-df-iOy"/>
                                                 <constraint firstAttribute="width" constant="22" id="HpE-4r-sPG"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os5-gk-O08">
-                                            <rect key="frame" x="37" y="35" width="187" height="21.5"/>
+                                            <rect key="frame" x="37" y="35" width="187" height="21"/>
                                             <string key="text">There are no app users 
 detected.</string>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -136,7 +136,7 @@ detected.</string>
             <objects>
                 <tableViewController id="8rJ-Kc-sve" customClass="HistoryTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Eu-yt-WYz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
@@ -234,7 +234,7 @@ detected.</string>
             <objects>
                 <viewController id="fxI-tF-Ky4" customClass="PocketViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vc1-zN-jFD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pocketModeSvg" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-gJ-eCJ">
@@ -298,7 +298,7 @@ detected.</string>
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="36U-Tj-7Us" userLabel="LockScreen" customClass="LockScreenViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EjH-mX-BQ5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="f60-t4-eoo" customClass="MMSlidingButton" customModule="Social_Distance_Alarm" customModuleProvider="target">
@@ -372,7 +372,7 @@ detected.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" name="redHeaderGradient"/>
+                        <color key="selectedImageTintColor" name="theme"/>
                     </tabBar>
                     <connections>
                         <segue destination="8lo-V3-sCb" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -444,7 +444,7 @@ detected.</string>
             <objects>
                 <viewController id="rQ3-8T-7Pn" userLabel="Carousel View Controller" customClass="CarouselViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XXu-uZ-aEB" userLabel="View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3B-5x-SuT" userLabel="Vw Container">
@@ -559,7 +559,7 @@ detected.</string>
             <objects>
                 <viewController id="q7v-CQ-fAP" userLabel="Teams" customClass="TeamsViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CIQ-nr-RQC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1Q7-Ot-AY6">
@@ -703,8 +703,8 @@ detected.</string>
         <namedColor name="red">
             <color red="0.73333333333333328" green="0.0" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="redHeaderGradient">
-            <color red="0.67450980392156867" green="0.0" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="theme">
+            <color red="0.73333333333333328" green="0.0" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
