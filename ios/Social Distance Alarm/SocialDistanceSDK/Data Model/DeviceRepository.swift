@@ -173,6 +173,16 @@ public class DeviceRepository {
         UserDefaults.standard.removeObject(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
     }
     
+    public func teamCount() -> Int {
+        let teams = UserDefaults.standard.stringArray(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
+        if (teams == nil) {
+            return 0
+        }
+        else {
+            return teams!.count
+        }
+    }
+    
     public func addTeamMember(uuidString: String) -> Bool {
         let value = uuidString.lowercased()
         
