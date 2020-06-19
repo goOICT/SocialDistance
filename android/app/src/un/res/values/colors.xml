@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@color/header</color>
-    <color name="colorPrimaryDark">#930023</color>
+    <color name="colorPrimaryDark">#00598F</color>
     <color name="colorAccent">@color/blue_onboarding</color>
 
-    <color name="device_ok">@color/green</color>
-    <color name="device_warn">@color/yellow</color>
-    <color name="device_strong_warn">@color/orange</color>
-    <color name="device_too_close">@color/red</color>
 
     <color name="indicator_unselected">@color/light_grey</color>
 
-    <color name="black">#12181f</color>
-    <color name="grey">#555550</color>
-    <color name="medium_grey">#70706d</color>
-    <color name="light_grey">#82827A</color>
-    <color name="divider">#cce5e5e5</color>
+    <color name="black">#111a27</color>
+    <color name="grey">#525862</color>
+    <color name="medium_grey">#7d8289</color>
+    <color name="light_grey">#888d93</color>
+    <color name="divider">#e5e5e5</color>
     <color name="background">#faf8f8</color>
     <color name="white">#ffffff</color>
-    <color name="red">#bb002d</color>
-    <color name="header">#ac0029</color>
-    <color name="orange">#ed4718</color>
+    <color name="red">#c71415</color>
+    <color name="header">#007cc8</color>
+    <color name="orange">#c76c15</color>
     <color name="blue">#092fba</color>
-    <color name="green">#13ba2c</color>
-    <color name="yellow">#bab013</color>
+    <color name="green">#489686</color>
+    <color name="yellow">#c7c414</color>
     <color name="blue_onboarding">#0b58ad</color>
 
     <color name="barcode_reticle_background">#99000000</color>
