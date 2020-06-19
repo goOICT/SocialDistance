@@ -21,7 +21,7 @@ class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate
 
         // Build and show the current UUID String as a QRCode
         qrCodeImage.image = generateQRCode(from: CoreBluetoothManager.sharedInstance.uuidString)
-        
+        addSettingsIcon()
         teamCountText.text = teamString.replacingOccurrences(of: "0", with: String(DeviceRepository.sharedInstance.teamCount()))
     }
     
