@@ -25,7 +25,6 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
         tableView.tableFooterView = UIView()
         
         tableView.register(DeviceDistanceTableViewCell.classForCoder(), forCellReuseIdentifier: "DeviceItemCell")
-        addSettingsIcon()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -21,7 +21,6 @@ class HistoryTableViewController: UITableViewController, DeviceRepositoryListene
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(DeviceDistanceTableViewCell.classForCoder(), forCellReuseIdentifier: "HistoryItemCell")
-        addSettingsIcon()
     }
     
     override func viewWillAppear(_ animated: Bool) {
