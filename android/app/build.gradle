@@ -27,6 +27,11 @@ android {
     // Specifies the version as UN, not version number.
     flavorDimensions "version"
     productFlavors {
+        kunai {
+            dimension "version"
+            applicationIdSuffix ""
+            versionNameSuffix "-kunai"
+        }
         un {
             dimension "version"
             applicationIdSuffix ".un"
