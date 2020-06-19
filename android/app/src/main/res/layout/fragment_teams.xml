@@ -39,14 +39,14 @@
         android:layout_height="56dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/red_header"
-        android:backgroundTint="@color/red_header"
+        android:background="@color/header"
+        android:backgroundTint="@color/header"
         android:clickable="true"
         android:elevation="@dimen/card_elevation"
         android:focusable="true"
         android:src="@drawable/ic_baseline_add_24"
         android:tint="@color/white"
-        app:backgroundTint="@color/red_header"
+        app:backgroundTint="@color/header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
