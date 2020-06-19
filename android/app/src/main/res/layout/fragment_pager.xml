@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/ic_kunai_logo" />
+                app:srcCompat="@drawable/ic_flavor_logo" />
         </FrameLayout>
 
         <ImageView

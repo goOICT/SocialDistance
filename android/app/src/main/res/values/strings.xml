@@ -10,8 +10,8 @@
     <string name="too_close">Too Close</string>
     <string name="social_distance">Distance:</string>
     <string name="scan_identifier">Scan Identifier</string>
-    <string name="signal_strength">Signal Strength:</string>
-    <string name="notification_channel_name_too_close">Too Close</string>
+    <string name="signal_strength">Signal strength:</string>
+    <string name="notification_channel_name_too_close">Too close</string>
     <string name="notification_channel_description_too_close">Notify me when someone is too close</string>
     <string name="notification_channel_name_danger">Danger</string>
     <string name="notification_channel_description_danger">Notify me when someone is getting very close</string>

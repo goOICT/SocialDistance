@@ -24,6 +24,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Specifies the version as UN, not version number.
+    flavorDimensions "version"
+    productFlavors {
+        un {
+            dimension "version"
+            applicationIdSuffix ".un"
+            versionNameSuffix "-un"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

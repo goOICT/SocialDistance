@@ -8,59 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:880225028168:android:6f094b4af9e465d7eb307d",
-        "android_client_info": {
-          "package_name": "ai.kun.opentrace"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "880225028168-akiejb1osahutd2pop3d58indbioqpve.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "ai.kun.opentrace",
-            "certificate_hash": "5bb0f54b7d1ff96dd561ec813ca0f158c3968044"
-          }
-        },
-        {
-          "client_id": "880225028168-h77m0l1rvkvjsjspn5lph9ndloespkno.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "ai.kun.opentrace",
-            "certificate_hash": "088f51007360cc6b3033112f7ff8004cb09ffa75"
-          }
-        },
-        {
-          "client_id": "880225028168-m3p7sk2cros9icbianlvlbh0nf7n6k36.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "ai.kun.opentrace",
-            "certificate_hash": "cffd9c1596df74784f1ed6dff787b39b2db9587c"
-          }
-        },
-        {
-          "client_id": "880225028168-vefq81d5engg94ja5hqrfb7gqmve4cjh.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBf1tQ2hepg8DBSmf6Hv55zrqg39jpLetk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "880225028168-vefq81d5engg94ja5hqrfb7gqmve4cjh.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:880225028168:android:b60e714e6bd88267eb307d",
         "android_client_info": {
           "package_name": "ai.kun.socialdistancealarm"
@@ -83,6 +30,51 @@
             {
               "client_id": "880225028168-vefq81d5engg94ja5hqrfb7gqmve4cjh.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "880225028168-vanjm6b8n4ktibkflq6ekhdq03mdv84s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ai.kun.Social-Distance-Alarm",
+                "app_store_id": "1514318119"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880225028168:android:13d9846d8083980beb307d",
+        "android_client_info": {
+          "package_name": "ai.kun.socialdistancealarm.un"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880225028168-vefq81d5engg94ja5hqrfb7gqmve4cjh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf1tQ2hepg8DBSmf6Hv55zrqg39jpLetk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880225028168-vefq81d5engg94ja5hqrfb7gqmve4cjh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "880225028168-vanjm6b8n4ktibkflq6ekhdq03mdv84s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ai.kun.Social-Distance-Alarm",
+                "app_store_id": "1514318119"
+              }
             }
           ]
         }
