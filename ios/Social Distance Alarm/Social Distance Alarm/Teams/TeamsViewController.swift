@@ -19,6 +19,7 @@ class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate
 
         // Build and show the current UUID String as a QRCode
         qrCodeImage.image = generateQRCode(from: CoreBluetoothManager.sharedInstance.uuidString)
+        addSettingsIcon()
     }
     
     private func generateQRCode(from string: String) -> UIImage? {
