@@ -28,7 +28,6 @@ class DeviceListAdapter internal constructor(
         val distanceTextView: TextView = itemView.findViewById(R.id.textView_distance)
         val signalTextView: TextView = itemView.findViewById(R.id.textView_signal)
         val peopleImageView: ImageView = itemView.findViewById(R.id.imageView_people)
-        val bluetoothImageView: ImageView = itemView.findViewById(R.id.imageView_bluetooth_signal_icon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
@@ -41,31 +40,26 @@ class DeviceListAdapter internal constructor(
 
         // Notify the user when we are adding a device that's too close
         val signal = BluetoothUtils.calculateSignal(current.rssi, current.txPower, current.isAndroid)
-        holder.peopleImageView.setImageResource(R.drawable.ic_emoji_people_icon)
         when {
             signal <= SIGNAL_DISTANCE_OK -> {
                 holder.distanceTextView.text = context.resources.getString(R.string.ok)
-                holder.bluetoothImageView.setImageResource(R.drawable.ic_bluetooth_good_icon)
+                holder.peopleImageView.setImageResource(R.drawable.ic_person_good_icon)
                 holder.peopleImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.green, context.theme))
-                holder.bluetoothImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.green, context.theme))
             }
             signal <= SIGNAL_DISTANCE_LIGHT_WARN -> {
                 holder.distanceTextView.text = context.resources.getString(R.string.warning)
-                holder.bluetoothImageView.setImageResource(R.drawable.ic_bluetooth_warning_icon)
+                holder.peopleImageView.setImageResource(R.drawable.ic_person_warning_icon)
                 holder.peopleImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.yellow, context.theme))
-                holder.bluetoothImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.yellow, context.theme))
             }
             signal <= SIGNAL_DISTANCE_STRONG_WARN -> {
                 holder.distanceTextView.text = context.resources.getString(R.string.strong_warning)
-                holder.bluetoothImageView.setImageResource(R.drawable.ic_bluetooth_danger_icon)
+                holder.peopleImageView.setImageResource(R.drawable.ic_person_danger_icon)
                 holder.peopleImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.orange, context.theme))
-                holder.bluetoothImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.orange, context.theme))
             }
             else -> {
                 holder.distanceTextView.text = context.resources.getString(R.string.too_close)
-                holder.bluetoothImageView.setImageResource(R.drawable.ic_bluetooth_too_close_icon)
+                holder.peopleImageView.setImageResource(R.drawable.ic_person_too_close_icon)
                 holder.peopleImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.red, context.theme))
-                holder.bluetoothImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.red, context.theme))
             }
         }
 
@@ -73,7 +67,6 @@ class DeviceListAdapter internal constructor(
             holder.distanceTextView.text = context.resources.getString(R.string.ok)
             holder.peopleImageView.setImageResource(R.drawable.ic_people_black_24dp)
             holder.peopleImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.green, context.theme))
-            holder.bluetoothImageView.imageTintList = ColorStateList.valueOf(context.resources.getColor(R.color.green, context.theme))
         }
 
         holder.signalTextView.text = signal.toString()
