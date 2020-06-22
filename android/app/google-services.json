@@ -45,9 +45,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:880225028168:android:13d9846d8083980beb307d",
+        "mobilesdk_app_id": "1:880225028168:android:8f4f8a4621bdd406eb307d",
         "android_client_info": {
-          "package_name": "ai.kun.socialdistancealarm.un"
+          "package_name": "app.onepointfive"
         }
       },
       "oauth_client": [
