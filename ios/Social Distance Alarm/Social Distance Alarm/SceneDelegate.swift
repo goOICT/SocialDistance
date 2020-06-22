@@ -112,7 +112,9 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
         let categoryIdentifire = "Pause Notification Type"
         
         content.title = "Paused"
-        content.body = "Social Distance Alarm is paused. Tap here to resume scanning for devices."
+        
+        let appTitle = Bundle.notificationAppTitle
+        content.body = "\(appTitle) is paused. Tap here to resume scanning for devices."
         content.sound = UNNotificationSound.default
         content.badge = 1
         content.categoryIdentifier = categoryIdentifire
@@ -133,5 +135,17 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
                                               options: [])
         
         notificationCenter.setNotificationCategories([category])
+    }
+}
+
+extension Bundle {
+    static var appTitle: String {
+        let appTitle = Bundle.main.infoDictionary?["AppTitle"] as? String ?? "Open Trace"
+        return appTitle
+    }
+    
+    static var notificationAppTitle: String {
+        let appTitle = Bundle.main.infoDictionary?["NotificationAppTitle"] as? String ?? "Social Distance Alarm"
+        return appTitle
     }
 }

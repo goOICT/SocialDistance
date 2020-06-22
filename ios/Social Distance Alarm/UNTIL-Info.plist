@@ -73,6 +73,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NotificationAppTitle</key>
+	<string>1Point5</string>
+	<key>AppTitle</key>
+	<string>1Point5</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
