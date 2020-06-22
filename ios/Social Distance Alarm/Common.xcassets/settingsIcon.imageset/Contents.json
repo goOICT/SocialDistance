@@ -3,16 +3,16 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "kunaiLogo.png"
+      "filename" : "settingsIcon.png"
     },
     {
       "idiom" : "universal",
-      "filename" : "kunaiLogo@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "settingsIcon@2x.png"
     },
     {
-      "filename" : "kunaiLogo@3x.png",
       "idiom" : "universal",
+      "filename" : "settingsIcon@3x.png",
       "scale" : "3x"
     }
   ],

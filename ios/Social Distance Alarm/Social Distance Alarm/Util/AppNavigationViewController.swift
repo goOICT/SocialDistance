@@ -21,5 +21,17 @@ class AppNavigationViewController: UINavigationController {
             navigationBar.standardAppearance = navBarAppearance
             navigationBar.scrollEdgeAppearance = navBarAppearance
         }
-    }    
+    }
+}
+
+extension UIViewController {
+    func addSettingsIcon() {
+        let icon = UIImage(named: "settingsIcon")?.withRenderingMode(.alwaysOriginal)
+        let settingsButton = UIBarButtonItem(image: icon, landscapeImagePhone: icon, style: .plain, target: self, action: #selector(moveToSettings))
+        navigationItem.rightBarButtonItem = settingsButton
+    }
+    
+    @objc func moveToSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+    }
 }

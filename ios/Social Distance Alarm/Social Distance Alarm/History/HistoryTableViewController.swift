@@ -10,17 +10,22 @@ import UIKit
 import SocialDistanceSDK
 
 class HistoryTableViewController: UITableViewController, DeviceRepositoryListener {
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+    
     var deviceArray = [Device]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.register(DeviceDistanceTableViewCell.classForCoder(), forCellReuseIdentifier: "HistoryItemCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DeviceRepository.sharedInstance.currentListener = self
         onRepositoryUpdate()
-        
     }
 
     //MARK: - Tableview Datasource Methods
@@ -29,55 +34,28 @@ class HistoryTableViewController: UITableViewController, DeviceRepositoryListene
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryItemCell", for: indexPath) as! DeviceHistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryItemCell", for: indexPath) as! DeviceDistanceTableViewCell
           
         let device = deviceArray[indexPath.row]
         
         let power = Util.signlaStrength(rssi: device.rssi, txPower: device.txPower, isAndroid: device.isAndroid)
-        cell.signalStrength.text = String(format: "Signal strength: %d", power)
+        let classification = Util.classifySignalStrength(power)
         
-        let dateFormatter : DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date = device.scanDate
-        var dateString: String = ""
-        if (date != nil) {
-            dateString = dateFormatter.string(from: date!)
-        }
-        cell.date.text = dateString
+        cell.signalClassification = classification
+        cell.signalStrength = power
+        cell.isTeamMember = device.isTeamMember
         
-        if (power > AppConstants.signalDistanceStrongWarn) {
-            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothTooCloseIcon.pdf").withRenderingMode(.alwaysTemplate)
-            cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.7333333333, green: 0, blue: 0.1764705882, alpha: 1)
-            cell.personIcon.image = #imageLiteral(resourceName: "personIcon.pdf").withRenderingMode(.alwaysTemplate)
-            cell.personIcon.tintColor = #colorLiteral(red: 0.7333333333, green: 0, blue: 0.1764705882, alpha: 1)
-            cell.distanceDescription.text = "Too Close"
-        } else if (power > AppConstants.signlaDistanceLightWarn) {
-            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothDangerIcon").withRenderingMode(.alwaysTemplate)
-            cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.9294117647, green: 0.2784313725, blue: 0.09411764706, alpha: 1)
-            cell.personIcon.image = #imageLiteral(resourceName: "personIcon.pdf").withRenderingMode(.alwaysTemplate)
-            cell.personIcon.tintColor = #colorLiteral(red: 0.9294117647, green: 0.2784313725, blue: 0.09411764706, alpha: 1)
-            cell.distanceDescription.text = "Danger"
-        } else if (power > AppConstants.signalDistanceOk) {
-            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothWarningIcon").withRenderingMode(.alwaysTemplate)
-            cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.7294117647, green: 0.6901960784, blue: 0.07450980392, alpha: 1)
-            cell.personIcon.image = #imageLiteral(resourceName: "personIcon.pdf").withRenderingMode(.alwaysTemplate)
-            cell.personIcon.tintColor = #colorLiteral(red: 0.7294117647, green: 0.6901960784, blue: 0.07450980392, alpha: 1)
-            cell.distanceDescription.text = "Warning"
-        } else {
-            cell.bluetoothIcon.image = #imageLiteral(resourceName: "bluetoothGoodIcon").withRenderingMode(.alwaysTemplate)
-            cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
-            cell.personIcon.image = #imageLiteral(resourceName: "personIcon.pdf").withRenderingMode(.alwaysTemplate)
-            cell.personIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
-            cell.distanceDescription.text = "Ok"
+        if cell.extraViewOnRightSide == nil {
+            let dateLabel = UILabel()
+            dateLabel.textColor = .gray
+            dateLabel.font = .systemFont(ofSize: 14.0, weight: .medium)
+            cell.extraViewOnRightSide = dateLabel
         }
         
-        if (device.isTeamMember) {
-            cell.bluetoothIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
-            cell.personIcon.image = UIImage(systemName: "person.2.fill")?.withRenderingMode(.alwaysTemplate)
-            cell.personIcon.tintColor = #colorLiteral(red: 0.07450980392, green: 0.7294117647, blue: 0.1725490196, alpha: 1)
-            cell.distanceDescription.text = "Ok"
-        }
-          
+        let dateLabel = cell.extraViewOnRightSide as? UILabel
+        dateLabel?.text = dateFormatter.string(from: device.scanDate!)
+        
+        
         return cell
     }
 
