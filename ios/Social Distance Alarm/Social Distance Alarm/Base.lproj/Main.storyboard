@@ -81,21 +81,21 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoUsersItemCell" id="iZb-1n-lhz" customClass="NoUsersTableViewCell" customModule="Social_Distance_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="138" width="375" height="91"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="91.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZb-1n-lhz" id="Vrc-kO-CRv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothGoodIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-ls-zFr">
-                                            <rect key="frame" x="316" y="33.5" width="22" height="24"/>
+                                            <rect key="frame" x="316" y="34" width="22" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="0Ea-df-iOy"/>
                                                 <constraint firstAttribute="width" constant="22" id="HpE-4r-sPG"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os5-gk-O08">
-                                            <rect key="frame" x="37" y="35" width="187" height="21"/>
+                                            <rect key="frame" x="37" y="35" width="187" height="21.5"/>
                                             <string key="text">There are no app users 
 detected.</string>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -238,7 +238,7 @@ detected.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pocketModeSvg" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-gJ-eCJ">
-                                <rect key="frame" x="19" y="21.5" width="337" height="249"/>
+                                <rect key="frame" x="21" y="25.5" width="333" height="245"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLM-V9-Z4A">
                                 <rect key="frame" x="16" y="366.5" width="343" height="1"/>
@@ -675,11 +675,11 @@ detected.</string>
         <image name="bluetoothGoodIcon" width="16" height="18"/>
         <image name="bluetoothTooCloseIcon" width="37" height="34"/>
         <image name="historyIcon" width="21" height="18"/>
-        <image name="iconDark" width="60" height="60"/>
+        <image name="iconDark" width="71" height="71"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <image name="personIcon" width="28" height="40"/>
         <image name="pocketModeIcon" width="25" height="15"/>
-        <image name="pocketModeSvg" width="337" height="249"/>
+        <image name="pocketModeSvg" width="333" height="245"/>
         <image name="qrcode" catalog="system" width="128" height="114"/>
         <namedColor name="background">
             <color red="0.98039215686274506" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -688,22 +688,22 @@ detected.</string>
             <color red="0.070588235294117646" green="0.094117647058823528" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="blue">
-            <color red="0.035294117647058823" green="0.18431372549019609" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.035000000149011612" green="0.18400000035762787" blue="0.72899997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="blueOnboarding">
-            <color red="0.043137254901960784" green="0.34509803921568627" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.043000001460313797" green="0.3449999988079071" blue="0.67799997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="divider">
-            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grey">
             <color red="0.33300000429153442" green="0.33300000429153442" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lightGrey">
-            <color red="0.50980392156862742" green="0.50980392156862742" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
-            <color red="0.73333333333333328" green="0.0" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.73299998044967651" green="0.0" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="theme">
             <color red="0.73299998044967651" green="0.0" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
