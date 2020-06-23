@@ -94,6 +94,7 @@
 		19793D450FF05EC41C93F7691BD25ADA /* FBLPromise+Recover.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF6F2DCB81630FB293011CD0435A57A /* FBLPromise+Recover.m */; };
 		1AAB1A4D67ADB547521A060DF15F2D3F /* FBLPromise+Await.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = E5F670BA6618AC6CE1837817027B208A /* FBLPromise+Await.h */; };
 		1AF756B20E61A0BC01B00AE14C00B0BE /* FBLPromise+Recover.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 826D396CD4DA86D7B87AA6E3E4899D50 /* FBLPromise+Recover.h */; };
+		1B8BB75E4DFEF813BFB0ABCD0B1AF1AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F4340DA10D8145A41A53BECD1F4B85 /* Foundation.framework */; };
 		1BC404CB8531CB133D04975DC55A0152 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEA7D9C5DB1A7113FE52180DC21DD7A /* Security.framework */; };
 		1BFB059A64B443F6A31ECFED5D4F407E /* FBLPromise+Timeout.h in Headers */ = {isa = PBXBuildFile; fileRef = D30DD7054767A97AC150A9E0E7D0CD01 /* FBLPromise+Timeout.h */; };
 		1BFD9A96B044034E8E59B7863D8C01CC /* FIRCLSUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EC699D6F0D5BFC369DBFC07259CD02C /* FIRCLSUUID.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -107,6 +108,7 @@
 		1F3B3D9C20233A57B4100054A51D9D47 /* FIRCLSUserLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = F1A1D902E0D61629FE107D49852ED57B /* FIRCLSUserLogging.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1F6FE4A286AAA7C364B73F7A0EDBD35A /* FBLPromise+Reduce.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 19F30C4E501205B8CBEB0313B091B997 /* FBLPromise+Reduce.h */; };
 		2019BAEFBA707653459EEDA31067B89C /* FIRCLSConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F190B92FA7954B869E15C5D32DC53AF2 /* FIRCLSConstants.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		20DB4C0374C3D3E1EADB719BC27A3175 /* Pods-UNTIL-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B98F9DDA2303748C2B958A5770FB1776 /* Pods-UNTIL-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		22290F923C2352B42B4FB3EA02C6CF69 /* FIRInstallationsItem+RegisterInstallationAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 73305BBAFE3F8B51C853321E8DC66F37 /* FIRInstallationsItem+RegisterInstallationAPI.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		226F427710EDE02EB18F06DD1E744269 /* FIRInteropParameterNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BBEA1B3998285C034AB5029D7140E42 /* FIRInteropParameterNames.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		23188590FC05CB739000B812278AB124 /* FIRErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 127CCAE6F572C649FABA91154FB0185E /* FIRErrorCode.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -356,7 +358,7 @@
 		9D50FE4A25DB4C7E0BF546FAA31482D7 /* FIRCLSURLSessionAvailability.h in Headers */ = {isa = PBXBuildFile; fileRef = EA0B2546C91686138C7D26610F287443 /* FIRCLSURLSessionAvailability.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9E6FD34857DFBDDA2D87C7471EFF6CA5 /* FIRCLSNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 90F258AFD290F63CE0E598CBD9E2D32D /* FIRCLSNetworkOperation.m */; };
 		9EA1AB3ABE76ED5D2DA7EEE13780EB71 /* FIRCLSURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D8CDBFDDF7C23B4B007DA7214B31CA1F /* FIRCLSURLSessionTask.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9F539F0A8807E66FEA5F85B00E052140 /* Pods-Social Distance Alarm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD887A16CABEB01BC80C44FD1A40616 /* Pods-Social Distance Alarm-dummy.m */; };
+		9F539F0A8807E66FEA5F85B00E052140 /* Pods-Social Distance Alarm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9EE7E86047C1D67131F3E8559DCA7 /* Pods-Social Distance Alarm-dummy.m */; };
 		9F760E05021126C8ACF068474C64EC79 /* FIRComponentContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 30814E7413CEA8E90D467AFB77D83326 /* FIRComponentContainer.m */; };
 		9FD40819A9E1F745300ADB39AEB74AF8 /* FIRCLSURLSessionUploadTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 854272CCD5355623B73F84A497B5F0A4 /* FIRCLSURLSessionUploadTask.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9FF1E59C07142C645DA9F571E6D08914 /* FIRInstallationsIIDStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5C865068D836AC68A74F07C2D03BD3 /* FIRInstallationsIIDStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -400,6 +402,7 @@
 		B221E4069599C306AAC23113C0415D81 /* FIRInstallationsItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 33D06EC3E02E2FB2C52EE7D306DD22A1 /* FIRInstallationsItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		B24FC41E01F65654C989FA63E5692122 /* FBLPromise+Validate.h in Headers */ = {isa = PBXBuildFile; fileRef = B27EFF629A31E21C3D6F70AD7DFE460B /* FBLPromise+Validate.h */; };
 		B273046F2A1D46E7742B2C7BCC00BD25 /* FIRCLSHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C32D1024B20F05BB2BEE0E03E516AA0 /* FIRCLSHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B2747B93A29C5F06CE87AAC0E6FBCEFF /* Pods-UNTIL-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C6C1793B4C57BA95FCE5522DE6FB7BD7 /* Pods-UNTIL-dummy.m */; };
 		B2E62952546AA2FDFD5E3B248A2AE48B /* FIROptionsInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 72939F803586AF58457226E3E3AF92CB /* FIROptionsInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B35870F359CD4E0297EBD005714F3A3E /* GULSecureCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = E24D45B0DD3C19002D8F62629BE72CB5 /* GULSecureCoding.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		B37B24AF3B2A555EF2E1B850E56DA614 /* GULSceneDelegateSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A5CD083842F52842A3A9003D2273A /* GULSceneDelegateSwizzler.m */; };
@@ -433,7 +436,7 @@
 		BFBFF7283B440492D31180B74A9F93BF /* FIRInstallationsStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 12761CBEB1B3E3EC52270F51B1A56705 /* FIRInstallationsStore.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C035577A80E430742ABAD833043DABBC /* FIRCLSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 5999EA7A9C2B356F64B3D21C840D50C2 /* FIRCLSLogger.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C15550163F108C666E016E5E33EF455A /* FIRCLSDataCollectionToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 9061E0AD681516510ED8B6F73BDABE99 /* FIRCLSDataCollectionToken.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		C1FA7304F4DAFC651C556786E59243A9 /* Pods-Social Distance AlarmTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5F13E7C34798C0D0F34E9CCE16418CE /* Pods-Social Distance AlarmTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C1FA7304F4DAFC651C556786E59243A9 /* Pods-Social Distance AlarmTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29866A33D013ADF3612EDB9A7FF2F3D8 /* Pods-Social Distance AlarmTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C235E025A340EC9C14A9572690B3D260 /* FIRErrorCode.h in Headers */ = {isa = PBXBuildFile; fileRef = CF1B3CFF4E9717F3826EA314827F532F /* FIRErrorCode.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		C2D27B35A495F5703A7F5E47C01CDB27 /* FIRComponentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9B78FD290174478480D90117D083DB /* FIRComponentType.m */; };
 		C5D3AF48CFC7087954A84A243F1D59B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F4340DA10D8145A41A53BECD1F4B85 /* Foundation.framework */; };
@@ -463,7 +466,7 @@
 		CF711985AF174C9B206BCF445DBE538E /* FIRExceptionModel_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FB71C3F4BB4E96D253A88B8FC8DCE14 /* FIRExceptionModel_Private.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		CFB6966DCA361B7F4F7CFFAAADBDAD95 /* FIRCLSProcessReportOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F05DE0C4E81F5E26DC99B8D72902350 /* FIRCLSProcessReportOperation.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		D034178759769D1008D18860A3816CB8 /* GULReachabilityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = 051226DE6AA3D321BD47B7CE643B6351 /* GULReachabilityChecker.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D04F12668F725618705250C457734BB2 /* Pods-Social Distance AlarmTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AACF611A534D182F2511BF31DC1427 /* Pods-Social Distance AlarmTests-dummy.m */; };
+		D04F12668F725618705250C457734BB2 /* Pods-Social Distance AlarmTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 561232923EFF425C1AFFAA0C8C4B984B /* Pods-Social Distance AlarmTests-dummy.m */; };
 		D0E3DBC2AC46A8D0D2E381F8644DF514 /* FIROptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5751581A1BFFBCC4CB146BC669135035 /* FIROptions.m */; };
 		D142D080A3D2C709F861A423CEFB0461 /* GoogleDataTransportCCTSupport-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD6A845FA3F343D8DB9DA5936B7D7B3 /* GoogleDataTransportCCTSupport-dummy.m */; };
 		D3A5D5097DE0B5618568A96388A62D00 /* FIRInstallationsIIDStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 369B9EBB58F35B8B4B5917567DBE04C8 /* FIRInstallationsIIDStore.m */; };
@@ -545,7 +548,7 @@
 		FCE225849240A86584CD499BBEAA46EE /* FirebaseCoreInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = D58E09A9E75179322466E1949217D2A0 /* FirebaseCoreInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		FD70F4A9596E68CFB8B1CE1F177A85DB /* GULNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = A911970B151AD6C7A6D45D338A8EA45D /* GULNetwork.m */; };
 		FD8E0636D9F043642047981468BD6F9D /* FIRCoreDiagnosticsConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = 2350AF0F5513BC4DB13A32A1DEAB3C6D /* FIRCoreDiagnosticsConnector.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		FDC103CCBBDF6F508125F43F30096D41 /* Pods-Social Distance Alarm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 59A6829C172690A02A52E4CE74636C49 /* Pods-Social Distance Alarm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FDC103CCBBDF6F508125F43F30096D41 /* Pods-Social Distance Alarm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6BACD0B4CDC9409E3D89F452612562 /* Pods-Social Distance Alarm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FDD7EA5087FEF9CB0E4630399F8A7BBF /* GDTCORUploader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CF3EE904DE3E5EE56ECBEF83C8EEE13 /* GDTCORUploader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFC5A9F8C44A1A39274334B81662239D /* FIRCLSUnwind_x86.c in Sources */ = {isa = PBXBuildFile; fileRef = F2DD1ED0AE40295805F76B63D5992299 /* FIRCLSUnwind_x86.c */; };
 /* End PBXBuildFile section */
@@ -564,6 +567,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8D7F5D5DD528D21A72DC87ADA5B12E2D;
 			remoteInfo = GoogleUtilities;
+		};
+		089A067089A7685FB0FD04AD43B9FB49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D7F5D5DD528D21A72DC87ADA5B12E2D;
+			remoteInfo = GoogleUtilities;
+		};
+		090BFF7B92CB2DE86B15A8DBA4CE8330 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2B5E7DCCBBFB32341D857D01211A1A3;
+			remoteInfo = nanopb;
 		};
 		11B05BDD0953E25B9974D84FC93A4F79 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -606,6 +623,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5C0371EE948D0357B8EE0E34ABB44BF0;
 			remoteInfo = GoogleDataTransport;
+		};
+		23AA2912758191E940E0B04107E25CFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87803597EB3F20FC46472B85392EC4FD;
+			remoteInfo = FirebaseInstallations;
 		};
 		2792EBA783982D36139F11FA73E58D3A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -656,6 +680,13 @@
 			remoteGlobalIDString = B53D977A951AFC38B21751B706C1DF83;
 			remoteInfo = GoogleAppMeasurement;
 		};
+		5548BF0F522B4F45046E333B98BC244D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 526C4398D095B3704EB933DADBC30093;
+			remoteInfo = FirebaseCrashlytics;
+		};
 		587C730D4A28528C68C715CD2A79BEF2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -677,12 +708,33 @@
 			remoteGlobalIDString = 8D7F5D5DD528D21A72DC87ADA5B12E2D;
 			remoteInfo = GoogleUtilities;
 		};
+		60956012532B584F7C942B2608952278 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4402AFF83DBDC4DD07E198685FDC2DF2;
+			remoteInfo = FirebaseCore;
+		};
 		625664485E68882E020182B4B8593A0B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C49E7A4D59E5C8BE8DE9FB1EFB150185;
 			remoteInfo = FirebaseAnalytics;
+		};
+		683C7A0A667EE3D4AA4013298A5F22B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4F25FCAC51B51FD5F986EB939BF1F87;
+			remoteInfo = GoogleDataTransportCCTSupport;
+		};
+		6E3DF15F87E53B828226E732DE8998CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 620E05868772C10B4920DC7E324F2C87;
+			remoteInfo = FirebaseCoreDiagnostics;
 		};
 		80FA676E34C136BD514521000FACCDC2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -719,6 +771,27 @@
 			remoteGlobalIDString = 5C0371EE948D0357B8EE0E34ABB44BF0;
 			remoteInfo = GoogleDataTransport;
 		};
+		8F916587C1DB30B49FCEE169185058BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C49E7A4D59E5C8BE8DE9FB1EFB150185;
+			remoteInfo = FirebaseAnalytics;
+		};
+		93B21DB98B810CCB405A80017FF69DB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 072CEA044D2EF26F03496D5996BBF59F;
+			remoteInfo = Firebase;
+		};
+		9820B8F1EEF359A9709CB5CBCFA4C60B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BBF7206D7FAC92C82A042A99C4A98F8;
+			remoteInfo = PromisesObjC;
+		};
 		98A6617A8C417217E755D45010E87C37 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -740,12 +813,26 @@
 			remoteGlobalIDString = 5C0371EE948D0357B8EE0E34ABB44BF0;
 			remoteInfo = GoogleDataTransport;
 		};
+		AE3CE4725B6C15513F876E2CE42D4507 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B53D977A951AFC38B21751B706C1DF83;
+			remoteInfo = GoogleAppMeasurement;
+		};
 		B3FACA56F8A8EC9B36AE7224FF92EAB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2BBF7206D7FAC92C82A042A99C4A98F8;
 			remoteInfo = PromisesObjC;
+		};
+		CAF1F669EBEE0B8761346BF97D630DE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C0371EE948D0357B8EE0E34ABB44BF0;
+			remoteInfo = GoogleDataTransport;
 		};
 		D3A2BE59053796870DA91971C0D7C401 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -882,13 +969,13 @@
 		002D6FD14AD35AC32912F631BA45168D /* FIRCoreDiagnostics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCoreDiagnostics.m; path = Firebase/CoreDiagnostics/FIRCDLibrary/FIRCoreDiagnostics.m; sourceTree = "<group>"; };
 		013048987FF63865425D69EA8EF12EDE /* FIRCLSAllocate.c */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRCLSAllocate.c; path = Crashlytics/Crashlytics/Helpers/FIRCLSAllocate.c; sourceTree = "<group>"; };
 		0130BED47291FF1C5525E34BA170E878 /* FIRDependency.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDependency.h; path = FirebaseCore/Sources/Private/FIRDependency.h; sourceTree = "<group>"; };
-		015B3EFD321F0CFFD67B7A76478C4FD3 /* Pods-Social Distance AlarmTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance AlarmTests-Info.plist"; sourceTree = "<group>"; };
 		0170DCCFA9A48298D3E079DE26155BBD /* Firebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Firebase.debug.xcconfig; sourceTree = "<group>"; };
 		01D94F58488D20744C97344B7020E515 /* FIRAppAssociationRegistration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRAppAssociationRegistration.m; path = FirebaseCore/Sources/FIRAppAssociationRegistration.m; sourceTree = "<group>"; };
-		02DD49A273DC8267BAF5B09FAE0D5AA6 /* Pods-Social Distance AlarmTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Social Distance AlarmTests.modulemap"; sourceTree = "<group>"; };
+		0339C4A22798A38FAC955E06E88B0E56 /* Pods-Social Distance Alarm-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Social Distance Alarm-frameworks.sh"; sourceTree = "<group>"; };
 		034F43A496483333F38052A7CFE4124D /* FIRCLSUserLogging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSUserLogging.m; path = Crashlytics/Crashlytics/Components/FIRCLSUserLogging.m; sourceTree = "<group>"; };
 		036BC4E35BFB1146C6639DF3D8C13866 /* FIRInstallationsIIDTokenStore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsIIDTokenStore.h; path = FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDTokenStore.h; sourceTree = "<group>"; };
 		039F2F3911490840A9DBF5183ED226CF /* FIRCLSInternalLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSInternalLogging.h; path = Crashlytics/Crashlytics/Helpers/FIRCLSInternalLogging.h; sourceTree = "<group>"; };
+		03F9EE7E86047C1D67131F3E8559DCA7 /* Pods-Social Distance Alarm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Social Distance Alarm-dummy.m"; sourceTree = "<group>"; };
 		04799DC2D1E38BC1B6393207EA4CAD26 /* FBLPromise+Wrap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Wrap.h"; path = "Sources/FBLPromises/include/FBLPromise+Wrap.h"; sourceTree = "<group>"; };
 		051226DE6AA3D321BD47B7CE643B6351 /* GULReachabilityChecker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULReachabilityChecker.h; path = GoogleUtilities/Reachability/Private/GULReachabilityChecker.h; sourceTree = "<group>"; };
 		05A12DC2D28FDDE593A56B0FBD6D6C6D /* GULReachabilityChecker+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GULReachabilityChecker+Internal.h"; path = "GoogleUtilities/Reachability/GULReachabilityChecker+Internal.h"; sourceTree = "<group>"; };
@@ -897,6 +984,7 @@
 		069B1C6975D91A876762CAEE74FCCB0A /* FIRCLSBinaryImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSBinaryImage.h; path = Crashlytics/Crashlytics/Components/FIRCLSBinaryImage.h; sourceTree = "<group>"; };
 		06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		089FB6B7FD064427E2627B6E779DA5E8 /* FIRCLSFABAsyncOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSFABAsyncOperation.h; path = Crashlytics/Shared/FIRCLSOperation/FIRCLSFABAsyncOperation.h; sourceTree = "<group>"; };
+		0922DE941655DF9D33FAB940EAB630FC /* Pods-Social Distance AlarmTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance AlarmTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		09D853E6ED92043468AF7396235577B1 /* FIRAppAssociationRegistration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAppAssociationRegistration.h; path = FirebaseCore/Sources/FIRAppAssociationRegistration.h; sourceTree = "<group>"; };
 		0A12D9C9F897FC25EE5671090489C31D /* FBLPromise+Async.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Async.m"; path = "Sources/FBLPromises/FBLPromise+Async.m"; sourceTree = "<group>"; };
 		0B064DA591F87B251ECFF03DADC48D63 /* FIRLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRLibrary.h; path = FirebaseCore/Sources/Private/FIRLibrary.h; sourceTree = "<group>"; };
@@ -908,7 +996,6 @@
 		0F00E068E3404A17AABD9BDF9EFBD214 /* GDTCCTPrioritizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCCTPrioritizer.h; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTPrioritizer.h; sourceTree = "<group>"; };
 		0F4AE66EF19E381429E3CBC473E37589 /* FIRAnalyticsInteropListener.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAnalyticsInteropListener.h; path = Interop/Analytics/Public/FIRAnalyticsInteropListener.h; sourceTree = "<group>"; };
 		0FE9FE8C647E76372BEA486729287E62 /* FIRInteropEventNames.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInteropEventNames.h; path = Interop/Analytics/Public/FIRInteropEventNames.h; sourceTree = "<group>"; };
-		102A49CEB0A42DBE346B495C98F1C584 /* Pods-Social Distance Alarm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Social Distance Alarm.modulemap"; sourceTree = "<group>"; };
 		107280FC114C5CEF2017F87BB4EB4E3D /* FIRApp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRApp.m; path = FirebaseCore/Sources/FIRApp.m; sourceTree = "<group>"; };
 		10A880C5636E014E13F77CA0A0DFD1F7 /* FIRCLSReportAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSReportAdapter.m; path = Crashlytics/Crashlytics/Models/Record/FIRCLSReportAdapter.m; sourceTree = "<group>"; };
 		10F106BAC9A7AD2A113E5FD9A6BEE8D3 /* FIRCLSFABHost.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSFABHost.m; path = Crashlytics/Shared/FIRCLSFABHost.m; sourceTree = "<group>"; };
@@ -938,17 +1025,19 @@
 		1EFA9BF8E60C328C98DEB071F4A21DF6 /* FIRStackFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRStackFrame.m; path = Crashlytics/Crashlytics/FIRStackFrame.m; sourceTree = "<group>"; };
 		1F160C5C6D305D6C3D0437A769FEF53A /* FIROptionsInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIROptionsInternal.h; path = FirebaseCore/Sources/Private/FIROptionsInternal.h; sourceTree = "<group>"; };
 		1F691FE2E5B81E0E7863C19E960CA8CB /* FIRAEvent+Internal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FIRAEvent+Internal.m"; path = "Crashlytics/Crashlytics/Helpers/FIRAEvent+Internal.m"; sourceTree = "<group>"; };
+		1FC1EA6D9494C778495B169AE28A70B9 /* Pods-UNTIL-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-UNTIL-acknowledgements.plist"; sourceTree = "<group>"; };
 		200BFA4A77D10FE9C83E1E51D1C37FE3 /* FIRCLSRecordIdentity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSRecordIdentity.m; path = Crashlytics/Crashlytics/Models/Record/FIRCLSRecordIdentity.m; sourceTree = "<group>"; };
 		2044669602EC5A927D1EAC248E48F053 /* FIRCLSFCRAnalytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSFCRAnalytics.h; path = Crashlytics/Crashlytics/Helpers/FIRCLSFCRAnalytics.h; sourceTree = "<group>"; };
 		20AE69DC8A32C182400BB9220758E36A /* FIRVersion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRVersion.m; path = FirebaseCore/Sources/FIRVersion.m; sourceTree = "<group>"; };
 		20B58E8003CF4EB62A14F25BD626BA62 /* GDTCORConsoleLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORConsoleLogger.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORConsoleLogger.m; sourceTree = "<group>"; };
+		20EB9C7E1FD50B9BE17A46F69A9E50EF /* Pods-UNTIL-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-UNTIL-acknowledgements.markdown"; sourceTree = "<group>"; };
 		215FB34C85945BE65540F642673EB77F /* FirebaseCoreDiagnostics-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseCoreDiagnostics-Info.plist"; sourceTree = "<group>"; };
-		219E04B00125C9C9297DA7D6DDCFF060 /* Pods-Social Distance Alarm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance Alarm-Info.plist"; sourceTree = "<group>"; };
 		220DA49683F5B438FB33B590D474890A /* FIRErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrors.h; path = FirebaseCore/Sources/Private/FIRErrors.h; sourceTree = "<group>"; };
 		2350AF0F5513BC4DB13A32A1DEAB3C6D /* FIRCoreDiagnosticsConnector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCoreDiagnosticsConnector.h; path = FirebaseCore/Sources/Private/FIRCoreDiagnosticsConnector.h; sourceTree = "<group>"; };
 		2362A9AE81F7E6480A3806790B02968B /* GULNetworkConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkConstants.m; path = GoogleUtilities/Network/GULNetworkConstants.m; sourceTree = "<group>"; };
 		238D06819C35CD5C84304BD9A8311AC5 /* FIRCLSURLSessionDownloadTask_PrivateMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSURLSessionDownloadTask_PrivateMethods.h; path = Crashlytics/Crashlytics/FIRCLSURLSession/Tasks/FIRCLSURLSessionDownloadTask_PrivateMethods.h; sourceTree = "<group>"; };
 		24ABB7BCFA665684C9EFF18125431F74 /* FIRCrashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCrashlytics.h; path = Crashlytics/Crashlytics/Public/FIRCrashlytics.h; sourceTree = "<group>"; };
+		25E35C28EE65B8455281F333B8D1D792 /* Pods-UNTIL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UNTIL.debug.xcconfig"; sourceTree = "<group>"; };
 		26C82A302C071E597746953B52B9ABC7 /* FIRCLSDwarfUnwindRegisters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSDwarfUnwindRegisters.h; path = Crashlytics/Crashlytics/Unwind/Dwarf/FIRCLSDwarfUnwindRegisters.h; sourceTree = "<group>"; };
 		27D1F0F264A3C569AA1DAAFC41928877 /* FBLPromise+Always.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Always.m"; path = "Sources/FBLPromises/FBLPromise+Always.m"; sourceTree = "<group>"; };
 		27F2F2D7C037D6EEFA0C8E4855DD8301 /* FIRCLSCrashedMarkerFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSCrashedMarkerFile.h; path = Crashlytics/Crashlytics/Components/FIRCLSCrashedMarkerFile.h; sourceTree = "<group>"; };
@@ -956,13 +1045,16 @@
 		2802F44C8CB03949FEACDCB7874A0D1F /* FIRCLSDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSDefines.h; path = Crashlytics/Crashlytics/Helpers/FIRCLSDefines.h; sourceTree = "<group>"; };
 		281DAA3C1CDE8B6CF030B5643CD2908F /* FIRComponentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentType.h; path = FirebaseCore/Sources/Private/FIRComponentType.h; sourceTree = "<group>"; };
 		283988A4D8358323FF55E1E78165839D /* FIRCLSRecordApplication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSRecordApplication.m; path = Crashlytics/Crashlytics/Models/Record/FIRCLSRecordApplication.m; sourceTree = "<group>"; };
+		29866A33D013ADF3612EDB9A7FF2F3D8 /* Pods-Social Distance AlarmTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Social Distance AlarmTests-umbrella.h"; sourceTree = "<group>"; };
 		2A8D5BA804B78A95B27510B07329F09A /* FirebaseCrashlytics-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseCrashlytics-Info.plist"; sourceTree = "<group>"; };
 		2B6F998134D612DA246B366B1896DF27 /* FIRCLSFileManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSFileManager.m; path = Crashlytics/Crashlytics/Models/FIRCLSFileManager.m; sourceTree = "<group>"; };
 		2B9698E07B4D638A2D8D53308629C0AF /* FIRInstallationsIDController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsIDController.h; path = FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsIDController.h; sourceTree = "<group>"; };
+		2C1DABFB4EE3A0E8753257E5D8EC7716 /* Pods-UNTIL-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-UNTIL-frameworks.sh"; sourceTree = "<group>"; };
 		2C287CB74F81F6190419E9313AEFA007 /* FIRCLSMachOBinary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSMachOBinary.h; path = Crashlytics/Shared/FIRCLSMachO/FIRCLSMachOBinary.h; sourceTree = "<group>"; };
 		2C83B88692F2FF68EA9A78332DB3032E /* FIRCLSApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSApplication.h; path = Crashlytics/Crashlytics/Components/FIRCLSApplication.h; sourceTree = "<group>"; };
 		2D067337A7BD0A5742B541F2055A8B02 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		2D3A2F643EF6E8CDE633EEFFB23AE676 /* FIRCLSFABAsyncOperation_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSFABAsyncOperation_Private.h; path = Crashlytics/Shared/FIRCLSOperation/FIRCLSFABAsyncOperation_Private.h; sourceTree = "<group>"; };
+		2D949B3A788D2AFB52421930BDFABCF9 /* Pods-Social Distance Alarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance Alarm.debug.xcconfig"; sourceTree = "<group>"; };
 		2F8ECBE885C394B339040453A1DFD214 /* GDTCORTransport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORTransport.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORTransport.m; sourceTree = "<group>"; };
 		2FB391222A582A37841B4925D389C495 /* FIRLibrary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRLibrary.h; path = FirebaseCore/Sources/Private/FIRLibrary.h; sourceTree = "<group>"; };
 		30327D0DD73ABFDCBFB503EA3F67D390 /* FIRComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponent.h; path = FirebaseCore/Sources/Private/FIRComponent.h; sourceTree = "<group>"; };
@@ -982,10 +1074,12 @@
 		36730838C21D7C79FA5C31D0D7EC268A /* GoogleDataTransportCCTSupport-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleDataTransportCCTSupport-Info.plist"; sourceTree = "<group>"; };
 		369B9EBB58F35B8B4B5917567DBE04C8 /* FIRInstallationsIIDStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsIIDStore.m; path = FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDStore.m; sourceTree = "<group>"; };
 		36C4EB3B4733310A89615245CA333CCC /* GULHeartbeatDateStorage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULHeartbeatDateStorage.m; path = GoogleUtilities/Environment/GULHeartbeatDateStorage.m; sourceTree = "<group>"; };
+		372EF47FAFCAD6ADCA37D6AD220E3BA6 /* Pods-UNTIL.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-UNTIL.modulemap"; sourceTree = "<group>"; };
 		37525825673437A7AF5C8CCA917CEE92 /* pb_encode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_encode.h; sourceTree = "<group>"; };
 		37A2181511CC1CF3C14984952904A67E /* FIRLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRLogger.m; path = FirebaseCore/Sources/FIRLogger.m; sourceTree = "<group>"; };
 		37F5DD3E0BDC5113F07FFB8079398E2A /* FIROptions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIROptions.h; path = FirebaseCore/Sources/Public/FIROptions.h; sourceTree = "<group>"; };
 		3A280D278D1B6CADC4BE9CC8FB34573C /* FIRCLSFile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSFile.h; path = Crashlytics/Crashlytics/Helpers/FIRCLSFile.h; sourceTree = "<group>"; };
+		3A6BACD0B4CDC9409E3D89F452612562 /* Pods-Social Distance Alarm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Social Distance Alarm-umbrella.h"; sourceTree = "<group>"; };
 		3A9D92FF3DCE2222189B9F8D151DC0A3 /* GDTCORUploadPackage_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORUploadPackage_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORUploadPackage_Private.h; sourceTree = "<group>"; };
 		3AEE791030B7EED497FBFA828166FF80 /* GDTCORPrioritizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORPrioritizer.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORPrioritizer.h; sourceTree = "<group>"; };
 		3B91538CC5DF49701D001F79DB69088C /* GDTCORReachability.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORReachability.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORReachability.m; sourceTree = "<group>"; };
@@ -1012,6 +1106,7 @@
 		43A2182027E6091F88893F0A257B7558 /* FIRCLSProcess.c */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRCLSProcess.c; path = Crashlytics/Crashlytics/Components/FIRCLSProcess.c; sourceTree = "<group>"; };
 		44098BA675AE814EA83FDCE91A95697D /* FIRAEvent+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FIRAEvent+Internal.h"; path = "Crashlytics/Crashlytics/Helpers/FIRAEvent+Internal.h"; sourceTree = "<group>"; };
 		447A730FBED0F6FB4FFEFAA521B0E101 /* GDTCORTransformer_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTransformer_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORTransformer_Private.h; sourceTree = "<group>"; };
+		44B704C101234E443D67E29E7C93F6DF /* Pods_UNTIL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_UNTIL.framework; path = "Pods-UNTIL.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44D5C9D6D8CBF0F0580383769D6069EF /* FIRCLSURLSessionTask_PrivateMethods.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSURLSessionTask_PrivateMethods.h; path = Crashlytics/Crashlytics/FIRCLSURLSession/Tasks/FIRCLSURLSessionTask_PrivateMethods.h; sourceTree = "<group>"; };
 		45048C690AE217EA26CC4C4DBC06C8F6 /* FIRInstallationsErrorUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsErrorUtil.m; path = FirebaseInstallations/Source/Library/Errors/FIRInstallationsErrorUtil.m; sourceTree = "<group>"; };
 		454A5CD083842F52842A3A9003D2273A /* GULSceneDelegateSwizzler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULSceneDelegateSwizzler.m; path = GoogleUtilities/SceneDelegateSwizzler/GULSceneDelegateSwizzler.m; sourceTree = "<group>"; };
@@ -1021,7 +1116,6 @@
 		4736DF42326C77337E9CCBBDAD17194C /* FIRCLSURLSessionDataTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSURLSessionDataTask.m; path = Crashlytics/Crashlytics/FIRCLSURLSession/Tasks/FIRCLSURLSessionDataTask.m; sourceTree = "<group>"; };
 		482A8682564418D7F604F23EA5D1768B /* FIRCLSDwarfExpressionMachine.c */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRCLSDwarfExpressionMachine.c; path = Crashlytics/Crashlytics/Unwind/Dwarf/FIRCLSDwarfExpressionMachine.c; sourceTree = "<group>"; };
 		496B344070678354A42CB2C69BCC3DCF /* FBLPromise+Catch.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Catch.m"; path = "Sources/FBLPromises/FBLPromise+Catch.m"; sourceTree = "<group>"; };
-		49CF32774201BA8E926F4C4EA79A8286 /* Pods-Social Distance AlarmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance AlarmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A774F924318F8D2C0E5C3667034AE9A /* GDTCORAssert.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORAssert.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORAssert.m; sourceTree = "<group>"; };
 		4AA8E174F70FC5A2E4A6A84A57B0EB75 /* FIRCLSContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSContext.h; path = Crashlytics/Crashlytics/Components/FIRCLSContext.h; sourceTree = "<group>"; };
 		4AB15D818BE3E587F57C5263F869E5D4 /* GDTCCTCompressionHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCCTCompressionHelper.m; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/GDTCCTCompressionHelper.m; sourceTree = "<group>"; };
@@ -1045,18 +1139,21 @@
 		546D5E9281994CA494AD69CCD1DA325C /* FIRCLSUserDefaults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSUserDefaults.m; path = Crashlytics/Crashlytics/FIRCLSUserDefaults/FIRCLSUserDefaults.m; sourceTree = "<group>"; };
 		553B81CB098FA62BAE9AEC325106E2D1 /* FIRCLSHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSHandler.m; path = Crashlytics/Crashlytics/Handlers/FIRCLSHandler.m; sourceTree = "<group>"; };
 		556279178F25FDF9FBD7B4E496D71972 /* FBLPromise+Validate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Validate.m"; path = "Sources/FBLPromises/FBLPromise+Validate.m"; sourceTree = "<group>"; };
+		55A19DC7738175292806E7BD48C35BCB /* Pods-Social Distance AlarmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance AlarmTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F7B96E45323219F81198BECDDEB265 /* FIRComponentContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentContainer.h; path = FirebaseCore/Sources/Private/FIRComponentContainer.h; sourceTree = "<group>"; };
 		55F948C9A632CB2E6DFA74E69E2B7E29 /* FIRCLSReportManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSReportManager.h; path = Crashlytics/Crashlytics/Controllers/FIRCLSReportManager.h; sourceTree = "<group>"; };
+		561232923EFF425C1AFFAA0C8C4B984B /* Pods-Social Distance AlarmTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Social Distance AlarmTests-dummy.m"; sourceTree = "<group>"; };
 		56B846A6F13A13B927A41436EDFAA4FF /* FIRInstallationsSingleOperationPromiseCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsSingleOperationPromiseCache.h; path = FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsSingleOperationPromiseCache.h; sourceTree = "<group>"; };
+		57215CEB02F0720763715145BB5A8541 /* Pods-UNTIL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-UNTIL.release.xcconfig"; sourceTree = "<group>"; };
 		574856514D63B7E80DC05632CC4464E5 /* FIRCLSCompactUnwind.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSCompactUnwind.h; path = Crashlytics/Crashlytics/Unwind/Compact/FIRCLSCompactUnwind.h; sourceTree = "<group>"; };
 		5751581A1BFFBCC4CB146BC669135035 /* FIROptions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIROptions.m; path = FirebaseCore/Sources/FIROptions.m; sourceTree = "<group>"; };
 		5756848BA3AFA82D767CEBA948DEFE27 /* GULLoggerLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerLevel.h; path = GoogleUtilities/Logger/Public/GULLoggerLevel.h; sourceTree = "<group>"; };
 		5760859137C51C2A78D7157B3AA3D17D /* GDTCORConsoleLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORConsoleLogger.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORConsoleLogger.h; sourceTree = "<group>"; };
+		5890464B95FF31B1B6580BB491611D93 /* Pods-Social Distance Alarm-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Social Distance Alarm-acknowledgements.markdown"; sourceTree = "<group>"; };
 		58AB91A25F3DFF3C472B6497961568DE /* FIRCLSMachException.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSMachException.h; path = Crashlytics/Crashlytics/Handlers/FIRCLSMachException.h; sourceTree = "<group>"; };
 		593EFF8E35687A13856B6EB36B19719B /* FIRCLSRecordBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSRecordBase.m; path = Crashlytics/Crashlytics/Models/Record/FIRCLSRecordBase.m; sourceTree = "<group>"; };
 		59992FCDB0B05E5CC92A38423F74C6F2 /* FIRCLSUtility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSUtility.h; path = Crashlytics/Crashlytics/Helpers/FIRCLSUtility.h; sourceTree = "<group>"; };
 		5999EA7A9C2B356F64B3D21C840D50C2 /* FIRCLSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSLogger.h; path = Crashlytics/Crashlytics/Helpers/FIRCLSLogger.h; sourceTree = "<group>"; };
-		59A6829C172690A02A52E4CE74636C49 /* Pods-Social Distance Alarm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Social Distance Alarm-umbrella.h"; sourceTree = "<group>"; };
 		59DC874C3BB64CDFE18C4B221C3D6E15 /* FIRCLSBinaryImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSBinaryImage.m; path = Crashlytics/Crashlytics/Components/FIRCLSBinaryImage.m; sourceTree = "<group>"; };
 		5A8494DC4302C9A07837823C3DDB7C92 /* GULNetworkURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULNetworkURLSession.m; path = GoogleUtilities/Network/GULNetworkURLSession.m; sourceTree = "<group>"; };
 		5ACD1BA8C4F16B51F5933EFC0F8E4971 /* FIRComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponent.h; path = FirebaseCore/Sources/Private/FIRComponent.h; sourceTree = "<group>"; };
@@ -1083,7 +1180,9 @@
 		65C928353933D8A61FEB172645EDB2EB /* FIRCLSProcessReportOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSProcessReportOperation.m; path = Crashlytics/Crashlytics/Operations/Reports/FIRCLSProcessReportOperation.m; sourceTree = "<group>"; };
 		65D98CE985C6591F556D37B4D8B20A0F /* FIRCLSUnwind_x86.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSUnwind_x86.h; path = Crashlytics/Crashlytics/Unwind/FIRCLSUnwind_x86.h; sourceTree = "<group>"; };
 		6636E1B86E858858CE0AB931A48A1DA6 /* FIRCLSRecordIdentity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSRecordIdentity.h; path = Crashlytics/Crashlytics/Models/Record/FIRCLSRecordIdentity.h; sourceTree = "<group>"; };
+		666AB5CA3D474D4C31D13876DC175649 /* Pods-Social Distance AlarmTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance AlarmTests-Info.plist"; sourceTree = "<group>"; };
 		66B4A488D092CB0D419A8E193CE30EBA /* GULAppDelegateSwizzler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppDelegateSwizzler.h; path = GoogleUtilities/AppDelegateSwizzler/Private/GULAppDelegateSwizzler.h; sourceTree = "<group>"; };
+		66DD5ACD4E8ECF3990C50F8DEE20F6FE /* Pods-Social Distance AlarmTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Social Distance AlarmTests.modulemap"; sourceTree = "<group>"; };
 		6728FD7DB27CE245300038798CE86F55 /* FIRInstallationsAPIService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsAPIService.m; path = FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsAPIService.m; sourceTree = "<group>"; };
 		677D6E73FAF545CE2DAC57ED9EE1FCBD /* GoogleUtilities-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleUtilities-umbrella.h"; sourceTree = "<group>"; };
 		67822A3AA6E95069C60BCDAA12671C72 /* FIRCLSUserDefaults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSUserDefaults.h; path = Crashlytics/Crashlytics/FIRCLSUserDefaults/FIRCLSUserDefaults.h; sourceTree = "<group>"; };
@@ -1152,7 +1251,6 @@
 		824875AC9E420BA6FCC00B586D4F4066 /* PromisesObjC-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromisesObjC-umbrella.h"; sourceTree = "<group>"; };
 		826D396CD4DA86D7B87AA6E3E4899D50 /* FBLPromise+Recover.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Recover.h"; path = "Sources/FBLPromises/include/FBLPromise+Recover.h"; sourceTree = "<group>"; };
 		83820B2F2F673570C6DAE8BF6697DFD0 /* FIRErrorCode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRErrorCode.h; path = FirebaseCore/Sources/Private/FIRErrorCode.h; sourceTree = "<group>"; };
-		843869A2BC1A49B0898E1A7E936E072A /* Pods-Social Distance AlarmTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance AlarmTests.release.xcconfig"; sourceTree = "<group>"; };
 		844CE759DBCDBD9B19B4616FE523AE8B /* FIRCLSHost.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSHost.m; path = Crashlytics/Crashlytics/Components/FIRCLSHost.m; sourceTree = "<group>"; };
 		8475AE1E706D57CE2F22A332802BD713 /* FIRCLSFileManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSFileManager.h; path = Crashlytics/Crashlytics/Models/FIRCLSFileManager.h; sourceTree = "<group>"; };
 		854272CCD5355623B73F84A497B5F0A4 /* FIRCLSURLSessionUploadTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSURLSessionUploadTask.h; path = Crashlytics/Crashlytics/FIRCLSURLSession/Tasks/FIRCLSURLSessionUploadTask.h; sourceTree = "<group>"; };
@@ -1169,11 +1267,9 @@
 		8A85E8BA754B846C915AEF1F848C47BB /* FIRHeartbeatInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRHeartbeatInfo.h; path = FirebaseCore/Sources/Private/FIRHeartbeatInfo.h; sourceTree = "<group>"; };
 		8A9001EB9FB3C186658C6C3126DCE8FE /* GULSceneDelegateSwizzler_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULSceneDelegateSwizzler_Private.h; path = GoogleUtilities/SceneDelegateSwizzler/Internal/GULSceneDelegateSwizzler_Private.h; sourceTree = "<group>"; };
 		8AF16BE8BC3B14CA7B9C3A0741A2E37E /* FIRCLSReportAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSReportAdapter.h; path = Crashlytics/Crashlytics/Models/Record/FIRCLSReportAdapter.h; sourceTree = "<group>"; };
-		8B341E60B16676F10FF3A0261837C39E /* Pods-Social Distance AlarmTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance AlarmTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		8B9B78FD290174478480D90117D083DB /* FIRComponentType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRComponentType.m; path = FirebaseCore/Sources/FIRComponentType.m; sourceTree = "<group>"; };
 		8BBEA1B3998285C034AB5029D7140E42 /* FIRInteropParameterNames.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInteropParameterNames.h; path = Interop/Analytics/Public/FIRInteropParameterNames.h; sourceTree = "<group>"; };
 		8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FirebaseCoreDiagnostics.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CD887A16CABEB01BC80C44FD1A40616 /* Pods-Social Distance Alarm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Social Distance Alarm-dummy.m"; sourceTree = "<group>"; };
 		8CE3E582F801DEA546401135B2D7DADB /* FIRCLSCodeMapping.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSCodeMapping.m; path = Crashlytics/Shared/FIRCLSMachO/FIRCLSCodeMapping.m; sourceTree = "<group>"; };
 		8E0105452FAAF78D4274B4A1561C09D1 /* FBLPromise+Catch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Catch.h"; path = "Sources/FBLPromises/include/FBLPromise+Catch.h"; sourceTree = "<group>"; };
 		8E1DEA5980CABD213237FFB3ADAA818C /* FIRInstallationsAuthTokenResult.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsAuthTokenResult.m; path = FirebaseInstallations/Source/Library/FIRInstallationsAuthTokenResult.m; sourceTree = "<group>"; };
@@ -1195,12 +1291,12 @@
 		954E9278FC6BF5B17D2C0533F38695E3 /* GDTCORUploadCoordinator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORUploadCoordinator.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORUploadCoordinator.h; sourceTree = "<group>"; };
 		955016C7F64382E6B578DFFE2FFC1BF7 /* GoogleDataTransport.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GoogleDataTransport.modulemap; sourceTree = "<group>"; };
 		95731CCB88283E8AEB36C7DBD6763A97 /* FIRCLSDownloadAndSaveSettingsOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSDownloadAndSaveSettingsOperation.h; path = Crashlytics/Crashlytics/Settings/Operations/FIRCLSDownloadAndSaveSettingsOperation.h; sourceTree = "<group>"; };
-		960DF70BE3605524C44D076D07773EBB /* Pods-Social Distance Alarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance Alarm.debug.xcconfig"; sourceTree = "<group>"; };
 		96578F57B3615989C457EA24CB2F3B0B /* GDTCCTNanopbHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCCTNanopbHelpers.h; path = GoogleDataTransportCCTSupport/GDTCCTLibrary/Private/GDTCCTNanopbHelpers.h; sourceTree = "<group>"; };
 		96B465ED27797D379F33C8F3128D0C76 /* GDTCORUploadCoordinator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORUploadCoordinator.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORUploadCoordinator.m; sourceTree = "<group>"; };
 		96D87A56BABDC4029DD8AEE0D8E6FA8A /* FIRAnalyticsInterop.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAnalyticsInterop.h; path = Interop/Analytics/Public/FIRAnalyticsInterop.h; sourceTree = "<group>"; };
 		96E697B3CDDDB9FFC1D7B47EF7D717A1 /* dwarf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dwarf.h; path = Crashlytics/third_party/libunwind/dwarf.h; sourceTree = "<group>"; };
 		973E83C967E685B20D00BAB51FE700DD /* FIRCLSNetworkResponseHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSNetworkResponseHandler.m; path = Crashlytics/Shared/FIRCLSNetworking/FIRCLSNetworkResponseHandler.m; sourceTree = "<group>"; };
+		98F73488C66DAC9A7637E9FC54B01E07 /* Pods-Social Distance Alarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance Alarm.release.xcconfig"; sourceTree = "<group>"; };
 		991F5FFF106F7B8FAC7A38AD225BAF3B /* GDTCOREventDataObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREventDataObject.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCOREventDataObject.h; sourceTree = "<group>"; };
 		9A3D059C69DB7E1DFE3276BF8262180D /* FIRBundleUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRBundleUtil.m; path = FirebaseCore/Sources/FIRBundleUtil.m; sourceTree = "<group>"; };
 		9A583259C3A030F76359DD9F848EB934 /* GDTCORReachability_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORReachability_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORReachability_Private.h; sourceTree = "<group>"; };
@@ -1227,6 +1323,7 @@
 		A1F26896EF7863B0DAC7F1AEAB3C1560 /* GDTCORTransport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTransport.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORTransport.h; sourceTree = "<group>"; };
 		A26ABF13C03F53A65BA62C836667958A /* FIRCLSRecordBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSRecordBase.h; path = Crashlytics/Crashlytics/Models/Record/FIRCLSRecordBase.h; sourceTree = "<group>"; };
 		A288772CE9636FD51CE151EAD3F892B0 /* FIRCLSMachO.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSMachO.m; path = Crashlytics/Shared/FIRCLSMachO/FIRCLSMachO.m; sourceTree = "<group>"; };
+		A31F35A1E67FFE27AC83F8DB4B1EE4E9 /* Pods-Social Distance AlarmTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Social Distance AlarmTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A336F4D088E995A84DEF85FEC7F91C6E /* FIRInstallationsLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsLogger.m; path = FirebaseInstallations/Source/Library/FIRInstallationsLogger.m; sourceTree = "<group>"; };
 		A372FCB1B215EAD34178B70DF2756BFF /* FIRCLSDemangleOperation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRCLSDemangleOperation.mm; path = Crashlytics/Crashlytics/Operations/Symbolication/FIRCLSDemangleOperation.mm; sourceTree = "<group>"; };
 		A3780DEF477D424248C4DB363D69C07B /* GULAppEnvironmentUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULAppEnvironmentUtil.m; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.m; sourceTree = "<group>"; };
@@ -1258,16 +1355,15 @@
 		AFD6A845FA3F343D8DB9DA5936B7D7B3 /* GoogleDataTransportCCTSupport-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleDataTransportCCTSupport-dummy.m"; sourceTree = "<group>"; };
 		B07924CC184738B4448A06453E77B792 /* FirebaseCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseCore.release.xcconfig; sourceTree = "<group>"; };
 		B0AD8A88A978F3077CB0E043C10BCF50 /* FirebaseInstallations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseInstallations.release.xcconfig; sourceTree = "<group>"; };
-		B1D9CAE70318591F1AC49B05094FC58E /* Pods-Social Distance Alarm-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance Alarm-acknowledgements.plist"; sourceTree = "<group>"; };
 		B2741233B56B07BDF8DCF7CA8E0EBE73 /* FIRInstallationsStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsStore.m; path = FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStore.m; sourceTree = "<group>"; };
 		B27EFF629A31E21C3D6F70AD7DFE460B /* FBLPromise+Validate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Validate.h"; path = "Sources/FBLPromises/include/FBLPromise+Validate.h"; sourceTree = "<group>"; };
 		B2B8745834C9AF759531088238133658 /* FIRInstallationsSingleOperationPromiseCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsSingleOperationPromiseCache.m; path = FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsSingleOperationPromiseCache.m; sourceTree = "<group>"; };
 		B3249362EAA3ED9CEA2BDF4E2E1A421D /* FBLPromise+Testing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Testing.h"; path = "Sources/FBLPromises/include/FBLPromise+Testing.h"; sourceTree = "<group>"; };
 		B3A0BEE148F0AE1FC7EC6B214798E26C /* FIRInstallationsIIDTokenStore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsIIDTokenStore.m; path = FirebaseInstallations/Source/Library/IIDMigration/FIRInstallationsIIDTokenStore.m; sourceTree = "<group>"; };
-		B3AACF611A534D182F2511BF31DC1427 /* Pods-Social Distance AlarmTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Social Distance AlarmTests-dummy.m"; sourceTree = "<group>"; };
 		B3D5534777FEF95B9DC161EEC3B63728 /* FBLPromise+Retry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Retry.h"; path = "Sources/FBLPromises/include/FBLPromise+Retry.h"; sourceTree = "<group>"; };
 		B3E1D9EDD09357AC1987354125FD00AA /* GDTCORRegistrar_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORRegistrar_Private.h; path = GoogleDataTransport/GDTCORLibrary/Private/GDTCORRegistrar_Private.h; sourceTree = "<group>"; };
 		B40D01C7C65CC657B8FA273B7627CB36 /* FIRComponentContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRComponentContainer.h; path = FirebaseCore/Sources/Private/FIRComponentContainer.h; sourceTree = "<group>"; };
+		B42BECC234557797B3CEC8A2655C802C /* Pods-UNTIL-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-UNTIL-Info.plist"; sourceTree = "<group>"; };
 		B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleUtilities.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48A52E87FB0DE6744949BAEE048F15B /* FIRCLSProfiling.c */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRCLSProfiling.c; path = Crashlytics/Crashlytics/Helpers/FIRCLSProfiling.c; sourceTree = "<group>"; };
 		B49E9F7DD45DD8EADA07049B8F890175 /* GDTCOREventTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCOREventTransformer.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCOREventTransformer.h; sourceTree = "<group>"; };
@@ -1276,8 +1372,10 @@
 		B665F46B89056701663522EC620958DC /* GDTCORLifecycle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORLifecycle.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORLifecycle.h; sourceTree = "<group>"; };
 		B67F0281FF0C546D02A4AE5A14F8B78A /* GoogleUtilities.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleUtilities.debug.xcconfig; sourceTree = "<group>"; };
 		B6A34A593089A72A842037CF0E4F5894 /* PromisesObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromisesObjC.release.xcconfig; sourceTree = "<group>"; };
+		B774B8020FA77CF3A83500ED75F6AB31 /* Pods-Social Distance Alarm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Social Distance Alarm.modulemap"; sourceTree = "<group>"; };
 		B86C8C4F3C289C3D4D813399F09CF2AE /* GDTCORClock.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORClock.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORClock.h; sourceTree = "<group>"; };
 		B9144B65440E3726DF47646719597959 /* FIRCLSUserDefaults_private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSUserDefaults_private.h; path = Crashlytics/Crashlytics/FIRCLSUserDefaults/FIRCLSUserDefaults_private.h; sourceTree = "<group>"; };
+		B98F9DDA2303748C2B958A5770FB1776 /* Pods-UNTIL-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-UNTIL-umbrella.h"; sourceTree = "<group>"; };
 		BA9972275AED5A9C38E0250DC10818A0 /* FIRCLSException.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = FIRCLSException.mm; path = Crashlytics/Crashlytics/Handlers/FIRCLSException.mm; sourceTree = "<group>"; };
 		BAEE318AD47F3F0A9E8153353A0F6CAF /* crashlytics.nanopb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = crashlytics.nanopb.h; path = Crashlytics/Protogen/nanopb/crashlytics.nanopb.h; sourceTree = "<group>"; };
 		BC9BDDE7BCF114A519642BB38A595B10 /* Pods_Social_Distance_AlarmTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Social_Distance_AlarmTests.framework; path = "Pods-Social Distance AlarmTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1288,7 +1386,6 @@
 		BF6104C4347B2D85638E3E4E0E3CFF26 /* FIRAValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRAValue.h; path = Crashlytics/Crashlytics/Helpers/FIRAValue.h; sourceTree = "<group>"; };
 		C01D52B04D5FB52FD451C5930C546AFB /* GDTCORTargets.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORTargets.h; path = GoogleDataTransport/GDTCORLibrary/Public/GDTCORTargets.h; sourceTree = "<group>"; };
 		C03AFDD52FEA7388BD45D0BE7EDCC59B /* FIRInstallationsHTTPError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsHTTPError.h; path = FirebaseInstallations/Source/Library/Errors/FIRInstallationsHTTPError.h; sourceTree = "<group>"; };
-		C0D2D0C5B5FEBDD402D3D41230B645A6 /* Pods-Social Distance AlarmTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Social Distance AlarmTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C0F098870FF5E1A06A9DAB1CF044541C /* GULLoggerCodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULLoggerCodes.h; path = GoogleUtilities/Common/GULLoggerCodes.h; sourceTree = "<group>"; };
 		C10B0659A82E02D46501EA379D90DD56 /* FIRCLSByteUtility.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSByteUtility.m; path = Crashlytics/Shared/FIRCLSByteUtility.m; sourceTree = "<group>"; };
 		C134CBB7C12EB87C7FF54AD60907DB31 /* FBLPromise+Do.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Do.m"; path = "Sources/FBLPromises/FBLPromise+Do.m"; sourceTree = "<group>"; };
@@ -1307,6 +1404,7 @@
 		C645A6B372A5AB3D2B9611020A6B2330 /* FBLPromise+Retry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Retry.m"; path = "Sources/FBLPromises/FBLPromise+Retry.m"; sourceTree = "<group>"; };
 		C68780ED48DBC86AC1CBB97F146AA9A4 /* PromisesObjC-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PromisesObjC-Info.plist"; sourceTree = "<group>"; };
 		C697311E24F7095B68FB60B89003829C /* FIRInstallationsStatus.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsStatus.h; path = FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsStatus.h; sourceTree = "<group>"; };
+		C6C1793B4C57BA95FCE5522DE6FB7BD7 /* Pods-UNTIL-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-UNTIL-dummy.m"; sourceTree = "<group>"; };
 		C6D318FC3A47F709E6A7FBF159D84657 /* FIRCLSApplicationIdentifierModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSApplicationIdentifierModel.m; path = Crashlytics/Crashlytics/Settings/Models/FIRCLSApplicationIdentifierModel.m; sourceTree = "<group>"; };
 		C708CFED9BD52604B38C2F662BB80F9F /* FIRInstallations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallations.h; path = FirebaseInstallations/Source/Library/Public/FIRInstallations.h; sourceTree = "<group>"; };
 		C7419EA54151A603452AE04212AE34AA /* FBLPromise+Async.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Async.h"; path = "Sources/FBLPromises/include/FBLPromise+Async.h"; sourceTree = "<group>"; };
@@ -1315,7 +1413,9 @@
 		C871937043550AD91F4ABAF87B15E3FA /* FIRCLSSettingsOnboardingManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSSettingsOnboardingManager.m; path = Crashlytics/Crashlytics/Settings/FIRCLSSettingsOnboardingManager.m; sourceTree = "<group>"; };
 		C9A3D7218150B93B47559849131CBB48 /* FIRInstallationsItem+RegisterInstallationAPI.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FIRInstallationsItem+RegisterInstallationAPI.m"; path = "FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsItem+RegisterInstallationAPI.m"; sourceTree = "<group>"; };
 		CA634AC87D4B4BB074CB81D0BBB2C99B /* GDTCORUploadPackage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GDTCORUploadPackage.m; path = GoogleDataTransport/GDTCORLibrary/GDTCORUploadPackage.m; sourceTree = "<group>"; };
+		CA63E40ADD49310D044AA4E0FF18130B /* Pods-Social Distance Alarm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance Alarm-Info.plist"; sourceTree = "<group>"; };
 		CA757D49C405E713E2DC5E2767FEFD2F /* FirebaseCore-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FirebaseCore-Info.plist"; sourceTree = "<group>"; };
+		CA7EDB028B9DF43FF3631F0E6D66ECE4 /* Pods-Social Distance Alarm-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Social Distance Alarm-acknowledgements.plist"; sourceTree = "<group>"; };
 		CB16A6C75F578E9A89FA73D45150145F /* FirebaseCrashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseCrashlytics.h; path = Crashlytics/Crashlytics/Public/FirebaseCrashlytics.h; sourceTree = "<group>"; };
 		CB326AF194E9E79EA7CDC7B63FE4035F /* FIRLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRLogger.h; path = FirebaseCore/Sources/Private/FIRLogger.h; sourceTree = "<group>"; };
 		CC1DEC225B174E2840C63931B9895F32 /* FirebaseAnalytics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseAnalytics.release.xcconfig; sourceTree = "<group>"; };
@@ -1333,6 +1433,7 @@
 		D30DD7054767A97AC150A9E0E7D0CD01 /* FBLPromise+Timeout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Timeout.h"; path = "Sources/FBLPromises/include/FBLPromise+Timeout.h"; sourceTree = "<group>"; };
 		D3D936794A35F694550D993F42863975 /* GULUserDefaults.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GULUserDefaults.m; path = GoogleUtilities/UserDefaults/GULUserDefaults.m; sourceTree = "<group>"; };
 		D416D81432DF6F69F1E87348F5CA919A /* FIRCLSSignal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSSignal.h; path = Crashlytics/Crashlytics/Handlers/FIRCLSSignal.h; sourceTree = "<group>"; };
+		D56C026EA9F799873104BEFE5EA9AEF5 /* Pods-Social Distance AlarmTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance AlarmTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D57508E806EED9C0D9EBAC3E00F28E32 /* FBLPromise+Await.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Await.m"; path = "Sources/FBLPromises/FBLPromise+Await.m"; sourceTree = "<group>"; };
 		D58E09A9E75179322466E1949217D2A0 /* FirebaseCoreInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FirebaseCoreInternal.h; path = FirebaseCore/Sources/Private/FirebaseCoreInternal.h; sourceTree = "<group>"; };
 		D623C8C5AAFF52D745F494F145D7BD00 /* FIRCLSURLSessionDownloadTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSURLSessionDownloadTask.h; path = Crashlytics/Crashlytics/FIRCLSURLSession/Tasks/FIRCLSURLSessionDownloadTask.h; sourceTree = "<group>"; };
@@ -1383,10 +1484,8 @@
 		EC92CB2CF3A629F72C8E28537A85D187 /* FIRDiagnosticsData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRDiagnosticsData.h; path = FirebaseCore/Sources/FIRDiagnosticsData.h; sourceTree = "<group>"; };
 		EDA2172C87ACFBBE7635A318A9B270F5 /* FirebaseInstallations.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FirebaseInstallations.modulemap; sourceTree = "<group>"; };
 		EE685F4B29BDCB1833F2BD364045F230 /* GULAppEnvironmentUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULAppEnvironmentUtil.h; path = GoogleUtilities/Environment/third_party/GULAppEnvironmentUtil.h; sourceTree = "<group>"; };
-		EE87E8949DA18001ABAC5A4F1939A3CA /* Pods-Social Distance Alarm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Social Distance Alarm.release.xcconfig"; sourceTree = "<group>"; };
 		EF22A027B0AA80022A9DFD2553A34485 /* FIRInstallationsItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRInstallationsItem.m; path = FirebaseInstallations/Source/Library/FIRInstallationsItem.m; sourceTree = "<group>"; };
 		F05A642051BA8E3A9D448F8380799A8B /* FIRErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRErrors.m; path = FirebaseCore/Sources/FIRErrors.m; sourceTree = "<group>"; };
-		F0A1689908BF449EF87A8AF616AEA156 /* Pods-Social Distance Alarm-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Social Distance Alarm-frameworks.sh"; sourceTree = "<group>"; };
 		F1098C5A458760ABEFDB91F0813FBFB0 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Frameworks/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
 		F190B92FA7954B869E15C5D32DC53AF2 /* FIRCLSConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSConstants.h; path = Crashlytics/Shared/FIRCLSConstants.h; sourceTree = "<group>"; };
 		F1A1D902E0D61629FE107D49852ED57B /* FIRCLSUserLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRCLSUserLogging.h; path = Crashlytics/Crashlytics/Components/FIRCLSUserLogging.h; sourceTree = "<group>"; };
@@ -1396,8 +1495,6 @@
 		F330CDB2D34D56508B4071AFDE249918 /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_common.c; sourceTree = "<group>"; };
 		F46B3672FB10A34F9E07910E46B1FC88 /* FIRCLSSymbolicationOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSSymbolicationOperation.m; path = Crashlytics/Crashlytics/Operations/Symbolication/FIRCLSSymbolicationOperation.m; sourceTree = "<group>"; };
 		F48F6AF77F87959195B6E2C1DD87004D /* FIRCLSFABNetworkClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSFABNetworkClient.m; path = Crashlytics/Shared/FIRCLSNetworking/FIRCLSFABNetworkClient.m; sourceTree = "<group>"; };
-		F5F13E7C34798C0D0F34E9CCE16418CE /* Pods-Social Distance AlarmTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Social Distance AlarmTests-umbrella.h"; sourceTree = "<group>"; };
-		F6F1C2F4D26F77DC651AA84FA744686F /* Pods-Social Distance Alarm-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Social Distance Alarm-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F7758101E916E8657092A6D43C0EB77D /* FIRCLSFCRAnalytics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRCLSFCRAnalytics.m; path = Crashlytics/Crashlytics/Helpers/FIRCLSFCRAnalytics.m; sourceTree = "<group>"; };
 		F7AF8571E499C74F95F5F049987087A5 /* FIRInstallationsStoredItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsStoredItem.h; path = FirebaseInstallations/Source/Library/InstallationsStore/FIRInstallationsStoredItem.h; sourceTree = "<group>"; };
 		F8E03AF0A04363C72CC64DAE526EF651 /* FirebaseCrashlytics-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FirebaseCrashlytics-dummy.m"; sourceTree = "<group>"; };
@@ -1437,6 +1534,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA5D262B652E8F79A62B411BAE88CBE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28DD02A75BD2CC144C734A1C4C4C7D1A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B8BB75E4DFEF813BFB0ABCD0B1AF1AA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,6 +1623,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08A945E48F263B8617EE830D2C1C04B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */,
+				E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */,
+				8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics.framework */,
+				86375444C196BA272DDBB8165BF64A15 /* FirebaseCrashlytics.framework */,
+				13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations.framework */,
+				856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport.framework */,
+				6942351307BC1F54575D9853307EAE0E /* GoogleDataTransportCCTSupport.framework */,
+				B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */,
+				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */,
+				715E80FE0FE06E0AE091BD8F02C9B399 /* Pods_Social_Distance_Alarm.framework */,
+				BC9BDDE7BCF114A519642BB38A595B10 /* Pods_Social_Distance_AlarmTests.framework */,
+				44B704C101234E443D67E29E7C93F6DF /* Pods_UNTIL.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0D745B77631718BA9E182D4A177B348A /* FirebaseCore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1627,6 +1751,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		245D34B47D0AFE0F4C5BF63EA4E1F387 /* Pods-Social Distance AlarmTests */ = {
+			isa = PBXGroup;
+			children = (
+				66DD5ACD4E8ECF3990C50F8DEE20F6FE /* Pods-Social Distance AlarmTests.modulemap */,
+				A31F35A1E67FFE27AC83F8DB4B1EE4E9 /* Pods-Social Distance AlarmTests-acknowledgements.markdown */,
+				0922DE941655DF9D33FAB940EAB630FC /* Pods-Social Distance AlarmTests-acknowledgements.plist */,
+				561232923EFF425C1AFFAA0C8C4B984B /* Pods-Social Distance AlarmTests-dummy.m */,
+				666AB5CA3D474D4C31D13876DC175649 /* Pods-Social Distance AlarmTests-Info.plist */,
+				29866A33D013ADF3612EDB9A7FF2F3D8 /* Pods-Social Distance AlarmTests-umbrella.h */,
+				D56C026EA9F799873104BEFE5EA9AEF5 /* Pods-Social Distance AlarmTests.debug.xcconfig */,
+				55A19DC7738175292806E7BD48C35BCB /* Pods-Social Distance AlarmTests.release.xcconfig */,
+			);
+			name = "Pods-Social Distance AlarmTests";
+			path = "Target Support Files/Pods-Social Distance AlarmTests";
+			sourceTree = "<group>";
+		};
 		3086F445C569108BBF23F85134812AF6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1654,6 +1794,33 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GoogleDataTransport";
+			sourceTree = "<group>";
+		};
+		43DD90880265C1164FBB53D4FFF709CA /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDCCB7BA48D9169FD03D7338ACC70118 /* Pods-Social Distance Alarm */,
+				245D34B47D0AFE0F4C5BF63EA4E1F387 /* Pods-Social Distance AlarmTests */,
+				4C0471E5A1E057FCB88F7D5DCED375A5 /* Pods-UNTIL */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		4C0471E5A1E057FCB88F7D5DCED375A5 /* Pods-UNTIL */ = {
+			isa = PBXGroup;
+			children = (
+				372EF47FAFCAD6ADCA37D6AD220E3BA6 /* Pods-UNTIL.modulemap */,
+				20EB9C7E1FD50B9BE17A46F69A9E50EF /* Pods-UNTIL-acknowledgements.markdown */,
+				1FC1EA6D9494C778495B169AE28A70B9 /* Pods-UNTIL-acknowledgements.plist */,
+				C6C1793B4C57BA95FCE5522DE6FB7BD7 /* Pods-UNTIL-dummy.m */,
+				2C1DABFB4EE3A0E8753257E5D8EC7716 /* Pods-UNTIL-frameworks.sh */,
+				B42BECC234557797B3CEC8A2655C802C /* Pods-UNTIL-Info.plist */,
+				B98F9DDA2303748C2B958A5770FB1776 /* Pods-UNTIL-umbrella.h */,
+				25E35C28EE65B8455281F333B8D1D792 /* Pods-UNTIL.debug.xcconfig */,
+				57215CEB02F0720763715145BB5A8541 /* Pods-UNTIL.release.xcconfig */,
+			);
+			name = "Pods-UNTIL";
+			path = "Target Support Files/Pods-UNTIL";
 			sourceTree = "<group>";
 		};
 		4E658F49F3C634944DC0572DECA03FB4 /* Support Files */ = {
@@ -1888,23 +2055,6 @@
 			path = FirebaseCrashlytics;
 			sourceTree = "<group>";
 		};
-		61D650FE839AE9CBDE92DBF51AE0E9A6 /* Pods-Social Distance Alarm */ = {
-			isa = PBXGroup;
-			children = (
-				102A49CEB0A42DBE346B495C98F1C584 /* Pods-Social Distance Alarm.modulemap */,
-				F6F1C2F4D26F77DC651AA84FA744686F /* Pods-Social Distance Alarm-acknowledgements.markdown */,
-				B1D9CAE70318591F1AC49B05094FC58E /* Pods-Social Distance Alarm-acknowledgements.plist */,
-				8CD887A16CABEB01BC80C44FD1A40616 /* Pods-Social Distance Alarm-dummy.m */,
-				F0A1689908BF449EF87A8AF616AEA156 /* Pods-Social Distance Alarm-frameworks.sh */,
-				219E04B00125C9C9297DA7D6DDCFF060 /* Pods-Social Distance Alarm-Info.plist */,
-				59A6829C172690A02A52E4CE74636C49 /* Pods-Social Distance Alarm-umbrella.h */,
-				960DF70BE3605524C44D076D07773EBB /* Pods-Social Distance Alarm.debug.xcconfig */,
-				EE87E8949DA18001ABAC5A4F1939A3CA /* Pods-Social Distance Alarm.release.xcconfig */,
-			);
-			name = "Pods-Social Distance Alarm";
-			path = "Target Support Files/Pods-Social Distance Alarm";
-			sourceTree = "<group>";
-		};
 		634C7C07A9201238D9B183FB10913A50 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1977,24 +2127,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GoogleAppMeasurement";
-			sourceTree = "<group>";
-		};
-		7751BB3D5E93D8BCA097BBBD1DBAF73A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */,
-				E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */,
-				8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics.framework */,
-				86375444C196BA272DDBB8165BF64A15 /* FirebaseCrashlytics.framework */,
-				13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations.framework */,
-				856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport.framework */,
-				6942351307BC1F54575D9853307EAE0E /* GoogleDataTransportCCTSupport.framework */,
-				B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */,
-				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */,
-				715E80FE0FE06E0AE091BD8F02C9B399 /* Pods_Social_Distance_Alarm.framework */,
-				BC9BDDE7BCF114A519642BB38A595B10 /* Pods_Social_Distance_AlarmTests.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		78BADEDBC4B124780BAD3FA44E64DA95 /* Environment */ = {
@@ -2242,25 +2374,9 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				795120B0126AC0EB81CEA83C8DFA3B30 /* Frameworks */,
 				709F26E6046EA60CE4463CD8B6389D7A /* Pods */,
-				7751BB3D5E93D8BCA097BBBD1DBAF73A /* Products */,
-				FA5E5E82D4ECC5955315CEA5A627FCFF /* Targets Support Files */,
+				08A945E48F263B8617EE830D2C1C04B7 /* Products */,
+				43DD90880265C1164FBB53D4FFF709CA /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		D0535CCB44474A930FA8C65396C6D63C /* Pods-Social Distance AlarmTests */ = {
-			isa = PBXGroup;
-			children = (
-				02DD49A273DC8267BAF5B09FAE0D5AA6 /* Pods-Social Distance AlarmTests.modulemap */,
-				C0D2D0C5B5FEBDD402D3D41230B645A6 /* Pods-Social Distance AlarmTests-acknowledgements.markdown */,
-				8B341E60B16676F10FF3A0261837C39E /* Pods-Social Distance AlarmTests-acknowledgements.plist */,
-				B3AACF611A534D182F2511BF31DC1427 /* Pods-Social Distance AlarmTests-dummy.m */,
-				015B3EFD321F0CFFD67B7A76478C4FD3 /* Pods-Social Distance AlarmTests-Info.plist */,
-				F5F13E7C34798C0D0F34E9CCE16418CE /* Pods-Social Distance AlarmTests-umbrella.h */,
-				49CF32774201BA8E926F4C4EA79A8286 /* Pods-Social Distance AlarmTests.debug.xcconfig */,
-				843869A2BC1A49B0898E1A7E936E072A /* Pods-Social Distance AlarmTests.release.xcconfig */,
-			);
-			name = "Pods-Social Distance AlarmTests";
-			path = "Target Support Files/Pods-Social Distance AlarmTests";
 			sourceTree = "<group>";
 		};
 		D3B1A9336E1E2B527653315D6DF645F6 /* Support Files */ = {
@@ -2302,6 +2418,23 @@
 			);
 			name = nanopb;
 			path = nanopb;
+			sourceTree = "<group>";
+		};
+		EDCCB7BA48D9169FD03D7338ACC70118 /* Pods-Social Distance Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				B774B8020FA77CF3A83500ED75F6AB31 /* Pods-Social Distance Alarm.modulemap */,
+				5890464B95FF31B1B6580BB491611D93 /* Pods-Social Distance Alarm-acknowledgements.markdown */,
+				CA7EDB028B9DF43FF3631F0E6D66ECE4 /* Pods-Social Distance Alarm-acknowledgements.plist */,
+				03F9EE7E86047C1D67131F3E8559DCA7 /* Pods-Social Distance Alarm-dummy.m */,
+				0339C4A22798A38FAC955E06E88B0E56 /* Pods-Social Distance Alarm-frameworks.sh */,
+				CA63E40ADD49310D044AA4E0FF18130B /* Pods-Social Distance Alarm-Info.plist */,
+				3A6BACD0B4CDC9409E3D89F452612562 /* Pods-Social Distance Alarm-umbrella.h */,
+				2D949B3A788D2AFB52421930BDFABCF9 /* Pods-Social Distance Alarm.debug.xcconfig */,
+				98F73488C66DAC9A7637E9FC54B01E07 /* Pods-Social Distance Alarm.release.xcconfig */,
+			);
+			name = "Pods-Social Distance Alarm";
+			path = "Target Support Files/Pods-Social Distance Alarm";
 			sourceTree = "<group>";
 		};
 		EDF4A3DA2B4F8E420E4B7C57639242D0 /* GoogleDataTransport */ = {
@@ -2376,15 +2509,6 @@
 				5A8494DC4302C9A07837823C3DDB7C92 /* GULNetworkURLSession.m */,
 			);
 			name = Network;
-			sourceTree = "<group>";
-		};
-		FA5E5E82D4ECC5955315CEA5A627FCFF /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				61D650FE839AE9CBDE92DBF51AE0E9A6 /* Pods-Social Distance Alarm */,
-				D0535CCB44474A930FA8C65396C6D63C /* Pods-Social Distance AlarmTests */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		FFC5A3429BC8936E45BBB378FAECA219 /* FirebaseInstallations */ = {
@@ -2611,6 +2735,14 @@
 				94E09842D6A646C97FD61C2F958C775E /* FBLPromisePrivate.h in Headers */,
 				B8FC0DEEC083AA06795D3FC61306B22A /* FBLPromises.h in Headers */,
 				F9B7B4602FC3E8D3C8D318432B7DA489 /* PromisesObjC-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76EDBD413ED221A93197E69AC6B0D0F7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20DB4C0374C3D3E1EADB719BC27A3175 /* Pods-UNTIL-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2912,6 +3044,36 @@
 			productReference = 8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		62ACED7325D83829CC047893FEE5CDC6 /* Pods-UNTIL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 134D1E451CAD8C84EE7175E4F4D6B3A7 /* Build configuration list for PBXNativeTarget "Pods-UNTIL" */;
+			buildPhases = (
+				76EDBD413ED221A93197E69AC6B0D0F7 /* Headers */,
+				F00943FE0CCDF86338A392733304FB8B /* Sources */,
+				28DD02A75BD2CC144C734A1C4C4C7D1A /* Frameworks */,
+				2B9049B30A5195579E1FDB8C94A868A5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13C06C87F5B3CE472E3969302CDE79B7 /* PBXTargetDependency */,
+				7B86409A10609CD77DFB05B58CAC764B /* PBXTargetDependency */,
+				95C5BBB8E1F553409019FF6692CA9852 /* PBXTargetDependency */,
+				06EB61221EE38AB2B584451C09C15795 /* PBXTargetDependency */,
+				91A4B9FAF8DD7EBECFC8184F0465AF0A /* PBXTargetDependency */,
+				61C0F6842764DEC58F3CDC9E305E7505 /* PBXTargetDependency */,
+				1D8AC0CFD24D47BC9D92E33512D7720B /* PBXTargetDependency */,
+				4A401C22646C8657D7AAFDD724AA1B91 /* PBXTargetDependency */,
+				ED0FEA920F2E5F7DFCC110987FC01BDA /* PBXTargetDependency */,
+				08A927DAFCA67DC77D0558C2D089BEF4 /* PBXTargetDependency */,
+				80463B0DAB99F24E64F837C9BE101C83 /* PBXTargetDependency */,
+				9FF3A7CE319CD08A147AC29426388CA5 /* PBXTargetDependency */,
+			);
+			name = "Pods-UNTIL";
+			productName = "Pods-UNTIL";
+			productReference = 44B704C101234E443D67E29E7C93F6DF /* Pods_UNTIL.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		87803597EB3F20FC46472B85392EC4FD /* FirebaseInstallations */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6EA5072AD8F5907C9AFB033AA9266758 /* Build configuration list for PBXNativeTarget "FirebaseInstallations" */;
@@ -3057,7 +3219,7 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 7751BB3D5E93D8BCA097BBBD1DBAF73A /* Products */;
+			productRefGroup = 08A945E48F263B8617EE830D2C1C04B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -3074,6 +3236,7 @@
 				D2B5E7DCCBBFB32341D857D01211A1A3 /* nanopb */,
 				EE9E0EA4347923130CF5B6E6F187CCA6 /* Pods-Social Distance Alarm */,
 				AA881BB7127CB19D983E7096B1E75223 /* Pods-Social Distance AlarmTests */,
+				62ACED7325D83829CC047893FEE5CDC6 /* Pods-UNTIL */,
 				2BBF7206D7FAC92C82A042A99C4A98F8 /* PromisesObjC */,
 			);
 		};
@@ -3095,6 +3258,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		29C943EC823A8A99D141CC4E9D77477C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B9049B30A5195579E1FDB8C94A868A5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3374,6 +3544,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F00943FE0CCDF86338A392733304FB8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2747B93A29C5F06CE87AAC0E6FBCEFF /* Pods-UNTIL-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE8F14F5DBFCF64CD015DA44FD6C30A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3431,6 +3609,18 @@
 			target = C49E7A4D59E5C8BE8DE9FB1EFB150185 /* FirebaseAnalytics */;
 			targetProxy = 625664485E68882E020182B4B8593A0B /* PBXContainerItemProxy */;
 		};
+		06EB61221EE38AB2B584451C09C15795 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FirebaseCoreDiagnostics;
+			target = 620E05868772C10B4920DC7E324F2C87 /* FirebaseCoreDiagnostics */;
+			targetProxy = 6E3DF15F87E53B828226E732DE8998CB /* PBXContainerItemProxy */;
+		};
+		08A927DAFCA67DC77D0558C2D089BEF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleUtilities;
+			target = 8D7F5D5DD528D21A72DC87ADA5B12E2D /* GoogleUtilities */;
+			targetProxy = 089A067089A7685FB0FD04AD43B9FB49 /* PBXContainerItemProxy */;
+		};
 		0BDA84D52FA8DB9C0100475ABD822E4C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GoogleDataTransportCCTSupport;
@@ -3455,11 +3645,23 @@
 			target = 8D7F5D5DD528D21A72DC87ADA5B12E2D /* GoogleUtilities */;
 			targetProxy = DFFBFD630CC61B0FB41AF5DEFC377BDE /* PBXContainerItemProxy */;
 		};
+		13C06C87F5B3CE472E3969302CDE79B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Firebase;
+			target = 072CEA044D2EF26F03496D5996BBF59F /* Firebase */;
+			targetProxy = 93B21DB98B810CCB405A80017FF69DB2 /* PBXContainerItemProxy */;
+		};
 		1896C4715B2149A5EBA2504B5379110C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GoogleAppMeasurement;
 			target = B53D977A951AFC38B21751B706C1DF83 /* GoogleAppMeasurement */;
 			targetProxy = 3A7FA56DDB4EA79231EDF6205B7D02B9 /* PBXContainerItemProxy */;
+		};
+		1D8AC0CFD24D47BC9D92E33512D7720B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleAppMeasurement;
+			target = B53D977A951AFC38B21751B706C1DF83 /* GoogleAppMeasurement */;
+			targetProxy = AE3CE4725B6C15513F876E2CE42D4507 /* PBXContainerItemProxy */;
 		};
 		1ECF12210FC73A682AD63A6648E250C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3497,6 +3699,12 @@
 			target = 8D7F5D5DD528D21A72DC87ADA5B12E2D /* GoogleUtilities */;
 			targetProxy = 98A6617A8C417217E755D45010E87C37 /* PBXContainerItemProxy */;
 		};
+		4A401C22646C8657D7AAFDD724AA1B91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleDataTransport;
+			target = 5C0371EE948D0357B8EE0E34ABB44BF0 /* GoogleDataTransport */;
+			targetProxy = CAF1F669EBEE0B8761346BF97D630DE1 /* PBXContainerItemProxy */;
+		};
 		4AE7F0903CAB3EEC559660BF180EDA72 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = nanopb;
@@ -3514,6 +3722,12 @@
 			name = GoogleUtilities;
 			target = 8D7F5D5DD528D21A72DC87ADA5B12E2D /* GoogleUtilities */;
 			targetProxy = 0737629FABAD4284C6231D677429F1A7 /* PBXContainerItemProxy */;
+		};
+		61C0F6842764DEC58F3CDC9E305E7505 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FirebaseInstallations;
+			target = 87803597EB3F20FC46472B85392EC4FD /* FirebaseInstallations */;
+			targetProxy = 23AA2912758191E940E0B04107E25CFF /* PBXContainerItemProxy */;
 		};
 		64A874D42FE0579EBB177F7A34B67270 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3539,6 +3753,18 @@
 			target = 87803597EB3F20FC46472B85392EC4FD /* FirebaseInstallations */;
 			targetProxy = 5199EEE170B03E6034771D7D410366D6 /* PBXContainerItemProxy */;
 		};
+		7B86409A10609CD77DFB05B58CAC764B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FirebaseAnalytics;
+			target = C49E7A4D59E5C8BE8DE9FB1EFB150185 /* FirebaseAnalytics */;
+			targetProxy = 8F916587C1DB30B49FCEE169185058BF /* PBXContainerItemProxy */;
+		};
+		80463B0DAB99F24E64F837C9BE101C83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PromisesObjC;
+			target = 2BBF7206D7FAC92C82A042A99C4A98F8 /* PromisesObjC */;
+			targetProxy = 9820B8F1EEF359A9709CB5CBCFA4C60B /* PBXContainerItemProxy */;
+		};
 		8247388091D0881AAFB46349846F8C4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PromisesObjC;
@@ -3563,6 +3789,18 @@
 			target = 526C4398D095B3704EB933DADBC30093 /* FirebaseCrashlytics */;
 			targetProxy = 1A59764CA4DE4DAF5D504EF530F5428C /* PBXContainerItemProxy */;
 		};
+		91A4B9FAF8DD7EBECFC8184F0465AF0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FirebaseCrashlytics;
+			target = 526C4398D095B3704EB933DADBC30093 /* FirebaseCrashlytics */;
+			targetProxy = 5548BF0F522B4F45046E333B98BC244D /* PBXContainerItemProxy */;
+		};
+		95C5BBB8E1F553409019FF6692CA9852 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FirebaseCore;
+			target = 4402AFF83DBDC4DD07E198685FDC2DF2 /* FirebaseCore */;
+			targetProxy = 60956012532B584F7C942B2608952278 /* PBXContainerItemProxy */;
+		};
 		9B2EEDE8DA879BBAB20E4B071536A162 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GoogleDataTransportCCTSupport;
@@ -3580,6 +3818,12 @@
 			name = "Pods-Social Distance Alarm";
 			target = EE9E0EA4347923130CF5B6E6F187CCA6 /* Pods-Social Distance Alarm */;
 			targetProxy = DD4B5E5C9FB3CF5A7A9A350BE50BA131 /* PBXContainerItemProxy */;
+		};
+		9FF3A7CE319CD08A147AC29426388CA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = nanopb;
+			target = D2B5E7DCCBBFB32341D857D01211A1A3 /* nanopb */;
+			targetProxy = 090BFF7B92CB2DE86B15A8DBA4CE8330 /* PBXContainerItemProxy */;
 		};
 		A37549B925A9D8DA7E5CEBC298DAF14F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3640,6 +3884,12 @@
 			name = PromisesObjC;
 			target = 2BBF7206D7FAC92C82A042A99C4A98F8 /* PromisesObjC */;
 			targetProxy = DAAA9E9C8E0C29510129D55739762311 /* PBXContainerItemProxy */;
+		};
+		ED0FEA920F2E5F7DFCC110987FC01BDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleDataTransportCCTSupport;
+			target = F4F25FCAC51B51FD5F986EB939BF1F87 /* GoogleDataTransportCCTSupport */;
+			targetProxy = 683C7A0A667EE3D4AA4013298A5F22B1 /* PBXContainerItemProxy */;
 		};
 		F135F9BF24D8AFC3B42F3522D809B4BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3739,6 +3989,44 @@
 			};
 			name = Debug;
 		};
+		2F45F20A236909E076BFBB63C276A29F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25E35C28EE65B8455281F333B8D1D792 /* Pods-UNTIL.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-UNTIL/Pods-UNTIL-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-UNTIL/Pods-UNTIL.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		32AC997D9A8ECAB1BBABA01E3F8AF8BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B0AD8A88A978F3077CB0E043C10BCF50 /* FirebaseInstallations.release.xcconfig */;
@@ -3768,6 +4056,45 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		37738FE131A26B61AF11868AFF64AB64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57215CEB02F0720763715145BB5A8541 /* Pods-UNTIL.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-UNTIL/Pods-UNTIL-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-UNTIL/Pods-UNTIL.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3987,7 +4314,7 @@
 		};
 		69A0D5FB6765AB844D5FC7BCA0D08FFA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE87E8949DA18001ABAC5A4F1939A3CA /* Pods-Social Distance Alarm.release.xcconfig */;
+			baseConfigurationReference = 98F73488C66DAC9A7637E9FC54B01E07 /* Pods-Social Distance Alarm.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -4410,7 +4737,7 @@
 		};
 		D56AAB7CD7870AFE39D50F2E1BC23C64 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 843869A2BC1A49B0898E1A7E936E072A /* Pods-Social Distance AlarmTests.release.xcconfig */;
+			baseConfigurationReference = 55A19DC7738175292806E7BD48C35BCB /* Pods-Social Distance AlarmTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -4555,7 +4882,7 @@
 		};
 		E76D0EF419D681B198739E1465872BF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49CF32774201BA8E926F4C4EA79A8286 /* Pods-Social Distance AlarmTests.debug.xcconfig */;
+			baseConfigurationReference = D56C026EA9F799873104BEFE5EA9AEF5 /* Pods-Social Distance AlarmTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -4629,7 +4956,7 @@
 		};
 		E83B2BF25C305436AC5A1BFBEAA4E6FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 960DF70BE3605524C44D076D07773EBB /* Pods-Social Distance Alarm.debug.xcconfig */;
+			baseConfigurationReference = 2D949B3A788D2AFB52421930BDFABCF9 /* Pods-Social Distance Alarm.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -4690,6 +5017,15 @@
 			buildConfigurations = (
 				9764A42B01492B4A7C0FF4C8DCE48467 /* Debug */,
 				A2C3671DE5BC8648A1B2629A84FBF3C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		134D1E451CAD8C84EE7175E4F4D6B3A7 /* Build configuration list for PBXNativeTarget "Pods-UNTIL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F45F20A236909E076BFBB63C276A29F /* Debug */,
+				37738FE131A26B61AF11868AFF64AB64 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

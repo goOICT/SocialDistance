@@ -15,3 +15,13 @@ target 'Social Distance Alarm' do
   end
 
 end
+
+target 'UNTIL' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Social Distance Alarm
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+
+end

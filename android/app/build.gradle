@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId "ai.kun.socialdistancealarm"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 3
         versionName "2.0.0.4r"
