@@ -16,7 +16,7 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if defaults.bool(forKey: AppConstants.onboardedKey) {
+        if !defaults.bool(forKey: AppConstants.onboardedKey) {
             performSegue(withIdentifier: "showOnboardView", sender: self)
         }
         
