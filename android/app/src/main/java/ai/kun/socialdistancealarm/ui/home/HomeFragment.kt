@@ -9,6 +9,7 @@ import android.bluetooth.BluetoothManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -150,6 +151,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun checkPermissions(context: Context): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true
+        }
         // Check permissions
         if (!mIsChecking && mIsTraceEnabled) {
             if (mFineLocationGranted &&

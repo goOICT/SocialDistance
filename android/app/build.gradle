@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId "ai.kun.socialdistancealarm"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 3
         versionName "2.0.0.4r"
@@ -29,13 +29,11 @@ android {
     productFlavors {
         kunai {
             dimension "version"
-            applicationIdSuffix ""
             versionNameSuffix "-kunai"
         }
         un {
             dimension "version"
             applicationId "app.onepointfive"
-            applicationIdSuffix ""
             versionNameSuffix "-un"
         }
     }
