@@ -9,13 +9,15 @@ object Constants {
     const val PREF_IS_PAUSED = "is_paused"
     const val PREF_FILE_NAME = "ai.kun.socialdistancealarm.preferencesV2"
 
-    const val MANUFACTURE_SUBSTRING = "9b3"
-    const val MANUFACTURE_ID = 1023
+    const val ANDROID_MANUFACTURE_SUBSTRING = "9b3"
+    const val ANDROID_MANUFACTURE_SUBSTRING_MASK = "000"
+    const val ANDROID_MANUFACTURE_ID = 1023
+    const val APPLE_DEVICE_NAME = "SDAlarm"
+
     const val ANDROID_SERVICE_STRING = "d2b86f9a-264e-3ac6-838a-0d00c1f549ed"
-    const val IOS_SERVICE_STRING =     "00086f9a-264e-3ac6-838a-0d00c1f549ed"
+    const val IOS_SERVICE_STRING =     "00086f9a-264e-3ac6-838a-0d00c1f549ed" //00086f9a-264e-3ac6-838a-6c57473bb945
     var ANDROID_PREFIX = ANDROID_SERVICE_STRING.subSequence(0..7 )
     var IOS_PREFIX = IOS_SERVICE_STRING.subSequence(0..7 )
-    const val SERVICE_STRING_MASK =    "ffffffff-0000-0000-0000-000000000000"
 
     const val CHARACTERISTIC_DEVICE_STRING = "9a161ec7-72bb-40d3-b00c-fcf637349b5b"
     var CHARACTERISTIC_DEVICE_UUID =

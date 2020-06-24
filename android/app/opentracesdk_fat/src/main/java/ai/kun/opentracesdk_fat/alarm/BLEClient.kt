@@ -4,8 +4,10 @@ import ai.kun.opentracesdk_fat.BLETrace
 import ai.kun.opentracesdk_fat.dao.Device
 import ai.kun.opentracesdk_fat.DeviceRepository
 import ai.kun.opentracesdk_fat.util.Constants
-import ai.kun.opentracesdk_fat.util.Constants.ANDROID_PREFIX
-import ai.kun.opentracesdk_fat.util.Constants.IOS_PREFIX
+import ai.kun.opentracesdk_fat.util.Constants.ANDROID_MANUFACTURE_ID
+import ai.kun.opentracesdk_fat.util.Constants.ANDROID_MANUFACTURE_SUBSTRING
+import ai.kun.opentracesdk_fat.util.Constants.ANDROID_MANUFACTURE_SUBSTRING_MASK
+import ai.kun.opentracesdk_fat.util.Constants.APPLE_DEVICE_NAME
 import ai.kun.opentracesdk_fat.util.Constants.SCAN_PERIOD
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -13,14 +15,12 @@ import android.bluetooth.le.*
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import android.os.ParcelUuid
 import android.os.PowerManager
 import android.util.Log
 import androidx.core.app.AlarmManagerCompat
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.*
+import java.nio.charset.StandardCharsets
 
 
 class BLEClient : BroadcastReceiver() {
@@ -100,9 +100,13 @@ class BLEClient : BroadcastReceiver() {
             return
         }
 
-        val scanFilter = ScanFilter.Builder()
-            .setServiceUuid(ParcelUuid(UUID.fromString(Constants.ANDROID_SERVICE_STRING)),
-                            ParcelUuid(UUID.fromString(Constants.SERVICE_STRING_MASK)))
+        val androidScanFilter = ScanFilter.Builder()
+            .setManufacturerData(ANDROID_MANUFACTURE_ID,
+                            ANDROID_MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8),
+                            ANDROID_MANUFACTURE_SUBSTRING_MASK.toByteArray(StandardCharsets.UTF_8))
+            .build()
+        val appleScanFilter = ScanFilter.Builder()
+            .setDeviceName(APPLE_DEVICE_NAME)
             .build()
 
         val settings = ScanSettings.Builder()
@@ -110,7 +114,7 @@ class BLEClient : BroadcastReceiver() {
             .build()
 
         try {
-            BLETrace.bluetoothLeScanner!!.startScan(emptyList(), settings, BtleScanCallback)
+            BLETrace.bluetoothLeScanner!!.startScan(listOf(androidScanFilter, appleScanFilter), settings, BtleScanCallback)
             BtleScanCallback.handler.postDelayed(Runnable { stopScan(context) }, SCAN_PERIOD)
             mScanning = true
             Log.d(TAG, "+++++++Started scanning.")
