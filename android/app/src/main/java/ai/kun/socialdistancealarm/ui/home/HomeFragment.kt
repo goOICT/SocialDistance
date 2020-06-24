@@ -1,16 +1,20 @@
 package ai.kun.socialdistancealarm.ui.home
 
-import ai.kun.socialdistancealarm.R
 import ai.kun.opentracesdk_fat.BLETrace
 import ai.kun.opentracesdk_fat.DeviceRepository
+import ai.kun.socialdistancealarm.R
 import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothManager
 import android.content.Context
+import android.content.Context.POWER_SERVICE
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +22,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -25,6 +30,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.common.reflect.Reflection.getPackageName
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -156,6 +162,21 @@ class HomeFragment : Fragment() {
         }
         // Check permissions
         if (!mIsChecking && mIsTraceEnabled) {
+/*
+            // I think this will get us kicked out of the PlayStore and I'm not 100% sure that
+            // it is actually needed.  Many devices see our app as using too much battery because
+            // it runs a lot, but it doesn't do anything consumptive when it runs (e.g. it doesn't
+            // connect to the internet or the GPS)
+            val intent = Intent()
+            val packageName: String = requireActivity().packageName
+            val pm: PowerManager = requireActivity().getSystemService(POWER_SERVICE) as PowerManager
+            if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+                intent.action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+                intent.data = Uri.parse("package:$packageName")
+                startActivity(intent)
+            }
+*/
+
             if (mFineLocationGranted &&
                 context.applicationContext.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 mIsChecking = true
