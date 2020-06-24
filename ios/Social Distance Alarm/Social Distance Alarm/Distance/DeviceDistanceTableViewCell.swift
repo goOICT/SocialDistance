@@ -12,8 +12,8 @@ import SocialDistanceSDK
 fileprivate extension SignalClassification {
     var icon: UIImage? {
         switch self {
-        case .danger: return UIImage(named: "personTooClose")
-        case .tooClose: return UIImage(named: "personDanger")
+        case .danger: return UIImage(named: "personDanger")
+        case .tooClose: return UIImage(named: "personTooClose")
         case .warning: return UIImage(named: "personWarning")
         case .ok: return UIImage(named: "personOk")
         }

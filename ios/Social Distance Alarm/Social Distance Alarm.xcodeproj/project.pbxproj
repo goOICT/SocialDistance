@@ -114,7 +114,7 @@
 		8DB74A039CD829C982E17838 /* Pods-Social Distance Alarm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social Distance Alarm.debug.xcconfig"; path = "Target Support Files/Pods-Social Distance Alarm/Pods-Social Distance Alarm.debug.xcconfig"; sourceTree = "<group>"; };
 		AE98D66A249BA88E008AEA9F /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
 		AECF6F68247FE7970040CEDF /* SocialDistanceSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocialDistanceSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEF878DB249A292800733711 /* UNTIL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UNTIL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF878DB249A292800733711 /* 1point5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1point5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF878DC249A292800733711 /* UNTIL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UNTIL-Info.plist"; path = "/Users/piotr/Projects/OpenTrace/ios/Social Distance Alarm/UNTIL-Info.plist"; sourceTree = "<absolute>"; };
 		AEF878DF249A2B7A00733711 /* UNTILAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UNTILAssets.xcassets; sourceTree = "<group>"; };
 		AEF878E1249A2DB200733711 /* UNTILColors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UNTILColors.xcassets; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			children = (
 				C12E6DF42467ADB80036C930 /* Social Distance Alarm.app */,
 				C12E6E0F2467ADBB0036C930 /* Social Distance AlarmTests.xctest */,
-				AEF878DB249A292800733711 /* UNTIL.app */,
+				AEF878DB249A292800733711 /* 1point5.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 			);
 			name = UNTIL;
 			productName = "Social Distance Alarm";
-			productReference = AEF878DB249A292800733711 /* UNTIL.app */;
+			productReference = AEF878DB249A292800733711 /* 1point5.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C12E6DF32467ADB80036C930 /* Social Distance Alarm */ = {
@@ -682,8 +682,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.kun.Social-Distance-Alarm-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ai.kun.1point5;
+				PRODUCT_NAME = 1point5;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -705,8 +705,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ai.kun.Social-Distance-Alarm-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ai.kun.1point5;
+				PRODUCT_NAME = 1point5;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
