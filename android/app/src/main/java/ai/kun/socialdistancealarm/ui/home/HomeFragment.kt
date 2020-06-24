@@ -162,6 +162,11 @@ class HomeFragment : Fragment() {
         }
         // Check permissions
         if (!mIsChecking && mIsTraceEnabled) {
+/*
+            // I think this will get us kicked out of the PlayStore and I'm not 100% sure that
+            // it is actually needed.  Many devices see our app as using too much battery because
+            // it runs a lot, but it doesn't do anything consumptive when it runs (e.g. it doesn't
+            // connect to the internet or the GPS)
             val intent = Intent()
             val packageName: String = requireActivity().packageName
             val pm: PowerManager = requireActivity().getSystemService(POWER_SERVICE) as PowerManager
@@ -170,6 +175,7 @@ class HomeFragment : Fragment() {
                 intent.data = Uri.parse("package:$packageName")
                 startActivity(intent)
             }
+*/
 
             if (mFineLocationGranted &&
                 context.applicationContext.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

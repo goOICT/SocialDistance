@@ -2,10 +2,9 @@ package ai.kun.opentracesdk_fat.alarm
 
 import ai.kun.opentracesdk_fat.BLETrace
 import ai.kun.opentracesdk_fat.BLETrace.getAlarmManager
-import ai.kun.opentracesdk_fat.util.BluetoothUtils
 import ai.kun.opentracesdk_fat.util.Constants.BACKGROUND_TRACE_INTERVAL
-import ai.kun.opentracesdk_fat.util.Constants.MANUFACTURE_ID
-import ai.kun.opentracesdk_fat.util.Constants.MANUFACTURE_SUBSTRING
+import ai.kun.opentracesdk_fat.util.Constants.ANDROID_MANUFACTURE_ID
+import ai.kun.opentracesdk_fat.util.Constants.ANDROID_MANUFACTURE_SUBSTRING
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.bluetooth.BluetoothDevice
@@ -130,8 +129,8 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
                 .setIncludeDeviceName(false)
                 .setIncludeTxPowerLevel(true)
                 .addManufacturerData(
-                    MANUFACTURE_ID,
-                    MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8)
+                    ANDROID_MANUFACTURE_ID,
+                    ANDROID_MANUFACTURE_SUBSTRING.toByteArray(StandardCharsets.UTF_8)
                 )
                 .addServiceUuid(ParcelUuid(uuid))
                 .build()
