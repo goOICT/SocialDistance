@@ -7,5 +7,6 @@ class SocialDistanceAlarm : Application() {
     override fun onCreate() {
         super.onCreate()
         BLETrace.init(applicationContext!!)
+        BLETrace.start(true)
     }
 }

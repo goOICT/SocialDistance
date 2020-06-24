@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/header</color>
+    <color name="colorPrimaryDark">#00598F</color>
+    <color name="colorAccent">@color/blue_onboarding</color>
+
+
+    <color name="indicator_unselected">@color/light_grey</color>
+
+    <color name="black">#111a27</color>
+    <color name="grey">#525862</color>
+    <color name="medium_grey">#7d8289</color>
+    <color name="light_grey">#888d93</color>
+    <color name="divider">#e5e5e5</color>
+    <color name="background">#faf8f8</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#c71415</color>
+    <color name="header">#007cc8</color>
+    <color name="orange">#c76c15</color>
+    <color name="blue">#092fba</color>
+    <color name="green">#489686</color>
+    <color name="yellow">#c7c414</color>
+    <color name="blue_onboarding">#0b58ad</color>
+
+    <color name="barcode_reticle_background">#99000000</color>
+    <color name="barcode_reticle_stroke">#40000000</color>
+    <color name="barcode_field_value">#797979</color>
+    <color name="barcode_field_box_stroke">#757575</color>
+    <color name="reticle_ripple">#9AFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="dark">#9A000000</color>
+</resources>

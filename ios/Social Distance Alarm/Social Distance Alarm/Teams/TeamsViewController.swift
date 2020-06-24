@@ -10,7 +10,9 @@ import UIKit
 import SocialDistanceSDK
 
 class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate {
+    let teamString = "Your Team has 0 people"
 
+    @IBOutlet weak var teamCountText: UILabel!
     @IBOutlet weak var qrCodeImage: UIImageView!
     let defaults = UserDefaults.standard
     
@@ -19,6 +21,7 @@ class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate
 
         // Build and show the current UUID String as a QRCode
         qrCodeImage.image = generateQRCode(from: CoreBluetoothManager.sharedInstance.uuidString)
+        teamCountText.text = teamString.replacingOccurrences(of: "0", with: String(DeviceRepository.sharedInstance.teamCount()))
     }
     
     private func generateQRCode(from string: String) -> UIImage? {
@@ -49,6 +52,7 @@ class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate
             CoreBluetoothManager.sharedInstance.resetUuidString()
             DeviceRepository.sharedInstance.resetTeam()
             self.qrCodeImage.image = self.generateQRCode(from: CoreBluetoothManager.sharedInstance.uuidString)
+            self.teamCountText.text = self.teamString
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         self.present(alert, animated: true)
@@ -64,6 +68,7 @@ class TeamsViewController: UIViewController, QRCodeScannerViewControllerDelegate
             let alert = UIAlertController(title: "Scanned!", message: "The handset you scanned has been added to your existing team.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true)
+            self.teamCountText.text = self.teamString.replacingOccurrences(of: "0", with: String(DeviceRepository.sharedInstance.teamCount()))
         }
         
     }

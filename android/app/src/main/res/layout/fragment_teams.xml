@@ -7,6 +7,20 @@
     android:background="@color/background"
     tools:context=".ui.home.HomeFragment">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Safe Teams mutes alerts for people who you decide are safe to not social distance from. Use this for work teams or family members. Scan the QR code on their app to create your team and have them scan yours."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/barcodeImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/barcodeImage"
         android:layout_width="@dimen/qr_code_size"
@@ -25,23 +39,60 @@
         android:layout_height="56dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/black"
+        android:background="@color/header"
+        android:backgroundTint="@color/header"
         android:clickable="true"
         android:elevation="@dimen/card_elevation"
         android:focusable="true"
-        android:src="@drawable/ic_photo_camera_black_24dp"
+        android:src="@drawable/ic_baseline_add_24"
         android:tint="@color/white"
-        app:backgroundTint="@color/grey"
+        app:backgroundTint="@color/header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/resetButton"
+    <TextView
+        android:id="@+id/TextView_team_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset"
-        app:layout_constraintBottom_toTopOf="@+id/barcodeImage"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/your_team_has_0_people"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/View_exit_divider" />
+
+    <View
+        android:id="@+id/View_exit_divider"
+        android:layout_width="200dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barcodeImage"
+        app:layout_constraintVertical_bias="0.16000003" />
+
+    <TextView
+        android:id="@+id/TextView_exit_teams"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Exit Team"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/View_exit_divider" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

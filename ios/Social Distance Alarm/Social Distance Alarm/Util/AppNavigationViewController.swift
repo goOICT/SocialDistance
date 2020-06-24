@@ -17,9 +17,21 @@ class AppNavigationViewController: UINavigationController {
             navBarAppearance.configureWithOpaqueBackground()
             navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.backgroundColor = #colorLiteral(red: 0.7333333333, green: 0, blue: 0.1764705882, alpha: 1)
+            navBarAppearance.backgroundColor = .theme
             navigationBar.standardAppearance = navBarAppearance
             navigationBar.scrollEdgeAppearance = navBarAppearance
         }
-    }    
+    }
+}
+
+extension UIViewController {
+    func addSettingsIcon() {
+        let icon = UIImage(named: "settingsIcon")?.withRenderingMode(.alwaysOriginal)
+        let settingsButton = UIBarButtonItem(image: icon, landscapeImagePhone: icon, style: .plain, target: self, action: #selector(moveToSettings))
+        navigationItem.rightBarButtonItem = settingsButton
+    }
+    
+    @objc func moveToSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+    }
 }

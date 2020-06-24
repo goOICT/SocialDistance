@@ -5,8 +5,6 @@ import AudioToolbox
 public enum SocialDistanceSdkConstants: String {
     case IOS_SERVICE_UUID =     "00086f9a-264e-3ac6-838a-000000000000"
     case ANDROID_SERVICE_UUID = "d2b86f9a-264e-3ac6-838a-0d00c1f549ed"
-    case CENTRAL_MANAGER_ID = "ai.kun.socialdistancealarm.central"
-    case PERIPHERAL_MANAGER_ID = "ai.kun.socialdistancealarm.peripheral"
     case DEFAULTS_UUID_KEY = "Device UUID"
     case TEAMS_KEY = "teamsKey"
 }
@@ -180,11 +178,6 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
             }
         }
     }
-    
-    public func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
-        print("Peripheral Manager willRestoreState called")
-        peripheralManager?.stopAdvertising()
-    }
 }
 
 extension CoreBluetoothManager: CBCentralManagerDelegate {
@@ -224,10 +217,6 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         }).isEmpty else { return }
     
         delegate?.didDiscoverPeripheral(ids: ids.map(DeviceId.init), rssi: RSSI, txPower: txPowerLevel)
-    }
-    
-    public func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
-        print("Central Manager willRestoreState called")
     }
 }
 

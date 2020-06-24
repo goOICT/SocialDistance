@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController id="9pv-A4-QxB" customClass="DistanceTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vbh-a9-1P1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
@@ -28,7 +28,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hzW-zD-neq">
-                                            <rect key="frame" x="17" y="34.666666666666664" width="28" height="40.999999999999993"/>
+                                            <rect key="frame" x="17" y="34.5" width="28" height="41"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40.5" id="llX-NN-cA6"/>
                                             </constraints>
@@ -43,7 +43,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signal strength: 52" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH8-dV-67e">
-                                            <rect key="frame" x="43" y="51" width="264" height="24.666666666666671"/>
+                                            <rect key="frame" x="43" y="51" width="264" height="24.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="ZR4-jo-suy"/>
                                                 <constraint firstAttribute="height" constant="24" id="rCC-cA-Tni"/>
@@ -81,21 +81,21 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NoUsersItemCell" id="iZb-1n-lhz" customClass="NoUsersTableViewCell" customModule="Social_Distance_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="138" width="375" height="90.666664123535156"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="91.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iZb-1n-lhz" id="Vrc-kO-CRv">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90.666664123535156"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothGoodIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7Md-ls-zFr">
-                                            <rect key="frame" x="316" y="33.333333333333336" width="22" height="24"/>
+                                            <rect key="frame" x="316" y="34" width="22" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="0Ea-df-iOy"/>
                                                 <constraint firstAttribute="width" constant="22" id="HpE-4r-sPG"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="os5-gk-O08">
-                                            <rect key="frame" x="37" y="35" width="187" height="20.666666666666671"/>
+                                            <rect key="frame" x="37" y="35" width="187" height="21.5"/>
                                             <string key="text">There are no app users 
 detected.</string>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -136,7 +136,7 @@ detected.</string>
             <objects>
                 <tableViewController id="8rJ-Kc-sve" customClass="HistoryTableViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Eu-yt-WYz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <color key="separatorColor" name="divider"/>
@@ -144,14 +144,14 @@ detected.</string>
                         <color key="sectionIndexBackgroundColor" name="background"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryItemCell" id="7pQ-Ej-Wrx" userLabel="HistoryItemCell" customClass="DeviceHistoryTableViewCell" customModule="Social_Distance_Alarm" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="119.33333587646484"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="119.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7pQ-Ej-Wrx" id="Ahf-6L-Uxk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119.33333587646484"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-wb-bFK">
-                                            <rect key="frame" x="17" y="39.333333333333343" width="28" height="40.666666666666657"/>
+                                            <rect key="frame" x="17" y="39.5" width="28" height="40.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40.5" id="8Im-gx-woz"/>
                                             </constraints>
@@ -167,7 +167,7 @@ detected.</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signal strength: 52" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV2-ps-xec">
-                                            <rect key="frame" x="74" y="48" width="264" height="23.333333333333329"/>
+                                            <rect key="frame" x="74" y="48" width="264" height="23.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="I0r-fL-pko"/>
                                             </constraints>
@@ -176,10 +176,10 @@ detected.</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluetoothTooCloseIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rea-WM-Aue">
-                                            <rect key="frame" x="315" y="42.666666666666664" width="37" height="33.999999999999993"/>
+                                            <rect key="frame" x="315" y="43" width="37" height="34"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020-05-19 16:21:47" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1J-kg-c36">
-                                            <rect key="frame" x="43" y="72.333333333333329" width="264" height="24"/>
+                                            <rect key="frame" x="43" y="72.5" width="264" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="264" id="dun-fE-9u0"/>
                                                 <constraint firstAttribute="height" constant="24" id="z8l-RP-GbC"/>
@@ -234,21 +234,21 @@ detected.</string>
             <objects>
                 <viewController id="fxI-tF-Ky4" customClass="PocketViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vc1-zN-jFD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pocketModeSvg" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-gJ-eCJ">
-                                <rect key="frame" x="21" y="76" width="333" height="245"/>
+                                <rect key="frame" x="21" y="25.5" width="333" height="245"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLM-V9-Z4A">
-                                <rect key="frame" x="16" y="417" width="343" height="1"/>
+                                <rect key="frame" x="16" y="366.5" width="343" height="1"/>
                                 <color key="backgroundColor" name="divider"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Py6-2U-zFy"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeJ-GI-V9u">
-                                <rect key="frame" x="106.66666666666669" y="427" width="162" height="37"/>
+                                <rect key="frame" x="106.5" y="376.5" width="162" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="eow-ox-uCg"/>
                                 </constraints>
@@ -261,7 +261,7 @@ detected.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It’s a good idea to put the app in pocket mode when you’re not using your phone so the app stays on and detects other devices." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4H-I6-33X">
-                                <rect key="frame" x="13" y="336" width="349" height="65"/>
+                                <rect key="frame" x="13" y="285.5" width="349" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="lPW-3R-78q"/>
                                 </constraints>
@@ -298,7 +298,7 @@ detected.</string>
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="36U-Tj-7Us" userLabel="LockScreen" customClass="LockScreenViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EjH-mX-BQ5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="f60-t4-eoo" customClass="MMSlidingButton" customModule="Social_Distance_Alarm" customModuleProvider="target">
@@ -332,7 +332,7 @@ detected.</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleAspectFit" image="iconDark" translatesAutoresizingMaskIntoConstraints="NO" id="zRF-5I-NIe">
-                                <rect key="frame" x="267" y="483" width="71" height="71"/>
+                                <rect key="frame" x="267" y="416" width="71" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="71" id="IrV-70-dMC"/>
                                     <constraint firstAttribute="height" constant="71" id="Rl4-eG-yl1"/>
@@ -372,7 +372,7 @@ detected.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" name="redHeaderGradient"/>
+                        <color key="selectedImageTintColor" name="theme"/>
                     </tabBar>
                     <connections>
                         <segue destination="8lo-V3-sCb" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
@@ -392,7 +392,7 @@ detected.</string>
                     <tabBarItem key="tabBarItem" title="History" image="historyIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="t78-sG-PAa">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="red"/>
                         <color key="barTintColor" name="red"/>
@@ -419,7 +419,7 @@ detected.</string>
                     <tabBarItem key="tabBarItem" title="Distance" image="bluetoothGoodIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="3DE-Bp-CsK">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="red"/>
                         <color key="barTintColor" name="red"/>
@@ -444,23 +444,23 @@ detected.</string>
             <objects>
                 <viewController id="rQ3-8T-7Pn" userLabel="Carousel View Controller" customClass="CarouselViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XXu-uZ-aEB" userLabel="View">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3B-5x-SuT" userLabel="Vw Container">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="522"/>
                                 <color key="backgroundColor" name="background"/>
                                 <connections>
                                     <segue destination="xKA-zR-UnE" kind="embed" id="fV4-ud-EDg"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwx-cE-Rbg">
-                                <rect key="frame" x="267" y="600" width="72" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwx-cE-Rbg" userLabel="Finished Button">
+                                <rect key="frame" x="277" y="499" width="62" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="mT0-cp-yDz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Finnished">
+                                <state key="normal" title="Finished">
                                     <color key="titleColor" name="blueOnboarding"/>
                                 </state>
                                 <connections>
@@ -507,7 +507,7 @@ detected.</string>
                     <tabBarItem key="tabBarItem" title="Pocket" image="pocketModeIcon" id="Bij-ca-u2x" userLabel="Pocket"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="hxm-7Z-ptk">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="red"/>
                         <color key="barTintColor" name="red"/>
@@ -534,7 +534,7 @@ detected.</string>
                     <tabBarItem key="tabBarItem" title="Teams" image="person.3.fill" catalog="system" id="jE9-Gn-7w3" userLabel="Teams"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="tuA-6J-mxl">
-                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="red"/>
                         <color key="barTintColor" name="red"/>
@@ -559,26 +559,26 @@ detected.</string>
             <objects>
                 <viewController id="q7v-CQ-fAP" userLabel="Teams" customClass="TeamsViewController" customModule="Social_Distance_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CIQ-nr-RQC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1Q7-Ot-AY6">
-                                <rect key="frame" x="178" y="302.33333333333337" width="19.333333333333343" height="17.333333333333343"/>
+                                <rect key="frame" x="178" y="129" width="19" height="130"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKt-wJ-0pe">
-                                <rect key="frame" x="16" y="417" width="343" height="1"/>
+                                <rect key="frame" x="16" y="332" width="343" height="1"/>
                                 <color key="backgroundColor" name="divider"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="F7U-3W-ge8"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3V6-qe-qHZ">
-                                <rect key="frame" x="79" y="427" width="217" height="37"/>
+                                <rect key="frame" x="118.5" y="342" width="138" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="UYu-FA-RB6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Tap here to add a team member">
+                                <state key="normal" title="Add a team member">
                                     <color key="titleColor" name="blue"/>
                                 </state>
                                 <connections>
@@ -586,31 +586,45 @@ detected.</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEy-Fn-mfM">
-                                <rect key="frame" x="17" y="472" width="341" height="1"/>
+                                <rect key="frame" x="17" y="387" width="341" height="1"/>
                                 <color key="backgroundColor" name="divider"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Qhq-gr-eSm"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4c-4g-bb4">
+                                <rect key="frame" x="15" y="443" width="345" height="1"/>
+                                <color key="backgroundColor" name="divider"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="IvO-tJ-tFL"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJ8-VM-eVS">
-                                <rect key="frame" x="93" y="482" width="189" height="37"/>
+                                <rect key="frame" x="155" y="397" width="65" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="Xs3-kW-sr5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Tap here to reset your team">
+                                <state key="normal" title="Exit team">
                                     <color key="titleColor" name="blue"/>
                                 </state>
                                 <connections>
                                     <action selector="resetTeamsAction:" destination="q7v-CQ-fAP" eventType="touchUpInside" id="8EU-9s-sKs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams allows you to recognize other app users that you don't socially distance from, like work team members or family members." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IK6-iu-22R">
-                                <rect key="frame" x="13" y="336" width="349" height="65"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your team has 0 people" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IK6-iu-22R">
+                                <rect key="frame" x="13" y="285.5" width="349" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" name="black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImO-03-Ri8">
+                                <rect key="frame" x="13" y="13" width="349" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="pAQ-Xb-mE8"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="zrq-lF-Jd1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <string key="text">Safe Teams mutes alerts for people who you decide are safe to not social distance from. Use this for work teams or family members. Scan the QR code on their app to create your team and have them scan yours.</string>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="textColor" name="black"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -622,31 +636,39 @@ detected.</string>
                             <constraint firstItem="IK6-iu-22R" firstAttribute="leading" secondItem="AUb-Uw-Vaw" secondAttribute="leading" constant="13" id="6fs-Oj-aDi"/>
                             <constraint firstItem="1Q7-Ot-AY6" firstAttribute="centerX" secondItem="CIQ-nr-RQC" secondAttribute="centerX" id="6zr-XI-eQ4"/>
                             <constraint firstItem="SKt-wJ-0pe" firstAttribute="leading" secondItem="CIQ-nr-RQC" secondAttribute="leadingMargin" id="7jK-fR-ctM"/>
+                            <constraint firstItem="AUb-Uw-Vaw" firstAttribute="trailing" secondItem="z4c-4g-bb4" secondAttribute="trailing" constant="15" id="9oy-SH-oKU"/>
                             <constraint firstItem="AUb-Uw-Vaw" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3V6-qe-qHZ" secondAttribute="bottom" id="B9J-Y3-Af4"/>
                             <constraint firstItem="ZEy-Fn-mfM" firstAttribute="centerX" secondItem="CIQ-nr-RQC" secondAttribute="centerX" id="L61-fN-RYM"/>
                             <constraint firstItem="SKt-wJ-0pe" firstAttribute="centerX" secondItem="3V6-qe-qHZ" secondAttribute="centerX" id="Q2s-mQ-zBx"/>
+                            <constraint firstItem="ImO-03-Ri8" firstAttribute="trailing" secondItem="AUb-Uw-Vaw" secondAttribute="trailing" constant="-13" id="X3g-w7-m74"/>
                             <constraint firstItem="IK6-iu-22R" firstAttribute="top" secondItem="CIQ-nr-RQC" secondAttribute="centerY" id="XVV-tl-Kzx"/>
-                            <constraint firstItem="SKt-wJ-0pe" firstAttribute="top" secondItem="IK6-iu-22R" secondAttribute="bottom" constant="16" id="Xkt-uY-SeA"/>
+                            <constraint firstItem="SKt-wJ-0pe" firstAttribute="top" secondItem="IK6-iu-22R" secondAttribute="bottom" constant="25" id="Xkt-uY-SeA"/>
+                            <constraint firstItem="1Q7-Ot-AY6" firstAttribute="top" secondItem="ImO-03-Ri8" secondAttribute="bottom" constant="15" id="Y18-xu-aNJ"/>
                             <constraint firstItem="1Q7-Ot-AY6" firstAttribute="centerX" secondItem="IK6-iu-22R" secondAttribute="centerX" id="Y8n-uW-hpu"/>
                             <constraint firstItem="IK6-iu-22R" firstAttribute="centerX" secondItem="SKt-wJ-0pe" secondAttribute="centerX" id="YFO-KP-jjJ"/>
                             <constraint firstItem="1Q7-Ot-AY6" firstAttribute="centerX" secondItem="CIQ-nr-RQC" secondAttribute="centerX" id="bBq-hf-Bru"/>
                             <constraint firstItem="ZEy-Fn-mfM" firstAttribute="centerX" secondItem="zJ8-VM-eVS" secondAttribute="centerX" id="cJU-Zi-iSk"/>
                             <constraint firstItem="zJ8-VM-eVS" firstAttribute="centerX" secondItem="CIQ-nr-RQC" secondAttribute="centerX" id="dOf-kH-NeK"/>
+                            <constraint firstItem="ImO-03-Ri8" firstAttribute="leading" secondItem="AUb-Uw-Vaw" secondAttribute="leading" constant="13" id="eND-Ge-ZPp"/>
                             <constraint firstItem="zJ8-VM-eVS" firstAttribute="top" secondItem="ZEy-Fn-mfM" secondAttribute="bottom" constant="9" id="hlo-yr-Aik"/>
-                            <constraint firstItem="IK6-iu-22R" firstAttribute="top" secondItem="1Q7-Ot-AY6" secondAttribute="bottom" constant="15" id="kBm-GI-7DT"/>
+                            <constraint firstItem="z4c-4g-bb4" firstAttribute="leading" secondItem="AUb-Uw-Vaw" secondAttribute="leading" constant="15" id="iDQ-oK-rV8"/>
+                            <constraint firstItem="IK6-iu-22R" firstAttribute="top" secondItem="1Q7-Ot-AY6" secondAttribute="bottom" constant="25" id="kBm-GI-7DT"/>
                             <constraint firstItem="ZEy-Fn-mfM" firstAttribute="top" secondItem="3V6-qe-qHZ" secondAttribute="bottom" constant="8" id="l9c-mV-GnR"/>
+                            <constraint firstItem="ImO-03-Ri8" firstAttribute="top" secondItem="AUb-Uw-Vaw" secondAttribute="top" constant="13" id="vtA-Is-YP7"/>
                             <constraint firstItem="ZEy-Fn-mfM" firstAttribute="leading" secondItem="CIQ-nr-RQC" secondAttribute="leadingMargin" constant="1" id="yCb-Ta-L1q"/>
+                            <constraint firstItem="z4c-4g-bb4" firstAttribute="top" secondItem="zJ8-VM-eVS" secondAttribute="bottom" constant="9" id="zbT-HD-1il"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AUb-Uw-Vaw"/>
                     </view>
                     <navigationItem key="navigationItem" title="Teams" id="4AF-yv-6cv" userLabel="Teams"/>
                     <connections>
                         <outlet property="qrCodeImage" destination="1Q7-Ot-AY6" id="ggM-Lu-GiR"/>
+                        <outlet property="teamCountText" destination="IK6-iu-22R" id="L84-Ci-84V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QDf-KT-FdV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1657" y="1711"/>
+            <point key="canvasLocation" x="1656.8" y="1710.5911330049262"/>
         </scene>
     </scenes>
     <resources>
@@ -666,25 +688,25 @@ detected.</string>
             <color red="0.070588235294117646" green="0.094117647058823528" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="blue">
-            <color red="0.035294117647058823" green="0.18431372549019609" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.035000000149011612" green="0.18400000035762787" blue="0.72899997234344482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="blueOnboarding">
-            <color red="0.043137254901960784" green="0.34509803921568627" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.043000001460313797" green="0.3449999988079071" blue="0.67799997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="divider">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grey">
-            <color red="0.33333333333333331" green="0.33333333333333331" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.33300000429153442" green="0.33300000429153442" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lightGrey">
-            <color red="0.50980392156862742" green="0.50980392156862742" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
-            <color red="0.73333333333333328" green="0.0" blue="0.17647058823529413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.73299998044967651" green="0.0" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="redHeaderGradient">
-            <color red="0.67450980392156867" green="0.0" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="theme">
+            <color red="0.73299998044967651" green="0.0" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

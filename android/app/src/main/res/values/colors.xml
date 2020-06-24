@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/red_header</color>
+    <color name="colorPrimary">@color/header</color>
     <color name="colorPrimaryDark">#930023</color>
     <color name="colorAccent">@color/blue_onboarding</color>
 
@@ -19,7 +19,7 @@
     <color name="background">#faf8f8</color>
     <color name="white">#ffffff</color>
     <color name="red">#bb002d</color>
-    <color name="red_header">#ac0029</color>
+    <color name="header">#ac0029</color>
     <color name="orange">#ed4718</color>
     <color name="blue">#092fba</color>
     <color name="green">#13ba2c</color>
