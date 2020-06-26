@@ -27,7 +27,6 @@ class DeviceListAdapter internal constructor(
 
     inner class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val distanceTextView: TextView = itemView.findViewById(R.id.textView_distance)
-        val signalTextView: TextView = itemView.findViewById(R.id.textView_signal)
         val peopleImageView: ImageView = itemView.findViewById(R.id.imageView_people)
     }
 
@@ -69,8 +68,6 @@ class DeviceListAdapter internal constructor(
             holder.peopleImageView.setImageResource(R.drawable.ic_people_black_24dp)
             holder.peopleImageView.imageTintList = ColorStateList.valueOf(ResourcesCompat.getColor(context.resources, R.color.green, context.theme))
         }
-
-        holder.signalTextView.text = signal.toString()
     }
 
     internal fun setDevices(devices: List<Device>) {

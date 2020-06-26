@@ -36,7 +36,7 @@ class DeviceHistoryListAdapter internal constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
-        val itemView = inflater.inflate(R.layout.item_device, parent, false)
+        val itemView = inflater.inflate(R.layout.item_device_history, parent, false)
         return DeviceViewHolder(itemView)
     }
 
