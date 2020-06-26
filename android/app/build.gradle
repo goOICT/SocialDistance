@@ -19,7 +19,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 3
-        versionName "2.0.0.6r"
+        versionName "2.0.0.7r"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -93,7 +93,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.2.2"
     implementation "androidx.navigation:navigation-ui-ktx:2.2.2"
     implementation "com.google.firebase:firebase-analytics:17.4.3"
-    implementation 'com.google.firebase:firebase-crashlytics:17.0.1'
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
     //implementation "com.google.firebase:firebase-auth:19.3.0"
     implementation "com.firebaseui:firebase-ui-auth:6.2.0"
     implementation "com.google.firebase:firebase-functions-ktx:19.0.2"

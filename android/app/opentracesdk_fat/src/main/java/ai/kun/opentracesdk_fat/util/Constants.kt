@@ -40,5 +40,5 @@ object Constants {
     const val ASSUMED_TX_POWER = 127
     const val IOS_SIGNAL_REDUCTION = 15
 
-    const val TIME_FORMAT = "Mmm d, h:mm a"
+    const val TIME_FORMAT = "h:mm a, d MMM"
 }
