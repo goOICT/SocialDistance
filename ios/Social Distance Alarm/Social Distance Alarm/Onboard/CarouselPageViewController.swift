@@ -26,10 +26,10 @@ class CarouselPageViewController: UIPageViewController {
     fileprivate func populateItems() {
         let images = [#imageLiteral(resourceName: "proximitySvg"), #imageLiteral(resourceName: "teamsSvg"), #imageLiteral(resourceName: "pocketModeSvgFullScreen"), #imageLiteral(resourceName: "mapSvg")]
         let titles = ["Introduction", "Teams", "Pocket mode", "Location permission"]
-        let texts = ["\(Bundle.appTitle) helps maintain social distance. It can see other devices with the app ON and tell you when they are too close.",
+        let texts = ["\(Bundle.appTitle) helps promote social distancing. It notifies you when other app users are detected close to you, so you can maintain social distance from them.",
                     "Use this for teams of people. Everyone’s app must be turned ON. All data is stored locally.",
-                    "You can put the app in pocket mode when you’re not using your phone so the app stays on and detects other devices.",
-                    "It works by using Bluetooth’s signal strength. It needs location, and Bluetooth access, to alert you when other app users are too close."]
+                    "Put the app in pocket mode when you put your phone down so that the app detection stays on and still alerts you.",
+                    "It works by using bluetooth signal strength to detect when other app users are within range. It needs location, and Bluetooth Access to alert you."]
         
         for (index, t) in texts.enumerated() {
             let c = createCarouselItemControler(image: images[index], title: titles[index], text: t)

@@ -21,10 +21,10 @@ fileprivate extension SignalClassification {
     
     var text: String {
         switch self {
-        case .danger: return "Danger"
-        case .tooClose: return "Too close"
-        case .warning: return "Warning"
-        case .ok: return "Good"
+        case .danger: return "Warning"
+        case .tooClose: return "High Risk, Danger"
+        case .warning: return "Caution"
+        case .ok: return "Safer"
         }
     }
 }
@@ -65,7 +65,7 @@ class DeviceDistanceTableViewCell: UITableViewCell {
         get {
             guard let mainStack = contentView.subviews.first as? UIStackView else { return nil }
             guard let rightStack = mainStack.arrangedSubviews.last as? UIStackView else { return nil }
-            guard rightStack.arrangedSubviews.count > 2 else { return nil }
+            guard rightStack.arrangedSubviews.count > 1 else { return nil }
             return rightStack.arrangedSubviews.last
         }
         
@@ -123,7 +123,7 @@ class DeviceDistanceTableViewCell: UITableViewCell {
         leftStack.distribution = .equalSpacing
         leftStack.translatesAutoresizingMaskIntoConstraints = false
         
-        let rightStack = UIStackView(arrangedSubviews: [signalStrengthLabel, distanceDescription])
+        let rightStack = UIStackView(arrangedSubviews: [distanceDescription])
         rightStack.axis = .vertical
         rightStack.translatesAutoresizingMaskIntoConstraints = false
         rightStack.alignment = .top
