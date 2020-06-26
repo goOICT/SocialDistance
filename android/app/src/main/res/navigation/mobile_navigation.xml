@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="ai.kun.socialdistancealarm.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_home_full"
         tools:layout="@layout/fragment_home" />
 
     <fragment

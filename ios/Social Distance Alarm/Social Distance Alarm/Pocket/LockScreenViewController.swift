@@ -18,12 +18,6 @@ class LockScreenViewController: UIViewController, SlideButtonDelegate {
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         slidingButton.delegate = self
-        if let themeColor = UIColor.theme {
-            slidingButton.buttonTextColor = .white
-            slidingButton.buttonColor = themeColor.withAlphaComponent(0.2)
-            slidingButton.dragPointColor = themeColor.withAlphaComponent(0.6)
-        }
-
     }
     
     // MARK: - Navigation

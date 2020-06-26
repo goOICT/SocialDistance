@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">1point5</string>
-    <string name="onboard_one_section_description">1point5 helps maintain social distance. It can see other devices with the app ON and tell you when they are too close.</string>
+    <string name="onboard_one_section_description">1Point5 helps promote social distancing. It notifies you when other app users are detected close to you, so you can maintain social distance from them.</string>
 
 </resources>

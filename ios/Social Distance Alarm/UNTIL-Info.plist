@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AppTitle</key>
+	<string>1Point5</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -28,6 +30,8 @@
 	<string>Our app uses Bluetooth to detect other devices</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses the camera to scan QRCodes</string>
+	<key>NotificationAppTitle</key>
+	<string>1Point5</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -73,10 +77,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NotificationAppTitle</key>
-	<string>1Point5</string>
-	<key>AppTitle</key>
-	<string>1Point5</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
