@@ -16,6 +16,7 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Active Users"
         if !defaults.bool(forKey: AppConstants.onboardedKey) {
             performSegue(withIdentifier: "showOnboardView", sender: self)
         }

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "AEF878B6249A292800733711"
-               BuildableName = "UNTIL.app"
+               BuildableName = "1point5.app"
                BlueprintName = "UNTIL"
                ReferencedContainer = "container:Social Distance Alarm.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AEF878B6249A292800733711"
-            BuildableName = "UNTIL.app"
+            BuildableName = "1point5.app"
             BlueprintName = "UNTIL"
             ReferencedContainer = "container:Social Distance Alarm.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AEF878B6249A292800733711"
-            BuildableName = "UNTIL.app"
+            BuildableName = "1point5.app"
             BlueprintName = "UNTIL"
             ReferencedContainer = "container:Social Distance Alarm.xcodeproj">
          </BuildableReference>
