@@ -82,7 +82,7 @@ class DeviceHistoryListAdapter internal constructor(
         }
 
         holder.signalTextView.text = signal.toString()
-        holder.timestampTextView.text = getFormattedDateString(TIME_FORMAT, current.timeStamp).toLowerCase()
+        holder.timestampTextView.text = getFormattedDateString(TIME_FORMAT, current.timeStamp)
     }
 
     internal fun setDevices(devices: List<Device>) {
