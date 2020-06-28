@@ -53,4 +53,6 @@
     <string name="scannned">Scanned!</string>
     <string name="try_again">Try Again</string>
     <string name="your_team_has_0_people">Your team has 0 people</string>
+    <string name="the_app_has_paused_detecting_other_devices">The app has paused detecting other active users\' devices.</string>
+    <string name="resume_detecting_devices">Resume Detecting Active Users</string>
 </resources>
