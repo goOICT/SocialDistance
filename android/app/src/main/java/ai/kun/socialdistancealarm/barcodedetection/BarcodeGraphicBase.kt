@@ -25,7 +25,6 @@ import android.graphics.Paint.Style
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import android.graphics.RectF
-import androidx.core.content.ContextCompat
 import ai.kun.socialdistancealarm.camera.GraphicOverlay
 import ai.kun.socialdistancealarm.camera.GraphicOverlay.Graphic
 import ai.kun.socialdistancealarm.util.BarcodePreferenceUtils
@@ -33,13 +32,13 @@ import ai.kun.socialdistancealarm.util.BarcodePreferenceUtils
 internal abstract class BarcodeGraphicBase(overlay: GraphicOverlay) : Graphic(overlay) {
 
     private val boxPaint: Paint = Paint().apply {
-        color = ContextCompat.getColor(context, R.color.barcode_reticle_stroke)
+        color = context.getColor(R.color.barcode_reticle_stroke)
         style = Style.STROKE
         strokeWidth = context.resources.getDimensionPixelOffset(R.dimen.barcode_reticle_stroke_width).toFloat()
     }
 
     private val scrimPaint: Paint = Paint().apply {
-        color = ContextCompat.getColor(context, R.color.barcode_reticle_background)
+        color = context.getColor(R.color.barcode_reticle_background)
     }
 
     private val eraserPaint: Paint = Paint().apply {
