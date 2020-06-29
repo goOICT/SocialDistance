@@ -5,7 +5,8 @@
     <string name="title_history">History</string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
-    <string name="ok">Safer</string>
+    <string name="safer">Safer</string>
+    <string name="ok">Ok</string>
     <string name="warning">Caution</string>
     <string name="strong_warning">Warning</string>
     <string name="too_close">High Risk, Danger</string>
