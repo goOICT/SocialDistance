@@ -91,6 +91,7 @@ and tell you when they are too close.</string>
                 <constraint firstItem="geO-Ef-k7t" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5m7-r6-xBC"/>
                 <constraint firstItem="NUO-KK-ExO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="21" id="7xu-OX-faE"/>
                 <constraint firstItem="geO-Ef-k7t" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CBi-Ae-rWZ"/>
+                <constraint firstItem="geO-Ef-k7t" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="2.5" id="E91-No-2pa"/>
                 <constraint firstItem="NUO-KK-ExO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21" id="Efs-1U-SkA"/>
                 <constraint firstItem="IQS-Nw-rQm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KSF-mO-TJm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="IQS-Nw-rQm" secondAttribute="trailing" id="aIV-Tg-mUA"/>
@@ -109,7 +110,7 @@ and tell you when they are too close.</string>
             <color red="0.98039215686274506" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="black">
-            <color red="0.070588235294117646" green="0.094117647058823528" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.071000002324581146" green="0.093999996781349182" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
