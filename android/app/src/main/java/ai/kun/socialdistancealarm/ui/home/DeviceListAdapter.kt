@@ -42,7 +42,7 @@ class DeviceListAdapter internal constructor(
         val signal = BluetoothUtils.calculateSignal(current.rssi, current.txPower, current.isAndroid)
         when {
             signal <= SIGNAL_DISTANCE_OK -> {
-                holder.distanceTextView.text = context.resources.getString(R.string.ok)
+                holder.distanceTextView.text = context.resources.getString(R.string.safer)
                 holder.peopleImageView.setImageResource(R.drawable.ic_person_good_icon)
                 holder.peopleImageView.imageTintList = ColorStateList.valueOf(ResourcesCompat.getColor(context.resources, R.color.green, context.theme))
             }
@@ -64,7 +64,7 @@ class DeviceListAdapter internal constructor(
         }
 
         if (current.isTeamMember) {
-            holder.distanceTextView.text = context.resources.getString(R.string.ok)
+            holder.distanceTextView.text = context.resources.getString(R.string.safer)
             holder.peopleImageView.setImageResource(R.drawable.ic_people_black_24dp)
             holder.peopleImageView.imageTintList = ColorStateList.valueOf(ResourcesCompat.getColor(context.resources, R.color.green, context.theme))
         }
