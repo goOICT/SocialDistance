@@ -1,5 +1,5 @@
-# OpenTrace - Social Distance Alarm
-<img src="https://github.com/kunai-consulting/OpenTrace/blob/master/play_store.png" width="100"> 
+# Social Distance Alarm
+<img src="https://github.com/UNTILabs/SocialDistance/blob/master/play_store.png" width="100"> 
 Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  OpenTrace project produced **Social Distance Alarm App** that detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
 
 
@@ -70,14 +70,14 @@ The app can be deployed by an organization made available to be downloaded by in
 * **Alerts** - user and shows signal strength when other app user devices are detected.
 * **History** - App stores a local history of the alerts from coming close to other app user devices. Displays Date and Time.
 * **Pause Detection** - user can turn off detection in app when not in use.
+* **Safe Teams** - Add users to your 'Safe Team' using secure QR codes for each handset. This allows families who are safely socially distancing together to not recieve notifications of eachothers hansets when they are together, but out in public. E.G. A Couple shopping together in a store where all shoppers have the app downloaded and turned on.
 
 ### Roadmap
 * **Set Your Social Distance** -  High risk users can set thier social distance 'radious' to be more sensitive that the CDC recommended 6 feet, so that they are notified for 'Too Close' app users sooner. 
-* **Safe Teams** - Add users to your 'Safe Team' using secure QR codes for each handset. This allows families who are safely socially distancing together to not recieve notifications of eachothers hansets when they are together, but out in public. E.G. A Couple shopping together in a store where all shoppers have the app downloaded and turned on.
 * **Data Storeage for Employers** - Could have option for users to opt in to sending location data for sessions that occured at the workplace if users wanted to contribute to mapping areas in the workplace where social distancing is not possible, per session.
 * **IOS Version** - IOS version is built, and we are working to get this through the Apple Play store now. Contact us if you would like a download.
 
-# Future Versions 
+# Possible Future Versions 
 ## Add Contact Tracing
 App could use contact tracing to notify users when they have had contact with someone who has been tested and who's status is verified as positive for Covid-19. User can then get tested.
 
