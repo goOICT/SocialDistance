@@ -1,11 +1,13 @@
 # 1Point5 App
 <img src="https://github.com/UNTILabs/SocialDistance/blob/develop/UN_1point5_v2_Release/play-store/ic_launcher_APP.png" width="100"> 
-Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  1Point5 app detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
+Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  1Point5 app is an app that promotes social distancing. The app detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
+
 
 We are a team of international product developers. We want to help and are doing what we can. 
 
 Currently looking for teams and executives to partner with to build and deploy this solution: 
-We are actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, Blue Shield California, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build a public use version for governments and healthcare institutes as well as versions for Companies who employ essential and other types of workers. We will all need to get back to work. This could help people do it more safely.
+We are actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, Blue Shield California, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build a public use version for governments and healthcare institutes as well as versions for Companies who employ essential and other types of workers. 
+We all need to get back to work. This could help people do it more safely.
 
 
 ### [Download on the Google Play Store](https://play.google.com/store/apps/details?id=app.onepointfive&hl=en_US)
