@@ -2,16 +2,13 @@
 <img src="https://github.com/UNTILabs/SocialDistance/blob/master/play_store.png" width="100"> 
 Inspired by TraceTogether and COVID Symptom Tracker, and written in response to COVID19.  1Point5 app detects the presence of other BLE handsets and devices and alarms the user to their proximity.  The goal of this application is to create a completely transparent application that can be used to save both lives and livelihoods.
 
-
-[Download on the Google Play Store](https://play.google.com/store/apps/details?id=ai.kun.socialdistancealarm)
-
 We are a team of international product developers. We want to help and are doing what we can. 
 
 Currently looking for teams and executives to partner with to build and deploy this solution: 
 We are actively working to create partnerships with people at MIT, UCSF, State of California, and inviting executives from UCSF, Blue Shield California, FedEx, Amazon, Kroger, Aldi, Target, Walmart and others to create partnerships to help build a public use version for governments and healthcare institutes as well as versions for Companies who employ essential and other types of workers. We will all need to get back to work. This could help people do it more safely.
 
 
-### [Download the App on Google Play Store]https://play.google.com/store/apps/details?id=app.onepointfive&hl=en_US
+### [Download on the Google Play Store](https://play.google.com/store/apps/details?id=app.onepointfive&hl=en_US)
 
 ### 1Point5 App Images
 ![Image of Social Distancing App Design](https://github.com/kunai-consulting/OpenTrace/blob/master/Social-distancing-app-flow.png)
