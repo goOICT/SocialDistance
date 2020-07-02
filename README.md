@@ -32,7 +32,7 @@ Social distancing is proactive, and may help with prevention.
 Companies can then work to protect thier teams while not saccrificing private personal data by deploying a custom version of the app with the Teams feature. Our app is made with privacy first in mind.
 
 We have worked improveme BLE performance in our implementation, to lengthen battery life and optimize performance.
-Contact tracing can qeasily be built by us or other teams on top of this code. The public version does not store any data centrally and keeps all data locally on the users handset.
+Contact tracing can easily be built by us or other teams on top of this code. The public version does not store any data centrally and keeps all data locally on the users handset.
 
 Apple and [Google are delivering interoperable API's](https://blog.google/inside-google/company-announcements/apple-and-google-partner-covid-19-contact-tracing-technology) that should well protect the privacy and mitigate concerns for contact tracing apps, creating a standard and a path for official organizations to create and publish apps through Apple and Google Play stores. Data Rights best practices have emerged for contact tracing that developers can comport to by the [TCN Coalition](https://tcn-coalition.org/). Our app keeps both of these strategiues and best practices in mind.
 
@@ -133,3 +133,5 @@ Resources section:
 * Link to WHO: https://www.who.int/emergencies/diseases/novel-coronavirus-2019 
 
 * W.H.O. situation dashboard Graphic: https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd
+
+App Website: https://onepointfive.app/ 
