@@ -219,7 +219,10 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         
         guard let ids = uuids, !ids.filter({ (cbUid) -> Bool in
             return cbUid.hasSocialDistancePrefix
-        }).isEmpty else { return }
+        }).isEmpty else {
+            delegate?.didDiscoverPeripheral(ids: [], rssi: RSSI, txPower: txPowerLevel)
+            return
+        }
     
         delegate?.didDiscoverPeripheral(ids: ids.map(DeviceId.init), rssi: RSSI, txPower: txPowerLevel)
     }
