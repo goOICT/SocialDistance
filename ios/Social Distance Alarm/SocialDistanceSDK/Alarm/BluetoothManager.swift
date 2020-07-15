@@ -101,11 +101,16 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
                     }
                 }
             }
+            print("Pausing...")
+            peripheralManager?.stopAdvertising()
+            peripheralManager?.delegate = nil
+            centralManager?.delegate = nil
+            centralManager?.stopScan()
         }
     }
     
     // MARK: - Public properties
-    var isPaused: Bool = false
+    public var isPaused: Bool = false
     weak public var delegate: BluetoothManagerDelegate?
     private(set) public var peripherals = Dictionary<UUID, CBPeripheral>() {
         didSet {
