@@ -153,6 +153,7 @@ class BLEClient : BroadcastReceiver() {
                 Log.i(TAG, "Sending ids ${ids.size}")
                 context.sendBroadcast(intent)
             }
+            BtleScanCallback.mScanResults.clear()
             return
         }
 
