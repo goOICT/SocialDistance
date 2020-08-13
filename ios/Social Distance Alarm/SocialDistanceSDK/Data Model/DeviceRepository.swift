@@ -238,9 +238,9 @@ extension DeviceRepository: BluetoothManagerDelegate {
         currentListener?.onRepositoryUpdate()
     }
     
-    public func didDiscoverPeripheral(ids: [DeviceId], rssi: NSNumber, txPower: NSNumber?) {
-        ids.forEach { deviceId in
-            insert(deviceUuid: deviceId.uuid, rssi: rssi.int32Value, txPower: txPower?.int32Value, scanDate: Date(), isAndroid: deviceId.isAndroid)
+    public func didDiscoverPeripheral(ids: [DiscoverdDevice]) {
+        for deviceId in ids {
+            insert(deviceUuid: deviceId.uuid, rssi: Int32(truncating: deviceId.rssi), txPower: deviceId.txPower as? Int32, scanDate: Date(), isAndroid: deviceId.isAndroid)
         }
         updateCurrentDevices()
     }

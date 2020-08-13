@@ -10,7 +10,7 @@
 import Foundation
 
 enum SdkConstants {
-    static let traceInterval: Double = 5
+    static let traceInterval: Double = 10
     static let signalDistanceOk = 30 // This or lower is socially distant = green
     static let signlaDistanceLightWarn = 33 // This to SIGNAL_DISTANCE_OK warning = yellow
     static let signalDistanceStrongWarn = 40 // This to SIGNAL_DISTANCE_LIGHT_WARN strong warning = orange

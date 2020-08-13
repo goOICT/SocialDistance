@@ -24,13 +24,17 @@ public extension CBUUID {
 }
 
 @objcMembers
-public class DeviceId: NSObject {
+public class DiscoverdDevice: NSObject {
     public let uuid: String
     public let isAndroid: Bool
+    public var rssi: NSNumber
+    public var txPower: NSNumber?
     
-    init(CBUUID: CBUUID) {
+    init(CBUUID: CBUUID, rssi: NSNumber, txPower: NSNumber?) {
         self.uuid = CBUUID.uuidString
         self.isAndroid = CBUUID.isAndroid
+        self.rssi = rssi
+        self.txPower = txPower
     }
 }
 
@@ -39,7 +43,7 @@ public protocol BluetoothManagerDelegate: AnyObject {
     func peripheralsDidUpdate()
     func advertisingStarted()
     func scanningStarted()
-    func didDiscoverPeripheral(ids: [DeviceId], rssi: NSNumber, txPower: NSNumber?)
+    func didDiscoverPeripheral(ids: [DiscoverdDevice])
 }
 
 public protocol BluetoothManager {
@@ -136,6 +140,7 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
     private var peripheralManager: CBPeripheralManager?
     private var centralManager: CBCentralManager?
     private var name: String?
+    private var discoveredDevices: Dictionary<CBUUID, DiscoverdDevice> = [:]
 }
 
 extension CoreBluetoothManager: CBPeripheralManagerDelegate {
@@ -186,6 +191,7 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
 }
 
 extension CoreBluetoothManager: CBCentralManagerDelegate {
+    
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             scanForApps(central: central)
@@ -200,9 +206,13 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
 
         if central.isScanning {
             central.stopScan()
+            
+            // Deliver discovered devices
+            delegate?.didDiscoverPeripheral(ids: Array(discoveredDevices.values))
         }
 
         if (!isPaused) {
+            discoveredDevices = [:]
             delegate?.scanningStarted()
             central.scanForPeripherals(withServices: nil)
 
@@ -219,12 +229,18 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         
         guard let ids = uuids, !ids.filter({ (cbUid) -> Bool in
             return cbUid.hasSocialDistancePrefix
-        }).isEmpty else {
-            delegate?.didDiscoverPeripheral(ids: [], rssi: RSSI, txPower: txPowerLevel)
-            return
+        }).isEmpty else { return }
+        
+        // Check to see if the device was already present and calculate a rolling average...
+        for id in ids {
+            let currentDevice = discoveredDevices[id]
+            if (currentDevice == nil) {
+                discoveredDevices[id] = DiscoverdDevice(CBUUID: id, rssi: RSSI, txPower: txPowerLevel)
+            }
+            else {
+                discoveredDevices[id]?.rssi = NSNumber(value: (currentDevice!.rssi.intValue + RSSI.intValue) / 2)
+            }
         }
-    
-        delegate?.didDiscoverPeripheral(ids: ids.map(DeviceId.init), rssi: RSSI, txPower: txPowerLevel)
     }
 }
 
