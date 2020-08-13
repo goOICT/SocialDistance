@@ -101,11 +101,16 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
                     }
                 }
             }
+            print("Pausing...")
+            peripheralManager?.stopAdvertising()
+            peripheralManager?.delegate = nil
+            centralManager?.delegate = nil
+            centralManager?.stopScan()
         }
     }
     
     // MARK: - Public properties
-    var isPaused: Bool = false
+    public var isPaused: Bool = false
     weak public var delegate: BluetoothManagerDelegate?
     private(set) public var peripherals = Dictionary<UUID, CBPeripheral>() {
         didSet {
@@ -214,7 +219,10 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         
         guard let ids = uuids, !ids.filter({ (cbUid) -> Bool in
             return cbUid.hasSocialDistancePrefix
-        }).isEmpty else { return }
+        }).isEmpty else {
+            delegate?.didDiscoverPeripheral(ids: [], rssi: RSSI, txPower: txPowerLevel)
+            return
+        }
     
         delegate?.didDiscoverPeripheral(ids: ids.map(DeviceId.init), rssi: RSSI, txPower: txPowerLevel)
     }

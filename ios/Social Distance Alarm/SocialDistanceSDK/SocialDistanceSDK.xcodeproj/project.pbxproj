@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		AED2BE3724B766E300009531 /* SocialDistanceSDK-Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AED2BE3A24B766E400009531 /* Build configuration list for PBXAggregateTarget "SocialDistanceSDK-Universal" */;
+			buildPhases = (
+				AED2BE3B24B766F900009531 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "SocialDistanceSDK-Universal";
+			productName = "SocialDistanceSDK-Universal";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		AECF6F3C247FE6460040CEDF /* SocialDistanceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AECF6F32247FE6460040CEDF /* SocialDistanceSDK.framework */; };
 		AECF6F41247FE6460040CEDF /* SocialDistanceSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECF6F40247FE6460040CEDF /* SocialDistanceSDKTests.swift */; };
@@ -63,9 +77,9 @@
 		AECF6F28247FE6460040CEDF = {
 			isa = PBXGroup;
 			children = (
+				AECF6F5B247FE70A0040CEDF /* Alarm */,
 				AECF6F6C247FE7EE0040CEDF /* Util */,
 				AECF6F5E247FE7330040CEDF /* Data Model */,
-				AECF6F5B247FE70A0040CEDF /* Alarm */,
 				AECF6F34247FE6460040CEDF /* SocialDistanceSDK */,
 				AECF6F3F247FE6460040CEDF /* SocialDistanceSDKTests */,
 				AECF6F33247FE6460040CEDF /* Products */,
@@ -191,6 +205,9 @@
 					AECF6F3A247FE6460040CEDF = {
 						CreatedOnToolsVersion = 11.4;
 					};
+					AED2BE3724B766E300009531 = {
+						CreatedOnToolsVersion = 11.5;
+					};
 				};
 			};
 			buildConfigurationList = AECF6F2C247FE6460040CEDF /* Build configuration list for PBXProject "SocialDistanceSDK" */;
@@ -208,6 +225,7 @@
 			targets = (
 				AECF6F31247FE6460040CEDF /* SocialDistanceSDK */,
 				AECF6F3A247FE6460040CEDF /* SocialDistanceSDKTests */,
+				AED2BE3724B766E300009531 /* SocialDistanceSDK-Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -228,6 +246,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AED2BE3B24B766F900009531 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n# Adapted from http://stackoverflow.com/questions/24039470/xcode-6-ios-creating-a-cocoa-touch-framework-architectures-issues/26691080#26691080\n# and https://gist.github.com/cromandini/1a9c4aeab27ca84f5d79\n\n# Create a new aggregate target.\n# For the automatically generated scheme, change its build config to \"release\".\n# Ensure this target's \"product name\" build setting matches the framework's.\n# Add a run script with `source \"${PROJECT_DIR}/path_to_this_script`\n\nUNIVERSAL_OUTPUT_DIR=${BUILD_DIR}/${CONFIGURATION}-universal\nRELEASE_DIR=${PROJECT_DIR}/build\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUT_DIR}\"\n\n# Step 1. Build Device and Simulator versions\nxcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS=\"-fembed-bitcode\" -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build -sdk iphoneos\nxcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS=\"-fembed-bitcode\" -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build -sdk iphonesimulator\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework\" \"${UNIVERSAL_OUTPUT_DIR}/\"\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\n    cp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUT_DIR}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\nfi\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUT_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUT_DIR}/${PRODUCT_NAME}.framework\" \"${RELEASE_DIR}\"\n\n# Step 6. Combine PRODUCT_NAME-Swift.h from device and simulator architectures (Xcode 10.2 issue: 48635615)\nUNIVERSAL_SWIFT_HEADER=${UNIVERSAL_OUTPUT_DIR}/${PRODUCT_NAME}.framework/Headers/${PRODUCT_NAME}-Swift.h\n\n> ${UNIVERSAL_SWIFT_HEADER}\necho \"#include <TargetConditionals.h>\" >> ${UNIVERSAL_SWIFT_HEADER}\necho \"#if TARGET_OS_SIMULATOR\" >> ${UNIVERSAL_SWIFT_HEADER}\ncat ${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PRODUCT_NAME}.framework/Headers/${PRODUCT_NAME}-Swift.h >> ${UNIVERSAL_SWIFT_HEADER}\necho \"#else\" >> ${UNIVERSAL_SWIFT_HEADER}\ncat ${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PRODUCT_NAME}.framework/Headers/${PRODUCT_NAME}-Swift.h >> ${UNIVERSAL_SWIFT_HEADER}\necho \"#endif\" >> ${UNIVERSAL_SWIFT_HEADER}    \n\n# Step 7. Convenience step to open the project's directory in Finder\nopen \"${UNIVERSAL_OUTPUT_DIR}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AECF6F2E247FE6460040CEDF /* Sources */ = {
@@ -473,6 +511,22 @@
 			};
 			name = Release;
 		};
+		AED2BE3824B766E400009531 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = SocialDistanceSDK;
+			};
+			name = Debug;
+		};
+		AED2BE3924B766E400009531 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = SocialDistanceSDK;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -499,6 +553,15 @@
 			buildConfigurations = (
 				AECF6F4A247FE6460040CEDF /* Debug */,
 				AECF6F4B247FE6460040CEDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AED2BE3A24B766E400009531 /* Build configuration list for PBXAggregateTarget "SocialDistanceSDK-Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AED2BE3824B766E400009531 /* Debug */,
+				AED2BE3924B766E400009531 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
