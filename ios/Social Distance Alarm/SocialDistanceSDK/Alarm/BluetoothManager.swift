@@ -114,7 +114,7 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
     }
     
     // MARK: - Public properties
-    public var isPaused: Bool = false
+    public var isPaused: Bool = true
     weak public var delegate: BluetoothManagerDelegate?
     private(set) public var peripherals = Dictionary<UUID, CBPeripheral>() {
         didSet {
