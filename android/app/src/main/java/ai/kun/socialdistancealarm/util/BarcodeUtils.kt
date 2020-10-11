@@ -43,7 +43,9 @@ import java.io.InputStream
 import java.util.ArrayList
 import kotlin.math.abs
 
-/** Utility class to provide helper methods.  */
+/**
+ * Utility class to provide helper methods.
+ * */
 object BarcodeUtils {
 
     /**

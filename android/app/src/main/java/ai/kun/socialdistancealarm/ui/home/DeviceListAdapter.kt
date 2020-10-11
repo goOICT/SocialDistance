@@ -17,6 +17,17 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * List adapter for showing devices in the home fragment.  Note that this is nearly identical to
+ * the code in the history fragment.  The plan was to keep this and make history look different using
+ * some gamification, but since Apple pulled the application from the App Store we gave up on doing
+ * more.
+ *
+ * @constructor
+ * Build the list adapter for devices that have been detected
+ *
+ * @param adapterContext The context to use
+ */
 class DeviceListAdapter internal constructor(
     adapterContext: Context
 ) : RecyclerView.Adapter<DeviceListAdapter.DeviceViewHolder>() {
@@ -25,16 +36,39 @@ class DeviceListAdapter internal constructor(
     private val context: Context = adapterContext
     private var devices = emptyList<Device>()
 
+    /**
+     * A room with a view holder for each device detected in the last detection cycle.
+     *
+     * @constructor
+     * Build the holder and associate the correct live data.
+     *
+     * @param itemView
+     */
     inner class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val distanceTextView: TextView = itemView.findViewById(R.id.textView_distance)
         val peopleImageView: ImageView = itemView.findViewById(R.id.imageView_people)
     }
 
+    /**
+     * Inflate the holder
+     *
+     * @param parent View group
+     * @param viewType View type
+     * @return an inflated device view holder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val itemView = inflater.inflate(R.layout.item_device, parent, false)
         return DeviceViewHolder(itemView)
     }
 
+    /**
+     * Correctly translate the values from the database into what we show in the view. The database
+     * just contains a device type and a signal strength.  This is where we decide that it's too
+     * close and show it as red, etc.
+     *
+     * @param holder Device holder to bind to
+     * @param position Position in the list
+     */
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val current = devices[position]
 
@@ -70,10 +104,20 @@ class DeviceListAdapter internal constructor(
         }
     }
 
+    /**
+     * Allow the devices to be changed
+     *
+     * @param devices The last scanned set of devices
+     */
     internal fun setDevices(devices: List<Device>) {
         this.devices = devices
         notifyDataSetChanged()
     }
 
+    /**
+     * The size of the list is based on the number of devices in the last scan cycle sampled from
+     * the database.
+     *
+     */
     override fun getItemCount() = devices.size
 }

@@ -12,8 +12,23 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * The history fragment shows contacts with other devices.  We wanted to turn this
+ * into some form of gamification similar to what the other applications have done, but we didn't
+ * have the design resources to do it.
+ *
+ */
 class HistoryFragment : Fragment() {
 
+    /**
+     * Inflate the fragment and set up the recycler view, the observe it for live updates
+     * from newly detected devices written into the database.
+     *
+     * @param inflater Layout inflater
+     * @param container View group
+     * @param savedInstanceState saved bundle
+     * @return
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

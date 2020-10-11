@@ -29,6 +29,18 @@ import com.google.zxing.common.BitMatrix;
 import java.util.*
 
 
+/**
+ * The teams fragment allows users to ignore detections of other devices by creating a team.
+ * We could have implemented this by having the user tap on another device, but we wanted
+ * to make it be something where you consent to letting another user ignore the detections
+ * of your device, so we used QR codes.  The QR code contains the user's UUID.
+ *
+ * Note that if you tap the reset button it forgets all of the UUIDs that have been scanned
+ * AND it changes your UUID to a new one.  That way you can leave a team without interacting
+ * with the other team member's devices and without the other team members having to form a new
+ * team.
+ *
+ */
 class TeamsFragment : Fragment() {
     private val TAG = "TeamsFragment"
 
@@ -37,6 +49,15 @@ class TeamsFragment : Fragment() {
 
     private var scanMessage: Int? = null
 
+    /**
+     * Create the view with the reset button and the QR code on it which contains the current
+     * UUID
+     *
+     * @param inflater The inflater
+     * @param container the view group
+     * @param savedInstanceState not used
+     * @return An inflated view
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -72,6 +93,10 @@ class TeamsFragment : Fragment() {
         return root
     }
 
+    /**
+     * set the QR code to be the current UUID
+     *
+     */
     private fun setQrCode() {
         // Show the QR Code...
         val barCodeImageView = view?.findViewById<ImageView>(R.id.barcodeImage)
@@ -88,6 +113,11 @@ class TeamsFragment : Fragment() {
 
     }
 
+    /**
+     * set the count of the number of devices that you currently have UUID's for that will not
+     * cause notifications and show as team members.
+     *
+     */
     private fun setTeamCount() {
         val teamCountTextView = view?.findViewById<TextView>(R.id.TextView_team_count)
         val text = getString(R.string.your_team_has_0_people)
@@ -95,6 +125,9 @@ class TeamsFragment : Fragment() {
         teamCountTextView?.let { it.text = text.replace("0", count.toString(), true) }
     }
 
+    /**
+     * Show a scan message if we are resuming after a scan.
+     */
     override fun onResume() {
         super.onResume()
         setQrCode()
@@ -117,10 +150,22 @@ class TeamsFragment : Fragment() {
         setTeamCount()
     }
 
+    /**
+     * We used some code from Google to do the barcode scanning.  This call starts the activity.
+     *
+     */
     private fun scanBarcode() {
         startActivityForResult(Intent(activity, LiveBarcodeScanningActivity::class.java), SCAN_ACTIVITY)
     }
 
+    /**
+     * Process the result of scanning storing the UUID of the device that was scanned in shared pref
+     * so that we can ignore it as a team mate in other parts of the code.
+     *
+     * @param requestCode Should always be SCAN_ACTIVITY
+     * @param resultCode Not used
+     * @param data Should contain the UUID, but we validate it here.
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == SCAN_ACTIVITY) {
@@ -152,6 +197,13 @@ class TeamsFragment : Fragment() {
         }
     }
 
+    /**
+     * Act on camera permissions from the user
+     *
+     * @param requestCode the request code we set
+     * @param permissions the permissions we requested
+     * @param grantResults the grant results
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

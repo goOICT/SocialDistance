@@ -36,6 +36,15 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
+/**
+ * The home fragment shows the list of currently detected devices from the database.
+ * Note that this is nearly identical to
+ * the code in the history fragment.  The plan was to keep this and make history look different using
+ * some gamification, but since Apple pulled the application from the App Store we gave up on doing
+ * more.
+ *
+ *
+ */
 class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
 
@@ -49,6 +58,17 @@ class HomeFragment : Fragment() {
     private var mBackgroundLocationGranted = true
     private var mBluetoothEnabled = true
 
+    /**
+     * Inflate, add the recycler view for the devices, then observe it for changes in the state
+     * of detection.  When detection is paused we show a different card and hide the one with
+     * the list of currently detected devices.  There were plans to have a count down timer but
+     * we didn't have time to implement that.
+     *
+     * @param inflater Layout inflater
+     * @param container View group
+     * @param savedInstanceState not used
+     * @return the inflated observed view
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -94,6 +114,12 @@ class HomeFragment : Fragment() {
         return root
     }
 
+    /**
+     * Set up visibility based on the state of scanning
+     *
+     * @param root the view
+     * @param isStarted set to true if scanning has been started.
+     */
     private fun setVisibility(root: View, isStarted: Boolean) {
         if (isStarted) {
             // Update the devices
@@ -113,6 +139,13 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Post creation we deal with setting up the state of things with respect to the state of scanning
+     * for devices.
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -140,6 +173,10 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Start tracing if we have the permissions.
+     *
+     */
     override fun onResume() {
         super.onResume()
         //TODO: Change this to enable with a shared pref
@@ -151,12 +188,24 @@ class HomeFragment : Fragment() {
         startTrace()
     }
 
+    /**
+     * Check to make sure that we have the correct positions and start tracing.
+     *
+     */
     private fun startTrace() {
         if (mIsTraceEnabled && !mIsChecking && mBluetoothEnabled && mFineLocationGranted) {
             BLETrace.start(false)
         }
     }
 
+    /**
+     * Since this is the first fragment that users see after onboarding and it's the spot where
+     * scanning is turned on and off it is also where get permissions from the user and make sure
+     * that the device has what it needs to run the app correctly.
+     *
+     * @param context
+     * @return
+     */
     private fun checkPermissions(context: Context): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true
@@ -207,6 +256,12 @@ class HomeFragment : Fragment() {
         }
     }
 
+    /**
+     * Make sure Bluetooth is correctly supported
+     *
+     * @param context The context to use
+     * @return True if everything is good and we can start scanning
+     */
     private fun checkBluetooth(context: Context): Boolean {
         // ??? lazy load this on a thread ???
         val bluetoothManager =
@@ -251,6 +306,13 @@ class HomeFragment : Fragment() {
         return true
     }
 
+    /**
+     * Deal with the results of asking for various permissions
+     *
+     * @param requestCode The request code used to ask for permissions
+     * @param permissions The requested permissions
+     * @param grantResults The results
+     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,

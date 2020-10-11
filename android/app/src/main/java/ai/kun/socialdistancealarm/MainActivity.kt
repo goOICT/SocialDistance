@@ -18,11 +18,20 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
+/**
+ * This is a fragment based application so this is the high level activity.
+ *
+ */
 class MainActivity : AppCompatActivity()  {
     private val TAG = "MainActivity"
 
     var isToolbarPausePlayHidden = false
 
+    /**
+     * Hide and show the nav bar and the tool bar as needed.
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -67,11 +76,20 @@ class MainActivity : AppCompatActivity()  {
         navView.setupWithNavController(navController)
     }
 
+    /**
+     * restart the underling BLE lib in background mode.
+     */
     override fun onDestroy() {
         super.onDestroy()
         BLETrace.start(true)
     }
 
+    /**
+     * set up the options menu
+     *
+     * @param menu the options meny
+     * @return true
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -88,6 +106,12 @@ class MainActivity : AppCompatActivity()  {
         return true
     }
 
+    /**
+     * set up the pause play option
+     *
+     * @param optionsMenu the menu
+     * @param isStarted the state of the scanning
+     */
     private fun setPausePlayOption(optionsMenu: Menu, isStarted: Boolean?) {
         isStarted?.let {
             if (isToolbarPausePlayHidden) {
@@ -105,10 +129,16 @@ class MainActivity : AppCompatActivity()  {
         }
     }
 
+    /**
+     * Handle action bar item clicks here. The action bar will
+     * automatically handle clicks on the Home/Up button, so long
+     * as you specify a parent activity in AndroidManifest.xml.
+     *
+     * @param item items menu
+     * @return
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         val id = item.itemId
         when (id) {
             R.id.action_notification_settings -> {

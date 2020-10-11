@@ -20,6 +20,16 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * Lists the history of contacts with other users of the application.  We wanted to turn this
+ * into some form of gamification similar to what the other applications have done, but we didn't
+ * have the design resources to do it.
+ *
+ * @constructor
+ * Constructs an adapter for the list view for device history
+ *
+ * @param adapterContext The adapter context to use
+ */
 class DeviceHistoryListAdapter internal constructor(
     adapterContext: Context
 ) : RecyclerView.Adapter<DeviceHistoryListAdapter.DeviceViewHolder>() {
@@ -28,6 +38,14 @@ class DeviceHistoryListAdapter internal constructor(
     private val context: Context = adapterContext
     private var devices = emptyList<Device>()
 
+    /**
+     * The view holder
+     *
+     * @constructor
+     * populate the view with distance, time, etc.
+     *
+     * @param itemView The view to populate
+     */
     inner class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val distanceTextView: TextView = itemView.findViewById(R.id.textView_distance)
         val signalTextView: TextView = itemView.findViewById(R.id.textView_signal)
@@ -35,11 +53,27 @@ class DeviceHistoryListAdapter internal constructor(
         val peopleImageView: ImageView = itemView.findViewById(R.id.imageView_people)
     }
 
+    /**
+     * Inflate the layout
+     *
+     * @param parent The parent view group
+     * @param viewType The view type
+     * @return
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val itemView = inflater.inflate(R.layout.item_device_history, parent, false)
         return DeviceViewHolder(itemView)
     }
 
+    /**
+     * Translate the values in the holder into the correct UI.
+     * The code below should have be DRYed, but I was in a hurry.  It's nearly identical to what
+     * is done for home.  Again the plan was to eventually change this to something that had
+     * gamification, but the priority was launching iOS and apple didn't let us launch.
+     *
+     * @param holder The holder to set up
+     * @param position The position of the holder
+     */
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val current = devices[position]
 
@@ -85,10 +119,19 @@ class DeviceHistoryListAdapter internal constructor(
         holder.timestampTextView.text = getFormattedDateString(TIME_FORMAT, current.timeStamp)
     }
 
+    /**
+     * Update the device list.  The history view shows a live list of devices.
+     *
+     * @param devices The devices in the current view
+     */
     internal fun setDevices(devices: List<Device>) {
         this.devices = devices
         notifyDataSetChanged()
     }
 
+    /**
+     * Get the number of detected devices
+     *
+     */
     override fun getItemCount() = devices.size
 }

@@ -14,18 +14,34 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 
-/*
- *  At app startup we need to sign in anonymously so we can use Firebase
- *  This takes place in Launch Fragment.
+/**
+ * This doesn't really do much of anything.  When we started the project we thought there might be
+ * some kind of login for corp. accounts, so if that's what you're building, you want to put that
+ * stuff here.  Originally the plan was to use firebase for that.  Right now all it really does
+ * is decide if you should see the home fragment next or the onboarding fragment.
+ *
  */
 class LaunchFragment : Fragment() {
     private val TAG = "LaunchFragment"
 
+    /**
+     * hide the options menu since this is a splash screen
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(false)
     }
 
+    /**
+     * Inflate and return
+     *
+     * @param inflater the layout inflater
+     * @param container the container
+     * @param savedInstanceState not used
+     * @return the view
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,6 +51,12 @@ class LaunchFragment : Fragment() {
         return root
     }
 
+    /**
+     * We used to wait for the firebase login here, but we don't anymore.
+     *
+     * @param view the view
+     * @param savedInstanceState not used
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val model: LaunchViewModel by viewModels()
@@ -47,6 +69,11 @@ class LaunchFragment : Fragment() {
         model.isLoggedIn.observe(viewLifecycleOwner, authStateObserver)
     }
 
+    /**
+     * This is where we decide if we are actually going to launch the home fragment or if we
+     * are going to launch the onboard fragment.
+     *
+     */
     private fun moveToHome() {
         val sharedPrefs = context?.applicationContext?.getSharedPreferences(
             Constants.PREF_FILE_NAME, Context.MODE_PRIVATE
@@ -61,6 +88,10 @@ class LaunchFragment : Fragment() {
         }
     }
 
+    /**
+     * Firebase login is disabled.  We just call move to home.
+     *
+     */
     private fun waitForSignIn() {
 /*        val auth = FirebaseAuth.getInstance()
         val task = auth.signInAnonymously()

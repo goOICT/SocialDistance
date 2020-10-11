@@ -8,6 +8,9 @@ import androidx.annotation.StringRes
 import com.google.android.gms.common.images.Size
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 
+/**
+ * This code was imported from the example project we used.
+ */
 object BarcodePreferenceUtils {
 
     fun isAutoSearchEnabled(context: Context): Boolean {

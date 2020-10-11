@@ -20,12 +20,23 @@ private const val ONBOARD_THREE = 3
 private const val ONBOARD_FOUR = 4
 
 /**
- * A simple [Fragment] subclass.
- * Use the [OnBoardFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Display the different screens for the onboarding process.
+ *
+ * So this is not built the way that it should be.  In the original design there were different layouts
+ * in the onboarding screens, so using a recycler view and a single fragment didn't work, but
+ * we changed the designs so that they could all use the same fragment and this code didn't get
+ * changed to match.
  */
 class OnBoardFragment : Fragment() {
 
+    /**
+     * Inflate the view
+     *
+     * @param inflater the inflater
+     * @param container the container
+     * @param savedInstanceState not used
+     * @return An inflated view
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +48,12 @@ class OnBoardFragment : Fragment() {
 
     val args: OnBoardFragmentArgs by navArgs()
 
+    /**
+     * Set things into the view.  This is the part that really should just be using a recycler view.
+     *
+     * @param view The view
+     * @param savedInstanceState not used
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         when (args.screen) {
             ONBOARD_ONE -> {
@@ -107,6 +124,10 @@ class OnBoardFragment : Fragment() {
         }
     }
 
+    /**
+     * Once the user has seen all the onboarding screens mark it as complete in the shared prefs.
+     *
+     */
     private fun onBoardCompleted() {
         context?.let {
             val sharedPrefs = it.applicationContext.getSharedPreferences(

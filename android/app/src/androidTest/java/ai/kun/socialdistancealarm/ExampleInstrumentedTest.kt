@@ -9,9 +9,10 @@ import org.junit.runner.RunWith
 import org.junit.Assert.*
 
 /**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Sadly there were not enough resources to do test automation on this project and still deliver it
+ * to the people that need it.  It would have been good, but BLE functionality would not have been
+ * easy to test, so we just did it old school with lots of handsets, and lots of fingers,
+ * and lots of crash reporting.
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
