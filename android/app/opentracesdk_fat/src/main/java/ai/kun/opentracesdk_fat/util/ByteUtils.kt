@@ -6,10 +6,19 @@ import java.io.UnsupportedEncodingException
 import java.nio.charset.Charset
 import kotlin.experimental.and
 
+/**
+ * Some utilities to deal with Byte objects
+ */
 object ByteUtils {
 
     private const val TAG = "ByteUtils"
 
+    /**
+     * reverse a byte array
+     *
+     * @param value the array
+     * @return the reversed array
+     */
     fun reverse(value: ByteArray): ByteArray {
         val length = value.size
         val reversed = ByteArray(length)
@@ -21,6 +30,12 @@ object ByteUtils {
 
    private val hexArray = "0123456789ABCDEF".toCharArray()
 
+    /**
+     * convert bytes to hex format
+     *
+     * @param bytes the bytes to convert
+     * @return A hex format string of the bytearray
+     */
     fun byteArrayInHexFormat(bytes: ByteArray?): String? {
         if (bytes == null) return null
 
@@ -34,6 +49,12 @@ object ByteUtils {
         return String(hexChars)
     }
 
+    /**
+     * convert a string to a byte array
+     *
+     * @param string The string
+     * @return the bytes
+     */
     fun bytesFromString(string: String): ByteArray {
         var stringBytes = ByteArray(0)
         try {
@@ -44,6 +65,12 @@ object ByteUtils {
         return stringBytes
     }
 
+    /**
+     * convert a byte array to a string
+     *
+     * @param bytes the bytes
+     * @return the string
+     */
     @Nullable
     fun stringFromBytes(bytes: ByteArray): String {
         return try {

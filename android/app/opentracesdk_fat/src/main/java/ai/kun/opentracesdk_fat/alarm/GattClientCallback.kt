@@ -4,6 +4,12 @@ import android.bluetooth.*
 import ai.kun.opentracesdk_fat.util.BluetoothUtils
 import ai.kun.opentracesdk_fat.util.ByteUtils
 
+/**
+ * This class is not currently used, but it supports connection from a device.  At some point we
+ * though it might be useful, but we opted not to have the devices connect with each other.
+ *
+ * @property mClientActionListener
+ */
 class GattClientCallback(private val mClientActionListener: GattClientActionListener) :
     BluetoothGattCallback() {
     private val TAG = "GattClientCallback"

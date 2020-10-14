@@ -24,6 +24,15 @@ import java.util.*
 import kotlin.collections.HashSet
 
 
+/**
+ * Most of Android's underling BLE implementation is not thread safe and yet we need to call this
+ * stuff all over the place in the application from different threads and even different contexts.
+ * This object represents all the underling BLE functionality for device detection.  It's the primary
+ * interface for this library. It's quite complicated and does a bunch of work for you including
+ * dealing with the UUID and if you want, dealing with the data (by putting it in a database).
+ *
+ * Thread safety is implemented by synchronizing on this object.
+ */
 object BLETrace {
     private val mBleServer : BLEServer =
         BLEServer()
@@ -40,7 +49,11 @@ object BLETrace {
     var bluetoothLeAdvertiser : BluetoothLeAdvertiser? = null
 
     var isBackground : Boolean = true
+
+    // Live data you can use to see if things have been started
     val isStarted: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    // A thread safe way to check if things are paused
     var isPaused : Boolean
         get() {
             synchronized(this) {
@@ -66,6 +79,7 @@ object BLETrace {
             }
         }
 
+    // A thread safe way to set the UUID used by the device
     var uuidString : String?
         get() {
             synchronized(this) {
@@ -94,6 +108,7 @@ object BLETrace {
             }
         }
 
+    // A thread safe way to set a list of UUID's to mark as team members when they are detected
     var teamUuids : Set<String>?
         get() {
             synchronized(this) {
@@ -119,6 +134,11 @@ object BLETrace {
             }
         }
 
+    /**
+     * leaving the current team will automatically give you a new UUID and forget all the UUIDs that
+     * were stored as team members.
+     *
+     */
     fun leaveTeam() {
         synchronized( this) {
             teamUuids = null
@@ -133,6 +153,12 @@ object BLETrace {
         }
     }
 
+    /**
+     * Check to see if a UUID is part of the UUIDs currently saved as team members
+     *
+     * @param scannnedUuid The UUID to check
+     * @return True if the UUID belongs to a list of UUIDs currently stored as team members
+     */
     fun isTeamMember(scannnedUuid: String): Boolean {
         synchronized(this) {
             return teamUuids?.let {
@@ -141,10 +167,21 @@ object BLETrace {
         }
     }
 
+    /**
+     * Can be used to check if a UUID came from an iOS device
+     *
+     * @param scannedUuid The UUID that was scanned
+     * @return True if the scannedUuid param starts with the iOS service string
+     */
     fun isIosUuid(scannedUuid: String) : Boolean {
         return scannedUuid.substring(0..3) == Constants.IOS_SERVICE_STRING.substring(0..3)
     }
 
+    /**
+     * create a new UUID
+     *
+     * @return a UUID as a string
+     */
     fun getNewUniqueId() : String {
         val stringChars = (('0'..'9') + ('a'..'f')).toList().toTypedArray()
         val id = "0${((1..11).map { stringChars.random() }.joinToString(""))}"
@@ -153,6 +190,12 @@ object BLETrace {
 
     lateinit var deviceNameServiceUuid: UUID
 
+    /**
+     * Start the BLE scanning and detection
+     *
+     * @param startingBackground Set to true to use the background intervals.  Right now this doesn't
+     * make any difference.
+     */
     fun start(startingBackground: Boolean) {
         synchronized(this) {
             if (isStarted.value!!) stop()
@@ -160,17 +203,26 @@ object BLETrace {
         }
     }
 
+    /**
+     * Stop the BLE scanning and detection
+     *
+     */
     fun stop() {
         synchronized(this) {
             if (isBackground) stopBackground() else stopForeground()
         }
     }
 
-    /*
+    /**
      * The following methods deal with the problem that your intent that you use to stop
      * an alarm manager has to be identical to the intent that you used to stop it.  So
      * for that to be true you have to cancel the alarm with the correct argument for
      * background vs foreground, and thus a bunch of code...
+     */
+
+    /**
+     * Start scanning and broadcasting using the values for the background mode
+     *
      */
     private fun startBackground() {
         if (isEnabled() && !isPaused) {
@@ -189,6 +241,10 @@ object BLETrace {
         }
     }
 
+    /**
+     * Start scanning and broadcasting using the values for the forground mode
+     *
+     */
     private fun startForeground() {
         if (isEnabled() && !isPaused) {
             Log.i(TAG, "startForeground")
@@ -205,6 +261,10 @@ object BLETrace {
         }
     }
 
+    /**
+     * Stop scanning and broadcasting when things were started in background mode
+     *
+     */
     private fun stopBackground() {
         if (isEnabled()) {
             mBleServer.disable(Constants.REBROADCAST_PERIOD,
@@ -217,6 +277,10 @@ object BLETrace {
         isStarted.postValue(false)
     }
 
+    /**
+     * Stop scanning and broadcasting when things were started in forground mode
+     *
+     */
     private fun stopForeground() {
         if (isEnabled()) {
             mBleServer.disable(Constants.REBROADCAST_PERIOD,
@@ -230,7 +294,11 @@ object BLETrace {
     }
 
 
-
+    /**
+     * Check to see if BLE Trace is enabled
+     *
+     * @return True if the BLE Trace is ready to be used
+     */
     fun isEnabled() : Boolean {
         bluetoothManager?.let {
             if (uuidString == null || it.adapter == null || !it.adapter.isEnabled()) return false
@@ -244,6 +312,13 @@ object BLETrace {
         return isInit  // && isLocationEnabled() Location doesn't need to be on
     }
 
+    /**
+     * Initialize BLE Trace.  This needs to be called as early as possible in the application.
+     *
+     * @param applicationContext The application context to use for init
+     * @param isReactNative Should be set to true if you want to manage your own notifications and store
+     *                      your own data, etc.
+     */
     fun init(applicationContext: Context, isReactNative: Boolean = false) {
         synchronized(this) {
             context = applicationContext
@@ -285,10 +360,21 @@ object BLETrace {
 
     }
 
+    /**
+     * Get the AlarmManager
+     *
+     * @param applicationContext The context to use
+     * @return An AlarmManager instance associated with the context
+     */
     fun getAlarmManager(applicationContext: Context): AlarmManager {
         return applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
 
+    /**
+     * Check to see if location manager can be used.  Not currently needed.
+     *
+     * @return True if we have the user's permission to use location information.
+     */
     private fun isLocationEnabled(): Boolean {
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return LocationManagerCompat.isLocationEnabled(locationManager)

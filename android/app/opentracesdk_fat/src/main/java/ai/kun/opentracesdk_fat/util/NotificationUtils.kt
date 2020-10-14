@@ -13,7 +13,9 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.Observer
 
-
+/**
+ * A set of utilities to help with notifications
+ */
 object NotificationUtils {
     // Constants for the notification actions buttons.
     public const val ACTION_TOO_CLOSE_NOTIFICATION =
@@ -33,6 +35,11 @@ object NotificationUtils {
     private lateinit var notifyManager: NotificationManager
 
 
+    /**
+     * Initialize the notifications.
+     *
+     * @param context The Context you'll be sending notifications from
+     */
     fun init(context: Context) {
         this.context = context
 
@@ -82,6 +89,10 @@ object NotificationUtils {
         })
     }
 
+    /**
+     * Send the too close notification
+     *
+     */
     fun sendNotificationTooClose() {
         BLETrace.isStarted.value?.let {
             if (it) {
@@ -102,6 +113,10 @@ object NotificationUtils {
         }
     }
 
+    /**
+     * send the danger notification
+     *
+     */
     fun sendNotificationDanger() {
         BLETrace.isStarted.value?.let {
             if (it) {

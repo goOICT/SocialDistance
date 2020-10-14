@@ -4,6 +4,10 @@ import ai.kun.opentracesdk_fat.util.ByteUtils
 import ai.kun.opentracesdk_fat.util.Constants
 import android.bluetooth.*
 
+/**
+ * Implement connection to the GATT server.  Right now this code isn't really called, but we built
+ * the library to support connection between BLE devices thinking that we might need it.
+ */
 object GattServerCallback: BluetoothGattServerCallback() {
 
     var serverActionListener: GattServerActionListener? = null

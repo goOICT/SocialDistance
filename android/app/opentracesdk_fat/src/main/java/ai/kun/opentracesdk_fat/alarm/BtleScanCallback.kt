@@ -12,11 +12,20 @@ import android.os.Handler
 import android.os.ParcelUuid
 import android.util.Log
 
+/**
+ * Record the results of the scans
+ */
 object BtleScanCallback: ScanCallback() {
     private val TAG = "BtleScanCallback"
     val mScanResults = HashMap<String, Device>()
     val handler = Handler()
 
+    /**
+     * this will get called a lot.  We stack up the results and deal with them once per scan period.
+     *
+     * @param callbackType the callback type
+     * @param result the result
+     */
     override fun onScanResult(
         callbackType: Int,
         result: ScanResult
@@ -24,16 +33,32 @@ object BtleScanCallback: ScanCallback() {
         addScanResult(result)
     }
 
+    /**
+     * add a batch of scan results
+     *
+     * @param results the results
+     */
     override fun onBatchScanResults(results: List<ScanResult>) {
         for (result in results) {
             addScanResult(result)
         }
     }
 
+    /**
+     * log scanning failure
+     *
+     * @param errorCode the error code
+     */
     override fun onScanFailed(errorCode: Int) {
         Log.e(TAG, "BLE Scan Failed with code $errorCode")
     }
 
+    /**
+     * Add a batch of scanning results.  We use a rolling average of the results collected during
+     * the scan period for the devices that were detected.
+     *
+     * @param result the scan result
+     */
     private fun addScanResult(result: ScanResult) {
         synchronized(this) {
             val deviceAddress = result.device.address

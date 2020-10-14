@@ -24,6 +24,12 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 
+/**
+ * This code implements broadcasting a BLE UUID (a beacon) for other devices to detect. I know
+ * it seems extra complicated, but trust me this code was developed by testing on many devices
+ * in the wild in many countries and it works.  If you try to make it simpler you'll quickly run
+ * into problems.
+ */
 class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     private val TAG = "BLEServer"
     private val WAKELOCK_TAG = "ai:kun:socialdistancealarm:worker:BLEServer"
@@ -34,7 +40,12 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
 
     lateinit var appContext: Context
 
-
+    /**
+     * This function cheats by using Alarm Manager and scheduling a new alarm when the current one expires.
+     *
+     * @param context The Context to use
+     * @param intent The intent we built
+     */
     override fun onReceive(context: Context, intent: Intent) {
         Log.i(TAG, "onReceive")
         val interval = intent.getIntExtra(INTERVAL_KEY, BACKGROUND_TRACE_INTERVAL)
@@ -57,6 +68,11 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         wl.release()
     }
 
+    /**
+     * Schedule the next alarm
+     *
+     * @param interval The interval at which to restart the BLE broadcast
+     */
     fun next(interval: Int) {
         val alarmManager = BLETrace.getAlarmManager(appContext)
         AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager,
@@ -65,6 +81,12 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
             getPendingIntent(interval, appContext))
     }
 
+    /**
+     * enable BLE broadcasting of the device UUID for detection
+     *
+     * @param interval The interval at which to restart the BLE broadcast
+     * @param context The context
+     */
     fun enable(interval: Int, context: Context) {
         this.appContext = context.applicationContext
         val alarmManager = BLETrace.getAlarmManager(appContext)
@@ -74,6 +96,12 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
             getPendingIntent(interval, appContext))
     }
 
+    /**
+     * disable BLE broadcasting
+     *
+     * @param interval The interval at which it was started.  This must not change from what was used to start.
+     * @param context The context
+     */
     fun disable(interval: Int, context: Context) {
         synchronized (BLETrace) {
             this.appContext = context.applicationContext
@@ -85,6 +113,13 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         }
     }
 
+    /**
+     * Create a pending intent to use with Alarm Manager
+     *
+     * @param interval The interval at which to scan
+     * @param context The context to use
+     * @return an intent
+     */
     private fun getPendingIntent(interval: Int, context: Context) : PendingIntent {
         val intent = Intent(context, BLEServer::class.java)
         intent.putExtra(INTERVAL_KEY, interval)
@@ -93,7 +128,10 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
     }
 
 
-    // GattServer
+    /**
+     * set up the GATT server
+     *
+     */
     private fun setupServer() {
         try {
             if (BLETrace.bluetoothGattServer!!.getService(
@@ -110,12 +148,22 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         }
     }
 
+    /**
+     * stop the Gatt server
+     *
+     * @param gattServer the server
+     */
     private fun stopServer(gattServer: BluetoothGattServer) {
         gattServer.close()
         log("server closed.")
     }
 
-    // Advertising
+    /**
+     * Start advertising the unique device UUID on the Gatt server
+     *
+     * @param callback The callback method
+     * @param uuid The UUID to broadcast
+     */
     private fun startAdvertising(callback: AdvertiseCallback, uuid: UUID) {
         try {
             val settings = AdvertiseSettings.Builder()
@@ -144,6 +192,10 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         }
     }
 
+    /**
+     * Stop broadcasting the UUID
+     *
+     */
     private fun stopAdvertising() {
         synchronized(this) {
             try {
@@ -157,24 +209,56 @@ class BLEServer : BroadcastReceiver(), GattServerActionListener  {
         }
     }
 
-    // Gatt Server Action Listener
+    /**
+     * Log the callback
+     *
+     * @param message the message
+     */
     override fun log(message: String) {
         Log.d(BLEServerCallbackDeviceName.TAG, message)
     }
 
+    /**
+     * Log adding a device
+     *
+     * @param device the device
+     */
     override fun addDevice(device: BluetoothDevice) {
         log("Deviced added: " + device.address)
     }
 
+    /**
+     * Log removing a device
+     *
+     * @param device
+     */
     override fun removeDevice(device: BluetoothDevice) {
         log("Deviced removed: " + device.address)
     }
 
+    /**
+     * Add a client configuration
+     *
+     * @param device the device
+     * @param value a byte array that represents the value
+     */
     override fun addClientConfiguration(device: BluetoothDevice, value: ByteArray) {
         val deviceAddress = device.address
         BLEServerCallbackDeviceName.mClientConfigurations[deviceAddress] = value
     }
 
+    /**
+     * send a response to some connection made by a device.  Right now we don't use this, but I kept
+     * the code in case we wanted to change the way that device detection works.  For example if we
+     * wanted to advertise a common UUID for the app and then have the devices connect with each other
+     * and then exchange the individual UUIDs.
+     *
+     * @param device
+     * @param requestId
+     * @param status
+     * @param offset
+     * @param value
+     */
     override fun sendResponse(
         device: BluetoothDevice,
         requestId: Int,

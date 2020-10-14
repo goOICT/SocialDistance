@@ -6,6 +6,10 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 
+/**
+ * An example of how to start the SDK in autoboot on Android.
+ *
+ */
 class AutoStartExample : BroadcastReceiver() {
     private val mBleServer : BLEServer =
         BLEServer()

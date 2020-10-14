@@ -9,8 +9,18 @@ import android.bluetooth.BluetoothGattCharacteristic
 import android.bluetooth.BluetoothGattDescriptor
 import android.bluetooth.BluetoothGattService
 
+/**
+ * Some utilities to help us with various Bluetooth things.
+ */
 object BluetoothUtils {
 
+    /**
+     * find a characteristic inside the GATT
+     *
+     * @param bluetoothGatt The GATT to search
+     * @param uuidString The UUID of the characteristic we want to find
+     * @return The characteristic
+     */
     fun findCharacteristic(
         bluetoothGatt: BluetoothGatt,
         uuidString: String
@@ -27,14 +37,30 @@ object BluetoothUtils {
         return null
     }
 
+    /**
+     * Right now we don't connect so we don't use this, but this method checks to see if this
+     * is our device characteristic
+     *
+     * @param characteristic The characteristic to check
+     * @return True if this matches the one we have in the constants
+     */
     fun isDeviceCharacteristic(characteristic: BluetoothGattCharacteristic?): Boolean {
         return characteristicMatches(characteristic, CHARACTERISTIC_DEVICE_STRING)
     }
-
+    /**
+     * Right now we don't connect so we don't use this, but this method checks to see if this
+     * is our user characteristic
+     *
+     * @param characteristic The characteristic to check
+     * @return True if this matches the one we have in the constants
+     */
     fun isUserCharacteristic(characteristic: BluetoothGattCharacteristic?): Boolean {
         return characteristicMatches(characteristic, CHARACTERISTIC_USER_STRING)
     }
 
+    /**
+     * A helper function for checking matches.
+     */
     private fun characteristicMatches(
         characteristic: BluetoothGattCharacteristic?,
         uuidString: String
@@ -46,6 +72,12 @@ object BluetoothUtils {
         return uuidMatches(uuid.toString(), uuidString)
     }
 
+    /**
+     * Checks to see if the characteristic
+     *
+     * @param characteristic the characteristic to match
+     * @return True if they match
+     */
     private fun isMatchingCharacteristic(characteristic: BluetoothGattCharacteristic?): Boolean {
         if (characteristic == null) {
             return false
@@ -54,6 +86,12 @@ object BluetoothUtils {
         return matchesCharacteristicUuidString(uuid.toString())
     }
 
+    /**
+     * Checks to see if the characteristic matches the UUID strings in the constants
+     *
+     * @param characteristic the characteristic to match
+     * @return True if they match
+     */
     private fun matchesCharacteristicUuidString(characteristicIdString: String): Boolean {
         return uuidMatches(
             characteristicIdString,
@@ -62,17 +100,34 @@ object BluetoothUtils {
         )
     }
 
+    /**
+     * Checks to see if the characteristic needs a response
+     *
+     * @param characteristic the characteristic to check
+     * @return True if they match
+     */
     fun requiresResponse(characteristic: BluetoothGattCharacteristic): Boolean {
         return (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE
                 != BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE)
     }
 
+    /**
+     * Checks to see if the characteristic needs a confirmation
+     *
+     * @param characteristic the characteristic to check
+     * @return True if they match
+     */
     fun requiresConfirmation(characteristic: BluetoothGattCharacteristic): Boolean {
         return (characteristic.properties and BluetoothGattCharacteristic.PROPERTY_INDICATE
                 == BluetoothGattCharacteristic.PROPERTY_INDICATE)
     }
 
-    // Descriptor
+    /**
+     * find the configuration descriptor
+     *
+     * @param descriptorList The list from the GATT
+     * @return The descriptor
+     */
     fun findClientConfigurationDescriptor(descriptorList: List<BluetoothGattDescriptor>): BluetoothGattDescriptor? {
         for (descriptor in descriptorList) {
             if (isClientConfigurationDescriptor(descriptor)) {
@@ -82,6 +137,12 @@ object BluetoothUtils {
         return null
     }
 
+    /**
+     * Check to see if the configuration descriptor matches the one in the constants
+     *
+     * @param descriptor the descriptor to check
+     * @return True if it matches
+     */
     private fun isClientConfigurationDescriptor(descriptor: BluetoothGattDescriptor?): Boolean {
         if (descriptor == null) {
             return false
@@ -113,12 +174,22 @@ object BluetoothUtils {
     }
 
 
-
-    // Service
+    /**
+     * Check and see if this service string matches the one in the constants
+     *
+     * @param serviceIdString The service string to check
+     * @return True if if matches the one in the constants
+     */
     private fun matchesServiceUuidString(serviceIdString: String): Boolean {
         return uuidMatches(serviceIdString, ANDROID_SERVICE_STRING)
     }
 
+    /**
+     * find the service
+     *
+     * @param serviceList The service list from the GATT
+     * @return The service that matches
+     */
     fun findService(serviceList: List<BluetoothGattService>): BluetoothGattService? {
         for (service in serviceList) {
             val serviceIdString = service.uuid
@@ -130,9 +201,13 @@ object BluetoothUtils {
         return null
     }
 
-    // String matching
-    // If manually filtering, substring to match:
-    // 0000XXXX-0000-0000-0000-000000000000
+    /**
+     * a simple matching function for UUID's
+     *
+     * @param uuidString The UUID String to match
+     * @param matches The match
+     * @return True if they match
+     */
     private fun uuidMatches(
         uuidString: String,
         vararg matches: String

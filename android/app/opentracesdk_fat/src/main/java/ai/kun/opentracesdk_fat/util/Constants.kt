@@ -2,6 +2,10 @@ package ai.kun.opentracesdk_fat.util
 
 import java.util.*
 
+/**
+ * Constants used in the library.  There's a bunch of stuff in here you may want to tweak
+ * to use it in your own app.
+ */
 object Constants {
     const val INTENT_DEVICE_SCANNED = "ai.kun.socialdistancealarm.device_scanned"
     const val PREF_TEAM_IDS = "team_ids"

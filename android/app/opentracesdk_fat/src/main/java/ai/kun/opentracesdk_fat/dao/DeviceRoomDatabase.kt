@@ -6,6 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 
+/**
+ * Room database for devices
+ *
+ */
 @Database(entities = arrayOf(Device::class), version = 7, exportSchema = false)
 public abstract class DeviceRoomDatabase : RoomDatabase() {
 

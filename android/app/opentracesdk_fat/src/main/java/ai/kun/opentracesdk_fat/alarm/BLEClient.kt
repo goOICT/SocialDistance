@@ -22,7 +22,14 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.nio.charset.StandardCharsets
 
-
+/**
+ * This code implements detection of other devices.  When another device is detected we store the
+ * detection in a database.  That lets this library run independently of the rest of the application.
+ * In order to support applications written in React and other cross compatible platforms it's possible
+ * to provide a callback and have the detection dealt with some other way (e.g. writing to some
+ * cross platform database)
+ *
+ */
 class BLEClient : BroadcastReceiver() {
     private val TAG = "BLEClient"
     private val WAKELOCK_TAG = "ai:kun:socialdistancealarm:worker:BLEClient"
@@ -39,6 +46,14 @@ class BLEClient : BroadcastReceiver() {
     private var mScanning = false
     private var mConnected = false
 
+    /**
+     * We use alarm manager and cheat by scheduling a new alarm every time the alarm goes off.
+     * I know the code seems overly complex, but sadly different versions of Android behaved slightly
+     * differently and without all of the below code there were crashes.
+     *
+     * @param context The context we are using to deal with the alarm
+     * @param intent The intent used to launch
+     */
     override fun onReceive(context: Context, intent: Intent) {
         Log.i(TAG, "onReceive")
         val interval = intent.getIntExtra(INTERVAL_KEY, Constants.BACKGROUND_TRACE_INTERVAL)
@@ -55,6 +70,12 @@ class BLEClient : BroadcastReceiver() {
         wl.release()
     }
 
+    /**
+     * set up the next alarm manager
+     *
+     * @param interval The interval in MS
+     * @param context The context to use
+     */
     fun next(interval: Int, context: Context) {
         val alarmManager = BLETrace.getAlarmManager(context)
         AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager,
@@ -64,6 +85,12 @@ class BLEClient : BroadcastReceiver() {
 
     }
 
+    /**
+     * Enable scanning
+     *
+     * @param interval The interval at which to restart scanning
+     * @param context The context to use
+     */
     fun enable(interval: Int, context: Context) {
         val alarmManager = BLETrace.getAlarmManager(context)
         AlarmManagerCompat.setExactAndAllowWhileIdle(alarmManager,
@@ -73,6 +100,13 @@ class BLEClient : BroadcastReceiver() {
         )
     }
 
+    /**
+     * Disable scanning
+     *
+     * @param interval The interval at which scanning was started.
+     *                 This is needed so that the alarm can be found.
+     * @param context The context to use.
+     */
     fun disable(interval: Int, context: Context) {
         synchronized(BLETrace) {
             BLETrace.getAlarmManager(context).cancel(getPendingIntent(interval, context))
@@ -80,6 +114,13 @@ class BLEClient : BroadcastReceiver() {
         }
     }
 
+    /**
+     * create the pending intent that will be fired
+     *
+     * @param interval the interval for the event
+     * @param context the context to use
+     * @return the intent
+     */
     private fun getPendingIntent(interval: Int, context: Context): PendingIntent {
         val intent = Intent(context, BLEClient::class.java)
         intent.putExtra(INTERVAL_KEY, interval)
@@ -93,7 +134,11 @@ class BLEClient : BroadcastReceiver() {
     }
 
 
-    // Scanning
+    /**
+     * Start scanning
+     *
+     * @param context the context to use
+     */
     private fun startScan(context: Context) {
         if (mScanning) {
             Log.w(TAG,"Already scanning")
@@ -124,6 +169,11 @@ class BLEClient : BroadcastReceiver() {
         }
     }
 
+    /**
+     * stop scanning
+     *
+     * @param context the context to use
+     */
     private fun stopScan(context: Context) {
 
         synchronized(BLETrace) {
