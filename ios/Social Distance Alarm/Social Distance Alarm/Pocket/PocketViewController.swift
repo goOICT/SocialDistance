@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// SInce apple doesn't really let us get detected unless the app is running we implemented pocket mode.  That lets the app stay running in your pocket with minimal battery drain.
 class PocketViewController: UIViewController {
 
     override func viewDidLoad() {

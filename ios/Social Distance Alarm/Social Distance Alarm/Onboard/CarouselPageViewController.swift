@@ -1,10 +1,12 @@
 import Foundation
 import UIKit
 
+/// A simple carousel view for showing the user how the app works
 class CarouselPageViewController: UIPageViewController {
     
     public var items: [UIViewController] = []
     
+    /// Populate the view after it loads
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -17,12 +19,14 @@ class CarouselPageViewController: UIPageViewController {
         }
     }
     
+    /// Set the tit's for the page control to match the design
     fileprivate func decoratePageControl() {
         let pc = UIPageControl.appearance(whenContainedInInstancesOf: [CarouselPageViewController.self])
         pc.currentPageIndicatorTintColor = #colorLiteral(red: 0.0431372549, green: 0.3450980392, blue: 0.6784313725, alpha: 1)
         pc.pageIndicatorTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4274509804, alpha: 1)
     }
     
+    /// populate the items in the controler that we rotate as the user goes through the carousel
     fileprivate func populateItems() {
         let images = [#imageLiteral(resourceName: "proximitySvg"), #imageLiteral(resourceName: "teamsSvg"), #imageLiteral(resourceName: "pocketModeSvgFullScreen"), #imageLiteral(resourceName: "mapSvg")]
         let titles = ["Introduction", "Teams", "Pocket mode", "Location permission"]
@@ -37,6 +41,12 @@ class CarouselPageViewController: UIPageViewController {
         }
     }
     
+    /// Populate an item
+    /// - Parameters:
+    ///   - image: The image
+    ///   - title: The title like "Introduction" or "Teams"
+    ///   - text: The detailed text that we want to communicate to the user
+    /// - Returns: A populated item
     fileprivate func createCarouselItemControler(image: UIImage, title: String, text: String) -> UIViewController {
         let c = UIViewController()
         c.view = CarouselItem(image: image, title: title, text: text)

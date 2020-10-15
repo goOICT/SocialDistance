@@ -9,6 +9,9 @@
 import UIKit
 import SocialDistanceSDK
 
+/// We could have done some background mode stuff here, but the team felt that the situations in which one handset could detect another would be too confusing for the user.
+/// Instead we implemented pocket mode and then when the user leaves the application we send a notification for them to restart it.  This made it clear to the user when
+/// they would recieve alerts and when they would not and gave them an easy way to restart the application after they used thier phone for something else.
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
@@ -51,7 +54,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
-
+    
+    /// When we enter the foreground we start BLE scanning and advertising
+    /// - Parameter scene: scene description
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
@@ -63,7 +68,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             bluetoothManager.startAdvertising()
         }
     }
-
+    
+    /// When we enter the background show a notification that will bring the app back to the forground and warn that scanning and advertising are disabled
+    /// - Parameter scene: scene description
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
@@ -90,6 +97,11 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
         completionHandler([.alert, .sound])
     }
     
+    /// Take the user to pocket mode when they tap on the notification
+    /// - Parameters:
+    ///   - center: <#center description#>
+    ///   - response: <#response description#>
+    ///   - completionHandler: <#completionHandler description#>
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -106,6 +118,7 @@ extension SceneDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
+    /// Set up a notification that will let the user know that the scanning is paused and let them tap to bring the app back to the foreground
     func scheduleNotification() {
         
         let content = UNMutableNotificationContent()

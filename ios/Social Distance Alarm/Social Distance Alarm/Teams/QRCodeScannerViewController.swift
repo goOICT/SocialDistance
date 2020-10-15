@@ -13,12 +13,15 @@ protocol QRCodeScannerViewControllerDelegate {
     func foundQRCode(value: String)
 }
 
+
+/// Implements pocket mode which allows the user to eliminate other devices
 class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     private var captureSession: AVCaptureSession!
     private var previewLayer: AVCaptureVideoPreviewLayer!
     
     public var delegate: QRCodeScannerViewControllerDelegate?
-
+    
+    /// Once the view loads set up the camera
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,6 +66,8 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         captureSession.startRunning()
     }
     
+    /// Start a QR Code capture session
+    /// - Parameter animated: <#animated description#>
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -70,7 +75,9 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
             captureSession.startRunning()
         }
     }
-
+    
+    /// End the QR code capture session
+    /// - Parameter animated: <#animated description#>
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -78,7 +85,12 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
             captureSession.stopRunning()
         }
     }
-
+    
+    /// Gather the results off the QR code scan
+    /// - Parameters:
+    ///   - output: <#output description#>
+    ///   - metadataObjects: <#metadataObjects description#>
+    ///   - connection: <#connection description#>
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         captureSession.stopRunning()
 
@@ -92,6 +104,7 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         dismiss(animated: true)
     }
     
+    /// No camera.  No clue what iOS device doesn't have a camera, but I guess it's possible
     private func failed() {
         let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
         ac.addAction(
@@ -102,12 +115,15 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         present(ac, animated: true)
         captureSession = nil
     }
-
+    
+    /// Handle the collection of a valid QR code
+    /// - Parameter code: Should be a UUID
     private func found(code: String) {
         dismiss(animated: true, completion: nil)
         delegate?.foundQRCode(value: code)
     }
     
+    /// Create the overlay
     private func createOverlay() {
         let screenWidth = UIScreen.main.bounds.width
         let screenHeight = UIScreen.main.bounds.height
@@ -134,11 +150,13 @@ class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         
         self.view.addSubview(overlayView)
     }
-
+    
+    /// hide the status bar
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
+    
+    /// portrait mode only
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }

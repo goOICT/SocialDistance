@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 
+// We kept the onboarding pretty simple.  It just tries to explain what the app does.
 @IBDesignable
 class CarouselItem: UIView {
     static let CAROUSEL_ITEM_NIB = "CarouselItem"

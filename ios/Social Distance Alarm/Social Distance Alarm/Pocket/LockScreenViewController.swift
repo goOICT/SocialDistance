@@ -8,11 +8,16 @@
 
 import UIKit
 
+
+/// This is the actual pocket mode.  It looks a bit like a lock screen, hence the name
 class LockScreenViewController: UIViewController, SlideButtonDelegate {
     
 
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var slidingButton: MMSlidingButton!
+    
+    
+    /// Set up the slider that allows the user to go back to the pocket mode page used to launch the lock screen
     override func viewDidLoad() {
         super.viewDidLoad()
 
