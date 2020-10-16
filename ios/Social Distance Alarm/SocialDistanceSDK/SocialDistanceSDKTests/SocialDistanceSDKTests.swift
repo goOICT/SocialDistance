@@ -9,6 +9,7 @@
 import XCTest
 @testable import SocialDistanceSDK
 
+/// It would be great to have tests for this, but there wasn't time and it would have been exceptionally complicated since the code depends on hardware not present in emulators.
 class SocialDistanceSDKTests: XCTestCase {
 
     override func setUpWithError() throws {

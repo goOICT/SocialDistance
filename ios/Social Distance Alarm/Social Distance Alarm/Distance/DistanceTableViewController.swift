@@ -9,11 +9,14 @@
 import UIKit
 import SocialDistanceSDK
 
+/// The distance view shows the other app users that have been detected in the last scan period.
+/// The idea here is to show the user that the app is working more than anything else.
 class DistanceTableViewController: UITableViewController,  DeviceRepositoryListener {
     
     var deviceArray = [Device]()
     let defaults = UserDefaults.standard
-
+    
+    /// Show a list of devices scanned in the last scan period after the view is loaded.
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Active Users"
@@ -28,6 +31,8 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
         tableView.register(DeviceDistanceTableViewCell.classForCoder(), forCellReuseIdentifier: "DeviceItemCell")
     }
     
+    /// If the view is getting loaded listen for changes to the Device Repository
+    /// - Parameter animated: <#animated description#>
     override func viewWillAppear(_ animated: Bool) {
         DeviceRepository.sharedInstance.currentListener = self
         onRepositoryUpdate()
@@ -46,6 +51,9 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
         }
     }
     
+    /// Each cell shows a device present during the last scan
+    /// - Parameter indexPath: <#indexPath description#>
+    /// - Returns: The table cell
     private func configureDeviceItemCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DeviceItemCell", for: indexPath) as! DeviceDistanceTableViewCell
           
@@ -66,6 +74,7 @@ class DistanceTableViewController: UITableViewController,  DeviceRepositoryListe
         return cell
     }
     
+    /// If the repository has new devices to show, show them
     func onRepositoryUpdate() {
         deviceArray = DeviceRepository.sharedInstance.getCurrentDevices()
 

@@ -9,6 +9,7 @@
 import XCTest
 @testable import Social_Distance_Alarm
 
+/// It would have been nice to build tests for this app, but there just wasn't time, AND it would have been really hard to simulate BLE behavior.
 class Social_Distance_AlarmTests: XCTestCase {
 
     override func setUpWithError() throws {

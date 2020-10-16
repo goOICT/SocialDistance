@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Shown when there are no other devices detected in the last scanning period
 class NoUsersTableViewCell: UITableViewCell {
     
     @IBOutlet weak var btSignalImageView: UIImageView!

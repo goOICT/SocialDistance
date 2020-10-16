@@ -63,8 +63,11 @@ func getNewUniqueId() -> String {
 
 
 @objcMembers
+/// The core BLE manager.  Originally this was just part of the app, but we broke it out so that it can be used as a lib via React or used without
+/// changes in your own app
 public class CoreBluetoothManager: NSObject, BluetoothManager {
     
+    /// get the UUID string making a new one if needed
     public var uuidString: String =  {
         let currentId = UserDefaults.standard.string(forKey: SocialDistanceSdkConstants.DEFAULTS_UUID_KEY.rawValue)
         if (currentId == nil) {
@@ -76,6 +79,7 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
         }
     }()
     
+    /// reset the UUID string
     public func resetUuidString(){
         let newId = getNewUniqueId()
         uuidString = newId
@@ -91,6 +95,8 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
         return instance
     }()
     
+    /// Pause scanning and broadcasting and let the user know that it's happening with a series of 5 vibrations
+    /// - Parameter with: True to pause
     public func pause(_ with: Bool) {
         self.isPaused = with
         
@@ -123,12 +129,14 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
     }
 
     // MARK: - Public methods
+    /// Start BLE advertising so that other apps can detect this one
     public func startAdvertising() {
         isPaused = false
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil,
                                                 options: nil)
     }
-
+    
+    /// Start BLE scanning for other devices with the app running on them
     public func startScanning() {
         isPaused = false
         centralManager = CBCentralManager(delegate: self, queue: nil,
@@ -144,6 +152,8 @@ public class CoreBluetoothManager: NSObject, BluetoothManager {
 }
 
 extension CoreBluetoothManager: CBPeripheralManagerDelegate {
+    /// Start advertising
+    /// - Parameter peripheral: The BLE peripheral
     public func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         if peripheral.state == .poweredOn {
             if peripheral.isAdvertising {
@@ -163,6 +173,13 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
         }
     }
     
+    /// Start broadcasting.  We use a timer to stop the broadcast so that it can be done at intervals which you could use to preserve battery.  In our testing
+    ///  the app didn't really have much effect on batter life on Android or iOS, but the code matches the code written for Android and allows the broadcast
+    ///  and scan intervals to change.
+    ///
+    /// - Parameters:
+    ///   - peripheralManager: The peripheral
+    ///   - advertisingData: advertising data
     func broadcastToApps(peripheralManager: CBPeripheralManager, advertisingData: [String : Any]) {
         // Default to the packaged repository if none was present...
         if (delegate == nil) { delegate = DeviceRepository.sharedInstance }
@@ -192,6 +209,8 @@ extension CoreBluetoothManager: CBPeripheralManagerDelegate {
 
 extension CoreBluetoothManager: CBCentralManagerDelegate {
     
+    /// Called when the state of the central manager changes.  This is where we set up scanning.
+    /// - Parameter central: The central manager
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             scanForApps(central: central)
@@ -200,6 +219,8 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
         }
     }
     
+    /// Set up scaning for other apps
+    /// - Parameter central: The central manager
     func scanForApps(central: CBCentralManager) {
         // Default to the packaged repository if none was present...
         if (delegate == nil) { delegate = DeviceRepository.sharedInstance }
@@ -221,7 +242,15 @@ extension CoreBluetoothManager: CBCentralManagerDelegate {
             }
         }
     }
-
+    
+    /// This is the function that gets called when there are devices detected.  We filter the devices for ones that start with the app's UUID (Android or iOS).  If a device
+    /// was previously detected we use a rolling average over the scan period to calcualte the signal strength for the device.
+    ///
+    /// - Parameters:
+    ///   - central: The Central manager
+    ///   - peripheral: The peripheral
+    ///   - advertisementData: The advertisement data
+    ///   - RSSI: The relative signal strength
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         peripherals[peripheral.identifier] = peripheral
         let uuids = advertisementData[CBAdvertisementDataServiceUUIDsKey] as? [CBUUID]

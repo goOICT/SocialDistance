@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Standard app navigation
 class AppNavigationViewController: UINavigationController {
     
     required init?(coder aDecoder: NSCoder) {

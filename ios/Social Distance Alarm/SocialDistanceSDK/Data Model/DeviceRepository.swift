@@ -19,6 +19,8 @@ class PersistentContainer: NSPersistentContainer {
 
 }
 
+/// We use the same model that we have on Android where detections are stored in a local database
+/// if the app is run natively, or you can use a call back function if you're calling the library from React.
 public class DeviceRepository {
     
     public var currentListener: DeviceRepositoryListener? = nil
@@ -55,12 +57,20 @@ public class DeviceRepository {
         return persistentContainer.viewContext
     }
     
+    /// Return the Device Repository singleton
     public static let sharedInstance: DeviceRepository = {
         let instance = DeviceRepository()
         // setup code
         return instance
     }()
     
+    /// Add a new device to the database
+    /// - Parameters:
+    ///   - deviceUuid: The UUID
+    ///   - rssi: The relative signal strength
+    ///   - txPower: The reported transmission power (not reliable in our expierence)
+    ///   - scanDate: The date of detection
+    ///   - isAndroid: True if the device had a UUID that started with the Android prefix
     func insert(deviceUuid: String, rssi: Int32, txPower: Int32?, scanDate: Date, isAndroid: Bool) {
         // Add the device to the database
         let newDevice = Device(context: self.context)
@@ -76,6 +86,7 @@ public class DeviceRepository {
         // TODO: remove old devices
     }
     
+    /// Alert listeners that there is a fresh scan
     func updateCurrentDevices() {
         do {
             try context.save()
@@ -87,6 +98,10 @@ public class DeviceRepository {
         doAlerts()
     }
     
+    /// Alert the user to the proximity of other users with a series of vibrations.
+    ///
+    /// These alerts could be done at a higher level in the application, but when we were originally building it, it
+    /// ran in the background, so we needed them here.
     func doAlerts() {
         var tooClose = false
         var danger = false
@@ -124,6 +139,8 @@ public class DeviceRepository {
         }
     }
     
+    /// Get the devices from the last scan
+    /// - Returns: The devices detected during the last scan interval
     public func getCurrentDevices() -> [Device] {
         var deviceArray = [Device]()
         let startTime = (Date() - SdkConstants.traceInterval * 4) as NSDate
@@ -154,6 +171,8 @@ public class DeviceRepository {
         return averagedDevices
     }
     
+    /// Get all the devices that have been detected
+    /// - Returns: All the devices that have been detected
     public func getAllDevices() -> [Device] {
         var deviceArray = [Device]()
         let request: NSFetchRequest<Device> = Device.fetchRequest()
@@ -169,10 +188,13 @@ public class DeviceRepository {
         return deviceArray
     }
     
+    /// Reset the saved UUIDs and reset the current user's UUID
     public func resetTeam() {
         UserDefaults.standard.removeObject(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
     }
     
+    /// Get the number of people currently on the application's team
+    /// - Returns: A count of the number of UUID's that are currently saved as team members
     public func teamCount() -> Int {
         let teams = UserDefaults.standard.stringArray(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)
         if (teams == nil) {
@@ -183,6 +205,9 @@ public class DeviceRepository {
         }
     }
     
+    /// Add a team member
+    /// - Parameter uuidString: The UUID of the team member
+    /// - Returns: True if the UUID was correctly added
     public func addTeamMember(uuidString: String) -> Bool {
         let value = uuidString.lowercased()
         
@@ -207,6 +232,9 @@ public class DeviceRepository {
         }
     }
     
+    /// Check to see if a detected app is a team member
+    /// - Parameter uuidString: The UUID to check
+    /// - Returns: True if the UUID was previously added as a team member
     func isTeamMember(uuidString: String) -> Bool {
         let value = uuidString.lowercased()
         let teams = UserDefaults.standard.stringArray(forKey: SocialDistanceSdkConstants.TEAMS_KEY.rawValue)

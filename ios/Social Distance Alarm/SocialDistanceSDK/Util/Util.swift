@@ -15,6 +15,7 @@ public enum SignalClassification {
     case ok
 }
 
+/// Some constants that we use other places in the library.  These are the ones that you will want to change if you want to expand and contract what is considered red, orange, etc.
 public struct Util {
     static let signalDistanceOk = 30 // This or lower is socially distant = green
     static let signlaDistanceLightWarn = 33 // This to SIGNAL_DISTANCE_OK warning = yellow

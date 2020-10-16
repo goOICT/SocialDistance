@@ -29,8 +29,10 @@ fileprivate extension SignalClassification {
     }
 }
 
+/// Each cell in the table shows a device present during the last scan
 class DeviceDistanceTableViewCell: UITableViewCell {
     
+    /// Team members are always green
     var isTeamMember: Bool = false {
         didSet {
             if isTeamMember {

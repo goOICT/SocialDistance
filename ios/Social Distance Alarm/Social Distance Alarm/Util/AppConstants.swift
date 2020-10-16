@@ -7,6 +7,8 @@
 //
 
 import Foundation
+/// These constants control things like when the app alerts about the presence of another app.  iOS was really hard to calibrate.
+/// The different models of Apple handsets behave differently with respect to BLE signal strength.  You would think one manufa
 enum AppConstants {
     static let signalDistanceOk = 30 // This or lower is socially distant = green
     static let signlaDistanceLightWarn = 33 // This to SIGNAL_DISTANCE_OK warning = yellow

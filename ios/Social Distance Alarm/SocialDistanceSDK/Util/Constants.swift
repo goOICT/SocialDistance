@@ -9,6 +9,7 @@
 
 import Foundation
 
+/// Some constants that we use other places in the library.  These are the ones that you will want to change if you want to expand and contract what is considered red, orange, etc.
 enum SdkConstants {
     static let traceInterval: Double = 10
     static let signalDistanceOk = 30 // This or lower is socially distant = green
